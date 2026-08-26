@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belpa Beauty | Accesorios, Maquillaje y Flores Limpiapipas Cúcuta</title>
+    <!-- Meta SEO -->
+    <meta name="description" content="Encuentra maquillaje de tendencia, accesorios hermosos y flores limpiapipas personalizadas hechas a mano. El regalo perfecto con envíos a toda Colombia desde Cúcuta.">
+    <meta name="keywords" content="maquillaje cucuta, accesorios kawaii, flores limpiapipas, regalos personalizados, sheglam cucuta, prosa, belpa beauty">
+    <link rel="icon" type="image/jpg" href="assets/logo.jpg">
+    <!-- Google Fonts: Nunito (kawaii) + Montserrat + Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Skip link for keyboard accessibility -->
+    <a href="#catalogo" class="skip-link">Saltar al catálogo principal</a>
+
+    <!-- Sparkle Particles Container -->
+    <div id="sparkle-container"></div>
+
+    <!-- Top Announcement Marquee Bar (Shopify style) -->
+    <div class="top-marquee-bar">
+        <div class="marquee-content">
+            🌸 FLORES ETERNAS HECHAS A MANO 🌸 &nbsp;&nbsp;💖 REGALOS PERSONALIZADOS 💖 &nbsp;&nbsp;💄 MAQUILLAJE VIRAL Y DE TENDENCIA 💄 &nbsp;&nbsp;✈️ ENVÍOS A TODO COLOMBIA ✈️ &nbsp;&nbsp;🎀 CAJITAS DE REGALO ESPECIALES 🎀 &nbsp;&nbsp;💕 COMPRA SEGURA POR WHATSAPP 💕 &nbsp;&nbsp;⭐ BELPA BEAUTY CÚCUTA ⭐ &nbsp;&nbsp;
+        </div>
+    </div>
+
+    <!-- Floating Minimalist Mascot Widget -->
+    <div class="belpa-mascot-container" id="belpa-mascot-container">
+        <button class="belpa-mascot" id="belpa-mascot" aria-label="Mascota interactiva Belpa Kitty">🐱</button>
+        <div class="mascot-speech-bubble" id="mascot-speech-bubble">¡Hola! Soy Belpa Kitty 🐾 ¡Hazme clic para ver tips de belleza! 🌸</div>
+    </div>
+
+    <!-- Header Navigation (Clean Sticky Navbar) -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo-area">
+                <img src="assets/logo.jpg" alt="Belpa Beauty Logo" class="brand-logo" width="42" height="42" style="object-fit:cover;">
+                <span class="brand-name">Belpa Beauty 🌸</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menú">
+                <span class="hamburger-line line-1"></span>
+                <span class="hamburger-line line-2"></span>
+                <span class="hamburger-line line-3"></span>
+            </button>
+
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#inicio" class="nav-link active">Inicio</a>
+                <a href="#detalles" class="nav-link">¿Por qué Belpa?</a>
+                <a href="#catalogo" class="nav-link">Catálogo</a>
+                <a href="#accion" class="nav-link">Reels</a>
+                <a href="#nosotros" class="nav-link">Nosotros</a>
+                <a href="#contacto" class="nav-link btn-header-contact">Escríbenos 💌</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Hero Section (Clean Boutique Style with 3D Canvas) -->
+        <section id="inicio" class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <span class="hero-badge">✨ Colección Exclusiva 2026 ✨</span>
+                    <h1 class="hero-title">Cosméticos de tendencia & regalos eternos con amor</h1>
+                    <p class="hero-description">
+                        Descubre nuestra cuidada selección de maquillaje viral, accesorios delicados y ramos de flores tejidos totalmente a mano. Hacemos que regalar sea un de arte. 💝
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#catalogo" class="btn-primary-premium">Ver Colección 🛍️</a>
+                        <a href="https://wa.me/message/Z4TVXHB3UPMRI1" target="_blank" rel="noreferrer" class="btn-secondary-premium">Chatear en WhatsApp 💬</a>
+                    </div>
+                </div>
+                <div class="hero-image-area">
+                    <div class="hero-3d-canvas-container" id="hero-3d-canvas-container">
+                        <!-- Hero Main Image -->
+                        <img src="assets/hero_main.jpg" alt="Belpa Beauty - Flores y cosméticos kawaii" class="hero-fallback-img" id="hero-fallback-img" width="340" height="340" style="display:block;">
+                        <div class="collage-badge tag-handmade">🌸 Crochet Eterno</div>
+                        <div class="collage-badge tag-shipping">✈️ Envíos Colombia</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wave divider -->
+        <div class="wave-divider">
+            <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+                <path d="M0,40L80,44C160,48,320,56,480,53C640,50,800,35,960,32C1120,29,1280,35,1360,38L1440,40L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z" fill="rgba(255,220,238,0.35)"></path>
+            </svg>
+        </div>
+
+        <!-- Bento Features Section -->
+        <section id="detalles" class="features-section">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Pilares de Calidad</h2>
+                <p class="section-subtitle">Nos apasiona cuidar cada detalle para ofrecerte una experiencia única y memorable.</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Bento Item 1 -->
+                <div class="feature-card card-large pink-gradient">
+                    <div class="card-content">
+                        <span class="card-icon">🌸</span>
+                        <h3>Ramos de Flores Eternas</h3>
+                        <p>Cada rosa, tulipán y ramo está tejido minuciosamente a mano con limpiapipas de alta suavidad. Un detalle eterno que decora con calidez y nunca se marchita.</p>
+                    </div>
+                    <div class="card-decoration">🌸</div>
+                </div>
+                
+                <!-- Bento Item 2 -->
+                <div class="feature-card sand-gradient">
+                    <div class="card-content">
+                        <span class="card-icon">💄</span>
+                        <h3>Cosméticos Seleccionados</h3>
+                        <p>Elegimos el maquillaje de tendencia más viral y con mejores opiniones para que completes tu rutina con absoluta confianza.</p>
+                    </div>
+                    <div class="card-decoration">✨</div>
+                </div>
+                
+                <!-- Bento Item 3 -->
+                <div class="feature-card sage-gradient">
+                    <div class="card-content">
+                        <span class="card-icon">✈️</span>
+                        <h3>Despachos a todo el país</h3>
+                        <p>Preparamos tu pedido y lo enviamos con total protección a cualquier departamento de Colombia. Embalado con el máximo cuidado.</p>
+                    </div>
+                    <div class="card-decoration">💖</div>
+                </div>
+
+                <!-- Bento Item 4 -->
+                <div class="feature-card card-large purple-gradient">
+                    <div class="card-content">
+                        <span class="card-icon">🎁</span>
+                        <h3>Cajitas de Regalo Especiales</h3>
+                        <p>Diseñamos el unboxing perfecto: cajas perfumadas con viruta de colores, notas personalizadas y dulces de cortesía. Listo para sorprender.</p>
+                    </div>
+                    <div class="card-decoration">🎀</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wave divider -->
+        <div class="wave-divider wave-catalog">
+            <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+                <path d="M0,40L80,35C160,29,320,18,480,21C640,24,800,45,960,50C1120,55,1280,45,1360,40L1440,35L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z" fill="rgba(255,200,225,0.25)"></path>
+            </svg>
+        </div>
+
+        <!-- Catalog Section -->
+        <section id="catalogo" class="catalog-section">
+            <div class="section-header">
+                <h2 class="section-title">Productos Destacados</h2>
+                <p class="section-subtitle">Explora nuestras categorías exclusivas. Pasa el cursor sobre la foto para ver detalles y haz clic para abrir la vista rápida.</p>
+            </div>
+
+            <!-- Visual Categories Selector (Dream On style) -->
+            <div class="visual-categories-container">
+                <div class="category-circle-card active" data-filter="all">
+                    <div class="circle-icon-bg pink">✨</div>
+                    <span>Todos</span>
+                </div>
+                <div class="category-circle-card" data-filter="maquillaje">
+                    <div class="circle-icon-bg purple">💄</div>
+                    <span>Maquillaje</span>
+                </div>
+                <div class="category-circle-card" data-filter="flores">
+                    <div class="circle-icon-bg green">🌸</div>
+                    <span>Flores</span>
+                </div>
+                <div class="category-circle-card" data-filter="skincare">
+                    <div class="circle-icon-bg blue">🧴</div>
+                    <span>Skincare</span>
+                </div>
+                <div class="category-circle-card" data-filter="accesorios">
+                    <div class="circle-icon-bg yellow">🎀</div>
+                    <span>Accesorios</span>
+                </div>
+            </div>
+
+            <!-- Product Grid (Premium Shopify Cards with Image Swap & Quantity Selectors) -->
+            <div class="product-grid" id="product-grid">
+                
+                <!-- Producto 1 (Set Regalo) -->
+                <div class="product-card premium-card" data-category="flores accesorios" data-product-id="1">
+                    <div class="product-image-container">
+                        <img src="assets/product_1.jpg" alt="Ramos y Accesorios Lindos" class="product-img product-img-primary" width="280" height="280">
+                        <img src="assets/product_3.jpg" alt="Detalle del Ramo" class="product-img product-img-secondary" width="280" height="280" loading="lazy">
+                        <span class="product-badge badge-handmade">Crochet 🌸</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-label">FLORES Y ACCESORIOS</span>
+                        <h3 class="product-name">Ramos Eternos & Detalles Personalizados</h3>
+                        <p class="product-desc">Ramos tejidos artesanalmente combinados con moños y empaque de regalo.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">Desde $15,000 COP</span>
+                        </div>
+                        
+                        <div class="card-action-row">
+                            <div class="quantity-selector">
+                                <button class="qty-btn dec-btn" aria-label="Disminuir cantidad">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn inc-btn" aria-label="Aumentar cantidad">+</button>
+                            </div>
+                            <button class="btn-buy-whatsapp-premium" data-product="Ramos Eternos y Detalles Personalizados" data-price="15000">
+                                Pedir 💬
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 2 (Skincare) -->
+                <div class="product-card premium-card" data-category="skincare" data-product-id="2">
+                    <div class="product-image-container">
+                        <img src="assets/product_2.jpg" alt="Kit Skincare y Belleza" class="product-img product-img-primary" width="280" height="280">
+                        <img src="assets/product_6.jpg" alt="Uso del Rubor Jelly" class="product-img product-img-secondary" width="280" height="280" loading="lazy">
+                        <span class="product-badge badge-viral">Viral 🔥</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-label">CUIDADO FACIAL</span>
+                        <h3 class="product-name">Kit de Skincare Rutina Completa</h3>
+                        <p class="product-desc">Combo de hidratación y limpieza profunda para lucir una piel fresca y luminosa.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$38,000 COP</span>
+                        </div>
+                        
+                        <div class="card-action-row">
+                            <div class="quantity-selector">
+                                <button class="qty-btn dec-btn" aria-label="Disminuir cantidad">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn inc-btn" aria-label="Aumentar cantidad">+</button>
+                            </div>
+                            <button class="btn-buy-whatsapp-premium" data-product="Kit de Skincare Rutina Completa" data-price="38000">
+                                Pedir 💬
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 3 (Accesorios) -->
+                <div class="product-card premium-card" data-category="accesorios maquillaje" data-product-id="3">
+                    <div class="product-image-container">
+                        <img src="assets/product_3.jpg" alt="Accesorios y Maquillaje Belpa" class="product-img product-img-primary" width="280" height="280">
+                        <img src="assets/product_1.jpg" alt="Ramos de la marca" class="product-img product-img-secondary" width="280" height="280" loading="lazy">
+                        <span class="product-badge badge-new">Nuevo 🎀</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-label">SET REGALO</span>
+                        <h3 class="product-name">Combo Moño Satín & Lip Gloss Trend</h3>
+                        <p class="product-desc">El kit ideal de moños elegantes estilo satín combinados con brillo hidratante.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$22,000 COP</span>
+                        </div>
+                        
+                        <div class="card-action-row">
+                            <div class="quantity-selector">
+                                <button class="qty-btn dec-btn" aria-label="Disminuir cantidad">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn inc-btn" aria-label="Aumentar cantidad">+</button>
+                            </div>
+                            <button class="btn-buy-whatsapp-premium" data-product="Combo Moño Satín & Lip Gloss Trend" data-price="22000">
+                                Pedir 💬
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 4 (Sheglam) -->
+                <div class="product-card premium-card" data-category="maquillaje" data-product-id="4">
+                    <div class="product-image-container">
+                        <img src="assets/product_4.jpg" alt="Sheglam Lip Gloss" class="product-img product-img-primary" width="280" height="280">
+                        <img src="assets/product_3.jpg" alt="Lip Gloss con moño" class="product-img product-img-secondary" width="280" height="280" loading="lazy">
+                        <span class="product-badge badge-trend">Best Seller ⭐</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-label">MAQUILLAJE LABIOS</span>
+                        <h3 class="product-name">Sheglam Lip Gloss Sparkling</h3>
+                        <p class="product-desc">Brillo con micro-destellos de purpurina. Deja tus labios con volumen y cero pegajosos.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$18,000 COP</span>
+                        </div>
+                        
+                        <div class="card-action-row">
+                            <div class="quantity-selector">
+                                <button class="qty-btn dec-btn" aria-label="Disminuir cantidad">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn inc-btn" aria-label="Aumentar cantidad">+</button>
+                            </div>
+                            <button class="btn-buy-whatsapp-premium" data-product="Sheglam Lip Gloss Sparkling" data-price="18000">
+                                Pedir 💬
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 5 (Prosa) -->
+                <div class="product-card premium-card" data-category="maquillaje" data-product-id="5">
+                    <div class="product-image-container">
+                        <img src="assets/product_5.jpg" alt="Pestañina Prosa" class="product-img product-img-primary" width="280" height="280">
+                        <img src="assets/product_4.jpg" alt="Pestañina y Lip gloss combo" class="product-img product-img-secondary" width="280" height="280" loading="lazy">
+                        <span class="product-badge badge-basic">Básico 👀</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-label">MAQUILLAJE OJOS</span>
+                        <h3 class="product-name">Pestañina Prosa 4 en 1 Waterproof</h3>
+                        <p class="product-desc">Fórmula enriquecida con aceites naturales. Define, alarga y resiste todo el día.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$12,000 COP</span>
+                        </div>
+                        
+                        <div class="card-action-row">
+                            <div class="quantity-selector">
+                                <button class="qty-btn dec-btn" aria-label="Disminuir cantidad">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn inc-btn" aria-label="Aumentar cantidad">+</button>
+                            </div>
+                            <button class="btn-buy-whatsapp-premium" data-product="Pestañina Prosa 4 en 1 Waterproof" data-price="12000">
+                                Pedir 💬
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 6 (Jelly Blush) -->
+                <div class="product-card premium-card" data-category="maquillaje" data-product-id="6">
+                    <div class="product-image-container">
+                        <img src="assets/product_6.jpg" alt="Alissha Jelly Blush" class="product-img product-img-primary" width="280" height="280">
+                        <img src="assets/product_2.jpg" alt="Detalle Skincare Jelly" class="product-img product-img-secondary" width="280" height="280" loading="lazy">
+                        <span class="product-badge badge-trend">Nuevo Rubor 🍮</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-label">MAQUILLAJE MEJILLAS</span>
+                        <h3 class="product-name">Alissha Jelly Blush Tinta Rubor</h3>
+                        <p class="product-desc">Novedosa textura gelatina de fácil aplicación. Tono de larga duración con acabado natural.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$15,000 COP</span>
+                        </div>
+                        
+                        <div class="card-action-row">
+                            <div class="quantity-selector">
+                                <button class="qty-btn dec-btn" aria-label="Disminuir cantidad">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn inc-btn" aria-label="Aumentar cantidad">+</button>
+                            </div>
+                            <button class="btn-buy-whatsapp-premium" data-product="Alissha Jelly Blush Tinta Rubor" data-price="15000">
+                                Pedir 💬
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 7 (Ramo Premium Caja) -->
+                <div class="product-card premium-card" data-category="flores regalos" data-product-id="7">
+                    <div class="product-image-container">
+                        <img src="assets/product_7.jpeg" alt="Ramo Eterno Premium en Caja" class="product-img product-img-primary" width="280" height="280" loading="lazy">
+                        <img src="assets/product_8.jpeg" alt="Flores de crochet detalle" class="product-img product-img-secondary" width="280" height="280" loading="lazy">
+                        <span class="product-badge badge-handmade">Handmade 🎁</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-label">REGALOS CROCHET</span>
+                        <h3 class="product-name">Caja Ramo Premium Bouquet Eterno</h3>
+                        <p class="product-desc">Exclusivo ramo de flores tejidas a mano presentado en caja de lujo perfumada con lazos.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$35,000 COP</span>
+                        </div>
+                        
+                        <div class="card-action-row">
+                            <div class="quantity-selector">
+                                <button class="qty-btn dec-btn" aria-label="Disminuir cantidad">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn inc-btn" aria-label="Aumentar cantidad">+</button>
+                            </div>
+                            <button class="btn-buy-whatsapp-premium" data-product="Caja Ramo Premium Bouquet Eterno" data-price="35000">
+                                Pedir 💬
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 8 (Rosas Crochet) -->
+                <div class="product-card premium-card" data-category="flores" data-product-id="8">
+                    <div class="product-image-container">
+                        <img src="assets/product_8.jpeg" alt="Ramo de Rosas Crochet" class="product-img product-img-primary" width="280" height="280" loading="lazy">
+                        <img src="assets/product_10.jpeg" alt="Detalle del tejido de rosas" class="product-img product-img-secondary" width="280" height="280" loading="lazy">
+                        <span class="product-badge badge-trend">Tendencia 🌹</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-label">FLORES CROCHET</span>
+                        <h3 class="product-name">Ramo de Rosas Eternas Especial</h3>
+                        <p class="product-desc">Ramo clásico de rosas eternas tejidas a mano en colores personalizados con envoltorio premium.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$25,000 COP</span>
+                        </div>
+                        
+                        <div class="card-action-row">
+                            <div class="quantity-selector">
+                                <button class="qty-btn dec-btn" aria-label="Disminuir cantidad">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn inc-btn" aria-label="Aumentar cantidad">+</button>
+                            </div>
+                            <button class="btn-buy-whatsapp-premium" data-product="Ramo de Rosas Eternas Especial" data-price="25000">
+                                Pedir 💬
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 9 (Set Satín & Gloss) -->
+                <div class="product-card premium-card" data-category="accesorios maquillaje" data-product-id="9">
+                    <div class="product-image-container">
+                        <img src="assets/product_9.jpeg" alt="Set Moño Satín y Brillo" class="product-img product-img-primary" width="280" height="280" loading="lazy">
+                        <img src="assets/product_3.jpg" alt="Moño rosa con labial" class="product-img product-img-secondary" width="280" height="280" loading="lazy">
+                        <span class="product-badge badge-new">Combos 💕</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-label">COMBOS DIARIOS</span>
+                        <h3 class="product-name">Set Satín Hair Bow & Gloss Hidratante</h3>
+                        <p class="product-desc">Moño de satín de alta calidad estilo coquette acompañado de un gloss de labios ultra hidratante.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$20,000 COP</span>
+                        </div>
+                        
+                        <div class="card-action-row">
+                            <div class="quantity-selector">
+                                <button class="qty-btn dec-btn" aria-label="Disminuir cantidad">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn inc-btn" aria-label="Aumentar cantidad">+</button>
+                            </div>
+                            <button class="btn-buy-whatsapp-premium" data-product="Set Satín Hair Bow & Gloss Hidratante" data-price="20000">
+                                Pedir 💬
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 10 (Lavandas & Rosas) -->
+                <div class="product-card premium-card" data-category="flores" data-product-id="10">
+                    <div class="product-image-container">
+                        <img src="assets/product_10.jpeg" alt="Ramo Lavandas y Rosas" class="product-img product-img-primary" width="280" height="280" loading="lazy">
+                        <img src="assets/product_7.jpeg" alt="Detalle del bouquet eterno" class="product-img product-img-secondary" width="280" height="280" loading="lazy">
+                        <span class="product-badge badge-handmade">Handmade 🪻</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-label">FLORES CROCHET</span>
+                        <h3 class="product-name">Ramo Eterno de Lavandas y Rosas</h3>
+                        <p class="product-desc">Hermosa combinación tejida de flores de lavanda aromáticas y rosas eternas de alta costura.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$30,000 COP</span>
+                        </div>
+                        
+                        <div class="card-action-row">
+                            <div class="quantity-selector">
+                                <button class="qty-btn dec-btn" aria-label="Disminuir cantidad">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn inc-btn" aria-label="Aumentar cantidad">+</button>
+                            </div>
+                            <button class="btn-buy-whatsapp-premium" data-product="Ramo Eterno de Lavandas y Rosas" data-price="30000">
+                                Pedir 💬
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 11 (Essentials & Flores) -->
+                <div class="product-card premium-card" data-category="maquillaje accesorios" data-product-id="11">
+                    <div class="product-image-container">
+                        <img src="assets/product_11.jpeg" alt="Set Belleza Essentials" class="product-img product-img-primary" width="280" height="280" loading="lazy">
+                        <img src="assets/product_9.jpeg" alt="Labiales y moño combo" class="product-img product-img-secondary" width="280" height="280" loading="lazy">
+                        <span class="product-badge badge-trend">Favorito 🌟</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category-label">COMBOS BELLEZA</span>
+                        <h3 class="product-name">Set de Belleza Essentials & Flores</h3>
+                        <p class="product-desc">Cajita especial con broches para cabello pastel, una flor tejida individual y labiales hidratantes.</p>
+                        <div class="product-price-row">
+                            <span class="product-price">$28,000 COP</span>
+                        </div>
+                        
+                        <div class="card-action-row">
+                            <div class="quantity-selector">
+                                <button class="qty-btn dec-btn" aria-label="Disminuir cantidad">-</button>
+                                <span class="qty-val">1</span>
+                                <button class="qty-btn inc-btn" aria-label="Aumentar cantidad">+</button>
+                            </div>
+                            <button class="btn-buy-whatsapp-premium" data-product="Set de Belleza Essentials & Flores" data-price="28000">
+                                Pedir 💬
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Wave divider -->
+        <div class="wave-divider wave-white">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,64L80,58.7C160,53,320,43,480,48C640,53,800,75,960,80C1120,85,1280,75,1360,69.3L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z" fill="#FFFDFD"></path>
+            </svg>
+        </div>
+
+        <!-- New Section: Belpa en Acción (video_1.mp4) -->
+        <section id="accion" class="video-section">
+            <div class="section-header">
+                <h2 class="section-title">Belpa en Acción 🎬</h2>
+                <p class="section-subtitle">Echa un vistazo a la textura de nuestros glosses virales y la delicadeza de los empaques hechos a mano.</p>
+            </div>
+            <div class="video-container-wrapper">
+                <div class="video-player-container">
+                    <video id="belpa-video" loop muted autoplay playsinline>
+                        <source src="assets/video_cropped.mp4" type="video/mp4">
+                        Tu navegador no soporta reproducción de video.
+                    </video>
+                    <button class="video-mute-btn" id="video-mute-btn" aria-label="Activar sonido">🔊</button>
+                    <!-- Decoración kawaii encima del video -->
+                    <div class="video-pill-tag">✨ @belpabeauty.cuc</div>
+                </div>
+                <div class="video-text-content">
+                    <span class="about-badge">Belpa en vivo</span>
+                    <h3>Brillo que enamora &amp; detalles que perduran 💄✨</h3>
+                    <p>
+                        Mira en detalle el brillo y la hidratación del <strong>SHEGLAM Lip Gloss Sparkling</strong>, uno de los cosméticos favoritos de la tienda.
+                    </p>
+                    <p>
+                        Cada entrega va empacada con amor en cajitas perfumadas para garantizarte un unboxing inolvidable. 💝
+                    </p>
+                    <div class="video-feature-pills">
+                        <span class="vpill">🌸 Flores eternas</span>
+                        <span class="vpill">💄 Gloss viral</span>
+                        <span class="vpill">🎁 Unboxing único</span>
+                    </div>
+                    <a href="#catalogo" class="btn-primary-premium">¡Quiero el mío! 🛍️</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wave divider -->
+        <div class="wave-divider">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,48C840,43,960,53,1080,58.7C1200,64,1320,64,1380,64L1440,64L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z" fill="white"></path>
+            </svg>
+        </div>
+
+        <!-- About Us Section -->
+        <section id="nosotros" class="about-section">
+            <div class="about-container">
+                <div class="about-image-area">
+                    <div class="collage-about">
+                        <div class="collage-blur-about"></div>
+                        <img src="assets/about_us.jpg" alt="Creadoras de Belpa Beauty" class="about-img" width="340" height="340" loading="lazy">
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="about-badge">Nuestra Historia</span>
+                    <h2 class="about-title">El arte de tejer sonrisas & detalles eternos</h2>
+                    <p>
+                        En **Belpa Beauty** creemos que un regalo no es solo un objeto, sino una forma de transmitir amor, alegría y calidez. Todo nació en Cúcuta, con el deseo de ofrecer accesorios únicos y ramos de flores eternas tejidos a mano con materiales súper suaves.
+                    </p>
+                    <p>
+                        Seleccionamos minuciosamente cada producto de maquillaje y cuidado de la piel de tendencia para asegurarnos de que recibas solo lo mejor de forma tierna. ¡Gracias por dejarnos llenar de magia tus días especiales! 💖
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-box">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Hecho a Mano</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">1000+</span>
+                            <span class="stat-label">Cajitas Felices</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wave divider -->
+        <div class="wave-divider wave-white">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,64L80,58.7C160,53,320,43,480,48C640,53,800,75,960,80C1120,85,1280,75,1360,69.3L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z" fill="#FFFDFD"></path>
+            </svg>
+        </div>
+
+        <!-- FAQ Section (Clean Shopify Style Accordion) -->
+        <section id="faq" class="faq-section">
+            <div class="section-header">
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+                <p class="section-subtitle">Resolvemos tus dudas con toda la claridad y amabilidad posible.</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-card">
+                    <button class="faq-question">
+                        <span>¿Hacen envíos a toda Colombia? ✈️</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>¡Sí, por supuesto! Enviamos tu cajita mágica con seguridad desde Cúcuta a cualquier rincón de Colombia mediante transportadoras nacionales confiables (Interrapidísimo, Servientrega, Coordinadora). Los ramos de flores se embalan con protecciones rígidas especiales para que lleguen intactos. 🇨🇴</p>
+                    </div>
+                </div>
+
+                <div class="faq-card">
+                    <button class="faq-question">
+                        <span>¿Cómo hago un pedido personalizado? 🎁</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>¡Es muy sencillo! Puedes escribirnos directamente por WhatsApp contándonos qué colores de flores, envoltorios o productos de maquillaje te gustaría combinar y nosotras diseñamos tu cajita o ramo a medida.</p>
+                    </div>
+                </div>
+
+                <div class="faq-card">
+                    <button class="faq-question">
+                        <span>¿Qué medios de pago aceptan? 💳</span>
+                        <span class="faq-icon">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Aceptamos transferencias electrónicas por Nequi, Daviplata y Bancolombia. Para entregas locales dentro de Cúcuta, contamos con la opción de pago contra entrega.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wave divider -->
+        <div class="wave-divider wave-white">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,32L80,37.3C160,43,320,53,480,48C640,43,800,21,960,26.7C1120,32,1280,64,1360,80L1440,96L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z" fill="white"></path>
+            </svg>
+        </div>
+
+        <!-- Contact Section -->
+        <section id="contacto" class="contact-section">
+            <div class="contact-card-container">
+                <div class="contact-info-panel">
+                    <h2>Escríbenos para armar tu regalo ideal</h2>
+                    <p>Si deseas armar un ramo con colores específicos, un set de regalo a medida, o tienes dudas sobre el maquillaje, envíanos un mensaje rápido. ¡Te responderemos con mucho gusto!</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-icon-bubble">📍</span>
+                            <div>
+                                <h4>Ubicación</h4>
+                                <p>Cúcuta, Norte de Santander</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <span class="contact-icon-bubble">💬</span>
+                            <div>
+                                <h4>WhatsApp Chat</h4>
+                                <p><a href="https://wa.me/message/Z4TVXHB3UPMRI1" target="_blank" rel="noreferrer">+57 WhatsApp Belpa</a></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <span class="contact-icon-bubble">📸</span>
+                            <div>
+                                <h4>Instagram</h4>
+                                <p><a href="https://www.instagram.com/belpabeauty.cuc/" target="_blank" rel="noreferrer">@belpabeauty.cuc</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-panel">
+                    <h3>Consulta rápida a WhatsApp ✨</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Tu Nombre</label>
+                            <input type="text" id="name" name="name" required placeholder="Ej: Valentina Pérez" autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text">¿Qué deseas consultarnos?</label>
+                            <textarea id="message-text" name="message" rows="4" required placeholder="Escribe aquí si deseas cotizar un ramo personalizado, consultar stock de maquillaje, etc." autocomplete="off" spellcheck="true"></textarea>
+                        </div>
+                        <button type="submit" class="btn-send-form-premium">Enviar Mensaje 🚀</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>Belpa Beauty 🌸</h3>
+                <p>Tu tienda de confianza de maquillaje, detalles hermosos y ramos de crochet en Cúcuta.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Enlaces Rápidos</h4>
+                <a href="#inicio">Inicio</a>
+                <a href="#detalles">Características</a>
+                <a href="#catalogo">Catálogo</a>
+                <a href="#nosotros">Nosotros</a>
+            </div>
+            <div class="footer-social">
+                <h4>Nuestras Redes</h4>
+                <a href="https://www.instagram.com/belpabeauty.cuc/" target="_blank" rel="noreferrer" class="social-link instagram">Instagram 📸</a>
+                <a href="https://wa.me/message/Z4TVXHB3UPMRI1" target="_blank" rel="noreferrer" class="social-link whatsapp">WhatsApp Chat 💬</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Belpa Beauty Cúcuta. Diseñado con amor en tonos blush. 💕</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button with Tooltip -->
+    <a href="https://wa.me/message/Z4TVXHB3UPMRI1" class="floating-whatsapp" target="_blank" rel="noreferrer" aria-label="Escríbenos por WhatsApp">
+        <svg class="whatsapp-svg" viewBox="0 0 24 24" fill="#fff"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.982L2 22l5.233-1.371a9.994 9.994 0 0 0 4.779 1.21h.005c5.505 0 9.989-4.478 9.99-9.985A9.998 9.998 0 0 0 12.012 2zm5.718 13.962c-.244.686-1.42 1.254-1.956 1.309-.49.051-.976.223-3.132-.634a11.536 11.536 0 0 1-4.84-4.28c-.815-1.08-1.304-2.333-1.304-3.642 0-2.029 1.056-3.023 1.432-3.411.376-.388.828-.485 1.102-.485.275 0 .55.013.79.025.253.013.567-.094.887.676.329.79 1.127 2.753 1.226 2.953.099.2.166.432.032.695-.133.264-.2.432-.396.662-.196.23-.414.512-.59.687-.196.196-.402.41-.173.805.23.396 1.02 1.68 2.19 2.72 1.503 1.336 2.766 1.751 3.16 1.947.394.196.626.162.859-.1.233-.264.996-1.157 1.262-1.554.267-.396.533-.33.896-.197.363.133 2.3.1.2.1.2.1.2 2.7.3 2.7.3-.133 1.32-.4 1.776-.84z"/></svg>
+        <span class="whatsapp-tooltip">¡Consúltanos! 🌸</span>
+    </a>
+
+    <!-- Quick View Modal (E-commerce popup style) -->
+    <div class="quickview-modal" id="quickview-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close" aria-label="Cerrar modal">&times;</button>
+            <div class="modal-grid">
+                <div class="modal-images">
+                    <img src="" alt="" id="modal-main-img" width="340" height="340">
+                    <div class="modal-thumbnails" id="modal-thumbnails">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <span class="modal-badge-label" id="modal-badge">DETALLES</span>
+                    <h2 class="modal-title" id="modal-title">Nombre del Producto</h2>
+                    <div class="modal-price" id="modal-price">$0 COP</div>
+                    <p class="modal-description" id="modal-description">Descripción...</p>
+                    
+                    <div class="modal-shipping-notice">
+                        🚚 Envíos rápidos a todo el país desde Cúcuta. Empaque premium de regalo incluido.
+                    </div>
+                    
+                    <div class="modal-checkout-row">
+                        <div class="quantity-selector modal-qty-selector">
+                            <button class="qty-btn dec-btn" id="modal-dec-btn" aria-label="Disminuir cantidad">-</button>
+                            <span class="qty-val" id="modal-qty-val">1</span>
+                            <button class="qty-btn inc-btn" id="modal-inc-btn" aria-label="Aumentar cantidad">+</button>
+                        </div>
+                        <button class="btn-checkout-whatsapp" id="modal-buy-btn">Pedir por WhatsApp 💬</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CDN Three.js para la flor 3D -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Application Script -->
+    <script src="app.js"></script>
+</body>
+</html>
