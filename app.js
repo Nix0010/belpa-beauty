@@ -1,111 +1,1165 @@
 /* ==========================================================================
-   INTERACTIVIDAD Y EFECTOS BOUTIQUE - BELPA BEAUTY
+   BELPA BEAUTY & BELFLORA - MOTOR DE TIENDA BOUTIQUE V2.0 🌸💖
+   Catálogo Completo, Carrito de Compras Multi-Producto y Checkout por WhatsApp
    ========================================================================== */
 
-// --- Base de Datos Local de Productos ---
-const productsData = {
-    1: {
-        name: "Ramos Eternos & Detalles Personalizados",
-        category: "FLORES Y ACCESORIOS",
-        price: "Desde $15,000 COP",
-        rawPrice: 15000,
-        badge: "Crochet 🌸",
-        description: "Preciosos ramos de tulipanes, rosas o margaritas tejidos artesanalmente a mano con limpiapipas de alta suavidad. Puedes personalizar la combinación de colores y el envoltorio de regalo. Es un detalle perfecto, duradero y de gran valor sentimental.",
-        images: ["assets/product_1.jpg", "assets/product_3.jpg"]
+// --- Base de Datos Maestra de Productos (BelFlora + Belpa Beauty) ---
+const productsCatalog = [
+    {
+        "id": 1,
+        "name": "Ramo Rapunzel Ref 001",
+        "category": "TEMÁTICAS & DISNEY",
+        "filterCategory": "tematicas",
+        "price": "$80,000 COP",
+        "rawPrice": 80000,
+        "badge": "Princesas 👑",
+        "description": "Ramo temático de Rapunzel en limpiapipas artesanales de alta calidad. Incluye: 4 Lirios, 2 Gerberas, 2 Margaritas, 1 Tulipán, 1 Flor gota de sol, 1 Rosa, camaleón Pascal en limpiapipa, follaje y luces LED decorativas.",
+        "mediaId": "MAHQOp8EUfM",
+        "images": [
+            "assets/catalog/item_1_MAHQOp8EUfM.jpg"
+        ]
     },
-    2: {
-        name: "Kit de Skincare Rutina Completa",
-        category: "CUIDADO FACIAL",
-        price: "$38,000 COP",
-        rawPrice: 38000,
-        badge: "Viral 🔥",
-        description: "El set definitivo para el cuidado facial diario. Incluye gel limpiador suave, tónico equilibrante y crema hidratante iluminadora para dejar la piel fresca, suave y protegida. Ideal para todo tipo de piel.",
-        images: ["assets/product_2.jpg", "assets/product_6.jpg"]
+    {
+        "id": 2,
+        "name": "Ramo Rapunzel Ref 002",
+        "category": "TEMÁTICAS & DISNEY",
+        "filterCategory": "tematicas",
+        "price": "$115,000 COP",
+        "rawPrice": 115000,
+        "badge": "Princesas 👑",
+        "description": "Ramo premium de Rapunzel tejido a mano. Incluye: 1 Lirio, 3 Gerberas, 2 Jazmín, 6 Tulipanes, 1 Flor gota de sol, 1 figura de Pascal artesanal, follaje y luces LED.",
+        "mediaId": "MAHShGd7zIc",
+        "images": [
+            "assets/catalog/item_2_MAHShGd7zIc.jpg"
+        ]
     },
-    3: {
-        name: "Combo Moño Satín & Lip Gloss Trend",
-        category: "SET REGALO",
-        price: "$22,000 COP",
-        rawPrice: 22000,
-        badge: "Nuevo 🎀",
-        description: "El kit ideal de moños elegantes estilo satín combinados con brillo labial ultra hidratante. Perfecto para añadir un toque tierno a tu look diario o para armar una cajita de regalo súper especial.",
-        images: ["assets/product_3.jpg", "assets/product_1.jpg"]
+    {
+        "id": 3,
+        "name": "Ramo Cenicienta",
+        "category": "TEMÁTICAS & DISNEY",
+        "filterCategory": "tematicas",
+        "price": "$80,000 COP",
+        "rawPrice": 80000,
+        "badge": "Princesas 👑",
+        "description": "Ramo mágico de Cenicienta con tonos celestes y blancos. Incluye flores artesanales, detalles temáticos de princesa, follaje decorativo y luces LED.",
+        "mediaId": "MAHRoxdMUYc",
+        "images": [
+            "assets/catalog/item_3_MAHRoxdMUYc.jpg"
+        ]
     },
-    4: {
-        name: "Sheglam Lip Gloss Sparkling",
-        category: "MAQUILLAJE LABIOS",
-        price: "$18,000 COP",
-        rawPrice: 18000,
-        badge: "Best Seller ⭐",
-        description: "Brillo labial viral con micro-destellos de purpurina que reflejan la luz de manera espectacular. Proporciona hidratación profunda y volumen óptico sin dejar una sensación pesada o pegajosa.",
-        images: ["assets/product_4.jpg", "assets/product_3.jpg"]
+    {
+        "id": 4,
+        "name": "Ramo La Princesa y el Sapo",
+        "category": "TEMÁTICAS & DISNEY",
+        "filterCategory": "tematicas",
+        "price": "$115,000 COP",
+        "rawPrice": 115000,
+        "badge": "Princesas 👑",
+        "description": "Inspirado en Tiana y el pantano mágico. Incluye: 1 Flor de loto, 1 Gerbera, 1 Tulipán, 2 Lirios, 2 ramas de follaje, figura de la luciérnaga Ray en limpiapipas y luces LED.",
+        "mediaId": "MAHRowNcbB8",
+        "images": [
+            "assets/catalog/item_4_MAHRowNcbB8.png"
+        ]
     },
-    5: {
-        name: "Pestañina Prosa 4 en 1 Waterproof",
-        category: "MAQUILLAJE OJOS",
-        price: "$12,000 COP",
-        rawPrice: 12000,
-        badge: "Básico 👀",
-        description: "Fórmula profesional de larga duración resistente al agua. Enriquecida con aceites naturales de hueso de mamey, sábila, jojoba y germen de trigo. Alarga, define y da volumen a tus pestañas.",
-        images: ["assets/product_5.jpg", "assets/product_4.jpg"]
+    {
+        "id": 5,
+        "name": "Ramo Lotso Deluxe (7 Tulipanes & Lirios)",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$135,000 COP",
+        "rawPrice": 135000,
+        "badge": "Peluches 🧸",
+        "description": "Hermoso bouquet con peluche Lotso, 7 Tulipanes, 3 Lirios, 1 Lirio especial, 5 ramas de follaje y envoltura de lujo.",
+        "mediaId": "MAHQ4CuIp3g",
+        "images": [
+            "assets/catalog/item_5_MAHQ4CuIp3g.png"
+        ]
     },
-    6: {
-        name: "Alissha Jelly Blush Tinta Rubor",
-        category: "MAQUILLAJE MEJILLAS",
-        price: "$15,000 COP",
-        rawPrice: 15000,
-        badge: "Nuevo Rubor 🍮",
-        description: "Divertido rubor y tinta multiusos con una textura jelly gelatinosa única. Es sumamente fácil de difuminar, refresca tu piel y aporta una tinta de larga duración que se adapta al tono natural de tus mejillas.",
-        images: ["assets/product_6.jpg", "assets/product_2.jpg"]
+    {
+        "id": 6,
+        "name": "Ramo Lotso Rosas & Gerberas",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$110,000 COP",
+        "rawPrice": 110000,
+        "badge": "Peluches 🧸",
+        "description": "Bouquet dulce de 7 Tulipanes, 2 Rosas, 3 Gerberas, follaje y peluche de Lotso con aroma delicioso.",
+        "mediaId": "MAHPmj2Tpbk",
+        "images": [
+            "assets/catalog/item_6_MAHPmj2Tpbk.jpg"
+        ]
     },
-    7: {
-        name: "Caja Ramo Premium Bouquet Eterno",
-        category: "REGALOS CROCHET",
-        price: "$35,000 COP",
-        rawPrice: 35000,
-        badge: "Handmade 🎁",
-        description: "Exclusivo ramo de flores eternas tejidas a mano con limpiapipas premium de alta suavidad, presentado en una caja de lujo perfumada con lazos decorativos. El obsequio sofisticado que no se marchita.",
-        images: ["assets/product_7.jpeg", "assets/product_8.jpeg"]
+    {
+        "id": 7,
+        "name": "Ramo Lotso Clásico (7 Tulipanes)",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$80,000 COP",
+        "rawPrice": 80000,
+        "badge": "Peluches 🧸",
+        "description": "Ramo tierno con peluche de Lotso. Incluye: 7 Tulipanes, ramas de follaje y peluche suave de Lotso.",
+        "mediaId": "MAHS1Qb4eEc",
+        "images": [
+            "assets/catalog/item_7_MAHS1Qb4eEc.jpg"
+        ]
     },
-    8: {
-        name: "Ramo de Rosas Eternas Especial",
-        category: "FLORES CROCHET",
-        price: "$25,000 COP",
-        rawPrice: 25000,
-        badge: "Tendencia 🌹",
-        description: "Ramo clásico y elegante de rosas eternas hechas a mano. Elige tu paleta de colores favorita y nosotras nos encargamos de envolverlo con papeles coreanos de seda importada y moño de satín.",
-        images: ["assets/product_8.jpeg", "assets/product_10.jpeg"]
+    {
+        "id": 8,
+        "name": "Ramo Lotso Dormilón (Peluche 35 cm)",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$135,000 COP",
+        "rawPrice": 135000,
+        "badge": "Peluches 🧸",
+        "description": "Ramo especial con peluche Lotso de 35 cm. Incluye: 6 Tulipanes, 3 Rosas, 1 Anémona, follaje y peluche grande de Lotso.",
+        "mediaId": "MAHS1RY-jEE",
+        "images": [
+            "assets/catalog/item_8_MAHS1RY-jEE.jpg"
+        ]
     },
-    9: {
-        name: "Set Satín Hair Bow & Gloss Hidratante",
-        category: "COMBOS DIARIOS",
-        price: "$20,000 COP",
-        rawPrice: 20000,
-        badge: "Combos 💕",
-        description: "Moño coquette XL de satín de brillo suave y alta resistencia, acompañado de un lip gloss hidratante para labios radiantes durante todo el día. Ideal para complementar cualquier peinado diario.",
-        images: ["assets/product_9.jpeg", "assets/product_3.jpg"]
+    {
+        "id": 9,
+        "name": "Ramo Annita Rosado",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$120,000 COP",
+        "rawPrice": 120000,
+        "badge": "Peluches 🧸",
+        "description": "Tierno ramo en tono Rosado con peluche. Incluye: 6 Tulipanes, 3 Lirios, 2 ramas de follaje y peluche afelpado.",
+        "mediaId": "MAHQudzb4eg",
+        "images": [
+            "assets/catalog/item_9_MAHQudzb4eg.jpg"
+        ]
     },
-    10: {
-        name: "Ramo Eterno de Lavandas y Rosas",
-        category: "FLORES CROCHET",
-        price: "$30,000 COP",
-        rawPrice: 30000,
-        badge: "Handmade 🪻",
-        description: "Ramillete bouquet que combina rosas de crochet con delicadas flores de lavanda aromática en tonos lilas y crema. Tejido a mano y envuelto con el máximo cuidado y amor.",
-        images: ["assets/product_10.jpeg", "assets/product_7.jpeg"]
+    {
+        "id": 10,
+        "name": "Ramo Anny 2.0 Rosado Pastel",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$120,000 COP",
+        "rawPrice": 120000,
+        "badge": "Peluches 🧸",
+        "description": "Ramo en tonalidad Rosado Pastel. Incluye: 6 Tulipanes, 3 Lirios, 2 ramas de follaje y peluche delicado.",
+        "mediaId": "MAHQ4KYCeEQ",
+        "images": [
+            "assets/catalog/item_10_MAHQ4KYCeEQ.png"
+        ]
     },
-    11: {
-        name: "Set de Belleza Essentials & Flores",
-        category: "COMBOS BELLEZA",
-        price: "$28,000 COP",
-        rawPrice: 28000,
-        badge: "Favorito 🌟",
-        description: "Completa cajita de regalo que incluye una rosa eterna de crochet individual, clips para el cabello estilo pastel mate, y labiales hidratantes con brillos. Ideal para consentirte o regalar.",
-        images: ["assets/product_11.jpeg", "assets/product_9.jpeg"]
+    {
+        "id": 11,
+        "name": "Ramo Anny Ovejita Nude",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$125,000 COP",
+        "rawPrice": 125000,
+        "badge": "Peluches 🧸",
+        "description": "Elegante bouquet en tono Rosado Nude. Incluye: 7 Tulipanes, 3 Lirios, 3 Rosas, follaje y peluche de ovejita ultra suave.",
+        "mediaId": "MAHPmncoNSc",
+        "images": [
+            "assets/catalog/item_11_MAHPmncoNSc.jpg"
+        ]
+    },
+    {
+        "id": 12,
+        "name": "Ramo My Melody",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$70,000 COP",
+        "rawPrice": 70000,
+        "badge": "Sanrio 🎀",
+        "description": "Inspirado en My Melody. Incluye: 7 Tulipanes tejidos, follaje y peluche original de My Melody.",
+        "mediaId": "MAHQOsxcTQs",
+        "images": [
+            "assets/catalog/item_12_MAHQOsxcTQs.png"
+        ]
+    },
+    {
+        "id": 13,
+        "name": "Ramo Hello Kitty Ref 001",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$125,000 COP",
+        "rawPrice": 125000,
+        "badge": "Sanrio 🎀",
+        "description": "Precioso ramo de Hello Kitty. Incluye: 5 Tulipanes, 3 Lirios, 3 Gerberas, 2 ramas de follaje y peluche de Hello Kitty.",
+        "mediaId": "MAHQaR4F-LI",
+        "images": [
+            "assets/catalog/item_13_MAHQaR4F-LI.jpg"
+        ]
+    },
+    {
+        "id": 14,
+        "name": "Ramo Hello Kitty Ref 002 (45 cm)",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$150,000 COP",
+        "rawPrice": 150000,
+        "badge": "Sanrio 🎀",
+        "description": "Gran bouquet con peluche Hello Kitty gigante de 45 cm. Incluye: 10 Tulipanes, 4 Lirios, 1 Gerbera y follaje.",
+        "mediaId": "MAHS16mtKgM",
+        "images": [
+            "assets/catalog/item_14_MAHS16mtKgM.png"
+        ]
+    },
+    {
+        "id": 15,
+        "name": "Ramo Hello Kitty Ref 003 (6 Tulipanes)",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$70,000 COP",
+        "rawPrice": 70000,
+        "badge": "Sanrio 🎀",
+        "description": "Bouquet tierno de 6 Tulipanes, 2 ramas de follaje y peluche Hello Kitty de 45 cm.",
+        "mediaId": "MAHRMue2NRs",
+        "images": [
+            "assets/catalog/item_15_MAHRMue2NRs.jpg"
+        ]
+    },
+    {
+        "id": 16,
+        "name": "Ramo Hello Kitty Ref 004 (50 cm)",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$150,000 COP",
+        "rawPrice": 150000,
+        "badge": "Sanrio 🎀",
+        "description": "El regalo supremo para fans de Hello Kitty. Incluye: 5 Tulipanes, 4 Lirios, 2 Gerberas, Margarita mini, follaje y peluche Hello Kitty de 50 cm.",
+        "mediaId": "MAHRMuZHRJc",
+        "images": [
+            "assets/catalog/item_16_MAHRMuZHRJc.jpg"
+        ]
+    },
+    {
+        "id": 17,
+        "name": "Ramo Snoopy Ref 01",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$78,000 COP",
+        "rawPrice": 78000,
+        "badge": "Snoopy 🐶",
+        "description": "Encantador ramo de 4 Tulipanes, 3 Gerberas, follaje y figura artesanal de Snoopy tejida en limpiapipas.",
+        "mediaId": "MAHRo4IM_QY",
+        "images": [
+            "assets/catalog/item_17_MAHRo4IM_QY.jpg"
+        ]
+    },
+    {
+        "id": 18,
+        "name": "Ramo Snoopy Ref 02 (12 Tulipanes)",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$70,000 COP",
+        "rawPrice": 70000,
+        "badge": "Snoopy 🐶",
+        "description": "Arreglo primaveral de 12 Tulipanes artesanales, follaje y figura tejida de Snoopy en limpiapipas.",
+        "mediaId": "MAHST6bI3dM",
+        "images": [
+            "assets/catalog/item_18_MAHST6bI3dM.jpg"
+        ]
+    },
+    {
+        "id": 19,
+        "name": "Ramo Delirio (12 Lirios con Luces & Banda)",
+        "category": "LIRIOS",
+        "filterCategory": "lirios",
+        "price": "$110,000 COP",
+        "rawPrice": 110000,
+        "badge": "Lirios 🪷",
+        "description": "Impactante ramo de 12 Lirios eternos hechos a mano, follaje, banda personalizada con frase y serie de luces LED.",
+        "mediaId": "MAHS1lNKdhw",
+        "images": [
+            "assets/catalog/item_19_MAHS1lNKdhw.jpg"
+        ]
+    },
+    {
+        "id": 20,
+        "name": "Ramo Belkis Lirios",
+        "category": "LIRIOS",
+        "filterCategory": "lirios",
+        "price": "$90,000 COP",
+        "rawPrice": 90000,
+        "badge": "Lirios 🪷",
+        "description": "Ramo clásico y elegante con 12 Lirios eternos tejidos a mano y fino follaje decorativo.",
+        "mediaId": "MAHS14muKlY",
+        "images": [
+            "assets/catalog/item_20_MAHS14muKlY.png"
+        ]
+    },
+    {
+        "id": 21,
+        "name": "Ramo Gloria con Luces",
+        "category": "LIRIOS",
+        "filterCategory": "lirios",
+        "price": "$50,000 COP",
+        "rawPrice": 50000,
+        "badge": "Lirios 🪷",
+        "description": "Delicado bouquet de 5 Lirios eternos artesanales, follaje y luces LED decorativas.",
+        "mediaId": "MAHS15WkPNM",
+        "images": [
+            "assets/catalog/item_21_MAHS15WkPNM.png"
+        ]
+    },
+    {
+        "id": 22,
+        "name": "Ramo Tuli (14 Tulipanes)",
+        "category": "TULIPANES",
+        "filterCategory": "tulipanes",
+        "price": "$65,000 COP",
+        "rawPrice": 65000,
+        "badge": "Tulipanes 🌷",
+        "description": "Bouquet voluminoso y colorido de 14 Tulipanes tejidos a mano con limpiapipas de alta calidad y follaje.",
+        "mediaId": "MAHPmp3eA2I",
+        "images": [
+            "assets/catalog/item_22_MAHPmp3eA2I.jpg"
+        ]
+    },
+    {
+        "id": 23,
+        "name": "Ramo Belkis Tulipanes (15 Tulipanes)",
+        "category": "TULIPANES",
+        "filterCategory": "tulipanes",
+        "price": "$55,000 COP",
+        "rawPrice": 55000,
+        "badge": "Tulipanes 🌷",
+        "description": "Ramillete dulce y duradero de 15 Tulipanes eternos en combinación de tonos pasteles.",
+        "mediaId": "MAHS15aJDEc",
+        "images": [
+            "assets/catalog/item_23_MAHS15aJDEc.png"
+        ]
+    },
+    {
+        "id": 24,
+        "name": "Ramo Mila (10 Tulipanes)",
+        "category": "TULIPANES",
+        "filterCategory": "tulipanes",
+        "price": "$50,000 COP",
+        "rawPrice": 50000,
+        "badge": "Tulipanes 🌷",
+        "description": "Ramo coqueto de 10 Tulipanes eternos y ramas de follaje suave.",
+        "mediaId": "MAHS1_XlHvk",
+        "images": [
+            "assets/catalog/item_24_MAHS1_XlHvk.png"
+        ]
+    },
+    {
+        "id": 25,
+        "name": "Ramo Evelyn Tulipanes & Lirios",
+        "category": "TULIPANES",
+        "filterCategory": "tulipanes",
+        "price": "$70,000 COP",
+        "rawPrice": 70000,
+        "badge": "Tulipanes 🌷",
+        "description": "Hermosa combinación de 7 Tulipanes, 3 Lirios, 6 copitos (flores mini) y follaje.",
+        "mediaId": "MAHQW71FD-c",
+        "images": [
+            "assets/catalog/item_25_MAHQW71FD-c.png"
+        ]
+    },
+    {
+        "id": 26,
+        "name": "Ramo Lolita (6 Tulisnoopy)",
+        "category": "TULIPANES",
+        "filterCategory": "tulipanes",
+        "price": "$55,000 COP",
+        "rawPrice": 55000,
+        "badge": "Tulipanes 🌷",
+        "description": "Ramo con 6 Tulisnoopy (tulipanes combinados con carita de Snoopy) y follaje decorativo.",
+        "mediaId": "MAHS1hLOLCI",
+        "images": [
+            "assets/catalog/item_26_MAHS1hLOLCI.jpg"
+        ]
+    },
+    {
+        "id": 27,
+        "name": "Ramo Evelyn Mini Mix",
+        "category": "TULIPANES",
+        "filterCategory": "tulipanes",
+        "price": "$46,000 COP",
+        "rawPrice": 46000,
+        "badge": "Tulipanes 🌷",
+        "description": "Ramo accesible y tierno con 3 Tulipanes, 2 Tulisnoopy, 1 Lirio y follaje.",
+        "mediaId": "MAHS1m_fq6s",
+        "images": [
+            "assets/catalog/item_27_MAHS1m_fq6s.jpg"
+        ]
+    },
+    {
+        "id": 28,
+        "name": "Ramo Majo (3 Girasoles & 3 Tulipanes)",
+        "category": "GIRASOLES",
+        "filterCategory": "girasoles",
+        "price": "$65,000 COP",
+        "rawPrice": 65000,
+        "badge": "Girasoles 🌻",
+        "description": "Lleno de energía y luz. Incluye: 3 Girasoles grandes, 3 Tulipanes y ramas de follaje.",
+        "mediaId": "MAHRiZYz2-Q",
+        "images": [
+            "assets/catalog/item_28_MAHRiZYz2-Q.jpg"
+        ]
+    },
+    {
+        "id": 29,
+        "name": "Ramo Yari (2 Girasoles & 2 Tulipanes)",
+        "category": "GIRASOLES",
+        "filterCategory": "girasoles",
+        "price": "$50,000 COP",
+        "rawPrice": 50000,
+        "badge": "Girasoles 🌻",
+        "description": "Detalle radiante de 2 Girasoles y 2 Tulipanes artesanales con follaje verde.",
+        "mediaId": "MAHS1jyP-yc",
+        "images": [
+            "assets/catalog/item_29_MAHS1jyP-yc.jpg"
+        ]
+    },
+    {
+        "id": 30,
+        "name": "Ramo Luz con Corona & Banda",
+        "category": "GIRASOLES",
+        "filterCategory": "girasoles",
+        "price": "$92,000 COP",
+        "rawPrice": 92000,
+        "badge": "Girasoles 🌻",
+        "description": "Ramo regio de 6 Girasoles eternos, follaje, corona dorada decorativa y banda floral con frase personalizada.",
+        "mediaId": "MAHS1gXeVI0",
+        "images": [
+            "assets/catalog/item_30_MAHS1gXeVI0.jpg"
+        ]
+    },
+    {
+        "id": 31,
+        "name": "Ramo Sol (7 Girasoles Mini)",
+        "category": "GIRASOLES",
+        "filterCategory": "girasoles",
+        "price": "$60,000 COP",
+        "rawPrice": 60000,
+        "badge": "Girasoles 🌻",
+        "description": "Ramo alegre compuesto por 7 Girasoles mini y follaje natural decorativo.",
+        "mediaId": "MAHS2HJml-s",
+        "images": [
+            "assets/catalog/item_31_MAHS2HJml-s.png"
+        ]
+    },
+    {
+        "id": 32,
+        "name": "Ramo Dariana (6 Gerberas & 6 Tulipanes)",
+        "category": "GERBERAS",
+        "filterCategory": "gerberas",
+        "price": "$65,000 COP",
+        "rawPrice": 65000,
+        "badge": "Gerberas 🌸",
+        "description": "Colorido ramo que reúne 6 Gerberas y 6 Tulipanes tejidos a mano con follaje.",
+        "mediaId": "MAHS2IldEgw",
+        "images": [
+            "assets/catalog/item_32_MAHS2IldEgw.png"
+        ]
+    },
+    {
+        "id": 33,
+        "name": "Ramo Jasley (12 Gerberas)",
+        "category": "GERBERAS",
+        "filterCategory": "gerberas",
+        "price": "$75,000 COP",
+        "rawPrice": 75000,
+        "badge": "Gerberas 🌸",
+        "description": "Abundante bouquet de 12 Gerberas eternas en paleta vibrante de colores y follaje.",
+        "mediaId": "MAHS2PRaE_E",
+        "images": [
+            "assets/catalog/item_33_MAHS2PRaE_E.png"
+        ]
+    },
+    {
+        "id": 34,
+        "name": "Ramo Yenni con Lavandas",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$60,000 COP",
+        "rawPrice": 60000,
+        "badge": "Primavera 💐",
+        "description": "Delicada armonía de 6 Tulipanes, 3 Lirios, 2 ramitas de Lavanda aromática y follaje.",
+        "mediaId": "MAHS1mDKXcg",
+        "images": [
+            "assets/catalog/item_34_MAHS1mDKXcg.jpg"
+        ]
+    },
+    {
+        "id": 35,
+        "name": "Ramo Evelyn Gran Primavera",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$115,000 COP",
+        "rawPrice": 115000,
+        "badge": "Primavera 💐",
+        "description": "El arreglo primaveral más completo: 7 Tulipanes, 3 Lirios, 2 Girasoles, 2 Gerberas, 2 Margaritas, 1 Anémona y follaje.",
+        "mediaId": "MAHS1vHW5rE",
+        "images": [
+            "assets/catalog/item_35_MAHS1vHW5rE.jpg"
+        ]
+    },
+    {
+        "id": 36,
+        "name": "Ramo Floral",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$70,000 COP",
+        "rawPrice": 70000,
+        "badge": "Primavera 💐",
+        "description": "Hermosa combinación de 4 Tulipanes, 4 Lirios, 2 Margaritas, 2 Gerberas y ramas de follaje.",
+        "mediaId": "MAHPmkuxQdY",
+        "images": [
+            "assets/catalog/item_36_MAHPmkuxQdY.jpg"
+        ]
+    },
+    {
+        "id": 37,
+        "name": "Ramo Lili",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$55,000 COP",
+        "rawPrice": 55000,
+        "badge": "Primavera 💐",
+        "description": "Ramo balanceado de 3 Tulipanes, 4 Lirios y follaje decorativo.",
+        "mediaId": "MAHS1hpx7Ks",
+        "images": [
+            "assets/catalog/item_37_MAHS1hpx7Ks.jpg"
+        ]
+    },
+    {
+        "id": 38,
+        "name": "Ramo Van Gogh",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$75,000 COP",
+        "rawPrice": 75000,
+        "badge": "Inspiración 🎨",
+        "description": "Inspirado en la paleta de colores de Vincent Van Gogh. Incluye: 7 Tulipanes, 1 Girasol, 2 Gerberas y follaje.",
+        "mediaId": "MAHQOl9WAv4",
+        "images": [
+            "assets/catalog/item_38_MAHQOl9WAv4.jpg"
+        ]
+    },
+    {
+        "id": 39,
+        "name": "Ramo Moli",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$75,000 COP",
+        "rawPrice": 75000,
+        "badge": "Primavera 💐",
+        "description": "Bouquet dulce y fresco con 7 Tulipanes, 2 Lirios y follaje.",
+        "mediaId": "MAHPmqpV1sY",
+        "images": [
+            "assets/catalog/item_39_MAHPmqpV1sY.jpg"
+        ]
+    },
+    {
+        "id": 40,
+        "name": "Ramo Tamy (8 Tulipanes & 8 Lirios)",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$100,000 COP",
+        "rawPrice": 100000,
+        "badge": "Primavera 💐",
+        "description": "Gran bouquet de 8 Tulipanes y 8 Lirios eternos con envoltura de satín de lujo.",
+        "mediaId": "MAHNZFjOzxA",
+        "images": [
+            "assets/catalog/item_40_MAHNZFjOzxA.jpg"
+        ]
+    },
+    {
+        "id": 41,
+        "name": "Ramo Love (Rosas, Tulipanes & Girasol)",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$70,000 COP",
+        "rawPrice": 70000,
+        "badge": "Romance 💕",
+        "description": "Ramo romántico de 5 Tulipanes, 1 Girasol, 5 Rosas eternas y follaje.",
+        "mediaId": "MAHNaRFaFjE",
+        "images": [
+            "assets/catalog/item_41_MAHNaRFaFjE.jpg"
+        ]
+    },
+    {
+        "id": 42,
+        "name": "Ramo Mía",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$45,000 COP",
+        "rawPrice": 45000,
+        "badge": "Primavera 💐",
+        "description": "Mix primaveral: 1 Girasol, 1 Lirio, 1 Margarita, 1 Capullo, 1 Anémona, 2 Gerberas y follaje.",
+        "mediaId": "MAHIuBIvVmQ",
+        "images": [
+            "assets/catalog/item_42_MAHIuBIvVmQ.jpg"
+        ]
+    },
+    {
+        "id": 43,
+        "name": "Ramo Beth con Hortensia",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$95,000 COP",
+        "rawPrice": 95000,
+        "badge": "Primavera 💐",
+        "description": "Arreglo exclusivo de 2 Lirios, 2 Gerberas, 2 Anémonas, 2 Rosas, 2 Tulipanes, 1 Hortensia y follaje.",
+        "mediaId": "MAHS2MZ2ubY",
+        "images": [
+            "assets/catalog/item_43_MAHS2MZ2ubY.jpg"
+        ]
+    },
+    {
+        "id": 44,
+        "name": "Ramo Ashley",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$55,000 COP",
+        "rawPrice": 55000,
+        "badge": "Primavera 💐",
+        "description": "Ramillete dulce con 7 Tulipanes, 2 Gerberas, 1 Lirio y follaje.",
+        "mediaId": "MAHQaUTpCPQ",
+        "images": [
+            "assets/catalog/item_44_MAHQaUTpCPQ.jpg"
+        ]
+    },
+    {
+        "id": 45,
+        "name": "Ramo Thalía",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$55,000 COP",
+        "rawPrice": 55000,
+        "badge": "Primavera 💐",
+        "description": "Incluye: 2 Lirios, 2 Gerberas, 1 Girasol, 1 Tulipán, 1 Capullo y follaje.",
+        "mediaId": "MAHQcrNeUCI",
+        "images": [
+            "assets/catalog/item_45_MAHQcrNeUCI.png"
+        ]
+    },
+    {
+        "id": 46,
+        "name": "Ramo Jess con Espejo",
+        "category": "FLORES CON ESPEJO",
+        "filterCategory": "espejos",
+        "price": "$110,000 COP",
+        "rawPrice": 110000,
+        "badge": "Con Espejo 🪞",
+        "description": "Innovador arreglo sobre espejo decorativo. Incluye: 2 Lirios, 1 Margarita, 1 Gerbera, 2 Tulipanes, 1 Girasol mini, 1 Rosa, follaje y espejo incorporado.",
+        "mediaId": "MAHQcxF-Omg",
+        "images": [
+            "assets/catalog/item_46_MAHQcxF-Omg.png"
+        ]
+    },
+    {
+        "id": 47,
+        "name": "Ramo Juli con Espejo",
+        "category": "FLORES CON ESPEJO",
+        "filterCategory": "espejos",
+        "price": "$105,000 COP",
+        "rawPrice": 105000,
+        "badge": "Con Espejo 🪞",
+        "description": "Diseño elegante con espejo: 2 Tulipanes, 1 Girasol mini, 1 Gerbera, 3 Lirios, 1 Margarita, follaje y espejo.",
+        "mediaId": "MAHQc4kU0J0",
+        "images": [
+            "assets/catalog/item_47_MAHQc4kU0J0.png"
+        ]
+    },
+    {
+        "id": 48,
+        "name": "Ramo Cecilia con Espejo",
+        "category": "FLORES CON ESPEJO",
+        "filterCategory": "espejos",
+        "price": "$95,000 COP",
+        "rawPrice": 95000,
+        "badge": "Con Espejo 🪞",
+        "description": "Incluye: 3 Lirios, 1 Margarita, 2 Gerberas, 1 Tulipán, 1 Girasol, 1 Girasol mini, follaje y espejo.",
+        "mediaId": "MAHQcw8Hnw8",
+        "images": [
+            "assets/catalog/item_48_MAHQcw8Hnw8.png"
+        ]
+    },
+    {
+        "id": 49,
+        "name": "Ramo Romy (9 Gerberas con Espejo)",
+        "category": "FLORES CON ESPEJO",
+        "filterCategory": "espejos",
+        "price": "$85,000 COP",
+        "rawPrice": 85000,
+        "badge": "Con Espejo 🪞",
+        "description": "Hermoso conjunto de 9 Gerberas eternas montadas con espejo decorativo y follaje.",
+        "mediaId": "MAHQcxvnl8s",
+        "images": [
+            "assets/catalog/item_49_MAHQcxvnl8s.png"
+        ]
+    },
+    {
+        "id": 50,
+        "name": "Cápsula Girasol Grande",
+        "category": "CÁPSULAS DE CRISTAL",
+        "filterCategory": "capsulas",
+        "price": "$40,000 COP",
+        "rawPrice": 40000,
+        "badge": "Cúpula Cristal 🔮",
+        "description": "Cápsula de cristal fino con 1 Girasol artesanal grande en base de madera decorativa.",
+        "mediaId": "MAHQW-0A_E8",
+        "images": [
+            "assets/catalog/item_50_MAHQW-0A_E8.png"
+        ]
+    },
+    {
+        "id": 51,
+        "name": "Cápsula Girasol Mini",
+        "category": "CÁPSULAS DE CRISTAL",
+        "filterCategory": "capsulas",
+        "price": "$16,000 COP",
+        "rawPrice": 16000,
+        "badge": "Mini Cúpula 🔮",
+        "description": "Cápsula compacta con 1 Girasol mini tejido a mano, ideal para escritorio o detalle sorpresa.",
+        "mediaId": "MAHQW_SOR_o",
+        "images": [
+            "assets/catalog/item_51_MAHQW_SOR_o.png"
+        ]
+    },
+    {
+        "id": 52,
+        "name": "Cápsula Girasol con Luces LED",
+        "category": "CÁPSULAS DE CRISTAL",
+        "filterCategory": "capsulas",
+        "price": "$40,000 COP",
+        "rawPrice": 40000,
+        "badge": "Con Luces ✨",
+        "description": "Cápsula de cristal con Girasol grande, base y luces LED a pila que crean una atmósfera mágica de noche.",
+        "mediaId": "MAHQW9Qr7Yc",
+        "images": [
+            "assets/catalog/item_52_MAHQW9Qr7Yc.png"
+        ]
+    },
+    {
+        "id": 53,
+        "name": "Cápsula Rapunzel Flor Fulgor",
+        "category": "CÁPSULAS DE CRISTAL",
+        "filterCategory": "capsulas",
+        "price": "$45,000 COP",
+        "rawPrice": 45000,
+        "badge": "Princesas 👑",
+        "description": "Inspirada en la Flor Dorada de Rapunzel. Incluye cúpula de cristal, flor fulgor tejida y luces LED a pila.",
+        "mediaId": "MAHQWx9ZlBE",
+        "images": [
+            "assets/catalog/item_53_MAHQWx9ZlBE.png"
+        ]
+    },
+    {
+        "id": 54,
+        "name": "Cápsula Love (Rosa Grande)",
+        "category": "CÁPSULAS DE CRISTAL",
+        "filterCategory": "capsulas",
+        "price": "$35,000 COP",
+        "rawPrice": 35000,
+        "badge": "Cúpula Cristal 🔮",
+        "description": "Cápsula de cristal con 1 Rosa eterna grande de crochet artesanal.",
+        "mediaId": "MAHQW1udt2g",
+        "images": [
+            "assets/catalog/item_54_MAHQW1udt2g.png"
+        ]
+    },
+    {
+        "id": 55,
+        "name": "Cápsula Rouse Triple (3 Rosas)",
+        "category": "CÁPSULAS DE CRISTAL",
+        "filterCategory": "capsulas",
+        "price": "$60,000 COP",
+        "rawPrice": 60000,
+        "badge": "Cúpula Cristal 🔮",
+        "description": "Cápsula de cristal con 3 Rosas eternas combinadas en tonos románticos.",
+        "mediaId": "MAHQWw6P6m4",
+        "images": [
+            "assets/catalog/item_55_MAHQWw6P6m4.png"
+        ]
+    },
+    {
+        "id": 56,
+        "name": "Cápsula Pink (Rosa Preservada)",
+        "category": "CÁPSULAS DE CRISTAL",
+        "filterCategory": "capsulas",
+        "price": "$55,000 COP",
+        "rawPrice": 55000,
+        "badge": "Preservadas 🌸",
+        "description": "Cápsula de cristal de lujo con Rosa rosada grande preservada de larga duración.",
+        "mediaId": "MAHQWzuw9OQ",
+        "images": [
+            "assets/catalog/item_56_MAHQWzuw9OQ.png"
+        ]
+    },
+    {
+        "id": 57,
+        "name": "Cápsula Rosa Amarilla Preservada",
+        "category": "CÁPSULAS DE CRISTAL",
+        "filterCategory": "capsulas",
+        "price": "$55,000 COP",
+        "rawPrice": 55000,
+        "badge": "Preservadas 💛",
+        "description": "Cápsula de cristal con Rosa amarilla grande preservada que simboliza alegría y luz eterna.",
+        "mediaId": "MAHQW6wxDo4",
+        "images": [
+            "assets/catalog/item_57_MAHQW6wxDo4.png"
+        ]
+    },
+    {
+        "id": 58,
+        "name": "Bouquet Ramo Enredados con Hello Kitty",
+        "category": "BOUQUETS",
+        "filterCategory": "bouquets",
+        "price": "$85,000 COP",
+        "rawPrice": 85000,
+        "badge": "Bouquet 🎀",
+        "description": "Bouquet temático con 2 Lirios, 5 Tulipanes, follaje y peluche de Hello Kitty.",
+        "mediaId": "MAHPRzSttpY",
+        "images": [
+            "assets/catalog/item_58_MAHPRzSttpY.jpg"
+        ]
+    },
+    {
+        "id": 59,
+        "name": "Bouquet Ramo Ashley con Peluche",
+        "category": "BOUQUETS",
+        "filterCategory": "bouquets",
+        "price": "$73,000 COP",
+        "rawPrice": 73000,
+        "badge": "Bouquet 🎀",
+        "description": "Bouquet primaveral con 3 Tulipanes, 1 Gerbera, 1 Rosa, 1 Anémona, follaje y peluche tierno.",
+        "mediaId": "MAHQbeC55WU",
+        "images": [
+            "assets/catalog/item_59_MAHQbeC55WU.jpg"
+        ]
+    },
+    {
+        "id": 60,
+        "name": "Cuadro Eterno Mía",
+        "category": "CUADROS ETERNOS",
+        "filterCategory": "cuadros",
+        "price": "$44,000 COP",
+        "rawPrice": 44000,
+        "badge": "Cuadros 🖼️",
+        "description": "Cuadro decorativo 3D con flores eternas, luces LED integradas y frase personalizada a elección.",
+        "mediaId": "MAHQXPO_784",
+        "images": [
+            "assets/catalog/item_60_MAHQXPO_784.png"
+        ]
+    },
+    {
+        "id": 61,
+        "name": "Cuadro Eterno Sol",
+        "category": "CUADROS ETERNOS",
+        "filterCategory": "cuadros",
+        "price": "$45,000 COP",
+        "rawPrice": 45000,
+        "badge": "Cuadros 🖼️",
+        "description": "Cuadro con composición de girasoles y flores amarillas, luces LED y dedicatoria personalizada.",
+        "mediaId": "MAHQXMNSJy0",
+        "images": [
+            "assets/catalog/item_61_MAHQXMNSJy0.png"
+        ]
+    },
+    {
+        "id": 62,
+        "name": "Cuadro Eterno Lía",
+        "category": "CUADROS ETERNOS",
+        "filterCategory": "cuadros",
+        "price": "$50,000 COP",
+        "rawPrice": 50000,
+        "badge": "Cuadros 🖼️",
+        "description": "Hermoso cuadro de fondo pastel con ramo de flores de crochet en relieve, luces cálidas y dedicatoria.",
+        "mediaId": "MAHQXK9ApYM",
+        "images": [
+            "assets/catalog/item_62_MAHQXK9ApYM.png"
+        ]
+    },
+    {
+        "id": 63,
+        "name": "Cuadro Eterno Antonella",
+        "category": "CUADROS ETERNOS",
+        "filterCategory": "cuadros",
+        "price": "$35,000 COP",
+        "rawPrice": 35000,
+        "badge": "Cuadros 🖼️",
+        "description": "Cuadro compacto de flores eternas con luces LED y mensaje personalizado para esa persona especial.",
+        "mediaId": "MAHQXBS9UAw",
+        "images": [
+            "assets/catalog/item_63_MAHQXBS9UAw.png"
+        ]
+    },
+    {
+        "id": 64,
+        "name": "Materito Carli",
+        "category": "MATERITOS & JARRONES",
+        "filterCategory": "materitos",
+        "price": "$14,000 COP",
+        "rawPrice": 14000,
+        "badge": "Materito 🪴",
+        "description": "Materito artesanal con flor tejida en limpiapipas, perfecto para decoración de escritorio o repisa.",
+        "mediaId": "MAHQck5nZrI",
+        "images": [
+            "assets/catalog/item_64_MAHQck5nZrI.png"
+        ]
+    },
+    {
+        "id": 65,
+        "name": "Jarrón de Vidrio Blanca",
+        "category": "MATERITOS & JARRONES",
+        "filterCategory": "materitos",
+        "price": "$95,000 COP",
+        "rawPrice": 95000,
+        "badge": "Jarrón Lujo 🏺",
+        "description": "Elegante jarrón de vidrio con arreglo floral completo de flores eternas tejidas a mano.",
+        "mediaId": "MAHQcoXs6oo",
+        "images": [
+            "assets/catalog/item_65_MAHQcoXs6oo.png"
+        ]
+    },
+    {
+        "id": 66,
+        "name": "Materito Belinda",
+        "category": "MATERITOS & JARRONES",
+        "filterCategory": "materitos",
+        "price": "$15,000 COP",
+        "rawPrice": 15000,
+        "badge": "Materito 🪴",
+        "description": "Materito decorativo con flor de crochet en maceta miniatura.",
+        "mediaId": "MAHQcku9IYs",
+        "images": [
+            "assets/catalog/item_66_MAHQcku9IYs.png"
+        ]
+    },
+    {
+        "id": 67,
+        "name": "Materito Roxi",
+        "category": "MATERITOS & JARRONES",
+        "filterCategory": "materitos",
+        "price": "$18,000 COP",
+        "rawPrice": 18000,
+        "badge": "Materito 🪴",
+        "description": "Materito artesanal con diseño floral especial en maceta de color pastel.",
+        "mediaId": "MAHQcmSBWVg",
+        "images": [
+            "assets/catalog/item_67_MAHQcmSBWVg.png"
+        ]
+    },
+    {
+        "id": 68,
+        "name": "Figurita Vaquita Lola",
+        "category": "FIGURITAS",
+        "filterCategory": "figuritas",
+        "price": "$40,000 COP",
+        "rawPrice": 40000,
+        "badge": "Figuritas ✨",
+        "description": "Figura coleccionable de la Vaquita Lola modelada artesanalmente con limpiapipas de alta suavidad.",
+        "mediaId": "MAHQcwpIBq8",
+        "images": [
+            "assets/catalog/item_68_MAHQcwpIBq8.png"
+        ]
+    },
+    {
+        "id": 69,
+        "name": "Figurita Pingüi",
+        "category": "FIGURITAS",
+        "filterCategory": "figuritas",
+        "price": "$30,000 COP",
+        "rawPrice": 30000,
+        "badge": "Figuritas ✨",
+        "description": "Adorable pingüinito artesanal hecho 100% a mano con limpiapipas.",
+        "mediaId": "MAHQrZJuXQU",
+        "images": [
+            "assets/catalog/item_69_MAHQrZJuXQU.jpg"
+        ]
+    },
+    {
+        "id": 70,
+        "name": "Figurita Snoopy",
+        "category": "FIGURITAS",
+        "filterCategory": "figuritas",
+        "price": "$40,000 COP",
+        "rawPrice": 40000,
+        "badge": "Snoopy 🐶",
+        "description": "Figura 3D de Snoopy en limpiapipas, con detalles tiernos y base decorativa.",
+        "mediaId": "MAHQrYgr7ZY",
+        "images": [
+            "assets/catalog/item_70_MAHQrYgr7ZY.jpg"
+        ]
+    },
+    {
+        "id": 71,
+        "name": "Figurita Hombre Araña (Spider-Man)",
+        "category": "FIGURITAS",
+        "filterCategory": "figuritas",
+        "price": "$25,000 COP",
+        "rawPrice": 25000,
+        "badge": "Marvel 🕷️",
+        "description": "Figura flexible y detallada de Spider-Man hecha a mano con limpiapipas rojo y azul.",
+        "mediaId": "MAHRNDSL_Lc",
+        "images": [
+            "assets/catalog/item_71_MAHRNDSL_Lc.jpg"
+        ]
+    },
+    {
+        "id": 72,
+        "name": "Figurita Virgen de Guadalupe",
+        "category": "FIGURITAS",
+        "filterCategory": "figuritas",
+        "price": "$40,000 COP",
+        "rawPrice": 40000,
+        "badge": "Especial 🕊️",
+        "description": "Hermosa representación artesanal de la Virgen de Guadalupe con manto estrellado y aureola dorada.",
+        "mediaId": "MAHST6fgGYw",
+        "images": [
+            "assets/catalog/item_72_MAHST6fgGYw.jpg"
+        ]
+    },
+    {
+        "id": 73,
+        "name": "Figurita Rapunzel",
+        "category": "FIGURITAS",
+        "filterCategory": "figuritas",
+        "price": "$45,000 COP",
+        "rawPrice": 45000,
+        "badge": "Princesas 👑",
+        "description": "Figura de Rapunzel con su largo cabello dorado trenzado con florecitas y vestido lila.",
+        "mediaId": "MAHS2PEK93E",
+        "images": [
+            "assets/catalog/item_73_MAHS2PEK93E.jpg"
+        ]
+    },
+    {
+        "id": 74,
+        "name": "Llavero Gerbera Artesanal",
+        "category": "LLAVEROS",
+        "filterCategory": "llaveros",
+        "price": "$15,000 COP",
+        "rawPrice": 15000,
+        "badge": "Llaveros 🔑",
+        "description": "Lindo llavero con gerbera tejida a mano y herraje resistente para tus llaves, bolso o morral.",
+        "mediaId": "MAHS2NuSbvY",
+        "images": [
+            "assets/catalog/item_74_MAHS2NuSbvY.jpg"
+        ]
+    },
+    {
+        "id": 75,
+        "name": "Kit de Skincare Rutina Completa",
+        "category": "CUIDADO FACIAL",
+        "filterCategory": "skincare",
+        "price": "$38,000 COP",
+        "rawPrice": 38000,
+        "badge": "Viral 🔥",
+        "description": "El set definitivo para el cuidado facial diario. Incluye gel limpiador suave, tónico equilibrante y crema hidratante iluminadora para dejar la piel fresca, suave y protegida.",
+        "images": [
+            "assets/product_2.jpg"
+        ]
+    },
+    {
+        "id": 76,
+        "name": "Combo Moño Satín & Lip Gloss Trend",
+        "category": "ACCESORIOS Y LABIOS",
+        "filterCategory": "accesorios",
+        "price": "$22,000 COP",
+        "rawPrice": 22000,
+        "badge": "Nuevo 🎀",
+        "description": "El kit ideal de moños elegantes estilo satín combinados con brillo labial ultra hidratante. Perfecto para añadir un toque tierno a tu look diario.",
+        "images": [
+            "assets/product_3.jpg"
+        ]
+    },
+    {
+        "id": 77,
+        "name": "Sheglam Lip Gloss Sparkling",
+        "category": "MAQUILLAJE LABIOS",
+        "filterCategory": "maquillaje",
+        "price": "$18,000 COP",
+        "rawPrice": 18000,
+        "badge": "Best Seller ⭐",
+        "description": "Brillo labial viral con micro-destellos de purpurina que reflejan la luz de manera espectacular. Proporciona hidratación profunda y volumen óptico sin sensación pegajosa.",
+        "images": [
+            "assets/product_4.jpg"
+        ]
+    },
+    {
+        "id": 78,
+        "name": "Pestañina Prosa 4 en 1 Waterproof",
+        "category": "MAQUILLAJE OJOS",
+        "filterCategory": "maquillaje",
+        "price": "$12,000 COP",
+        "rawPrice": 12000,
+        "badge": "Básico 👀",
+        "description": "Fórmula profesional de larga duración resistente al agua. Enriquecida con aceites naturales de hueso de mamey, sábila, jojoba y germen de trigo.",
+        "images": [
+            "assets/product_5.jpg"
+        ]
+    },
+    {
+        "id": 79,
+        "name": "Alissha Jelly Blush Tinta Rubor",
+        "category": "MAQUILLAJE MEJILLAS",
+        "filterCategory": "maquillaje",
+        "price": "$15,000 COP",
+        "rawPrice": 15000,
+        "badge": "Nuevo Rubor 🍮",
+        "description": "Divertido rubor y tinta multiusos con una textura jelly gelatinosa única. Es sumamente fácil de difuminar, refresca tu piel y aporta una tinta de larga duración.",
+        "images": [
+            "assets/product_6.jpg"
+        ]
     }
-};
+];
+
+// Mapa de productos por ID para acceso rápido
+const productsMap = {};
+productsCatalog.forEach(p => { productsMap[p.id] = p; });
 
 const whatsappLinkBase = 'https://wa.me/message/Z4TVXHB3UPMRI1';
+
+// Estado global de la aplicación
+let currentCategory = 'all';
+let currentSearch = '';
+let cart = [];
+
+// Cargar carrito desde localStorage
+try {
+    const savedCart = localStorage.getItem('belpa_cart_v2');
+    if (savedCart) cart = JSON.parse(savedCart);
+} catch (e) {
+    cart = [];
+}
+
+function saveCart() {
+    try {
+        localStorage.setItem('belpa_cart_v2', JSON.stringify(cart));
+    } catch (e) {}
+    updateCartBadge();
+    renderCartDrawer();
+}
+
+// Formateador de moneda en Pesos Colombianos (COP)
+function formatCOP(number) {
+    return new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        maximumFractionDigits: 0
+    }).format(number);
+}
+
+// Notificación Toast flotante
+function showToast(message, icon = '🌸') {
+    let toast = document.getElementById('belpa-toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'belpa-toast';
+        toast.className = 'belpa-toast';
+        document.body.appendChild(toast);
+    }
+    toast.innerHTML = `<span class="toast-icon">${icon}</span> <span class="toast-msg">${message}</span>`;
+    toast.classList.add('show');
+    clearTimeout(toast._timeout);
+    toast._timeout = setTimeout(() => {
+        toast.classList.remove('show');
+    }, 2800);
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     
@@ -137,518 +1191,675 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 3. FILTRADO POR CATEGORÍAS VISUALES ---
-    const categoryCards = document.querySelectorAll('.category-circle-card');
-    const productCards = document.querySelectorAll('.product-card');
-
-    categoryCards.forEach(card => {
-        card.addEventListener('click', () => {
-            categoryCards.forEach(c => c.classList.remove('active'));
-            card.classList.add('active');
-
-            const filterValue = card.getAttribute('data-filter');
-
-            productCards.forEach(pCard => {
-                const cardCategories = pCard.getAttribute('data-category').split(' ');
-                
-                if (filterValue === 'all' || cardCategories.includes(filterValue)) {
-                    pCard.style.display = 'flex';
-                    pCard.style.opacity = '0';
-                    pCard.style.transform = 'translateY(15px)';
-                    setTimeout(() => {
-                        pCard.style.transition = 'opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
-                        pCard.style.opacity = '1';
-                        pCard.style.transform = 'translateY(0)';
-                    }, 50);
-                } else {
-                    pCard.style.display = 'none';
-                }
-            });
-        });
-    });
-
-    // --- 4. CONTROLADORES DE CANTIDAD EN TARJETAS ---
-    productCards.forEach(card => {
-        const decBtn = card.querySelector('.qty-btn:first-child');
-        const incBtn = card.querySelector('.qty-btn:last-child');
-        const qtyVal = card.querySelector('.qty-val');
-        const buyBtn = card.querySelector('.btn-buy-whatsapp-premium');
-
-        if (decBtn && incBtn && qtyVal) {
-            decBtn.addEventListener('click', (e) => {
-                e.stopPropagation(); // Evitar abrir el QuickView al tocar la cantidad
-                let val = parseInt(qtyVal.textContent);
-                if (val > 1) qtyVal.textContent = val - 1;
-            });
-
-            incBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                let val = parseInt(qtyVal.textContent);
-                qtyVal.textContent = val + 1;
-            });
-        }
-
-        if (buyBtn) {
-            buyBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const productName = buyBtn.getAttribute('data-product');
-                const quantity = qtyVal ? qtyVal.textContent : 1;
-                
-                const message = `¡Hola Belpa Beauty! 💖 Vengo de su página web y me encantaría ordenar:\n*${quantity}x ${productName}* 🛍️\n\n¿Me confirman disponibilidad y el total de la compra? ¡Muchas gracias! ✨`;
-                const encodedMessage = encodeURIComponent(message);
-                
-                window.open(`${whatsappLinkBase}?text=${encodedMessage}`, '_blank');
-            });
-        }
-    });
-
-    // --- 5. VENTANA MODAL (QUICK VIEW) ---
-    const quickviewModal = document.getElementById('quickview-modal');
-    const modalClose = document.getElementById('modal-close');
-    const modalMainImg = document.getElementById('modal-main-img');
-    const modalThumbnails = document.getElementById('modal-thumbnails');
-    const modalBadge = document.getElementById('modal-badge');
-    const modalTitle = document.getElementById('modal-title');
-    const modalPrice = document.getElementById('modal-price');
-    const modalDescription = document.getElementById('modal-description');
-    const modalQtyVal = document.getElementById('modal-qty-val');
-    const modalDecBtn = document.getElementById('modal-dec-btn');
-    const modalIncBtn = document.getElementById('modal-inc-btn');
-    const modalBuyBtn = document.getElementById('modal-buy-btn');
-
-    let activeModalProductId = null;
-
-    // Abrir Modal al tocar imagen o nombre
-    productCards.forEach(card => {
-        const imgContainer = card.querySelector('.product-image-container');
-        const titleEl = card.querySelector('.product-name');
-        const productId = card.getAttribute('data-product-id');
-
-        const openModal = () => {
-            const data = productsData[productId];
-            if (!data) return;
-
-            activeModalProductId = productId;
-
-            // Inyectar datos
-            modalTitle.textContent = data.name;
-            modalBadge.textContent = data.badge;
-            modalPrice.textContent = data.price;
-            modalDescription.textContent = data.description;
-            modalMainImg.src = data.images[0];
-            modalMainImg.alt = data.name;
-            modalQtyVal.textContent = 1;
-
-            // Inyectar miniaturas
-            modalThumbnails.innerHTML = '';
-            data.images.forEach((imgSrc, idx) => {
-                const thumb = document.createElement('img');
-                thumb.className = `modal-thumb ${idx === 0 ? 'active' : ''}`;
-                thumb.src = imgSrc;
-                thumb.alt = `${data.name} ${idx + 1}`;
-                
-                thumb.addEventListener('click', () => {
-                    document.querySelectorAll('.modal-thumb').forEach(t => t.classList.remove('active'));
-                    thumb.classList.add('active');
-                    modalMainImg.src = imgSrc;
-                });
-                
-                modalThumbnails.appendChild(thumb);
-            });
-
-            // Mostrar modal
-            quickviewModal.classList.add('open');
-            document.body.style.overflow = 'hidden'; // Evitar scroll
-        };
-
-        if (imgContainer) imgContainer.addEventListener('click', openModal);
-        if (titleEl) titleEl.addEventListener('click', openModal);
-    });
-
-    // Cerrar Modal
-    const closeModal = () => {
-        quickviewModal.classList.remove('open');
-        document.body.style.overflow = '';
-        activeModalProductId = null;
-    };
-
-    if (modalClose) modalClose.addEventListener('click', closeModal);
-    
-    if (quickviewModal) {
-        quickviewModal.addEventListener('click', (e) => {
-            if (e.target === quickviewModal) closeModal();
-        });
-    }
-
-    // Cantidades dentro del Modal
-    if (modalDecBtn && modalIncBtn && modalQtyVal) {
-        modalDecBtn.addEventListener('click', () => {
-            let val = parseInt(modalQtyVal.textContent);
-            if (val > 1) modalQtyVal.textContent = val - 1;
-        });
-
-        modalIncBtn.addEventListener('click', () => {
-            let val = parseInt(modalQtyVal.textContent);
-            modalQtyVal.textContent = val + 1;
-        });
-    }
-
-    // Comprar desde el Modal
-    if (modalBuyBtn) {
-        modalBuyBtn.addEventListener('click', () => {
-            if (!activeModalProductId) return;
-            const data = productsData[activeModalProductId];
-            const quantity = modalQtyVal.textContent;
-
-            const message = `¡Hola Belpa Beauty! 💖 Vengo de su página web y me encantaría ordenar:\n*${quantity}x ${data.name}* 🛍️\n\n¿Me confirman disponibilidad y el total? ¡Muchas gracias! ✨`;
-            const encodedMessage = encodeURIComponent(message);
-            
-            window.open(`${whatsappLinkBase}?text=${encodedMessage}`, '_blank');
-            closeModal();
-        });
-    }
-
-    // --- 6. ACORDEÓN DE PREGUNTAS FRECUENTES (FAQ) ---
-    const faqCards = document.querySelectorAll('.faq-card');
-    faqCards.forEach(card => {
-        const questionBtn = card.querySelector('.faq-question');
-        questionBtn.addEventListener('click', () => {
-            const isOpen = card.classList.contains('open');
-            faqCards.forEach(c => c.classList.remove('open'));
-            if (!isOpen) {
-                card.classList.add('open');
-            }
-        });
-    });
-
-    // --- 7. MASCOTA INTERACTIVA (BELPA KITTY) ---
-    const mascot = document.getElementById('belpa-mascot');
-    const speechBubble = document.getElementById('mascot-speech-bubble');
-
-    const kittyQuotes = [
-        "¡Un toque de rubor Jelly Blush y estarás radiante! ✨🍮",
-        "¡Nuestros ramos de crochet duran para siempre, como tu luz! 🌸",
-        "¡Hacemos envíos rápidos y seguros a toda Colombia! ✈️🇨🇴",
-        "¡Tus pestañas se verán infinitas con la pestañina Prosa! 👀",
-        "¡Haz clic en la foto de cualquier producto para ver su detalle! 🛍️",
-        "¡El Lip Gloss de Sheglam es el más brillante de todos! 💄🌟",
-        "¡Personalizamos tu regalo con notas dulces y chocolates! 🎁🍬"
-    ];
-
-    let quoteIndex = 0;
-
-    function changeKittyQuote() {
-        if (!speechBubble) return;
-        speechBubble.style.opacity = '0';
-        speechBubble.style.transform = 'translateX(-10px) translateY(10px)';
-        
-        setTimeout(() => {
-            quoteIndex = (quoteIndex + 1) % kittyQuotes.length;
-            speechBubble.innerText = kittyQuotes[quoteIndex];
-            speechBubble.style.opacity = '1';
-            speechBubble.style.transform = 'translateX(0) translateY(0)';
-        }, 300);
-    }
-
-    if (mascot) {
-        mascot.addEventListener('click', () => {
-            changeKittyQuote();
-            mascot.style.transform = 'scale(0.85) rotate(-15deg)';
-            setTimeout(() => {
-                mascot.style.transform = 'scale(1.15) rotate(15deg)';
-            }, 150);
-        });
-    }
-
-    // --- 8. FORMULARIO DE CONTACTO REDIRIGIDO A WHATSAPP ---
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const nameInput = document.getElementById('name').value;
-            const messageInput = document.getElementById('message-text').value;
-
-            const message = `¡Hola Belpa Beauty! 💖 Mi nombre es *${nameInput}* y les escribo desde su página web. Tengo la siguiente consulta:\n\n"${messageInput}"\n\n¡Muchas gracias! ✨`;
-            const encodedMessage = encodeURIComponent(message);
-
-            window.open(`${whatsappLinkBase}?text=${encodedMessage}`, '_blank');
-            contactForm.reset();
-        });
-    }
-
-    // --- 9. PARTÍCULAS DE BRILLO MODERADAS Y DELICADAS ---
-    const sparkleContainer = document.getElementById('sparkle-container');
-
-    function createSparkle(x, y) {
-        if (!sparkleContainer) return;
-        
-        // Skip sparkles if reduced motion is preferred
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            return;
-        }
-
-        const particle = document.createElement('div');
-        particle.className = 'sparkle-particle';
-        
-        const cuteIcons = ['💖', '🌸', '✨', '🎀', '⭐'];
-        const randomIcon = cuteIcons[Math.floor(Math.random() * cuteIcons.length)];
-        particle.innerHTML = randomIcon;
-        particle.style.fontSize = Math.random() * 12 + 10 + 'px';
-        
-        particle.style.left = x + 'px';
-        particle.style.top = y + 'px';
-        
-        const angle = Math.random() * Math.PI * 2;
-        const velocity = Math.random() * 60 + 30;
-        const xOffset = Math.cos(angle) * velocity;
-        const yOffset = Math.sin(angle) * velocity;
-        
-        particle.style.position = 'fixed';
-        particle.style.pointerEvents = 'none';
-        particle.style.zIndex = '9999';
-        particle.style.transition = 'transform 1.4s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 1.4s ease';
-        
-        sparkleContainer.appendChild(particle);
-        
-        setTimeout(() => {
-            particle.style.transform = `translate(${xOffset}px, ${yOffset}px) scale(0) rotate(${Math.random() * 360}deg)`;
-            particle.style.opacity = '0';
-        }, 50);
-        
-        setTimeout(() => {
-            particle.remove();
-        }, 1400);
-    }
-
-    // Partículas al hacer clic
-    window.addEventListener('click', (e) => {
-        for (let i = 0; i < 6; i++) {
-            createSparkle(e.clientX, e.clientY);
-        }
-    });
-
-    // Partículas al mover el mouse (muy limitadas)
-    let moveCount = 0;
-    window.addEventListener('mousemove', (e) => {
-        moveCount++;
-        if (moveCount % 16 === 0) {
-            createSparkle(e.clientX, e.clientY);
-        }
-    });
-
-    // --- 10. CONTROLES DEL VIDEO DE UNBOXING ---
-    const video = document.getElementById('belpa-video');
-    const muteBtn = document.getElementById('video-mute-btn');
-    
-    if (video && muteBtn) {
-        muteBtn.addEventListener('click', () => {
-            video.muted = !video.muted;
-            if (video.muted) {
-                muteBtn.textContent = '🔇';
-                muteBtn.setAttribute('aria-label', 'Activar sonido');
-            } else {
-                muteBtn.textContent = '🔊';
-                muteBtn.setAttribute('aria-label', 'Silenciar video');
-            }
-        });
-    }
-
-    // --- 11. ESCENA INTERACTIVA THREE.JS (FLOR 3D) ---
+    // --- 3. RENDERIZADO INICIAL DEL CATÁLOGO ---
+    renderCategoryFilters();
+    renderProducts();
+    initSearch();
+    initCartSystem();
+    initQuickViewModal();
+    initFAQ();
+    initMascot();
+    initContactForm();
+    initSparkles();
+    initVideo();
     initThreeJS();
 });
 
-// Implementación de Three.js con Flor 3D de crochet procedural interactiva
+// --- RENDERIZADO DINÁMICO DE FILTROS DE CATEGORÍA ---
+function renderCategoryFilters() {
+    const categoriesContainer = document.getElementById('visual-categories-container');
+    if (!categoriesContainer) return;
+
+    const categories = [
+        { id: 'all', name: 'Todos', icon: '🌸', count: fullCatalog.length },
+        { id: 'tematicas', name: 'Disney & Temáticas', icon: '👑', count: fullCatalog.filter(p => p.filterCategory === 'tematicas').length },
+        { id: 'peluches', name: 'Ramos con Peluches', icon: '🧸', count: fullCatalog.filter(p => p.filterCategory === 'peluches').length },
+        { id: 'primavera', name: 'Primavera & Mix', icon: '💐', count: fullCatalog.filter(p => p.filterCategory === 'primavera').length },
+        { id: 'tulipanes', name: 'Tulipanes', icon: '🌷', count: fullCatalog.filter(p => p.filterCategory === 'tulipanes').length },
+        { id: 'girasoles', name: 'Girasoles', icon: '🌻', count: fullCatalog.filter(p => p.filterCategory === 'girasoles').length },
+        { id: 'lirios', name: 'Lirios', icon: '🪷', count: fullCatalog.filter(p => p.filterCategory === 'lirios').length },
+        { id: 'gerberas', name: 'Gerberas', icon: '🌺', count: fullCatalog.filter(p => p.filterCategory === 'gerberas').length },
+        { id: 'espejos', name: 'Con Espejo', icon: '🪞', count: fullCatalog.filter(p => p.filterCategory === 'espejos').length },
+        { id: 'capsulas', name: 'Cápsulas Cristal', icon: '🔮', count: fullCatalog.filter(p => p.filterCategory === 'capsulas').length },
+        { id: 'cuadros', name: 'Cuadros Eternos', icon: '🖼️', count: fullCatalog.filter(p => p.filterCategory === 'cuadros').length },
+        { id: 'materitos', name: 'Materitos & Jarrones', icon: '🪴', count: fullCatalog.filter(p => p.filterCategory === 'materitos').length },
+        { id: 'figuritas', name: 'Figuritas', icon: '✨', count: fullCatalog.filter(p => p.filterCategory === 'figuritas').length },
+        { id: 'llaveros', name: 'Llaveros', icon: '🔑', count: fullCatalog.filter(p => p.filterCategory === 'llaveros').length },
+        { id: 'maquillaje', name: 'Maquillaje & Skincare', icon: '💄', count: fullCatalog.filter(p => p.filterCategory === 'maquillaje' || p.filterCategory === 'skincare' || p.filterCategory === 'accesorios').length }
+    ];
+
+    categoriesContainer.innerHTML = categories.map(cat => `
+        <div class="category-circle-card ${currentCategory === cat.id ? 'active' : ''}" data-filter="${cat.id}">
+            <div class="circle-icon-bg">${cat.icon}</div>
+            <span>${cat.name}</span>
+            <small class="cat-count">(${cat.count})</small>
+        </div>
+    `).join('');
+
+    categoriesContainer.querySelectorAll('.category-circle-card').forEach(card => {
+        card.addEventListener('click', () => {
+            categoriesContainer.querySelectorAll('.category-circle-card').forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+            currentCategory = card.getAttribute('data-filter');
+            renderProducts();
+        });
+    });
+}
+
+// --- BUSCADOR EN TIEMPO REAL ---
+function initSearch() {
+    const searchInput = document.getElementById('catalog-search-input');
+    const searchClear = document.getElementById('catalog-search-clear');
+    if (!searchInput) return;
+
+    searchInput.addEventListener('input', (e) => {
+        currentSearch = e.target.value.toLowerCase().trim();
+        if (searchClear) {
+            searchClear.style.display = currentSearch ? 'flex' : 'none';
+        }
+        renderProducts();
+    });
+
+    if (searchClear) {
+        searchClear.addEventListener('click', () => {
+            searchInput.value = '';
+            currentSearch = '';
+            searchClear.style.display = 'none';
+            searchInput.focus();
+            renderProducts();
+        });
+    }
+}
+
+// --- RENDERIZADO DE PRODUCTOS ---
+function renderProducts() {
+    const grid = document.getElementById('product-grid');
+    const countEl = document.getElementById('products-count-badge');
+    if (!grid) return;
+
+    let filtered = fullCatalog.filter(p => {
+        // Filtrado por categoría
+        const matchCategory = (currentCategory === 'all') || 
+            (p.filterCategory === currentCategory) || 
+            (currentCategory === 'maquillaje' && ['maquillaje', 'skincare', 'accesorios'].includes(p.filterCategory));
+
+        // Filtrado por búsqueda
+        const matchSearch = !currentSearch || 
+            p.name.toLowerCase().includes(currentSearch) || 
+            p.category.toLowerCase().includes(currentSearch) || 
+            p.description.toLowerCase().includes(currentSearch) ||
+            p.price.toLowerCase().includes(currentSearch);
+
+        return matchCategory && matchSearch;
+    });
+
+    if (countEl) {
+        countEl.textContent = `Mostrando ${filtered.length} de ${fullCatalog.length} productos`;
+    }
+
+    if (filtered.length === 0) {
+        grid.innerHTML = `
+            <div class="empty-catalog-state">
+                <div class="empty-icon">🌸🔍</div>
+                <h3>No encontramos productos para "${currentSearch}"</h3>
+                <p>Intenta con otra palabra como "Rapunzel", "Lotso", "Girasoles", "Tulipanes", "Kitty", o explora todas las categorías.</p>
+                <button class="btn-primary-premium" onclick="resetFilters()">Ver todos los productos</button>
+            </div>
+        `;
+        return;
+    }
+
+    grid.innerHTML = filtered.map(p => {
+        const imageSrc = p.images && p.images[0] ? p.images[0] : 'assets/product_1.jpg';
+        const secondImage = p.images && p.images[1] ? p.images[1] : imageSrc;
+        
+        return `
+            <div class="product-card premium-card" data-product-id="${p.id}">
+                <div class="product-image-container" onclick="openQuickView(${p.id})">
+                    <img src="${imageSrc}" alt="${p.name}" class="product-img product-img-primary" loading="lazy">
+                    <span class="product-badge badge-handmade">${p.badge || 'Handmade 🌸'}</span>
+                    <button class="quickview-floating-btn" title="Vista Rápida" onclick="event.stopPropagation(); openQuickView(${p.id})">👁️</button>
+                </div>
+                <div class="product-info">
+                    <span class="product-category-label">${p.category}</span>
+                    <h3 class="product-name" onclick="openQuickView(${p.id})">${p.name}</h3>
+                    <p class="product-desc">${p.description.length > 95 ? p.description.substring(0, 95) + '...' : p.description}</p>
+                    
+                    <div class="product-price-row">
+                        <span class="product-price">${p.price}</span>
+                    </div>
+                    
+                    <div class="card-action-row">
+                        <div class="quantity-selector">
+                            <button class="qty-btn dec-btn" onclick="adjustCardQty(this, -1)" aria-label="Disminuir">-</button>
+                            <span class="qty-val">1</span>
+                            <button class="qty-btn inc-btn" onclick="adjustCardQty(this, 1)" aria-label="Aumentar">+</button>
+                        </div>
+                        <button class="btn-add-cart" onclick="handleAddCardToCart(${p.id}, this)" title="Agregar al carrito">
+                            🛒 Añadir
+                        </button>
+                        <button class="btn-buy-whatsapp-premium" onclick="handleCardDirectBuy(${p.id}, this)" title="Comprar por WhatsApp">
+                            💬 Pedir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+window.resetFilters = function() {
+    currentCategory = 'all';
+    currentSearch = '';
+    const searchInput = document.getElementById('catalog-search-input');
+    if (searchInput) searchInput.value = '';
+    renderCategoryFilters();
+    renderProducts();
+};
+
+window.adjustCardQty = function(btn, delta) {
+    const selector = btn.closest('.quantity-selector');
+    const valEl = selector.querySelector('.qty-val');
+    let val = parseInt(valEl.textContent) || 1;
+    val = Math.max(1, val + delta);
+    valEl.textContent = val;
+};
+
+window.handleAddCardToCart = function(productId, btn) {
+    const card = btn.closest('.product-card');
+    const qtyVal = card.querySelector('.qty-val');
+    const qty = parseInt(qtyVal.textContent) || 1;
+    
+    addToCart(productId, qty);
+    
+    // Feedback visual en el botón
+    const origText = btn.innerHTML;
+    btn.innerHTML = '✓ ¡Listo!';
+    btn.classList.add('added');
+    setTimeout(() => {
+        btn.innerHTML = origText;
+        btn.classList.remove('added');
+    }, 1200);
+};
+
+window.handleCardDirectBuy = function(productId, btn) {
+    const card = btn.closest('.product-card');
+    const qtyVal = card.querySelector('.qty-val');
+    const qty = parseInt(qtyVal.textContent) || 1;
+    const p = productsMap[productId];
+    if (!p) return;
+
+    const message = `¡Hola Belpa Beauty! 💖 Vengo de su página web y me encantaría ordenar:
+*• ${qty}x ${p.name}* (${p.price})
+
+¿Me confirman disponibilidad y el total de la compra? ¡Muchas gracias! ✨`;
+    window.open(`${whatsappLinkBase}?text=${encodeURIComponent(message)}`, '_blank');
+};
+
+// --- 4. SISTEMA DE CARRITO DE COMPRAS (DRAWER & WHATSAPP) ---
+function initCartSystem() {
+    updateCartBadge();
+    renderCartDrawer();
+
+    const openCartBtns = document.querySelectorAll('.trigger-open-cart');
+    const closeCartBtn = document.getElementById('cart-drawer-close');
+    const overlay = document.getElementById('cart-drawer-overlay');
+
+    openCartBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openCartDrawer();
+        });
+    });
+
+    if (closeCartBtn) closeCartBtn.addEventListener('click', closeCartDrawer);
+    if (overlay) overlay.addEventListener('click', closeCartDrawer);
+
+    const checkoutBtn = document.getElementById('cart-checkout-btn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', checkoutWhatsApp);
+    }
+}
+
+function addToCart(productId, quantity = 1) {
+    const p = productsMap[productId];
+    if (!p) return;
+
+    const existing = cart.find(item => item.id === productId);
+    if (existing) {
+        existing.quantity += quantity;
+    } else {
+        cart.push({
+            id: p.id,
+            name: p.name,
+            price: p.price,
+            rawPrice: p.rawPrice,
+            image: p.images && p.images[0] ? p.images[0] : 'assets/product_1.jpg',
+            quantity: quantity
+        });
+    }
+
+    saveCart();
+    showToast(`¡${p.name} añadido al carrito! 🛍️`, '🌸');
+}
+
+function updateCartBadge() {
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const badges = document.querySelectorAll('.cart-badge-count');
+    badges.forEach(b => {
+        b.textContent = totalItems;
+        b.style.display = totalItems > 0 ? 'inline-flex' : 'none';
+        b.classList.add('pulse');
+        setTimeout(() => b.classList.remove('pulse'), 400);
+    });
+
+    const floatingBtn = document.getElementById('floating-cart-btn');
+    if (floatingBtn) {
+        floatingBtn.style.display = totalItems > 0 ? 'flex' : 'none';
+    }
+}
+
+function openCartDrawer() {
+    const drawer = document.getElementById('cart-drawer');
+    const overlay = document.getElementById('cart-drawer-overlay');
+    if (drawer && overlay) {
+        renderCartDrawer();
+        drawer.classList.add('open');
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeCartDrawer() {
+    const drawer = document.getElementById('cart-drawer');
+    const overlay = document.getElementById('cart-drawer-overlay');
+    if (drawer && overlay) {
+        drawer.classList.remove('open');
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+}
+
+function renderCartDrawer() {
+    const list = document.getElementById('cart-items-list');
+    const subtotalEl = document.getElementById('cart-subtotal-val');
+    const countHeader = document.getElementById('cart-drawer-items-count');
+    if (!list) return;
+
+    const totalCount = cart.reduce((sum, i) => sum + i.quantity, 0);
+    const subtotal = cart.reduce((sum, i) => sum + (i.rawPrice * i.quantity), 0);
+
+    if (countHeader) countHeader.textContent = `(${totalCount})`;
+    if (subtotalEl) subtotalEl.textContent = formatCOP(subtotal);
+
+    if (cart.length === 0) {
+        list.innerHTML = `
+            <div class="empty-cart-view">
+                <div class="empty-cart-icon">🛒🌸</div>
+                <h4>Tu carrito está vacío</h4>
+                <p>Explora nuestras flores eternas, cajas de regalo y cosméticos para agregar tus favoritos.</p>
+                <button class="btn-primary-premium" onclick="closeCartDrawer()">Explorar Catálogo</button>
+            </div>
+        `;
+        const footer = document.getElementById('cart-drawer-footer');
+        if (footer) footer.style.display = 'none';
+        return;
+    }
+
+    const footer = document.getElementById('cart-drawer-footer');
+    if (footer) footer.style.display = 'block';
+
+    list.innerHTML = cart.map(item => `
+        <div class="cart-item-row" data-id="${item.id}">
+            <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+            <div class="cart-item-info">
+                <h4 class="cart-item-title">${item.name}</h4>
+                <div class="cart-item-price">${formatCOP(item.rawPrice)} c/u</div>
+                <div class="cart-item-controls">
+                    <div class="cart-item-qty-box">
+                        <button onclick="changeCartItemQty(${item.id}, -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="changeCartItemQty(${item.id}, 1)">+</button>
+                    </div>
+                    <span class="cart-item-row-total">${formatCOP(item.rawPrice * item.quantity)}</span>
+                </div>
+            </div>
+            <button class="cart-item-remove-btn" onclick="removeCartItem(${item.id})" title="Eliminar">🗑️</button>
+        </div>
+    `).join('');
+}
+
+window.changeCartItemQty = function(id, delta) {
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+    item.quantity += delta;
+    if (item.quantity <= 0) {
+        cart = cart.filter(i => i.id !== id);
+    }
+    saveCart();
+};
+
+window.removeCartItem = function(id) {
+    cart = cart.filter(i => i.id !== id);
+    saveCart();
+};
+
+function checkoutWhatsApp() {
+    if (cart.length === 0) return;
+
+    const clientName = document.getElementById('cart-client-name')?.value.trim() || 'Cliente Web';
+    const deliveryMethod = document.getElementById('cart-delivery-method')?.value || 'Cúcuta (Domicilio)';
+    const clientAddress = document.getElementById('cart-client-address')?.value.trim() || 'Por coordinar';
+    const clientNotes = document.getElementById('cart-client-notes')?.value.trim() || '';
+
+    const subtotal = cart.reduce((sum, i) => sum + (i.rawPrice * i.quantity), 0);
+
+    let message = `¡Hola Belpa Beauty & BelFlora! 💖✨\n`;
+    message += `Vengo de su página web y quiero realizar el siguiente pedido:\n\n`;
+    message += `🛍️ *RESUMEN DEL PEDIDO:*` + `\n`;
+
+    cart.forEach(item => {
+        message += `• *${item.quantity}x ${item.name}* (${formatCOP(item.rawPrice * item.quantity)})\n`;
+    });
+
+    message += `\n💰 *Subtotal Productos:* ${formatCOP(subtotal)}\n`;
+    message += `🚚 *Método de Entrega:* ${deliveryMethod}\n`;
+    message += `👤 *Nombre:* ${clientName}\n`;
+    message += `📍 *Ciudad / Dirección:* ${clientAddress}\n`;
+    if (clientNotes) {
+        message += `💌 *Dedicatoria / Notas:* "${clientNotes}"\n`;
+    }
+    message += `\n¿Me confirman disponibilidad y los datos para el pago? ¡Muchas gracias! 🌸🎀`;
+
+    window.open(`${whatsappLinkBase}?text=${encodeURIComponent(message)}`, '_blank');
+}
+
+// --- 5. VENTANA MODAL (QUICK VIEW) ---
+let activeQuickViewId = null;
+
+function initQuickViewModal() {
+    const modal = document.getElementById('quickview-modal');
+    const closeBtn = document.getElementById('modal-close');
+
+    if (closeBtn) closeBtn.addEventListener('click', closeQuickView);
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeQuickView();
+        });
+    }
+
+    const decBtn = document.getElementById('modal-dec-btn');
+    const incBtn = document.getElementById('modal-inc-btn');
+    const qtyVal = document.getElementById('modal-qty-val');
+
+    if (decBtn && incBtn && qtyVal) {
+        decBtn.addEventListener('click', () => {
+            let val = parseInt(qtyVal.textContent) || 1;
+            qtyVal.textContent = Math.max(1, val - 1);
+        });
+        incBtn.addEventListener('click', () => {
+            let val = parseInt(qtyVal.textContent) || 1;
+            qtyVal.textContent = val + 1;
+        });
+    }
+
+    const modalAddCartBtn = document.getElementById('modal-add-cart-btn');
+    if (modalAddCartBtn) {
+        modalAddCartBtn.addEventListener('click', () => {
+            if (!activeQuickViewId) return;
+            const qty = parseInt(qtyVal?.textContent) || 1;
+            addToCart(activeQuickViewId, qty);
+            closeQuickView();
+            openCartDrawer();
+        });
+    }
+
+    const modalBuyDirectBtn = document.getElementById('modal-buy-btn');
+    if (modalBuyDirectBtn) {
+        modalBuyDirectBtn.addEventListener('click', () => {
+            if (!activeQuickViewId) return;
+            const p = productsMap[activeQuickViewId];
+            if (!p) return;
+            const qty = parseInt(qtyVal?.textContent) || 1;
+            const message = `¡Hola Belpa Beauty! 💖 Vengo de su página web y me encantaría ordenar:
+*• ${qty}x ${p.name}* (${p.price})
+
+¿Me confirman disponibilidad y el total? ¡Muchas gracias! ✨`;
+            window.open(`${whatsappLinkBase}?text=${encodeURIComponent(message)}`, '_blank');
+            closeQuickView();
+        });
+    }
+}
+
+window.openQuickView = function(productId) {
+    const p = productsMap[productId];
+    if (!p) return;
+
+    activeQuickViewId = productId;
+    const modal = document.getElementById('quickview-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalBadge = document.getElementById('modal-badge');
+    const modalPrice = document.getElementById('modal-price');
+    const modalDescription = document.getElementById('modal-description');
+    const modalMainImg = document.getElementById('modal-main-img');
+    const modalThumbnails = document.getElementById('modal-thumbnails');
+    const modalQtyVal = document.getElementById('modal-qty-val');
+
+    if (modalTitle) modalTitle.textContent = p.name;
+    if (modalBadge) modalBadge.textContent = p.badge || 'Handmade 🌸';
+    if (modalPrice) modalPrice.textContent = p.price;
+    if (modalDescription) modalDescription.textContent = p.description;
+    if (modalQtyVal) modalQtyVal.textContent = '1';
+
+    const images = p.images && p.images.length > 0 ? p.images : ['assets/product_1.jpg'];
+    if (modalMainImg) {
+        modalMainImg.src = images[0];
+        modalMainImg.alt = p.name;
+    }
+
+    if (modalThumbnails) {
+        modalThumbnails.innerHTML = '';
+        if (images.length > 1) {
+            images.forEach((src, idx) => {
+                const thumb = document.createElement('img');
+                thumb.className = `modal-thumb ${idx === 0 ? 'active' : ''}`;
+                thumb.src = src;
+                thumb.alt = `${p.name} ${idx + 1}`;
+                thumb.addEventListener('click', () => {
+                    modalThumbnails.querySelectorAll('.modal-thumb').forEach(t => t.classList.remove('active'));
+                    thumb.classList.add('active');
+                    if (modalMainImg) modalMainImg.src = src;
+                });
+                modalThumbnails.appendChild(thumb);
+            });
+        }
+    }
+
+    if (modal) {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+};
+
+window.closeQuickView = function() {
+    const modal = document.getElementById('quickview-modal');
+    if (modal) {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    activeQuickViewId = null;
+};
+
+// --- 6. FAQ ---
+function initFAQ() {
+    const faqCards = document.querySelectorAll('.faq-card');
+    faqCards.forEach(card => {
+        const btn = card.querySelector('.faq-question');
+        if (btn) {
+            btn.addEventListener('click', () => {
+                const isOpen = card.classList.contains('open');
+                faqCards.forEach(c => c.classList.remove('open'));
+                if (!isOpen) card.classList.add('open');
+            });
+        }
+    });
+}
+
+// --- 7. MASCOTA BELPA KITTY ---
+function initMascot() {
+    const mascot = document.getElementById('belpa-mascot');
+    const speechBubble = document.getElementById('mascot-speech-bubble');
+
+    const quotes = [
+        "¡Tenemos más de 70 modelos de flores eternas hechas a mano! 🌸",
+        "¡Los ramos de princesas Disney y peluches Sanrio son los favoritos! 👑🧸",
+        "¡Personalizamos tu ramo con colores favoritos, banda y dedicatoria! 💌",
+        "¡Las cúpulas de cristal y cuadros eternos vienen con luces LED mágicas! 🔮✨",
+        "¡Puedes agregar varios productos a tu carrito y enviar un solo pedido! 🛒💖",
+        "¡Hacemos entregas a domicilio en Cúcuta y envíos a toda Colombia! ✈️🇨🇴"
+    ];
+
+    let idx = 0;
+    if (mascot && speechBubble) {
+        mascot.addEventListener('click', () => {
+            idx = (idx + 1) % quotes.length;
+            speechBubble.style.opacity = '0';
+            setTimeout(() => {
+                speechBubble.textContent = quotes[idx];
+                speechBubble.style.opacity = '1';
+            }, 200);
+        });
+    }
+}
+
+// --- 8. FORMULARIO DE CONTACTO ---
+function initContactForm() {
+    const form = document.getElementById('contact-form');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name')?.value || '';
+            const msg = document.getElementById('message-text')?.value || '';
+            const text = `¡Hola Belpa Beauty! 💖 Mi nombre es *${name}* y les escribo desde su página web con la siguiente consulta:
+
+"${msg}"
+
+¡Muchas gracias! ✨`;
+            window.open(`${whatsappLinkBase}?text=${encodeURIComponent(text)}`, '_blank');
+            form.reset();
+        });
+    }
+}
+
+// --- 9. PARTÍCULAS DE BRILLO ---
+function initSparkles() {
+    const container = document.getElementById('sparkle-container');
+    if (!container || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    function createSparkle(x, y) {
+        const p = document.createElement('div');
+        p.className = 'sparkle-particle';
+        const icons = ['💖', '🌸', '✨', '🎀', '⭐'];
+        p.textContent = icons[Math.floor(Math.random() * icons.length)];
+        p.style.fontSize = (Math.random() * 10 + 10) + 'px';
+        p.style.left = x + 'px';
+        p.style.top = y + 'px';
+        p.style.position = 'fixed';
+        p.style.pointerEvents = 'none';
+        p.style.zIndex = '9999';
+        p.style.transition = 'transform 1.2s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 1.2s ease';
+
+        container.appendChild(p);
+
+        const angle = Math.random() * Math.PI * 2;
+        const vel = Math.random() * 50 + 20;
+        const dx = Math.cos(angle) * vel;
+        const dy = Math.sin(angle) * vel;
+
+        setTimeout(() => {
+            p.style.transform = `translate(${dx}px, ${dy}px) scale(0) rotate(${Math.random() * 360}deg)`;
+            p.style.opacity = '0';
+        }, 30);
+
+        setTimeout(() => p.remove(), 1300);
+    }
+
+    window.addEventListener('click', (e) => {
+        for (let i = 0; i < 5; i++) createSparkle(e.clientX, e.clientY);
+    });
+}
+
+// --- 10. VIDEO DE UNBOXING ---
+function initVideo() {
+    const video = document.getElementById('belpa-video');
+    const muteBtn = document.getElementById('video-mute-btn');
+    if (video && muteBtn) {
+        muteBtn.addEventListener('click', () => {
+            video.muted = !video.muted;
+            muteBtn.textContent = video.muted ? '🔇' : '🔊';
+        });
+    }
+}
+
+// --- 11. ESCENA 3D THREE.JS (FLOR DE CROCHET) ---
 function initThreeJS() {
     const canvas = document.getElementById('hero-3d-canvas');
     const fallbackImg = document.getElementById('hero-fallback-img');
-    
-    if (!canvas || !fallbackImg) return;
-    
-    // Check support for WebGL
-    function hasWebGL() {
-        try {
-            const tempCanvas = document.createElement('canvas');
-            return !!(window.WebGLRenderingContext && (tempCanvas.getContext('webgl') || tempCanvas.getContext('experimental-webgl')));
-        } catch (e) {
-            return false;
-        }
-    }
-    
-    if (!hasWebGL()) {
-        canvas.style.display = 'none';
-        fallbackImg.style.display = 'block';
-        return;
-    }
-    
-    // Configuración de la Escena
-    const width = 340;
-    const height = 340;
-    
-    const scene = new THREE.Scene();
-    
-    // Cámara
-    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    camera.position.z = 4.8;
-    
-    // Renderizador con fondo transparente y antialiasing
-    const renderer = new THREE.WebGLRenderer({
-        canvas: canvas,
-        alpha: true,
-        antialias: true
-    });
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    
-    // Iluminación
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-    scene.add(ambientLight);
-    
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.95);
-    dirLight.position.set(5, 5, 5);
-    scene.add(dirLight);
-    
-    const pointLight = new THREE.PointLight(0xffffff, 0.6);
-    pointLight.position.set(-5, 3, 2);
-    scene.add(pointLight);
-    
-    // Grupos para rotación y lerp de movimiento
-    const flowerGroup = new THREE.Group();
-    const tiltGroup = new THREE.Group();
-    flowerGroup.add(tiltGroup);
-    scene.add(flowerGroup);
-    
-    // 1. Centro Dorado de Crochet
-    const centerGeo = new THREE.SphereGeometry(0.35, 32, 32);
-    const centerMat = new THREE.MeshPhysicalMaterial({
-        color: 0xFAD02C, // Amarillo dorado brillante
-        roughness: 0.1,
-        metalness: 0.75,
-        clearcoat: 1.0,
-        clearcoatRoughness: 0.1
-    });
-    const centerMesh = new THREE.Mesh(centerGeo, centerMat);
-    centerMesh.position.set(0, 0, 0.2);
-    tiltGroup.add(centerMesh);
-    
-    // 2. Pétalos Rosados Satinados (Aplastados y organizados en anillo)
-    const numPetals = 8;
-    const petalGeo = new THREE.SphereGeometry(0.65, 32, 16);
-    petalGeo.scale(0.5, 0.9, 0.15); // Pétalo alargado y aplanado en el eje Z
-    
-    const petalMat = new THREE.MeshPhysicalMaterial({
-        color: 0xFF8CA3, // Rosa de la marca
-        roughness: 0.15,
-        metalness: 0.05,
-        clearcoat: 1.0,
-        clearcoatRoughness: 0.1
-    });
-    
-    for (let i = 0; i < numPetals; i++) {
-        const petalMesh = new THREE.Mesh(petalGeo, petalMat);
-        const angle = (i * Math.PI * 2) / numPetals;
-        const petalDistance = 0.52;
-        
-        petalMesh.position.set(Math.cos(angle) * petalDistance, Math.sin(angle) * petalDistance, 0.05);
-        petalMesh.rotation.z = angle - Math.PI / 2;
-        petalMesh.rotation.x = 0.2; // Inclinación leve hacia el frente para volumen
-        tiltGroup.add(petalMesh);
-    }
-    
-    // 3. Tallo Verde Salvia
-    const stemGeo = new THREE.CylinderGeometry(0.06, 0.06, 1.8, 16);
-    const stemMat = new THREE.MeshPhysicalMaterial({
-        color: 0x4E6E58, // Verde salvia
-        roughness: 0.35,
-        metalness: 0.05
-    });
-    const stemMesh = new THREE.Mesh(stemGeo, stemMat);
-    stemMesh.position.set(0, -0.9, -0.1);
-    stemMesh.rotation.x = 0.05;
-    tiltGroup.add(stemMesh);
-    
-    // 4. Hojitas Verdes a los lados
-    const leafGeo = new THREE.SphereGeometry(0.28, 16, 8);
-    leafGeo.scale(0.3, 0.6, 0.08);
-    
-    const leafMesh1 = new THREE.Mesh(leafGeo, stemMat);
-    leafMesh1.position.set(0.16, -0.7, 0);
-    leafMesh1.rotation.set(0.1, -0.2, -0.5);
-    tiltGroup.add(leafMesh1);
-    
-    const leafMesh2 = new THREE.Mesh(leafGeo, stemMat);
-    leafMesh2.position.set(-0.16, -1.0, 0);
-    leafMesh2.rotation.set(0.1, 0.2, 0.5);
-    tiltGroup.add(leafMesh2);
-    
-    // Seguimiento del Mouse para Lerpeado de Inclinación
-    let targetTiltX = 0;
-    let targetTiltY = 0;
-    const container = document.getElementById('hero-3d-canvas-container');
-    
-    if (container) {
-        container.addEventListener('mousemove', (e) => {
-            // Ignorar interactividad si el usuario prefiere movimiento reducido
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                return;
-            }
-            const rect = container.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const normalizedX = (x / rect.width) * 2 - 1;
-            const normalizedY = (y / rect.height) * 2 - 1;
-            
-            targetTiltY = normalizedX * 0.45;
-            targetTiltX = normalizedY * 0.45;
-        });
-        
-        container.addEventListener('mouseleave', () => {
-            targetTiltX = 0;
-            targetTiltY = 0;
-        });
+    if (!canvas || !fallbackImg || typeof THREE === 'undefined') return;
 
-        // Soporte táctil (Touch Events) para dispositivos móviles
-        container.addEventListener('touchmove', (e) => {
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                return;
-            }
-            if (e.touches.length > 0) {
-                const rect = container.getBoundingClientRect();
-                const touch = e.touches[0];
-                const x = touch.clientX - rect.left;
-                const y = touch.clientY - rect.top;
-                const normalizedX = Math.max(-1, Math.min(1, (x / rect.width) * 2 - 1));
-                const normalizedY = Math.max(-1, Math.min(1, (y / rect.height) * 2 - 1));
-                
-                targetTiltY = normalizedX * 0.45;
-                targetTiltX = normalizedY * 0.45;
-            }
-        }, { passive: true });
+    try {
+        const width = 340, height = 340;
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+        camera.position.z = 4.8;
 
-        container.addEventListener('touchend', () => {
-            targetTiltX = 0;
-            targetTiltY = 0;
-        });
-    }
-    
-    // Bucle de Animación
-    function animate() {
-        requestAnimationFrame(animate);
-        
-        // Rotación continua alrededor del eje Y (se apaga si se prefiere movimiento reducido)
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            flowerGroup.rotation.y += 0.005;
-            
-            // Lerpeado suave de la inclinación por el mouse
-            tiltGroup.rotation.x = THREE.MathUtils.lerp(tiltGroup.rotation.x, targetTiltX, 0.08);
-            tiltGroup.rotation.z = THREE.MathUtils.lerp(tiltGroup.rotation.z, -targetTiltY, 0.08);
-        } else {
-            // Posición estática suave si hay movimiento reducido
-            flowerGroup.rotation.y = 0;
-            tiltGroup.rotation.x = 0;
-            tiltGroup.rotation.z = 0;
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        renderer.setSize(width, height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.95);
+        dirLight.position.set(5, 5, 5);
+        scene.add(dirLight);
+
+        const flowerGroup = new THREE.Group();
+        const tiltGroup = new THREE.Group();
+        flowerGroup.add(tiltGroup);
+        scene.add(flowerGroup);
+
+        // Centro Dorado
+        const centerMat = new THREE.MeshPhysicalMaterial({ color: 0xFAD02C, roughness: 0.1, metalness: 0.75 });
+        const centerMesh = new THREE.Mesh(new THREE.SphereGeometry(0.35, 32, 32), centerMat);
+        centerMesh.position.set(0, 0, 0.2);
+        tiltGroup.add(centerMesh);
+
+        // Pétalos Rosados
+        const petalMat = new THREE.MeshPhysicalMaterial({ color: 0xFF8CA3, roughness: 0.15, clearcoat: 1.0 });
+        for (let i = 0; i < 8; i++) {
+            const petalGeo = new THREE.SphereGeometry(0.65, 32, 16);
+            petalGeo.scale(0.5, 0.9, 0.15);
+            const petalMesh = new THREE.Mesh(petalGeo, petalMat);
+            const angle = (i * Math.PI * 2) / 8;
+            petalMesh.position.set(Math.cos(angle) * 0.52, Math.sin(angle) * 0.52, 0.05);
+            petalMesh.rotation.z = angle - Math.PI / 2;
+            petalMesh.rotation.x = 0.2;
+            tiltGroup.add(petalMesh);
         }
-        
-        renderer.render(scene, camera);
+
+        // Tallo
+        const stemMat = new THREE.MeshPhysicalMaterial({ color: 0x4E6E58, roughness: 0.35 });
+        const stemMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 1.8, 16), stemMat);
+        stemMesh.position.set(0, -0.9, -0.1);
+        tiltGroup.add(stemMesh);
+
+        function animate() {
+            requestAnimationFrame(animate);
+            flowerGroup.rotation.y += 0.006;
+            renderer.render(scene, camera);
+        }
+        animate();
+    } catch (e) {
+        if (canvas) canvas.style.display = 'none';
+        if (fallbackImg) fallbackImg.style.display = 'block';
     }
-    animate();
 }
