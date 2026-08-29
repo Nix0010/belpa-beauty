@@ -1,9 +1,9 @@
 /* ==========================================================================
-   BELPA BEAUTY & BELFLORA - MOTOR DE TIENDA BOUTIQUE V2.0 🌸💖
-   Catálogo Completo, Carrito de Compras Multi-Producto y Checkout por WhatsApp
+   BELPA BEAUTY & BELFLORA - MOTOR DE TIENDA BOUTIQUE 🌸💖
+   Estética Coquette, Delicada y Elegante
    ========================================================================== */
 
-// --- Base de Datos Maestra de Productos (BelFlora + Belpa Beauty) ---
+// --- Base de Datos Maestra de Productos ---
 const productsCatalog = [
     {
         "id": 1,
@@ -1107,10 +1107,11 @@ const productsCatalog = [
         ]
     }
 ];
+const fullCatalog = productsCatalog;
 
 // Mapa de productos por ID para acceso rápido
 const productsMap = {};
-productsCatalog.forEach(p => { productsMap[p.id] = p; });
+fullCatalog.forEach(p => { productsMap[p.id] = p; });
 
 const whatsappLinkBase = 'https://wa.me/message/Z4TVXHB3UPMRI1';
 
@@ -1158,12 +1159,11 @@ function showToast(message, icon = '🌸') {
     clearTimeout(toast._timeout);
     toast._timeout = setTimeout(() => {
         toast.classList.remove('show');
-    }, 2800);
+    }, 2500);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- 1. MENÚ MÓVIL ---
+    // 1. Menú Móvil
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const navMenu = document.getElementById('nav-menu');
 
@@ -1181,7 +1181,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 2. CABECERA SHRINK EN SCROLL ---
+    // 2. Cabecera Shrink en Scroll
     const header = document.querySelector('.header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 40) {
@@ -1191,7 +1191,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 3. RENDERIZADO INICIAL DEL CATÁLOGO ---
+    // 3. Inicializaciones
     renderCategoryFilters();
     renderProducts();
     initSearch();
@@ -1205,32 +1205,44 @@ document.addEventListener('DOMContentLoaded', () => {
     initThreeJS();
 });
 
-// --- RENDERIZADO DINÁMICO DE FILTROS DE CATEGORÍA ---
+// Helper para categorización
+function matchProductCategory(product, catId) {
+    if (catId === 'all') return true;
+    if (catId === 'rosas_ramos') {
+        return ['tulipanes', 'girasoles', 'lirios', 'gerberas', 'primavera', 'bouquets'].includes(product.filterCategory);
+    }
+    if (catId === 'tematicas') {
+        return ['tematicas', 'peluches'].includes(product.filterCategory);
+    }
+    if (catId === 'capsulas_cuadros') {
+        return ['capsulas', 'cuadros', 'espejos'].includes(product.filterCategory);
+    }
+    if (catId === 'materitos_figuras') {
+        return ['materitos', 'figuritas', 'llaveros'].includes(product.filterCategory);
+    }
+    if (catId === 'maquillaje') {
+        return ['maquillaje', 'skincare', 'accesorios'].includes(product.filterCategory);
+    }
+    return product.filterCategory === catId;
+}
+
+// --- FILTROS DE CATEGORÍA ELEGANTES & COQUETTE ---
 function renderCategoryFilters() {
     const categoriesContainer = document.getElementById('visual-categories-container');
     if (!categoriesContainer) return;
 
     const categories = [
         { id: 'all', name: 'Todos', icon: '🌸', count: fullCatalog.length },
-        { id: 'tematicas', name: 'Disney & Temáticas', icon: '👑', count: fullCatalog.filter(p => p.filterCategory === 'tematicas').length },
-        { id: 'peluches', name: 'Ramos con Peluches', icon: '🧸', count: fullCatalog.filter(p => p.filterCategory === 'peluches').length },
-        { id: 'primavera', name: 'Primavera & Mix', icon: '💐', count: fullCatalog.filter(p => p.filterCategory === 'primavera').length },
-        { id: 'tulipanes', name: 'Tulipanes', icon: '🌷', count: fullCatalog.filter(p => p.filterCategory === 'tulipanes').length },
-        { id: 'girasoles', name: 'Girasoles', icon: '🌻', count: fullCatalog.filter(p => p.filterCategory === 'girasoles').length },
-        { id: 'lirios', name: 'Lirios', icon: '🪷', count: fullCatalog.filter(p => p.filterCategory === 'lirios').length },
-        { id: 'gerberas', name: 'Gerberas', icon: '🌺', count: fullCatalog.filter(p => p.filterCategory === 'gerberas').length },
-        { id: 'espejos', name: 'Con Espejo', icon: '🪞', count: fullCatalog.filter(p => p.filterCategory === 'espejos').length },
-        { id: 'capsulas', name: 'Cápsulas Cristal', icon: '🔮', count: fullCatalog.filter(p => p.filterCategory === 'capsulas').length },
-        { id: 'cuadros', name: 'Cuadros Eternos', icon: '🖼️', count: fullCatalog.filter(p => p.filterCategory === 'cuadros').length },
-        { id: 'materitos', name: 'Materitos & Jarrones', icon: '🪴', count: fullCatalog.filter(p => p.filterCategory === 'materitos').length },
-        { id: 'figuritas', name: 'Figuritas', icon: '✨', count: fullCatalog.filter(p => p.filterCategory === 'figuritas').length },
-        { id: 'llaveros', name: 'Llaveros', icon: '🔑', count: fullCatalog.filter(p => p.filterCategory === 'llaveros').length },
-        { id: 'maquillaje', name: 'Maquillaje & Skincare', icon: '💄', count: fullCatalog.filter(p => p.filterCategory === 'maquillaje' || p.filterCategory === 'skincare' || p.filterCategory === 'accesorios').length }
+        { id: 'rosas_ramos', name: 'Rosas & Ramos Eternos', icon: '🌹', count: fullCatalog.filter(p => matchProductCategory(p, 'rosas_ramos')).length },
+        { id: 'tematicas', name: 'Disney & Peluches', icon: '👑', count: fullCatalog.filter(p => matchProductCategory(p, 'tematicas')).length },
+        { id: 'capsulas_cuadros', name: 'Cápsulas & Cuadros 3D', icon: '🔮', count: fullCatalog.filter(p => matchProductCategory(p, 'capsulas_cuadros')).length },
+        { id: 'materitos_figuras', name: 'Materitos & Figuras', icon: '🪴', count: fullCatalog.filter(p => matchProductCategory(p, 'materitos_figuras')).length },
+        { id: 'maquillaje', name: 'Maquillaje & Belleza', icon: '💄', count: fullCatalog.filter(p => matchProductCategory(p, 'maquillaje')).length }
     ];
 
     categoriesContainer.innerHTML = categories.map(cat => `
         <div class="category-circle-card ${currentCategory === cat.id ? 'active' : ''}" data-filter="${cat.id}">
-            <div class="circle-icon-bg">${cat.icon}</div>
+            <span class="circle-icon-bg">${cat.icon}</span>
             <span>${cat.name}</span>
             <small class="cat-count">(${cat.count})</small>
         </div>
@@ -1278,12 +1290,7 @@ function renderProducts() {
     if (!grid) return;
 
     let filtered = fullCatalog.filter(p => {
-        // Filtrado por categoría
-        const matchCategory = (currentCategory === 'all') || 
-            (p.filterCategory === currentCategory) || 
-            (currentCategory === 'maquillaje' && ['maquillaje', 'skincare', 'accesorios'].includes(p.filterCategory));
-
-        // Filtrado por búsqueda
+        const matchCategory = matchProductCategory(p, currentCategory);
         const matchSearch = !currentSearch || 
             p.name.toLowerCase().includes(currentSearch) || 
             p.category.toLowerCase().includes(currentSearch) || 
@@ -1302,7 +1309,7 @@ function renderProducts() {
             <div class="empty-catalog-state">
                 <div class="empty-icon">🌸🔍</div>
                 <h3>No encontramos productos para "${currentSearch}"</h3>
-                <p>Intenta con otra palabra como "Rapunzel", "Lotso", "Girasoles", "Tulipanes", "Kitty", o explora todas las categorías.</p>
+                <p>Intenta con otra palabra como "Rapunzel", "Lotso", "Girasol", "Lirio", "Cúpula", "Kitty", o explora las categorías.</p>
                 <button class="btn-primary-premium" onclick="resetFilters()">Ver todos los productos</button>
             </div>
         `;
@@ -1311,35 +1318,31 @@ function renderProducts() {
 
     grid.innerHTML = filtered.map(p => {
         const imageSrc = p.images && p.images[0] ? p.images[0] : 'assets/product_1.jpg';
-        const secondImage = p.images && p.images[1] ? p.images[1] : imageSrc;
         
         return `
-            <div class="product-card premium-card" data-product-id="${p.id}">
+            <div class="product-card" data-product-id="${p.id}">
                 <div class="product-image-container" onclick="openQuickView(${p.id})">
-                    <img src="${imageSrc}" alt="${p.name}" class="product-img product-img-primary" loading="lazy">
-                    <span class="product-badge badge-handmade">${p.badge || 'Handmade 🌸'}</span>
-                    <button class="quickview-floating-btn" title="Vista Rápida" onclick="event.stopPropagation(); openQuickView(${p.id})">👁️</button>
+                    <img src="${imageSrc}" alt="${p.name}" class="product-img" loading="lazy">
+                    <span class="product-badge">${p.badge || 'Handmade 🌸'}</span>
+                    <button class="quickview-hover-btn" title="Vista Rápida" onclick="event.stopPropagation(); openQuickView(${p.id})">
+                        <span>👁️ Ver detalles</span>
+                    </button>
                 </div>
                 <div class="product-info">
                     <span class="product-category-label">${p.category}</span>
                     <h3 class="product-name" onclick="openQuickView(${p.id})">${p.name}</h3>
-                    <p class="product-desc">${p.description.length > 95 ? p.description.substring(0, 95) + '...' : p.description}</p>
+                    <p class="product-desc">${p.description.length > 80 ? p.description.substring(0, 80) + '...' : p.description}</p>
                     
                     <div class="product-price-row">
                         <span class="product-price">${p.price}</span>
                     </div>
                     
                     <div class="card-action-row">
-                        <div class="quantity-selector">
-                            <button class="qty-btn dec-btn" onclick="adjustCardQty(this, -1)" aria-label="Disminuir">-</button>
-                            <span class="qty-val">1</span>
-                            <button class="qty-btn inc-btn" onclick="adjustCardQty(this, 1)" aria-label="Aumentar">+</button>
-                        </div>
-                        <button class="btn-add-cart" onclick="handleAddCardToCart(${p.id}, this)" title="Agregar al carrito">
-                            🛒 Añadir
+                        <button class="btn-card-add-cart" onclick="handleAddCardToCart(${p.id}, this)" title="Añadir a mi carrito">
+                            <span>🛒 Añadir</span>
                         </button>
-                        <button class="btn-buy-whatsapp-premium" onclick="handleCardDirectBuy(${p.id}, this)" title="Comprar por WhatsApp">
-                            💬 Pedir
+                        <button class="btn-card-whatsapp" onclick="handleCardDirectBuy(${p.id}, this)" title="Pedir por WhatsApp">
+                            <span>💬 Pedir</span>
                         </button>
                     </div>
                 </div>
@@ -1357,24 +1360,12 @@ window.resetFilters = function() {
     renderProducts();
 };
 
-window.adjustCardQty = function(btn, delta) {
-    const selector = btn.closest('.quantity-selector');
-    const valEl = selector.querySelector('.qty-val');
-    let val = parseInt(valEl.textContent) || 1;
-    val = Math.max(1, val + delta);
-    valEl.textContent = val;
-};
-
 window.handleAddCardToCart = function(productId, btn) {
-    const card = btn.closest('.product-card');
-    const qtyVal = card.querySelector('.qty-val');
-    const qty = parseInt(qtyVal.textContent) || 1;
+    addToCart(productId, 1);
     
-    addToCart(productId, qty);
-    
-    // Feedback visual en el botón
+    // Feedback visual sutil
     const origText = btn.innerHTML;
-    btn.innerHTML = '✓ ¡Listo!';
+    btn.innerHTML = '<span>✓ ¡Listo!</span>';
     btn.classList.add('added');
     setTimeout(() => {
         btn.innerHTML = origText;
@@ -1383,20 +1374,14 @@ window.handleAddCardToCart = function(productId, btn) {
 };
 
 window.handleCardDirectBuy = function(productId, btn) {
-    const card = btn.closest('.product-card');
-    const qtyVal = card.querySelector('.qty-val');
-    const qty = parseInt(qtyVal.textContent) || 1;
     const p = productsMap[productId];
     if (!p) return;
 
-    const message = `¡Hola Belpa Beauty! 💖 Vengo de su página web y me encantaría ordenar:
-*• ${qty}x ${p.name}* (${p.price})
-
-¿Me confirman disponibilidad y el total de la compra? ¡Muchas gracias! ✨`;
+    const message = `¡Hola Belpa Beauty! 💖 Vengo de su página web y me encantaría ordenar:\n*• 1x ${p.name}* (${p.price})\n\n¿Me confirman disponibilidad para coordinar la entrega? ¡Muchas gracias! ✨`;
     window.open(`${whatsappLinkBase}?text=${encodeURIComponent(message)}`, '_blank');
 };
 
-// --- 4. SISTEMA DE CARRITO DE COMPRAS (DRAWER & WHATSAPP) ---
+// --- 4. SISTEMA DE CARRITO DE COMPRAS ---
 function initCartSystem() {
     updateCartBadge();
     renderCartDrawer();
@@ -1449,8 +1434,6 @@ function updateCartBadge() {
     badges.forEach(b => {
         b.textContent = totalItems;
         b.style.display = totalItems > 0 ? 'inline-flex' : 'none';
-        b.classList.add('pulse');
-        setTimeout(() => b.classList.remove('pulse'), 400);
     });
 
     const floatingBtn = document.getElementById('floating-cart-btn');
@@ -1497,8 +1480,8 @@ function renderCartDrawer() {
             <div class="empty-cart-view">
                 <div class="empty-cart-icon">🛒🌸</div>
                 <h4>Tu carrito está vacío</h4>
-                <p>Explora nuestras flores eternas, cajas de regalo y cosméticos para agregar tus favoritos.</p>
-                <button class="btn-primary-premium" onclick="closeCartDrawer()">Explorar Catálogo</button>
+                <p>Explora nuestras rosas eternas y cosméticos para agregar tus favoritos.</p>
+                <button class="btn-primary-premium" onclick="closeCartDrawer()">Explorar Colección</button>
             </div>
         `;
         const footer = document.getElementById('cart-drawer-footer');
@@ -1556,7 +1539,7 @@ function checkoutWhatsApp() {
 
     let message = `¡Hola Belpa Beauty & BelFlora! 💖✨\n`;
     message += `Vengo de su página web y quiero realizar el siguiente pedido:\n\n`;
-    message += `🛍️ *RESUMEN DEL PEDIDO:*` + `\n`;
+    message += `🛍️ *RESUMEN DEL PEDIDO:*\n`;
 
     cart.forEach(item => {
         message += `• *${item.quantity}x ${item.name}* (${formatCOP(item.rawPrice * item.quantity)})\n`;
@@ -1621,10 +1604,7 @@ function initQuickViewModal() {
             const p = productsMap[activeQuickViewId];
             if (!p) return;
             const qty = parseInt(qtyVal?.textContent) || 1;
-            const message = `¡Hola Belpa Beauty! 💖 Vengo de su página web y me encantaría ordenar:
-*• ${qty}x ${p.name}* (${p.price})
-
-¿Me confirman disponibilidad y el total? ¡Muchas gracias! ✨`;
+            const message = `¡Hola Belpa Beauty! 💖 Vengo de su página web y me encantaría ordenar:\n*• ${qty}x ${p.name}* (${p.price})\n\n¿Me confirman disponibilidad y el total? ¡Muchas gracias! ✨`;
             window.open(`${whatsappLinkBase}?text=${encodeURIComponent(message)}`, '_blank');
             closeQuickView();
         });
@@ -1711,12 +1691,12 @@ function initMascot() {
     const speechBubble = document.getElementById('mascot-speech-bubble');
 
     const quotes = [
-        "¡Tenemos más de 70 modelos de flores eternas hechas a mano! 🌸",
-        "¡Los ramos de princesas Disney y peluches Sanrio son los favoritos! 👑🧸",
-        "¡Personalizamos tu ramo con colores favoritos, banda y dedicatoria! 💌",
-        "¡Las cúpulas de cristal y cuadros eternos vienen con luces LED mágicas! 🔮✨",
-        "¡Puedes agregar varios productos a tu carrito y enviar un solo pedido! 🛒💖",
-        "¡Hacemos entregas a domicilio en Cúcuta y envíos a toda Colombia! ✈️🇨🇴"
+        "¡Tenemos rosas eternas hechas a mano y cosméticos hermosos! 🌸",
+        "¡Los ramos de Disney y peluches Sanrio son de los favoritos! 👑🧸",
+        "¡Personalizamos tu ramo con colores favoritos y dedicatoria! 💌",
+        "¡Las cúpulas de cristal y cuadros vienen con luces LED! 🔮✨",
+        "¡Puedes agregar varios productos a tu carrito y pedir en un solo paso! 🛒💖",
+        "¡Hacemos entregas a domicilio en Cúcuta y envíos a Colombia! ✈️🇨🇴"
     ];
 
     let idx = 0;
@@ -1740,18 +1720,14 @@ function initContactForm() {
             e.preventDefault();
             const name = document.getElementById('name')?.value || '';
             const msg = document.getElementById('message-text')?.value || '';
-            const text = `¡Hola Belpa Beauty! 💖 Mi nombre es *${name}* y les escribo desde su página web con la siguiente consulta:
-
-"${msg}"
-
-¡Muchas gracias! ✨`;
+            const text = `¡Hola Belpa Beauty! 💖 Mi nombre es *${name}* y les escribo desde su página web con la siguiente consulta:\n\n"${msg}"\n\n¡Muchas gracias! ✨`;
             window.open(`${whatsappLinkBase}?text=${encodeURIComponent(text)}`, '_blank');
             form.reset();
         });
     }
 }
 
-// --- 9. PARTÍCULAS DE BRILLO ---
+// --- 9. PARTÍCULAS DE BRILLO SUTILES ---
 function initSparkles() {
     const container = document.getElementById('sparkle-container');
     if (!container || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -1759,33 +1735,33 @@ function initSparkles() {
     function createSparkle(x, y) {
         const p = document.createElement('div');
         p.className = 'sparkle-particle';
-        const icons = ['💖', '🌸', '✨', '🎀', '⭐'];
+        const icons = ['🌸', '✨', '🎀', '💕'];
         p.textContent = icons[Math.floor(Math.random() * icons.length)];
-        p.style.fontSize = (Math.random() * 10 + 10) + 'px';
+        p.style.fontSize = (Math.random() * 8 + 10) + 'px';
         p.style.left = x + 'px';
         p.style.top = y + 'px';
         p.style.position = 'fixed';
         p.style.pointerEvents = 'none';
         p.style.zIndex = '9999';
-        p.style.transition = 'transform 1.2s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 1.2s ease';
+        p.style.transition = 'transform 1s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 1s ease';
 
         container.appendChild(p);
 
         const angle = Math.random() * Math.PI * 2;
-        const vel = Math.random() * 50 + 20;
+        const vel = Math.random() * 40 + 15;
         const dx = Math.cos(angle) * vel;
         const dy = Math.sin(angle) * vel;
 
         setTimeout(() => {
-            p.style.transform = `translate(${dx}px, ${dy}px) scale(0) rotate(${Math.random() * 360}deg)`;
+            p.style.transform = `translate(${dx}px, ${dy}px) scale(0)`;
             p.style.opacity = '0';
         }, 30);
 
-        setTimeout(() => p.remove(), 1300);
+        setTimeout(() => p.remove(), 1100);
     }
 
     window.addEventListener('click', (e) => {
-        for (let i = 0; i < 5; i++) createSparkle(e.clientX, e.clientY);
+        for (let i = 0; i < 4; i++) createSparkle(e.clientX, e.clientY);
     });
 }
 
@@ -1801,7 +1777,7 @@ function initVideo() {
     }
 }
 
-// --- 11. ESCENA 3D THREE.JS (FLOR DE CROCHET) ---
+// --- 11. ESCENA 3D THREE.JS ---
 function initThreeJS() {
     const canvas = document.getElementById('hero-3d-canvas');
     const fallbackImg = document.getElementById('hero-fallback-img');
@@ -1817,8 +1793,8 @@ function initThreeJS() {
         renderer.setSize(width, height);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        scene.add(new THREE.AmbientLight(0xffffff, 0.7));
-        const dirLight = new THREE.DirectionalLight(0xffffff, 0.95);
+        scene.add(new THREE.AmbientLight(0xffffff, 0.75));
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.9);
         dirLight.position.set(5, 5, 5);
         scene.add(dirLight);
 
@@ -1827,14 +1803,14 @@ function initThreeJS() {
         flowerGroup.add(tiltGroup);
         scene.add(flowerGroup);
 
-        // Centro Dorado
-        const centerMat = new THREE.MeshPhysicalMaterial({ color: 0xFAD02C, roughness: 0.1, metalness: 0.75 });
+        // Centro Dorado Pastel
+        const centerMat = new THREE.MeshPhysicalMaterial({ color: 0xF7D070, roughness: 0.2, metalness: 0.5 });
         const centerMesh = new THREE.Mesh(new THREE.SphereGeometry(0.35, 32, 32), centerMat);
         centerMesh.position.set(0, 0, 0.2);
         tiltGroup.add(centerMesh);
 
-        // Pétalos Rosados
-        const petalMat = new THREE.MeshPhysicalMaterial({ color: 0xFF8CA3, roughness: 0.15, clearcoat: 1.0 });
+        // Pétalos Rosa Empolvado
+        const petalMat = new THREE.MeshPhysicalMaterial({ color: 0xE8A0B5, roughness: 0.2, clearcoat: 0.8 });
         for (let i = 0; i < 8; i++) {
             const petalGeo = new THREE.SphereGeometry(0.65, 32, 16);
             petalGeo.scale(0.5, 0.9, 0.15);
@@ -1846,15 +1822,15 @@ function initThreeJS() {
             tiltGroup.add(petalMesh);
         }
 
-        // Tallo
-        const stemMat = new THREE.MeshPhysicalMaterial({ color: 0x4E6E58, roughness: 0.35 });
-        const stemMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 1.8, 16), stemMat);
+        // Tallo Verde Suave
+        const stemMat = new THREE.MeshPhysicalMaterial({ color: 0x6B9075, roughness: 0.35 });
+        const stemMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 1.8, 16), stemMat);
         stemMesh.position.set(0, -0.9, -0.1);
         tiltGroup.add(stemMesh);
 
         function animate() {
             requestAnimationFrame(animate);
-            flowerGroup.rotation.y += 0.006;
+            flowerGroup.rotation.y += 0.005;
             renderer.render(scene, camera);
         }
         animate();
