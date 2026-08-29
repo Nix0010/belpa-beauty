@@ -11,7 +11,8 @@
     "mediaId": "MAHQOp8EUfM",
     "images": [
       "assets/catalog/item_1_MAHQOp8EUfM.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 2,
@@ -25,7 +26,8 @@
     "mediaId": "MAHShGd7zIc",
     "images": [
       "assets/catalog/item_2_MAHShGd7zIc.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 3,
@@ -39,7 +41,8 @@
     "mediaId": "MAHRoxdMUYc",
     "images": [
       "assets/catalog/item_3_MAHRoxdMUYc.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 4,
@@ -53,7 +56,8 @@
     "mediaId": "MAHRowNcbB8",
     "images": [
       "assets/catalog/item_4_MAHRowNcbB8.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 5,
@@ -67,7 +71,8 @@
     "mediaId": "MAHQ4CuIp3g",
     "images": [
       "assets/catalog/item_5_MAHQ4CuIp3g.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 6,
@@ -81,7 +86,8 @@
     "mediaId": "MAHPmj2Tpbk",
     "images": [
       "assets/catalog/item_6_MAHPmj2Tpbk.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 7,
@@ -95,7 +101,8 @@
     "mediaId": "MAHS1Qb4eEc",
     "images": [
       "assets/catalog/item_7_MAHS1Qb4eEc.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 8,
@@ -109,7 +116,8 @@
     "mediaId": "MAHS1RY-jEE",
     "images": [
       "assets/catalog/item_8_MAHS1RY-jEE.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 9,
@@ -123,7 +131,8 @@
     "mediaId": "MAHQudzb4eg",
     "images": [
       "assets/catalog/item_9_MAHQudzb4eg.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 10,
@@ -137,7 +146,8 @@
     "mediaId": "MAHQ4KYCeEQ",
     "images": [
       "assets/catalog/item_10_MAHQ4KYCeEQ.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 11,
@@ -151,7 +161,8 @@
     "mediaId": "MAHPmncoNSc",
     "images": [
       "assets/catalog/item_11_MAHPmncoNSc.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 12,
@@ -165,7 +176,8 @@
     "mediaId": "MAHQOsxcTQs",
     "images": [
       "assets/catalog/item_12_MAHQOsxcTQs.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 13,
@@ -179,7 +191,8 @@
     "mediaId": "MAHQaR4F-LI",
     "images": [
       "assets/catalog/item_13_MAHQaR4F-LI.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 14,
@@ -193,7 +206,8 @@
     "mediaId": "MAHS16mtKgM",
     "images": [
       "assets/catalog/item_14_MAHS16mtKgM.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 15,
@@ -207,7 +221,8 @@
     "mediaId": "MAHRMue2NRs",
     "images": [
       "assets/catalog/item_15_MAHRMue2NRs.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 16,
@@ -221,7 +236,8 @@
     "mediaId": "MAHRMuZHRJc",
     "images": [
       "assets/catalog/item_16_MAHRMuZHRJc.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 17,
@@ -235,7 +251,8 @@
     "mediaId": "MAHRo4IM_QY",
     "images": [
       "assets/catalog/item_17_MAHRo4IM_QY.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 18,
@@ -249,7 +266,8 @@
     "mediaId": "MAHST6bI3dM",
     "images": [
       "assets/catalog/item_18_MAHST6bI3dM.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 19,
@@ -263,7 +281,8 @@
     "mediaId": "MAHS1lNKdhw",
     "images": [
       "assets/catalog/item_19_MAHS1lNKdhw.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 20,
@@ -277,7 +296,8 @@
     "mediaId": "MAHS14muKlY",
     "images": [
       "assets/catalog/item_20_MAHS14muKlY.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 21,
@@ -291,7 +311,8 @@
     "mediaId": "MAHS15WkPNM",
     "images": [
       "assets/catalog/item_21_MAHS15WkPNM.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 22,
@@ -305,7 +326,8 @@
     "mediaId": "MAHPmp3eA2I",
     "images": [
       "assets/catalog/item_22_MAHPmp3eA2I.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 23,
@@ -319,7 +341,8 @@
     "mediaId": "MAHS15aJDEc",
     "images": [
       "assets/catalog/item_23_MAHS15aJDEc.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 24,
@@ -333,7 +356,8 @@
     "mediaId": "MAHS1_XlHvk",
     "images": [
       "assets/catalog/item_24_MAHS1_XlHvk.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 25,
@@ -347,7 +371,8 @@
     "mediaId": "MAHQW71FD-c",
     "images": [
       "assets/catalog/item_25_MAHQW71FD-c.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 26,
@@ -361,7 +386,8 @@
     "mediaId": "MAHS1hLOLCI",
     "images": [
       "assets/catalog/item_26_MAHS1hLOLCI.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 27,
@@ -375,7 +401,8 @@
     "mediaId": "MAHS1m_fq6s",
     "images": [
       "assets/catalog/item_27_MAHS1m_fq6s.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 28,
@@ -389,7 +416,8 @@
     "mediaId": "MAHRiZYz2-Q",
     "images": [
       "assets/catalog/item_28_MAHRiZYz2-Q.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 29,
@@ -403,7 +431,8 @@
     "mediaId": "MAHS1jyP-yc",
     "images": [
       "assets/catalog/item_29_MAHS1jyP-yc.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 30,
@@ -417,7 +446,8 @@
     "mediaId": "MAHS1gXeVI0",
     "images": [
       "assets/catalog/item_30_MAHS1gXeVI0.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 31,
@@ -431,7 +461,8 @@
     "mediaId": "MAHS2HJml-s",
     "images": [
       "assets/catalog/item_31_MAHS2HJml-s.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 32,
@@ -445,7 +476,8 @@
     "mediaId": "MAHS2IldEgw",
     "images": [
       "assets/catalog/item_32_MAHS2IldEgw.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 33,
@@ -459,7 +491,8 @@
     "mediaId": "MAHS2PRaE_E",
     "images": [
       "assets/catalog/item_33_MAHS2PRaE_E.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 34,
@@ -473,7 +506,8 @@
     "mediaId": "MAHS1mDKXcg",
     "images": [
       "assets/catalog/item_34_MAHS1mDKXcg.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 35,
@@ -487,7 +521,8 @@
     "mediaId": "MAHS1vHW5rE",
     "images": [
       "assets/catalog/item_35_MAHS1vHW5rE.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 36,
@@ -501,7 +536,8 @@
     "mediaId": "MAHPmkuxQdY",
     "images": [
       "assets/catalog/item_36_MAHPmkuxQdY.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 37,
@@ -515,7 +551,8 @@
     "mediaId": "MAHS1hpx7Ks",
     "images": [
       "assets/catalog/item_37_MAHS1hpx7Ks.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 38,
@@ -529,7 +566,8 @@
     "mediaId": "MAHQOl9WAv4",
     "images": [
       "assets/catalog/item_38_MAHQOl9WAv4.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 39,
@@ -543,7 +581,8 @@
     "mediaId": "MAHPmqpV1sY",
     "images": [
       "assets/catalog/item_39_MAHPmqpV1sY.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 40,
@@ -557,7 +596,8 @@
     "mediaId": "MAHNZFjOzxA",
     "images": [
       "assets/catalog/item_40_MAHNZFjOzxA.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 41,
@@ -571,7 +611,8 @@
     "mediaId": "MAHNaRFaFjE",
     "images": [
       "assets/catalog/item_41_MAHNaRFaFjE.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 42,
@@ -585,7 +626,8 @@
     "mediaId": "MAHIuBIvVmQ",
     "images": [
       "assets/catalog/item_42_MAHIuBIvVmQ.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 43,
@@ -599,7 +641,8 @@
     "mediaId": "MAHS2MZ2ubY",
     "images": [
       "assets/catalog/item_43_MAHS2MZ2ubY.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 44,
@@ -613,7 +656,8 @@
     "mediaId": "MAHQaUTpCPQ",
     "images": [
       "assets/catalog/item_44_MAHQaUTpCPQ.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 45,
@@ -627,7 +671,8 @@
     "mediaId": "MAHQcrNeUCI",
     "images": [
       "assets/catalog/item_45_MAHQcrNeUCI.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 46,
@@ -641,7 +686,8 @@
     "mediaId": "MAHQcxF-Omg",
     "images": [
       "assets/catalog/item_46_MAHQcxF-Omg.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 47,
@@ -655,7 +701,8 @@
     "mediaId": "MAHQc4kU0J0",
     "images": [
       "assets/catalog/item_47_MAHQc4kU0J0.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 48,
@@ -669,7 +716,8 @@
     "mediaId": "MAHQcw8Hnw8",
     "images": [
       "assets/catalog/item_48_MAHQcw8Hnw8.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 49,
@@ -683,7 +731,8 @@
     "mediaId": "MAHQcxvnl8s",
     "images": [
       "assets/catalog/item_49_MAHQcxvnl8s.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 50,
@@ -697,7 +746,8 @@
     "mediaId": "MAHQW-0A_E8",
     "images": [
       "assets/catalog/item_50_MAHQW-0A_E8.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 51,
@@ -711,7 +761,8 @@
     "mediaId": "MAHQW_SOR_o",
     "images": [
       "assets/catalog/item_51_MAHQW_SOR_o.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 52,
@@ -725,7 +776,8 @@
     "mediaId": "MAHQW9Qr7Yc",
     "images": [
       "assets/catalog/item_52_MAHQW9Qr7Yc.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 53,
@@ -739,7 +791,8 @@
     "mediaId": "MAHQWx9ZlBE",
     "images": [
       "assets/catalog/item_53_MAHQWx9ZlBE.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 54,
@@ -753,7 +806,8 @@
     "mediaId": "MAHQW1udt2g",
     "images": [
       "assets/catalog/item_54_MAHQW1udt2g.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 55,
@@ -767,7 +821,8 @@
     "mediaId": "MAHQWw6P6m4",
     "images": [
       "assets/catalog/item_55_MAHQWw6P6m4.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 56,
@@ -781,7 +836,8 @@
     "mediaId": "MAHQWzuw9OQ",
     "images": [
       "assets/catalog/item_56_MAHQWzuw9OQ.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 57,
@@ -795,7 +851,8 @@
     "mediaId": "MAHQW6wxDo4",
     "images": [
       "assets/catalog/item_57_MAHQW6wxDo4.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 58,
@@ -809,7 +866,8 @@
     "mediaId": "MAHPRzSttpY",
     "images": [
       "assets/catalog/item_58_MAHPRzSttpY.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 59,
@@ -823,7 +881,8 @@
     "mediaId": "MAHQbeC55WU",
     "images": [
       "assets/catalog/item_59_MAHQbeC55WU.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 60,
@@ -837,7 +896,8 @@
     "mediaId": "MAHQXPO_784",
     "images": [
       "assets/catalog/item_60_MAHQXPO_784.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 61,
@@ -851,7 +911,8 @@
     "mediaId": "MAHQXMNSJy0",
     "images": [
       "assets/catalog/item_61_MAHQXMNSJy0.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 62,
@@ -865,7 +926,8 @@
     "mediaId": "MAHQXK9ApYM",
     "images": [
       "assets/catalog/item_62_MAHQXK9ApYM.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 63,
@@ -879,7 +941,8 @@
     "mediaId": "MAHQXBS9UAw",
     "images": [
       "assets/catalog/item_63_MAHQXBS9UAw.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 64,
@@ -893,7 +956,8 @@
     "mediaId": "MAHQck5nZrI",
     "images": [
       "assets/catalog/item_64_MAHQck5nZrI.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 65,
@@ -907,7 +971,8 @@
     "mediaId": "MAHQcoXs6oo",
     "images": [
       "assets/catalog/item_65_MAHQcoXs6oo.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 66,
@@ -921,7 +986,8 @@
     "mediaId": "MAHQcku9IYs",
     "images": [
       "assets/catalog/item_66_MAHQcku9IYs.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 67,
@@ -935,7 +1001,8 @@
     "mediaId": "MAHQcmSBWVg",
     "images": [
       "assets/catalog/item_67_MAHQcmSBWVg.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 68,
@@ -949,7 +1016,8 @@
     "mediaId": "MAHQcwpIBq8",
     "images": [
       "assets/catalog/item_68_MAHQcwpIBq8.png"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 69,
@@ -963,7 +1031,8 @@
     "mediaId": "MAHQrZJuXQU",
     "images": [
       "assets/catalog/item_69_MAHQrZJuXQU.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 70,
@@ -977,7 +1046,8 @@
     "mediaId": "MAHQrYgr7ZY",
     "images": [
       "assets/catalog/item_70_MAHQrYgr7ZY.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 71,
@@ -991,7 +1061,8 @@
     "mediaId": "MAHRNDSL_Lc",
     "images": [
       "assets/catalog/item_71_MAHRNDSL_Lc.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 72,
@@ -1005,7 +1076,8 @@
     "mediaId": "MAHST6fgGYw",
     "images": [
       "assets/catalog/item_72_MAHST6fgGYw.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 73,
@@ -1019,7 +1091,8 @@
     "mediaId": "MAHS2PEK93E",
     "images": [
       "assets/catalog/item_73_MAHS2PEK93E.jpg"
-    ]
+    ],
+    "brand": "flora"
   },
   {
     "id": 74,
@@ -1033,6 +1106,77 @@
     "mediaId": "MAHS2NuSbvY",
     "images": [
       "assets/catalog/item_74_MAHS2NuSbvY.jpg"
+    ],
+    "brand": "flora"
+  },
+  {
+    "id": 75,
+    "name": "Kit de Skincare Rutina Completa",
+    "category": "CUIDADO FACIAL",
+    "filterCategory": "skincare",
+    "brand": "beauty",
+    "price": "$38,000 COP",
+    "rawPrice": 38000,
+    "badge": "Viral 🔥",
+    "description": "El set definitivo para el cuidado facial diario. Incluye gel limpiador suave, tónico equilibrante y crema hidratante iluminadora para dejar la piel fresca, suave y protegida.",
+    "images": [
+      "assets/product_2.jpg"
+    ]
+  },
+  {
+    "id": 76,
+    "name": "Combo Moño Satín & Lip Gloss Trend",
+    "category": "ACCESORIOS Y LABIOS",
+    "filterCategory": "accesorios",
+    "brand": "beauty",
+    "price": "$22,000 COP",
+    "rawPrice": 22000,
+    "badge": "Nuevo 🎀",
+    "description": "El kit ideal de moños elegantes estilo satín combinados con brillo labial ultra hidratante. Perfecto para añadir un toque tierno a tu look diario.",
+    "images": [
+      "assets/product_3.jpg"
+    ]
+  },
+  {
+    "id": 77,
+    "name": "Sheglam Lip Gloss Sparkling",
+    "category": "MAQUILLAJE LABIOS",
+    "filterCategory": "maquillaje",
+    "brand": "beauty",
+    "price": "$18,000 COP",
+    "rawPrice": 18000,
+    "badge": "Best Seller ⭐",
+    "description": "Brillo labial viral con micro-destellos de purpurina que reflejan la luz de manera espectacular. Proporciona hidratación profunda y volumen óptico sin sensación pegajosa.",
+    "images": [
+      "assets/product_4.jpg"
+    ]
+  },
+  {
+    "id": 78,
+    "name": "Pestañina Prosa 4 en 1 Waterproof",
+    "category": "MAQUILLAJE OJOS",
+    "filterCategory": "maquillaje",
+    "brand": "beauty",
+    "price": "$12,000 COP",
+    "rawPrice": 12000,
+    "badge": "Básico 👀",
+    "description": "Fórmula profesional de larga duración resistente al agua. Enriquecida con aceites naturales de hueso de mamey, sábila, jojoba y germen de trigo.",
+    "images": [
+      "assets/product_5.jpg"
+    ]
+  },
+  {
+    "id": 79,
+    "name": "Alissha Jelly Blush Tinta Rubor",
+    "category": "MAQUILLAJE MEJILLAS",
+    "filterCategory": "maquillaje",
+    "brand": "beauty",
+    "price": "$15,000 COP",
+    "rawPrice": 15000,
+    "badge": "Nuevo Rubor 🍮",
+    "description": "Divertido rubor y tinta multiusos con una textura jelly gelatinosa única. Es sumamente fácil de difuminar, refresca tu piel y aporta una tinta de larga duración.",
+    "images": [
+      "assets/product_6.jpg"
     ]
   }
 ]

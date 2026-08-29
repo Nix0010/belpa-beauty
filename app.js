@@ -1,9 +1,10 @@
 /* ==========================================================================
-   BELPA BEAUTY & BELFLORA - MOTOR DE TIENDA BOUTIQUE 🌸💖
-   Estética Coquette, Delicada y Elegante
+   BELPA - MOTOR DUAL BRAND (💄 BelpaBeauty & 🌹 BelFlora) 🌸💖
+   Una Marca, Dos Mundos de Encanto
    ========================================================================== */
 
 // --- Base de Datos Maestra de Productos ---
+// Cada producto tiene la propiedad brand: 'beauty' o brand: 'flora'
 const productsCatalog = [
     {
         "id": 1,
@@ -17,7 +18,8 @@ const productsCatalog = [
         "mediaId": "MAHQOp8EUfM",
         "images": [
             "assets/catalog/item_1_MAHQOp8EUfM.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 2,
@@ -31,7 +33,8 @@ const productsCatalog = [
         "mediaId": "MAHShGd7zIc",
         "images": [
             "assets/catalog/item_2_MAHShGd7zIc.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 3,
@@ -45,7 +48,8 @@ const productsCatalog = [
         "mediaId": "MAHRoxdMUYc",
         "images": [
             "assets/catalog/item_3_MAHRoxdMUYc.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 4,
@@ -59,7 +63,8 @@ const productsCatalog = [
         "mediaId": "MAHRowNcbB8",
         "images": [
             "assets/catalog/item_4_MAHRowNcbB8.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 5,
@@ -73,7 +78,8 @@ const productsCatalog = [
         "mediaId": "MAHQ4CuIp3g",
         "images": [
             "assets/catalog/item_5_MAHQ4CuIp3g.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 6,
@@ -87,7 +93,8 @@ const productsCatalog = [
         "mediaId": "MAHPmj2Tpbk",
         "images": [
             "assets/catalog/item_6_MAHPmj2Tpbk.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 7,
@@ -101,7 +108,8 @@ const productsCatalog = [
         "mediaId": "MAHS1Qb4eEc",
         "images": [
             "assets/catalog/item_7_MAHS1Qb4eEc.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 8,
@@ -115,7 +123,8 @@ const productsCatalog = [
         "mediaId": "MAHS1RY-jEE",
         "images": [
             "assets/catalog/item_8_MAHS1RY-jEE.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 9,
@@ -129,7 +138,8 @@ const productsCatalog = [
         "mediaId": "MAHQudzb4eg",
         "images": [
             "assets/catalog/item_9_MAHQudzb4eg.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 10,
@@ -143,7 +153,8 @@ const productsCatalog = [
         "mediaId": "MAHQ4KYCeEQ",
         "images": [
             "assets/catalog/item_10_MAHQ4KYCeEQ.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 11,
@@ -157,7 +168,8 @@ const productsCatalog = [
         "mediaId": "MAHPmncoNSc",
         "images": [
             "assets/catalog/item_11_MAHPmncoNSc.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 12,
@@ -171,7 +183,8 @@ const productsCatalog = [
         "mediaId": "MAHQOsxcTQs",
         "images": [
             "assets/catalog/item_12_MAHQOsxcTQs.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 13,
@@ -185,7 +198,8 @@ const productsCatalog = [
         "mediaId": "MAHQaR4F-LI",
         "images": [
             "assets/catalog/item_13_MAHQaR4F-LI.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 14,
@@ -199,7 +213,8 @@ const productsCatalog = [
         "mediaId": "MAHS16mtKgM",
         "images": [
             "assets/catalog/item_14_MAHS16mtKgM.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 15,
@@ -213,7 +228,8 @@ const productsCatalog = [
         "mediaId": "MAHRMue2NRs",
         "images": [
             "assets/catalog/item_15_MAHRMue2NRs.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 16,
@@ -227,7 +243,8 @@ const productsCatalog = [
         "mediaId": "MAHRMuZHRJc",
         "images": [
             "assets/catalog/item_16_MAHRMuZHRJc.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 17,
@@ -241,7 +258,8 @@ const productsCatalog = [
         "mediaId": "MAHRo4IM_QY",
         "images": [
             "assets/catalog/item_17_MAHRo4IM_QY.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 18,
@@ -255,7 +273,8 @@ const productsCatalog = [
         "mediaId": "MAHST6bI3dM",
         "images": [
             "assets/catalog/item_18_MAHST6bI3dM.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 19,
@@ -269,7 +288,8 @@ const productsCatalog = [
         "mediaId": "MAHS1lNKdhw",
         "images": [
             "assets/catalog/item_19_MAHS1lNKdhw.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 20,
@@ -283,7 +303,8 @@ const productsCatalog = [
         "mediaId": "MAHS14muKlY",
         "images": [
             "assets/catalog/item_20_MAHS14muKlY.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 21,
@@ -297,7 +318,8 @@ const productsCatalog = [
         "mediaId": "MAHS15WkPNM",
         "images": [
             "assets/catalog/item_21_MAHS15WkPNM.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 22,
@@ -311,7 +333,8 @@ const productsCatalog = [
         "mediaId": "MAHPmp3eA2I",
         "images": [
             "assets/catalog/item_22_MAHPmp3eA2I.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 23,
@@ -325,7 +348,8 @@ const productsCatalog = [
         "mediaId": "MAHS15aJDEc",
         "images": [
             "assets/catalog/item_23_MAHS15aJDEc.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 24,
@@ -339,7 +363,8 @@ const productsCatalog = [
         "mediaId": "MAHS1_XlHvk",
         "images": [
             "assets/catalog/item_24_MAHS1_XlHvk.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 25,
@@ -353,7 +378,8 @@ const productsCatalog = [
         "mediaId": "MAHQW71FD-c",
         "images": [
             "assets/catalog/item_25_MAHQW71FD-c.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 26,
@@ -367,7 +393,8 @@ const productsCatalog = [
         "mediaId": "MAHS1hLOLCI",
         "images": [
             "assets/catalog/item_26_MAHS1hLOLCI.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 27,
@@ -381,7 +408,8 @@ const productsCatalog = [
         "mediaId": "MAHS1m_fq6s",
         "images": [
             "assets/catalog/item_27_MAHS1m_fq6s.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 28,
@@ -395,7 +423,8 @@ const productsCatalog = [
         "mediaId": "MAHRiZYz2-Q",
         "images": [
             "assets/catalog/item_28_MAHRiZYz2-Q.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 29,
@@ -409,7 +438,8 @@ const productsCatalog = [
         "mediaId": "MAHS1jyP-yc",
         "images": [
             "assets/catalog/item_29_MAHS1jyP-yc.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 30,
@@ -423,7 +453,8 @@ const productsCatalog = [
         "mediaId": "MAHS1gXeVI0",
         "images": [
             "assets/catalog/item_30_MAHS1gXeVI0.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 31,
@@ -437,7 +468,8 @@ const productsCatalog = [
         "mediaId": "MAHS2HJml-s",
         "images": [
             "assets/catalog/item_31_MAHS2HJml-s.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 32,
@@ -451,7 +483,8 @@ const productsCatalog = [
         "mediaId": "MAHS2IldEgw",
         "images": [
             "assets/catalog/item_32_MAHS2IldEgw.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 33,
@@ -465,7 +498,8 @@ const productsCatalog = [
         "mediaId": "MAHS2PRaE_E",
         "images": [
             "assets/catalog/item_33_MAHS2PRaE_E.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 34,
@@ -479,7 +513,8 @@ const productsCatalog = [
         "mediaId": "MAHS1mDKXcg",
         "images": [
             "assets/catalog/item_34_MAHS1mDKXcg.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 35,
@@ -493,7 +528,8 @@ const productsCatalog = [
         "mediaId": "MAHS1vHW5rE",
         "images": [
             "assets/catalog/item_35_MAHS1vHW5rE.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 36,
@@ -507,7 +543,8 @@ const productsCatalog = [
         "mediaId": "MAHPmkuxQdY",
         "images": [
             "assets/catalog/item_36_MAHPmkuxQdY.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 37,
@@ -521,7 +558,8 @@ const productsCatalog = [
         "mediaId": "MAHS1hpx7Ks",
         "images": [
             "assets/catalog/item_37_MAHS1hpx7Ks.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 38,
@@ -535,7 +573,8 @@ const productsCatalog = [
         "mediaId": "MAHQOl9WAv4",
         "images": [
             "assets/catalog/item_38_MAHQOl9WAv4.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 39,
@@ -549,7 +588,8 @@ const productsCatalog = [
         "mediaId": "MAHPmqpV1sY",
         "images": [
             "assets/catalog/item_39_MAHPmqpV1sY.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 40,
@@ -563,7 +603,8 @@ const productsCatalog = [
         "mediaId": "MAHNZFjOzxA",
         "images": [
             "assets/catalog/item_40_MAHNZFjOzxA.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 41,
@@ -577,7 +618,8 @@ const productsCatalog = [
         "mediaId": "MAHNaRFaFjE",
         "images": [
             "assets/catalog/item_41_MAHNaRFaFjE.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 42,
@@ -591,7 +633,8 @@ const productsCatalog = [
         "mediaId": "MAHIuBIvVmQ",
         "images": [
             "assets/catalog/item_42_MAHIuBIvVmQ.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 43,
@@ -605,7 +648,8 @@ const productsCatalog = [
         "mediaId": "MAHS2MZ2ubY",
         "images": [
             "assets/catalog/item_43_MAHS2MZ2ubY.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 44,
@@ -619,7 +663,8 @@ const productsCatalog = [
         "mediaId": "MAHQaUTpCPQ",
         "images": [
             "assets/catalog/item_44_MAHQaUTpCPQ.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 45,
@@ -633,7 +678,8 @@ const productsCatalog = [
         "mediaId": "MAHQcrNeUCI",
         "images": [
             "assets/catalog/item_45_MAHQcrNeUCI.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 46,
@@ -647,7 +693,8 @@ const productsCatalog = [
         "mediaId": "MAHQcxF-Omg",
         "images": [
             "assets/catalog/item_46_MAHQcxF-Omg.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 47,
@@ -661,7 +708,8 @@ const productsCatalog = [
         "mediaId": "MAHQc4kU0J0",
         "images": [
             "assets/catalog/item_47_MAHQc4kU0J0.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 48,
@@ -675,7 +723,8 @@ const productsCatalog = [
         "mediaId": "MAHQcw8Hnw8",
         "images": [
             "assets/catalog/item_48_MAHQcw8Hnw8.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 49,
@@ -689,7 +738,8 @@ const productsCatalog = [
         "mediaId": "MAHQcxvnl8s",
         "images": [
             "assets/catalog/item_49_MAHQcxvnl8s.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 50,
@@ -703,7 +753,8 @@ const productsCatalog = [
         "mediaId": "MAHQW-0A_E8",
         "images": [
             "assets/catalog/item_50_MAHQW-0A_E8.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 51,
@@ -717,7 +768,8 @@ const productsCatalog = [
         "mediaId": "MAHQW_SOR_o",
         "images": [
             "assets/catalog/item_51_MAHQW_SOR_o.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 52,
@@ -731,7 +783,8 @@ const productsCatalog = [
         "mediaId": "MAHQW9Qr7Yc",
         "images": [
             "assets/catalog/item_52_MAHQW9Qr7Yc.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 53,
@@ -745,7 +798,8 @@ const productsCatalog = [
         "mediaId": "MAHQWx9ZlBE",
         "images": [
             "assets/catalog/item_53_MAHQWx9ZlBE.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 54,
@@ -759,7 +813,8 @@ const productsCatalog = [
         "mediaId": "MAHQW1udt2g",
         "images": [
             "assets/catalog/item_54_MAHQW1udt2g.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 55,
@@ -773,7 +828,8 @@ const productsCatalog = [
         "mediaId": "MAHQWw6P6m4",
         "images": [
             "assets/catalog/item_55_MAHQWw6P6m4.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 56,
@@ -787,7 +843,8 @@ const productsCatalog = [
         "mediaId": "MAHQWzuw9OQ",
         "images": [
             "assets/catalog/item_56_MAHQWzuw9OQ.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 57,
@@ -801,7 +858,8 @@ const productsCatalog = [
         "mediaId": "MAHQW6wxDo4",
         "images": [
             "assets/catalog/item_57_MAHQW6wxDo4.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 58,
@@ -815,7 +873,8 @@ const productsCatalog = [
         "mediaId": "MAHPRzSttpY",
         "images": [
             "assets/catalog/item_58_MAHPRzSttpY.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 59,
@@ -829,7 +888,8 @@ const productsCatalog = [
         "mediaId": "MAHQbeC55WU",
         "images": [
             "assets/catalog/item_59_MAHQbeC55WU.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 60,
@@ -843,7 +903,8 @@ const productsCatalog = [
         "mediaId": "MAHQXPO_784",
         "images": [
             "assets/catalog/item_60_MAHQXPO_784.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 61,
@@ -857,7 +918,8 @@ const productsCatalog = [
         "mediaId": "MAHQXMNSJy0",
         "images": [
             "assets/catalog/item_61_MAHQXMNSJy0.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 62,
@@ -871,7 +933,8 @@ const productsCatalog = [
         "mediaId": "MAHQXK9ApYM",
         "images": [
             "assets/catalog/item_62_MAHQXK9ApYM.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 63,
@@ -885,7 +948,8 @@ const productsCatalog = [
         "mediaId": "MAHQXBS9UAw",
         "images": [
             "assets/catalog/item_63_MAHQXBS9UAw.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 64,
@@ -899,7 +963,8 @@ const productsCatalog = [
         "mediaId": "MAHQck5nZrI",
         "images": [
             "assets/catalog/item_64_MAHQck5nZrI.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 65,
@@ -913,7 +978,8 @@ const productsCatalog = [
         "mediaId": "MAHQcoXs6oo",
         "images": [
             "assets/catalog/item_65_MAHQcoXs6oo.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 66,
@@ -927,7 +993,8 @@ const productsCatalog = [
         "mediaId": "MAHQcku9IYs",
         "images": [
             "assets/catalog/item_66_MAHQcku9IYs.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 67,
@@ -941,7 +1008,8 @@ const productsCatalog = [
         "mediaId": "MAHQcmSBWVg",
         "images": [
             "assets/catalog/item_67_MAHQcmSBWVg.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 68,
@@ -955,7 +1023,8 @@ const productsCatalog = [
         "mediaId": "MAHQcwpIBq8",
         "images": [
             "assets/catalog/item_68_MAHQcwpIBq8.png"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 69,
@@ -969,7 +1038,8 @@ const productsCatalog = [
         "mediaId": "MAHQrZJuXQU",
         "images": [
             "assets/catalog/item_69_MAHQrZJuXQU.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 70,
@@ -983,7 +1053,8 @@ const productsCatalog = [
         "mediaId": "MAHQrYgr7ZY",
         "images": [
             "assets/catalog/item_70_MAHQrYgr7ZY.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 71,
@@ -997,7 +1068,8 @@ const productsCatalog = [
         "mediaId": "MAHRNDSL_Lc",
         "images": [
             "assets/catalog/item_71_MAHRNDSL_Lc.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 72,
@@ -1011,7 +1083,8 @@ const productsCatalog = [
         "mediaId": "MAHST6fgGYw",
         "images": [
             "assets/catalog/item_72_MAHST6fgGYw.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 73,
@@ -1025,7 +1098,8 @@ const productsCatalog = [
         "mediaId": "MAHS2PEK93E",
         "images": [
             "assets/catalog/item_73_MAHS2PEK93E.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 74,
@@ -1039,13 +1113,15 @@ const productsCatalog = [
         "mediaId": "MAHS2NuSbvY",
         "images": [
             "assets/catalog/item_74_MAHS2NuSbvY.jpg"
-        ]
+        ],
+        "brand": "flora"
     },
     {
         "id": 75,
         "name": "Kit de Skincare Rutina Completa",
         "category": "CUIDADO FACIAL",
         "filterCategory": "skincare",
+        "brand": "beauty",
         "price": "$38,000 COP",
         "rawPrice": 38000,
         "badge": "Viral 🔥",
@@ -1059,6 +1135,7 @@ const productsCatalog = [
         "name": "Combo Moño Satín & Lip Gloss Trend",
         "category": "ACCESORIOS Y LABIOS",
         "filterCategory": "accesorios",
+        "brand": "beauty",
         "price": "$22,000 COP",
         "rawPrice": 22000,
         "badge": "Nuevo 🎀",
@@ -1072,6 +1149,7 @@ const productsCatalog = [
         "name": "Sheglam Lip Gloss Sparkling",
         "category": "MAQUILLAJE LABIOS",
         "filterCategory": "maquillaje",
+        "brand": "beauty",
         "price": "$18,000 COP",
         "rawPrice": 18000,
         "badge": "Best Seller ⭐",
@@ -1085,6 +1163,7 @@ const productsCatalog = [
         "name": "Pestañina Prosa 4 en 1 Waterproof",
         "category": "MAQUILLAJE OJOS",
         "filterCategory": "maquillaje",
+        "brand": "beauty",
         "price": "$12,000 COP",
         "rawPrice": 12000,
         "badge": "Básico 👀",
@@ -1098,6 +1177,7 @@ const productsCatalog = [
         "name": "Alissha Jelly Blush Tinta Rubor",
         "category": "MAQUILLAJE MEJILLAS",
         "filterCategory": "maquillaje",
+        "brand": "beauty",
         "price": "$15,000 COP",
         "rawPrice": 15000,
         "badge": "Nuevo Rubor 🍮",
@@ -1109,62 +1189,75 @@ const productsCatalog = [
 ];
 const fullCatalog = productsCatalog;
 
+// Mapa de productos por ID
+const productsMap = {};
+fullCatalog.forEach(p => { productsMap[p.id] = p; });
+
+const whatsappLinkBase = 'https://wa.me/message/Z4TVXHB3UPMRI1';
+
 // ============================================================
 // CONFIGURACIÓN DE REELS DE INSTAGRAM / INSPIRACIÓN 🌸✨
-// ¡Aquí puedes agregar o cambiar fácilmente las URLs de tus Reels oficiales!
+// Separados por marca para una experiencia temática dedicada
 // ============================================================
 const instagramConfig = {
-    profileUrl: "https://www.instagram.com/belflora.co", // URL oficial de tu perfil de Instagram
+    profileUrl: "https://www.instagram.com/belflora.co", // Perfil oficial principal
+    beautyProfileUrl: "https://www.instagram.com/belflora.co",
+    floraProfileUrl: "https://www.instagram.com/belflora.co",
     reels: [
+        // Reels de BelFlora (Flores & Regalos)
         {
             id: 1,
+            brand: "flora",
             title: "Proceso de Rosas Eternas",
-            tag: "🌹 Hecho a Mano",
-            // 👉 Pega aquí la URL oficial de tu Reel de Instagram (ej: "https://www.instagram.com/reel/Cxxxxxx/"):
+            tag: "🌹 BelFlora • Hecho a Mano",
             reelUrl: "https://www.instagram.com/belflora.co",
             previewImage: "assets/hero_main.jpg",
             caption: "Moldeando cada pétalo a mano con limpiapipas suaves y dedicación ✨"
         },
         {
             id: 2,
+            brand: "flora",
             title: "Unboxing de Regalos & Luces",
-            tag: "🎁 Empaque & Regalos",
-            // 👉 Pega aquí la URL oficial de tu Reel de Instagram:
+            tag: "🎁 BelFlora • Empaque",
             reelUrl: "https://www.instagram.com/belflora.co",
             previewImage: "assets/product_1.jpg",
             caption: "Cajitas perfumadas con viruta de colores y series LED cálidas 🎀"
         },
         {
             id: 3,
+            brand: "flora",
             title: "Colección Temática Rapunzel",
-            tag: "👑 Disney & Peluches",
-            // 👉 Pega aquí la URL oficial de tu Reel de Instagram:
+            tag: "👑 BelFlora • Disney",
             reelUrl: "https://www.instagram.com/belflora.co",
             previewImage: "assets/catalog/item_1_MAHQOp8EUfM.jpg",
             caption: "Detalles mágicos inspirados en princesas y flores fulgor doradas 🌸"
         },
+        // Reels de BelpaBeauty (Cosméticos & Maquillaje)
         {
             id: 4,
+            brand: "beauty",
             title: "Maquillaje Viral & Tendencias",
-            tag: "💄 Cosméticos & Belleza",
-            // 👉 Pega aquí la URL oficial de tu Reel de Instagram:
+            tag: "💄 BelpaBeauty • Labios",
             reelUrl: "https://www.instagram.com/belflora.co",
             previewImage: "assets/product_4.jpg",
             caption: "Brillos con microdestellos y tintas para tu rutina diaria 💕"
+        },
+        {
+            id: 5,
+            brand: "beauty",
+            title: "Rutina Glow & Skincare",
+            tag: "🧴 BelpaBeauty • Skincare",
+            reelUrl: "https://www.instagram.com/belflora.co",
+            previewImage: "assets/product_2.jpg",
+            caption: "Piel luminosa y protegida con nuestros combos de hidratación ✨"
         }
     ]
 };
 
 window.belpaInstagramConfig = instagramConfig;
 
-
-// Mapa de productos por ID para acceso rápido
-const productsMap = {};
-fullCatalog.forEach(p => { productsMap[p.id] = p; });
-
-const whatsappLinkBase = 'https://wa.me/message/Z4TVXHB3UPMRI1';
-
-// Estado global de la aplicación
+// Estado global
+let activeBrand = 'all'; // 'all', 'beauty', 'flora'
 let currentCategory = 'all';
 let currentSearch = '';
 let cart = [];
@@ -1185,7 +1278,6 @@ function saveCart() {
     renderCartDrawer();
 }
 
-// Formateador de moneda en Pesos Colombianos (COP)
 function formatCOP(number) {
     return new Intl.NumberFormat('es-CO', {
         style: 'currency',
@@ -1194,7 +1286,6 @@ function formatCOP(number) {
     }).format(number);
 }
 
-// Notificación Toast flotante
 function showToast(message, icon = '🌸') {
     let toast = document.getElementById('belpa-toast');
     if (!toast) {
@@ -1240,9 +1331,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Inicializaciones
-    renderCategoryFilters();
-    renderProducts();
+    // 3. Router por Hash (/#beauty, /#flora, /#inicio)
+    initRouting();
+
+    // 4. Inicializaciones de Componentes
     initSearch();
     initCartSystem();
     initQuickViewModal();
@@ -1250,44 +1342,135 @@ document.addEventListener('DOMContentLoaded', () => {
     initMascot();
     initContactForm();
     initSparkles();
-    initInstagramReels();
     initThreeJS();
 });
 
-// Helper para categorización
-function matchProductCategory(product, catId) {
-    if (catId === 'all') return true;
-    if (catId === 'rosas_ramos') {
-        return ['tulipanes', 'girasoles', 'lirios', 'gerberas', 'primavera', 'bouquets'].includes(product.filterCategory);
+// --- ENRUTAMIENTO Y SWITCH DE MARCAS (BELPABEAUTY / BELFLORA) ---
+function initRouting() {
+    function handleHash() {
+        const hash = window.location.hash.toLowerCase();
+        if (hash === '#beauty' || hash === '#belpabeauty') {
+            setBrandView('beauty', true);
+        } else if (hash === '#flora' || hash === '#belflora') {
+            setBrandView('flora', true);
+        } else if (hash === '#catalogo') {
+            setBrandView('all', false);
+        } else {
+            setBrandView('all', false);
+        }
     }
-    if (catId === 'tematicas') {
-        return ['tematicas', 'peluches'].includes(product.filterCategory);
-    }
-    if (catId === 'capsulas_cuadros') {
-        return ['capsulas', 'cuadros', 'espejos'].includes(product.filterCategory);
-    }
-    if (catId === 'materitos_figuras') {
-        return ['materitos', 'figuritas', 'llaveros'].includes(product.filterCategory);
-    }
-    if (catId === 'maquillaje') {
-        return ['maquillaje', 'skincare', 'accesorios'].includes(product.filterCategory);
-    }
-    return product.filterCategory === catId;
+
+    window.addEventListener('hashchange', handleHash);
+    handleHash();
 }
 
-// --- FILTROS DE CATEGORÍA ELEGANTES & COQUETTE ---
+window.setBrandView = function(brand, autoScroll = true) {
+    activeBrand = brand;
+    currentCategory = 'all';
+    currentSearch = '';
+
+    const searchInput = document.getElementById('catalog-search-input');
+    if (searchInput) searchInput.value = '';
+
+    // Actualizar clases activas en Navbar
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const navBrand = link.getAttribute('data-brand-nav');
+        if (navBrand === brand) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+
+    // Actualizar Banner de Marca
+    updateBrandBanner();
+    renderCategoryFilters();
+    renderProducts();
+    renderInstagramReels();
+
+    if (autoScroll) {
+        const catalogSection = document.getElementById('catalogo');
+        if (catalogSection) {
+            catalogSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+};
+
+function updateBrandBanner() {
+    const bannerEl = document.getElementById('brand-header-banner');
+    if (!bannerEl) return;
+
+    if (activeBrand === 'beauty') {
+        bannerEl.className = 'brand-header-banner beauty-banner';
+        bannerEl.innerHTML = `
+            <div class="brand-banner-content">
+                <span class="brand-banner-badge">💄 BelpaBeauty Boutique</span>
+                <h2 class="brand-banner-title">Cosméticos, Maquillaje & Belleza</h2>
+                <p class="brand-banner-desc">Descubre maquillaje de tendencia viral, cuidado facial hidratante y accesorios diseñados para realzar tu brillo natural diario.</p>
+                <div class="brand-banner-tags">
+                    <span>✨ Clean Makeup</span>
+                    <span>💋 Lip Gloss Trend</span>
+                    <span>🧴 Cuidado Facial</span>
+                    <span>🚚 Envíos Nacionales</span>
+                </div>
+            </div>
+        `;
+    } else if (activeBrand === 'flora') {
+        bannerEl.className = 'brand-header-banner flora-banner';
+        bannerEl.innerHTML = `
+            <div class="brand-banner-content">
+                <span class="brand-banner-badge">🌹 BelFlora Boutique</span>
+                <h2 class="brand-banner-title">Rosas Hechas a Mano & Regalos</h2>
+                <p class="brand-banner-desc">Ramos eternos tejidos a mano en limpiapipas de alta suavidad, personajes temáticos Disney & Sanrio, y cúpulas de cristal con luces LED.</p>
+                <div class="brand-banner-tags">
+                    <span>🌸 100% Hecho a Mano</span>
+                    <span>👑 Temáticas Disney</span>
+                    <span>🧸 Peluches Originales</span>
+                    <span>✨ Luces LED Cálidas</span>
+                </div>
+            </div>
+        `;
+    } else {
+        bannerEl.className = 'brand-header-banner all-banner';
+        bannerEl.innerHTML = `
+            <div class="brand-banner-content">
+                <span class="brand-banner-badge">🌸 Belpa • Dos Mundos de Encanto</span>
+                <h2 class="brand-banner-title">Catálogo Completo de Regalos & Cosméticos</h2>
+                <p class="brand-banner-desc">Explora todas nuestras creaciones de flores eternas en limpiapipas y cosméticos seleccionados en un solo lugar.</p>
+            </div>
+        `;
+    }
+}
+
+// --- FILTROS DE CATEGORÍA SEGÚN MARCA ---
 function renderCategoryFilters() {
     const categoriesContainer = document.getElementById('visual-categories-container');
     if (!categoriesContainer) return;
 
-    const categories = [
-        { id: 'all', name: 'Todos', icon: '🌸', count: fullCatalog.length },
-        { id: 'rosas_ramos', name: 'Rosas & Ramos Eternos', icon: '🌹', count: fullCatalog.filter(p => matchProductCategory(p, 'rosas_ramos')).length },
-        { id: 'tematicas', name: 'Disney & Peluches', icon: '👑', count: fullCatalog.filter(p => matchProductCategory(p, 'tematicas')).length },
-        { id: 'capsulas_cuadros', name: 'Cápsulas & Cuadros 3D', icon: '🔮', count: fullCatalog.filter(p => matchProductCategory(p, 'capsulas_cuadros')).length },
-        { id: 'materitos_figuras', name: 'Materitos & Figuras', icon: '🪴', count: fullCatalog.filter(p => matchProductCategory(p, 'materitos_figuras')).length },
-        { id: 'maquillaje', name: 'Maquillaje & Belleza', icon: '💄', count: fullCatalog.filter(p => matchProductCategory(p, 'maquillaje')).length }
-    ];
+    let categories = [];
+
+    if (activeBrand === 'beauty') {
+        categories = [
+            { id: 'all', name: 'Todo en Belleza', icon: '💄', count: fullCatalog.filter(p => p.brand === 'beauty').length },
+            { id: 'maquillaje', name: 'Labios & Maquillaje', icon: '💋', count: fullCatalog.filter(p => p.brand === 'beauty' && p.filterCategory === 'maquillaje').length },
+            { id: 'skincare', name: 'Skincare & Rostro', icon: '🧴', count: fullCatalog.filter(p => p.brand === 'beauty' && p.filterCategory === 'skincare').length },
+            { id: 'accesorios', name: 'Combos & Moños', icon: '🎀', count: fullCatalog.filter(p => p.brand === 'beauty' && p.filterCategory === 'accesorios').length }
+        ];
+    } else if (activeBrand === 'flora') {
+        categories = [
+            { id: 'all', name: 'Todo en BelFlora', icon: '🌸', count: fullCatalog.filter(p => p.brand === 'flora').length },
+            { id: 'rosas_ramos', name: 'Rosas & Ramos', icon: '🌹', count: fullCatalog.filter(p => p.brand === 'flora' && ['tulipanes', 'girasoles', 'lirios', 'gerberas', 'primavera', 'bouquets'].includes(p.filterCategory)).length },
+            { id: 'tematicas', name: 'Disney & Peluches', icon: '👑', count: fullCatalog.filter(p => p.brand === 'flora' && ['tematicas', 'peluches'].includes(p.filterCategory)).length },
+            { id: 'capsulas_cuadros', name: 'Cápsulas & Cuadros', icon: '🔮', count: fullCatalog.filter(p => p.brand === 'flora' && ['capsulas', 'cuadros', 'espejos'].includes(p.filterCategory)).length },
+            { id: 'materitos_figuras', name: 'Materitos & Figuras', icon: '🪴', count: fullCatalog.filter(p => p.brand === 'flora' && ['materitos', 'figuritas', 'llaveros'].includes(p.filterCategory)).length }
+        ];
+    } else {
+        categories = [
+            { id: 'all', name: 'Todos los Productos', icon: '🌸', count: fullCatalog.length },
+            { id: 'flora', name: '🌹 BelFlora (Flores)', icon: '🌹', count: fullCatalog.filter(p => p.brand === 'flora').length },
+            { id: 'beauty', name: '💄 BelpaBeauty (Makeup)', icon: '💄', count: fullCatalog.filter(p => p.brand === 'beauty').length }
+        ];
+    }
 
     categoriesContainer.innerHTML = categories.map(cat => `
         <div class="category-circle-card ${currentCategory === cat.id ? 'active' : ''}" data-filter="${cat.id}">
@@ -1305,6 +1488,25 @@ function renderCategoryFilters() {
             renderProducts();
         });
     });
+}
+
+function matchProductCategory(product, catId) {
+    if (catId === 'all') return true;
+    if (catId === 'flora') return product.brand === 'flora';
+    if (catId === 'beauty') return product.brand === 'beauty';
+    if (catId === 'rosas_ramos') {
+        return ['tulipanes', 'girasoles', 'lirios', 'gerberas', 'primavera', 'bouquets'].includes(product.filterCategory);
+    }
+    if (catId === 'tematicas') {
+        return ['tematicas', 'peluches'].includes(product.filterCategory);
+    }
+    if (catId === 'capsulas_cuadros') {
+        return ['capsulas', 'cuadros', 'espejos'].includes(product.filterCategory);
+    }
+    if (catId === 'materitos_figuras') {
+        return ['materitos', 'figuritas', 'llaveros'].includes(product.filterCategory);
+    }
+    return product.filterCategory === catId;
 }
 
 // --- BUSCADOR EN TIEMPO REAL ---
@@ -1339,18 +1541,25 @@ function renderProducts() {
     if (!grid) return;
 
     let filtered = fullCatalog.filter(p => {
+        // Filtrado por Marca Activa
+        const matchBrand = (activeBrand === 'all') || (p.brand === activeBrand);
+        
+        // Filtrado por Categoría
         const matchCategory = matchProductCategory(p, currentCategory);
+        
+        // Filtrado por Búsqueda
         const matchSearch = !currentSearch || 
             p.name.toLowerCase().includes(currentSearch) || 
             p.category.toLowerCase().includes(currentSearch) || 
             p.description.toLowerCase().includes(currentSearch) ||
             p.price.toLowerCase().includes(currentSearch);
 
-        return matchCategory && matchSearch;
+        return matchBrand && matchCategory && matchSearch;
     });
 
     if (countEl) {
-        countEl.textContent = `Mostrando ${filtered.length} de ${fullCatalog.length} productos`;
+        const brandName = activeBrand === 'beauty' ? 'BelpaBeauty' : (activeBrand === 'flora' ? 'BelFlora' : 'la tienda');
+        countEl.textContent = `Mostrando ${filtered.length} productos en ${brandName}`;
     }
 
     if (filtered.length === 0) {
@@ -1358,7 +1567,7 @@ function renderProducts() {
             <div class="empty-catalog-state">
                 <div class="empty-icon">🌸🔍</div>
                 <h3>No encontramos productos para "${currentSearch}"</h3>
-                <p>Intenta con otra palabra como "Rapunzel", "Lotso", "Girasol", "Lirio", "Cúpula", "Kitty", o explora las categorías.</p>
+                <p>Intenta con otra palabra o cambia de categoría.</p>
                 <button class="btn-primary-premium" onclick="resetFilters()">Ver todos los productos</button>
             </div>
         `;
@@ -1367,6 +1576,7 @@ function renderProducts() {
 
     grid.innerHTML = filtered.map(p => {
         const imageSrc = p.images && p.images[0] ? p.images[0] : 'assets/product_1.jpg';
+        const brandTag = p.brand === 'beauty' ? '💄 BelpaBeauty' : '🌹 BelFlora';
         
         return `
             <div class="product-card" data-product-id="${p.id}">
@@ -1378,7 +1588,10 @@ function renderProducts() {
                     </button>
                 </div>
                 <div class="product-info">
-                    <span class="product-category-label">${p.category}</span>
+                    <div class="product-meta-row">
+                        <span class="product-brand-tag ${p.brand}">${brandTag}</span>
+                        <span class="product-category-label">${p.category}</span>
+                    </div>
                     <h3 class="product-name" onclick="openQuickView(${p.id})">${p.name}</h3>
                     <p class="product-desc">${p.description.length > 80 ? p.description.substring(0, 80) + '...' : p.description}</p>
                     
@@ -1411,8 +1624,6 @@ window.resetFilters = function() {
 
 window.handleAddCardToCart = function(productId, btn) {
     addToCart(productId, 1);
-    
-    // Feedback visual sutil
     const origText = btn.innerHTML;
     btn.innerHTML = '<span>✓ ¡Listo!</span>';
     btn.classList.add('added');
@@ -1426,11 +1637,48 @@ window.handleCardDirectBuy = function(productId, btn) {
     const p = productsMap[productId];
     if (!p) return;
 
-    const message = `¡Hola Belpa Beauty! 💖 Vengo de su página web y me encantaría ordenar:\n*• 1x ${p.name}* (${p.price})\n\n¿Me confirman disponibilidad para coordinar la entrega? ¡Muchas gracias! ✨`;
+    const brandName = p.brand === 'beauty' ? 'BelpaBeauty' : 'BelFlora';
+    const message = `¡Hola Belpa! 💖 Vengo de su página web y me encantaría pedir este producto de *${brandName}*:\n*• 1x ${p.name}* (${p.price})\n\n¿Me confirman disponibilidad para coordinar la entrega? ¡Muchas gracias! ✨`;
     window.open(`${whatsappLinkBase}?text=${encodeURIComponent(message)}`, '_blank');
 };
 
-// --- 4. SISTEMA DE CARRITO DE COMPRAS ---
+// --- 4. REELS DE INSTAGRAM SEGÚN MARCA ---
+function renderInstagramReels() {
+    const container = document.getElementById('instagram-reels-container');
+    const profileBtn = document.getElementById('btn-instagram-profile');
+    if (!container) return;
+
+    if (profileBtn) {
+        profileBtn.href = activeBrand === 'beauty' ? instagramConfig.beautyProfileUrl : instagramConfig.floraProfileUrl;
+    }
+
+    let reelsToShow = instagramConfig.reels;
+    if (activeBrand === 'beauty') {
+        reelsToShow = instagramConfig.reels.filter(r => r.brand === 'beauty');
+    } else if (activeBrand === 'flora') {
+        reelsToShow = instagramConfig.reels.filter(r => r.brand === 'flora');
+    }
+
+    container.innerHTML = reelsToShow.map(reel => {
+        const targetUrl = reel.reelUrl || instagramConfig.profileUrl;
+        return `
+            <a href="${targetUrl}" target="_blank" rel="noreferrer" class="reel-card" title="${reel.title}">
+                <div class="reel-media-wrapper">
+                    <img src="${reel.previewImage}" alt="${reel.title}" class="reel-preview-img" loading="lazy">
+                    <span class="reel-badge-tag">${reel.tag}</span>
+                    <div class="reel-play-overlay">▶</div>
+                    <div class="reel-content-overlay">
+                        <h4 class="reel-title">${reel.title}</h4>
+                        <p class="reel-caption">${reel.caption}</p>
+                        <span class="reel-action-link">Ver Reel en Instagram ↗</span>
+                    </div>
+                </div>
+            </a>
+        `;
+    }).join('');
+}
+
+// --- 5. SISTEMA DE CARRITO GLOBAL UNIFICADO ---
 function initCartSystem() {
     updateCartBadge();
     renderCartDrawer();
@@ -1465,6 +1713,7 @@ function addToCart(productId, quantity = 1) {
     } else {
         cart.push({
             id: p.id,
+            brand: p.brand,
             name: p.name,
             price: p.price,
             rawPrice: p.rawPrice,
@@ -1529,8 +1778,8 @@ function renderCartDrawer() {
             <div class="empty-cart-view">
                 <div class="empty-cart-icon">🛒🌸</div>
                 <h4>Tu carrito está vacío</h4>
-                <p>Explora nuestras rosas eternas y cosméticos para agregar tus favoritos.</p>
-                <button class="btn-primary-premium" onclick="closeCartDrawer()">Explorar Colección</button>
+                <p>Explora nuestras líneas de BelpaBeauty y BelFlora para agregar tus favoritos.</p>
+                <button class="btn-primary-premium" onclick="closeCartDrawer()">Explorar Catálogo</button>
             </div>
         `;
         const footer = document.getElementById('cart-drawer-footer');
@@ -1541,24 +1790,28 @@ function renderCartDrawer() {
     const footer = document.getElementById('cart-drawer-footer');
     if (footer) footer.style.display = 'block';
 
-    list.innerHTML = cart.map(item => `
-        <div class="cart-item-row" data-id="${item.id}">
-            <img src="${item.image}" alt="${item.name}" class="cart-item-img">
-            <div class="cart-item-info">
-                <h4 class="cart-item-title">${item.name}</h4>
-                <div class="cart-item-price">${formatCOP(item.rawPrice)} c/u</div>
-                <div class="cart-item-controls">
-                    <div class="cart-item-qty-box">
-                        <button onclick="changeCartItemQty(${item.id}, -1)">-</button>
-                        <span>${item.quantity}</span>
-                        <button onclick="changeCartItemQty(${item.id}, 1)">+</button>
+    list.innerHTML = cart.map(item => {
+        const brandBadge = item.brand === 'beauty' ? '💄 BelpaBeauty' : '🌹 BelFlora';
+        return `
+            <div class="cart-item-row" data-id="${item.id}">
+                <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                <div class="cart-item-info">
+                    <span class="cart-item-brand-label ${item.brand}">${brandBadge}</span>
+                    <h4 class="cart-item-title">${item.name}</h4>
+                    <div class="cart-item-price">${formatCOP(item.rawPrice)} c/u</div>
+                    <div class="cart-item-controls">
+                        <div class="cart-item-qty-box">
+                            <button onclick="changeCartItemQty(${item.id}, -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button onclick="changeCartItemQty(${item.id}, 1)">+</button>
+                        </div>
+                        <span class="cart-item-row-total">${formatCOP(item.rawPrice * item.quantity)}</span>
                     </div>
-                    <span class="cart-item-row-total">${formatCOP(item.rawPrice * item.quantity)}</span>
                 </div>
+                <button class="cart-item-remove-btn" onclick="removeCartItem(${item.id})" title="Eliminar">🗑️</button>
             </div>
-            <button class="cart-item-remove-btn" onclick="removeCartItem(${item.id})" title="Eliminar">🗑️</button>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 window.changeCartItemQty = function(id, delta) {
@@ -1586,12 +1839,13 @@ function checkoutWhatsApp() {
 
     const subtotal = cart.reduce((sum, i) => sum + (i.rawPrice * i.quantity), 0);
 
-    let message = `¡Hola Belpa Beauty & BelFlora! 💖✨\n`;
-    message += `Vengo de su página web y quiero realizar el siguiente pedido:\n\n`;
+    let message = `¡Hola Belpa! 💖✨\n`;
+    message += `Vengo de su página web y quiero realizar el siguiente pedido unificado:\n\n`;
     message += `🛍️ *RESUMEN DEL PEDIDO:*\n`;
 
     cart.forEach(item => {
-        message += `• *${item.quantity}x ${item.name}* (${formatCOP(item.rawPrice * item.quantity)})\n`;
+        const brandTag = item.brand === 'beauty' ? '[💄 BelpaBeauty]' : '[🌹 BelFlora]';
+        message += `• ${brandTag} *${item.quantity}x ${item.name}* (${formatCOP(item.rawPrice * item.quantity)})\n`;
     });
 
     message += `\n💰 *Subtotal Productos:* ${formatCOP(subtotal)}\n`;
@@ -1606,7 +1860,7 @@ function checkoutWhatsApp() {
     window.open(`${whatsappLinkBase}?text=${encodeURIComponent(message)}`, '_blank');
 }
 
-// --- 5. VENTANA MODAL (QUICK VIEW) ---
+// --- 6. VENTANA MODAL (QUICK VIEW) ---
 let activeQuickViewId = null;
 
 function initQuickViewModal() {
@@ -1653,7 +1907,8 @@ function initQuickViewModal() {
             const p = productsMap[activeQuickViewId];
             if (!p) return;
             const qty = parseInt(qtyVal?.textContent) || 1;
-            const message = `¡Hola Belpa Beauty! 💖 Vengo de su página web y me encantaría ordenar:\n*• ${qty}x ${p.name}* (${p.price})\n\n¿Me confirman disponibilidad y el total? ¡Muchas gracias! ✨`;
+            const brandName = p.brand === 'beauty' ? 'BelpaBeauty' : 'BelFlora';
+            const message = `¡Hola Belpa! 💖 Vengo de su página web y me encantaría ordenar este producto de *${brandName}*:\n*• ${qty}x ${p.name}* (${p.price})\n\n¿Me confirman disponibilidad y el total? ¡Muchas gracias! ✨`;
             window.open(`${whatsappLinkBase}?text=${encodeURIComponent(message)}`, '_blank');
             closeQuickView();
         });
@@ -1675,7 +1930,7 @@ window.openQuickView = function(productId) {
     const modalQtyVal = document.getElementById('modal-qty-val');
 
     if (modalTitle) modalTitle.textContent = p.name;
-    if (modalBadge) modalBadge.textContent = p.badge || 'Handmade 🌸';
+    if (modalBadge) modalBadge.textContent = (p.brand === 'beauty' ? '💄 ' : '🌹 ') + (p.badge || 'Handmade 🌸');
     if (modalPrice) modalPrice.textContent = p.price;
     if (modalDescription) modalDescription.textContent = p.description;
     if (modalQtyVal) modalQtyVal.textContent = '1';
@@ -1719,7 +1974,7 @@ window.closeQuickView = function() {
     activeQuickViewId = null;
 };
 
-// --- 6. FAQ ---
+// --- 7. FAQ ---
 function initFAQ() {
     const faqCards = document.querySelectorAll('.faq-card');
     faqCards.forEach(card => {
@@ -1734,17 +1989,16 @@ function initFAQ() {
     });
 }
 
-// --- 7. MASCOTA BELPA KITTY ---
+// --- 8. MASCOTA BELPA KITTY ---
 function initMascot() {
     const mascot = document.getElementById('belpa-mascot');
     const speechBubble = document.getElementById('mascot-speech-bubble');
 
     const quotes = [
-        "¡Tenemos rosas eternas hechas a mano y cosméticos hermosos! 🌸",
-        "¡Los ramos de Disney y peluches Sanrio son de los favoritos! 👑🧸",
-        "¡Personalizamos tu ramo con colores favoritos y dedicatoria! 💌",
-        "¡Las cúpulas de cristal y cuadros vienen con luces LED! 🔮✨",
-        "¡Puedes agregar varios productos a tu carrito y pedir en un solo paso! 🛒💖",
+        "¡Explora nuestras dos líneas: 💄 BelpaBeauty y 🌹 BelFlora!",
+        "¡Puedes agregar maquillaje y flores al mismo carrito sin problema! 🛒💖",
+        "¡Los ramos de princesas Disney y peluches Sanrio son de BelFlora! 👑🧸",
+        "¡Los brillos Sheglam y tintas Jelly son de BelpaBeauty! 💄✨",
         "¡Hacemos entregas a domicilio en Cúcuta y envíos a Colombia! ✈️🇨🇴"
     ];
 
@@ -1761,22 +2015,23 @@ function initMascot() {
     }
 }
 
-// --- 8. FORMULARIO DE CONTACTO ---
+// --- 9. FORMULARIO DE CONTACTO ---
 function initContactForm() {
     const form = document.getElementById('contact-form');
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('name')?.value || '';
+            const brand = document.getElementById('contact-brand-select')?.value || 'Ambas Líneas';
             const msg = document.getElementById('message-text')?.value || '';
-            const text = `¡Hola Belpa Beauty! 💖 Mi nombre es *${name}* y les escribo desde su página web con la siguiente consulta:\n\n"${msg}"\n\n¡Muchas gracias! ✨`;
+            const text = `¡Hola Belpa! 💖 Mi nombre es *${name}*, les consulto sobre *${brand}* desde la web:\n\n"${msg}"\n\n¡Muchas gracias! ✨`;
             window.open(`${whatsappLinkBase}?text=${encodeURIComponent(text)}`, '_blank');
             form.reset();
         });
     }
 }
 
-// --- 9. PARTÍCULAS DE BRILLO SUTILES ---
+// --- 10. PARTÍCULAS DE BRILLO ---
 function initSparkles() {
     const container = document.getElementById('sparkle-container');
     if (!container || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -1784,7 +2039,7 @@ function initSparkles() {
     function createSparkle(x, y) {
         const p = document.createElement('div');
         p.className = 'sparkle-particle';
-        const icons = ['🌸', '✨', '🎀', '💕'];
+        const icons = ['🌸', '✨', '🎀', '💄', '🌹'];
         p.textContent = icons[Math.floor(Math.random() * icons.length)];
         p.style.fontSize = (Math.random() * 8 + 10) + 'px';
         p.style.left = x + 'px';
@@ -1814,34 +2069,6 @@ function initSparkles() {
     });
 }
 
-// --- 10. REELS DE INSTAGRAM & INSPIRACIÓN ---
-function initInstagramReels() {
-    const container = document.getElementById('instagram-reels-container');
-    const profileBtn = document.getElementById('btn-instagram-profile');
-    if (profileBtn && instagramConfig.profileUrl) {
-        profileBtn.href = instagramConfig.profileUrl;
-    }
-    if (!container) return;
-
-    container.innerHTML = instagramConfig.reels.map(reel => {
-        const targetUrl = reel.reelUrl || instagramConfig.profileUrl;
-        return `
-            <a href="${targetUrl}" target="_blank" rel="noreferrer" class="reel-card" title="${reel.title}">
-                <div class="reel-media-wrapper">
-                    <img src="${reel.previewImage}" alt="${reel.title}" class="reel-preview-img" loading="lazy">
-                    <span class="reel-badge-tag">${reel.tag}</span>
-                    <div class="reel-play-overlay">▶</div>
-                    <div class="reel-content-overlay">
-                        <h4 class="reel-title">${reel.title}</h4>
-                        <p class="reel-caption">${reel.caption}</p>
-                        <span class="reel-action-link">Ver Reel en Instagram ↗</span>
-                    </div>
-                </div>
-            </a>
-        `;
-    }).join('');
-}
-
 // --- 11. ESCENA 3D THREE.JS ---
 function initThreeJS() {
     const canvas = document.getElementById('hero-3d-canvas');
@@ -1868,13 +2095,11 @@ function initThreeJS() {
         flowerGroup.add(tiltGroup);
         scene.add(flowerGroup);
 
-        // Centro Dorado Pastel
         const centerMat = new THREE.MeshPhysicalMaterial({ color: 0xF7D070, roughness: 0.2, metalness: 0.5 });
         const centerMesh = new THREE.Mesh(new THREE.SphereGeometry(0.35, 32, 32), centerMat);
         centerMesh.position.set(0, 0, 0.2);
         tiltGroup.add(centerMesh);
 
-        // Pétalos Rosa Empolvado
         const petalMat = new THREE.MeshPhysicalMaterial({ color: 0xE8A0B5, roughness: 0.2, clearcoat: 0.8 });
         for (let i = 0; i < 8; i++) {
             const petalGeo = new THREE.SphereGeometry(0.65, 32, 16);
@@ -1887,7 +2112,6 @@ function initThreeJS() {
             tiltGroup.add(petalMesh);
         }
 
-        // Tallo Verde Suave
         const stemMat = new THREE.MeshPhysicalMaterial({ color: 0x6B9075, roughness: 0.35 });
         const stemMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 1.8, 16), stemMat);
         stemMesh.position.set(0, -0.9, -0.1);

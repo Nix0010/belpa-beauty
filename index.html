@@ -3,38 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belpa Beauty | Rosas Hechas a Mano, Regalos & Maquillaje</title>
+    <title>Belpa | 💄 BelpaBeauty & 🌹 BelFlora • Boutique Oficial</title>
     <!-- Meta SEO -->
-    <meta name="description" content="Boutique femenina de rosas eternas hechas a mano en limpiapipas, ramos temáticos, cápsulas de cristal con luces y maquillaje viral en Cúcuta con envíos a toda Colombia.">
-    <meta name="keywords" content="rosas hechas a mano, flores limpiapipas, ramos eternos, maquillaje cucuta, regalos personalizados, belpa beauty, belflora">
+    <meta name="description" content="Belpa: una marca, dos mundos de encanto. BelpaBeauty con cosméticos y maquillaje viral. BelFlora con rosas eternas hechas a mano en limpiapipas y regalos personalizados.">
+    <meta name="keywords" content="belpabeauty, belflora, maquillaje cucuta, flores limpiapipas, rosas eternas, regalos personalizados">
     <link rel="icon" type="image/jpg" href="assets/logo.jpg">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- Three.js for 3D procedural flower -->
+    <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
-    <!-- Skip link for keyboard accessibility -->
-    <a href="#catalogo" class="skip-link">Saltar al catálogo principal</a>
+    <!-- Skip link -->
+    <a href="#catalogo" class="skip-link">Saltar al catálogo</a>
 
-    <!-- Sparkle Particles Container -->
+    <!-- Sparkle Container -->
     <div id="sparkle-container"></div>
 
-    <!-- Top Announcement Marquee Bar -->
+    <!-- Announcement Bar -->
     <div class="top-marquee-bar">
         <div class="marquee-content">
-            🌸 ROSAS HECHAS A MANO & COSMÉTICOS DE TENDENCIA 🌸 &nbsp;&nbsp;🎀 RAMOS TEMÁTICOS DISNEY & SANRIO 🎀 &nbsp;&nbsp;✨ CÁPSULAS DE CRISTAL CON LUCES LED ✨ &nbsp;&nbsp;✈️ ENVÍOS A TODA COLOMBIA ✈️ &nbsp;&nbsp;💌 DOMICILIOS EN CÚCUTA 💌 &nbsp;&nbsp;💖 PEDIDOS PERSONALIZADOS POR WHATSAPP 💖 &nbsp;&nbsp;⭐ BELPA BEAUTY & BELFLORA ⭐ &nbsp;&nbsp;
+            🌸 BIENVENIDOS A BELPA: DOS MUNDOS DE ENCANTO 🌸 &nbsp;&nbsp;💄 BELPABEAUTY (COSMÉTICOS & MAKEUP) 💄 &nbsp;&nbsp;🌹 BELFLORA (ROSAS HECHAS A MANO & REGALOS) 🌹 &nbsp;&nbsp;✈️ ENVÍOS A TODA COLOMBIA ✈️ &nbsp;&nbsp;💌 DOMICILIOS EN CÚCUTA 💌 &nbsp;&nbsp;🛍️ CARRITO GLOBAL UNIFICADO 🛍️ &nbsp;&nbsp;
         </div>
     </div>
 
-    <!-- Floating Minimalist Mascot Widget -->
+    <!-- Floating Mascot Widget -->
     <div class="belpa-mascot-container" id="belpa-mascot-container">
         <button class="belpa-mascot" id="belpa-mascot" aria-label="Mascota interactiva Belpa Kitty">🐱</button>
-        <div class="mascot-speech-bubble" id="mascot-speech-bubble">¡Hola! Soy Belpa Kitty 🐾 ¡Tenemos rosas eternas y cosméticos hermosos! 🌸</div>
+        <div class="mascot-speech-bubble" id="mascot-speech-bubble">¡Hola! Soy Belpa Kitty 🐾 ¡Descubre 💄 BelpaBeauty y 🌹 BelFlora! 🌸</div>
     </div>
 
     <!-- Floating Cart Button -->
@@ -46,19 +46,19 @@
     <!-- Header Navigation -->
     <header class="header">
         <div class="header-container">
-            <a href="#" class="logo-area">
-                <img src="assets/logo.jpg" alt="Belpa Beauty Logo" class="brand-logo" width="38" height="38" style="object-fit:cover;">
-                <span class="brand-name">Belpa Beauty 🌸</span>
+            <a href="#inicio" class="logo-area" onclick="setBrandView('all')">
+                <img src="assets/logo.jpg" alt="Belpa Logo" class="brand-logo" width="38" height="38">
+                <span class="brand-name">Belpa 🌸</span>
             </a>
             
             <nav class="nav-menu" id="nav-menu">
-                <a href="#inicio" class="nav-link active">Inicio</a>
+                <a href="#inicio" class="nav-link active" data-brand-nav="all" onclick="setBrandView('all')">Inicio</a>
+                <a href="#beauty" class="nav-link nav-brand-beauty" data-brand-nav="beauty" onclick="setBrandView('beauty')">💄 BelpaBeauty</a>
+                <a href="#flora" class="nav-link nav-brand-flora" data-brand-nav="flora" onclick="setBrandView('flora')">🌹 BelFlora</a>
                 <a href="#detalles" class="nav-link">¿Por qué Belpa?</a>
-                <a href="#catalogo" class="nav-link">Catálogo</a>
-                <a href="#accion" class="nav-link">Reels & Videos</a>
+                <a href="#accion" class="nav-link">Inspiración</a>
                 <a href="#nosotros" class="nav-link">Nosotros</a>
-                <a href="#faq" class="nav-link">Preguntas</a>
-                <a href="#contacto" class="nav-link btn-header-contact">Escríbenos 💌</a>
+                <a href="#contacto" class="nav-link btn-header-contact">Contacto 💌</a>
             </nav>
 
             <div class="header-right-actions">
@@ -83,22 +83,22 @@
         <section id="inicio" class="hero">
             <div class="hero-container">
                 <div class="hero-content">
-                    <span class="hero-badge">✨ Rosas Artesanales & Belleza Femenina ✨</span>
-                    <h1 class="hero-title">Rosas hechas a mano & maquillaje que enamora</h1>
+                    <span class="hero-badge">✨ Una Marca • Dos Mundos de Encanto ✨</span>
+                    <h1 class="hero-title">Belleza que enamora & rosas hechas a mano</h1>
                     <p class="hero-description">
-                        Descubre ramos eternos tejidos cuidadosamente en limpiapipas de alta suavidad, personajes temáticos y cosméticos de tendencia para regalar momentos inolvidables. 💝
+                        Bienvenido a Belpa. Explora nuestras dos líneas exclusivas: cosméticos de tendencia en <strong>BelpaBeauty</strong> y rosas artesanales en limpiapipas con regalos mágicos en <strong>BelFlora</strong>.
                     </p>
                     <div class="hero-buttons">
-                        <a href="#catalogo" class="btn-primary-premium">Ver Colección 🛍️</a>
-                        <a href="https://wa.me/message/Z4TVXHB3UPMRI1" target="_blank" rel="noreferrer" class="btn-secondary-premium">Chatear en WhatsApp 💬</a>
+                        <a href="#beauty" onclick="setBrandView('beauty')" class="btn-primary-premium btn-hero-beauty">💄 BelpaBeauty</a>
+                        <a href="#flora" onclick="setBrandView('flora')" class="btn-secondary-premium btn-hero-flora">🌹 BelFlora</a>
                     </div>
                 </div>
                 <div class="hero-image-area">
                     <div class="hero-3d-canvas-container" id="hero-3d-canvas-container">
                         <canvas id="hero-3d-canvas" width="340" height="340" style="display:block;"></canvas>
-                        <img src="assets/hero_main.jpg" alt="Belpa Beauty" class="hero-fallback-img" id="hero-fallback-img" width="340" height="340" style="display:none;">
-                        <div class="collage-badge tag-handmade">🌸 100% Hecho a Mano</div>
-                        <div class="collage-badge tag-shipping">✈️ Envíos a Colombia</div>
+                        <img src="assets/hero_main.jpg" alt="Belpa" class="hero-fallback-img" id="hero-fallback-img" width="340" height="340" style="display:none;">
+                        <div class="collage-badge tag-handmade">🌸 100% Artesanal</div>
+                        <div class="collage-badge tag-shipping">✈️ Envíos Colombia</div>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,97 @@
         <!-- Wave divider -->
         <div class="wave-divider">
             <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
-                <path d="M0,25 C320,55 640,5 960,35 C1200,50 1360,20 1440,25 L1440,60 L0,60 Z" fill="#FDF9F7"></path>
+                <path d="M0,25 C320,55 640,5 960,35 C1200,50 1360,20 1440,25 L1440,60 L0,60 Z" fill="#FAF6F4"></path>
+            </svg>
+        </div>
+
+        <!-- DUAL BRAND SELECTOR PORTAL (DESCUBRE NUESTRO MUNDO) -->
+        <section class="dual-brand-section">
+            <div class="section-header">
+                <span class="section-tag-badge">✨ Elige tu Experiencia ✨</span>
+                <h2 class="section-title">Descubre Nuestro Mundo</h2>
+                <p class="section-subtitle">Dos universos creados con amor y dedicación. Selecciona tu línea favorita para comenzar.</p>
+            </div>
+
+            <div class="dual-brand-grid">
+                <!-- Card 1: BelpaBeauty -->
+                <div class="brand-portal-card beauty-card" onclick="setBrandView('beauty')">
+                    <div class="portal-card-media">
+                        <img src="assets/product_2.jpg" alt="BelpaBeauty Makeup & Skincare" class="portal-card-img" loading="lazy">
+                        <div class="portal-card-overlay"></div>
+                        <span class="portal-badge">💄 Línea de Belleza</span>
+                    </div>
+                    <div class="portal-card-info">
+                        <span class="portal-sub">Beauty & Makeup</span>
+                        <h3 class="portal-title">BelpaBeauty</h3>
+                        <p class="portal-desc">Cosméticos virales, brillos con microdestellos, tintas jelly, máscaras de pestañas y combos de skincare para tu rutina diaria.</p>
+                        <a href="#beauty" onclick="event.stopPropagation(); setBrandView('beauty')" class="btn-portal btn-portal-beauty">
+                            <span>Explorar BelpaBeauty →</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2: BelFlora -->
+                <div class="brand-portal-card flora-card" onclick="setBrandView('flora')">
+                    <div class="portal-card-media">
+                        <img src="assets/hero_main.jpg" alt="BelFlora Rosas y Flores Eternas" class="portal-card-img" loading="lazy">
+                        <div class="portal-card-overlay"></div>
+                        <span class="portal-badge">🌹 Línea Floral & Regalos</span>
+                    </div>
+                    <div class="portal-card-info">
+                        <span class="portal-sub">Flores & Regalos Eternos</span>
+                        <h3 class="portal-title">BelFlora</h3>
+                        <p class="portal-desc">Rosas y ramos tejidos a mano en limpiapipas, temáticas de princesas Disney, peluches Sanrio, cuadros 3D y cápsulas con luces LED.</p>
+                        <a href="#flora" onclick="event.stopPropagation(); setBrandView('flora')" class="btn-portal btn-portal-flora">
+                            <span>Explorar BelFlora →</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wave divider -->
+        <div class="wave-divider">
+            <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+                <path d="M0,25 C320,5 640,55 960,25 C1200,5 1360,40 1440,25 L1440,60 L0,60 Z" fill="#FDF9F7"></path>
+            </svg>
+        </div>
+
+        <!-- DYNAMIC CATALOG & BOUTIQUE SHOWCASE -->
+        <section id="catalogo" class="catalog-section">
+            
+            <!-- Dynamic Brand Banner (Switches based on active brand) -->
+            <div id="brand-header-banner" class="brand-header-banner all-banner">
+                <!-- Inyectado dinámicamente con JavaScript -->
+            </div>
+
+            <!-- Search and Filter Controls -->
+            <div class="catalog-controls-container">
+                <div class="catalog-search-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="catalog-search-input" class="catalog-search-input" placeholder="Buscar productos (ej. Rapunzel, Lotso, Girasol, Sheglam)..." aria-label="Buscar productos">
+                    <button id="catalog-search-clear" class="search-clear-btn" aria-label="Limpiar búsqueda" style="display:none;">✕</button>
+                </div>
+                <div class="catalog-status-row">
+                    <span id="products-count-badge" class="products-count-badge">Cargando productos...</span>
+                </div>
+            </div>
+
+            <!-- Category Pills -->
+            <div class="visual-categories-container" id="visual-categories-container">
+                <!-- Inyectado dinámicamente con JavaScript -->
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid" id="product-grid">
+                <!-- Inyectado dinámicamente con JavaScript -->
+            </div>
+        </section>
+
+        <!-- Wave divider -->
+        <div class="wave-divider">
+            <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+                <path d="M0,25 C320,55 640,5 960,35 C1200,50 1360,20 1440,25 L1440,60 L0,60 Z" fill="#FAF5F7"></path>
             </svg>
         </div>
 
@@ -116,15 +206,15 @@
             <div class="section-header">
                 <span class="section-tag-badge">💖 Calidad & Dedicación 💖</span>
                 <h2 class="section-title">Nuestros Pilares de Calidad</h2>
-                <p class="section-subtitle">Cuidamos cada detalle para ofrecerte un regalo tierno, duradero y memorable.</p>
+                <p class="section-subtitle">Tanto en cosméticos como en artesanías florales, cuidamos cada detalle para ti.</p>
             </div>
             
             <div class="features-grid">
                 <div class="feature-card pink-gradient">
                     <div class="card-content">
-                        <span class="card-icon">🌸</span>
-                        <h3>Rosas & Flores Eternas</h3>
-                        <p>Cada rosa, tulipán y ramo está tejido minuciosamente a mano con limpiapipas de alta suavidad. Un detalle eterno que decora con calidez y nunca se marchita.</p>
+                        <span class="card-icon">🌹</span>
+                        <h3>BelFlora: Rosas Eternas</h3>
+                        <p>Cada ramo está tejido minuciosamente a mano con limpiapipas de alta suavidad. Un regalo eterno que nunca se marchita.</p>
                     </div>
                     <div class="card-decoration">🌸</div>
                 </div>
@@ -132,8 +222,8 @@
                 <div class="feature-card sand-gradient">
                     <div class="card-content">
                         <span class="card-icon">💄</span>
-                        <h3>Cosméticos Seleccionados</h3>
-                        <p>Elegimos el maquillaje de tendencia más viral y con mejores opiniones para que completes tu rutina con absoluta confianza.</p>
+                        <h3>BelpaBeauty: Cosméticos</h3>
+                        <p>Elegimos el maquillaje de tendencia más viral y con mejores opiniones para que completes tu rutina con confianza.</p>
                     </div>
                     <div class="card-decoration">✨</div>
                 </div>
@@ -150,63 +240,25 @@
                 <div class="feature-card purple-gradient">
                     <div class="card-content">
                         <span class="card-icon">🎁</span>
-                        <h3>Cajitas de Regalo & Luces LED</h3>
-                        <p>Diseñamos el unboxing perfecto: cajas perfumadas, notas personalizadas, luces cálidas y dulces de cortesía listos para sorprender.</p>
+                        <h3>Cajitas de Regalo & Luces</h3>
+                        <p>Diseñamos el unboxing perfecto: cajas perfumadas, notas personalizadas, luces cálidas y dulces listos para regalar.</p>
                     </div>
                     <div class="card-decoration">🎀</div>
                 </div>
             </div>
         </section>
 
-        <!-- Wave divider -->
-        <div class="wave-divider">
-            <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
-                <path d="M0,25 C320,5 640,55 960,25 C1200,5 1360,40 1440,25 L1440,60 L0,60 Z" fill="#FAF5F7"></path>
-            </svg>
-        </div>
-
-        <!-- Catalog Section -->
-        <section id="catalogo" class="catalog-section">
-            <div class="section-header">
-                <span class="section-tag-badge">🌸 Colección Boutique 2026 🌸</span>
-                <h2 class="section-title">Catálogo de Rosas & Cosméticos</h2>
-                <p class="section-subtitle">Filtra por tu categoría favorita, busca por nombre o personaje y arma tu pedido fácilmente.</p>
-            </div>
-
-            <!-- Search and Filter Controls -->
-            <div class="catalog-controls-container">
-                <div class="catalog-search-wrapper">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" id="catalog-search-input" class="catalog-search-input" placeholder="Buscar por nombre, temática, flor o precio (ej. Rapunzel, Lotso, Girasol)..." aria-label="Buscar productos">
-                    <button id="catalog-search-clear" class="search-clear-btn" aria-label="Limpiar búsqueda" style="display:none;">✕</button>
-                </div>
-                <div class="catalog-status-row">
-                    <span id="products-count-badge" class="products-count-badge">Cargando catálogo...</span>
-                </div>
-            </div>
-
-            <!-- Visual Categories Selector Pills -->
-            <div class="visual-categories-container" id="visual-categories-container">
-                <!-- Inyectado dinámicamente con JavaScript -->
-            </div>
-
-            <!-- Product Grid -->
-            <div class="product-grid" id="product-grid">
-                <!-- Inyectado dinámicamente con JavaScript -->
-            </div>
-        </section>
-
-        <!-- Reels & Inspiración Section (Instagram / Pinterest Aesthetic) -->
+        <!-- Instagram Reels & Inspiración Section -->
         <section id="accion" class="reels-inspiration-section">
             <div class="section-header">
                 <span class="section-tag-badge">✨ Un poquito de nuestra magia ✨</span>
                 <h2 class="section-title">Inspiración & Reels en Instagram</h2>
-                <p class="section-subtitle">Descubre el detrás de cámaras, nuestros procesos artesanales de rosas hechas a mano y el unboxing de cada pedido.</p>
+                <p class="section-subtitle">Descubre el detrás de cámaras, nuestros procesos artesanales y el unboxing de cada pedido.</p>
             </div>
             
             <div class="reels-carousel-container">
                 <div class="reels-grid" id="instagram-reels-container">
-                    <!-- Se inyecta dinámicamente desde app.js (fácilmente configurable) -->
+                    <!-- Inyectado dinámicamente con JavaScript -->
                 </div>
             </div>
 
@@ -222,15 +274,15 @@
         <section id="nosotros" class="about-section">
             <div class="about-grid">
                 <div class="about-image-wrapper">
-                    <img src="assets/about_us.jpg" alt="Sobre Belpa Beauty" class="about-img" loading="lazy">
+                    <img src="assets/about_us.jpg" alt="Sobre Belpa" class="about-img" loading="lazy">
                 </div>
                 <div class="about-content">
                     <span class="hero-badge">Nuestra Historia 💖</span>
-                    <h2 class="section-title text-left">Creando momentos inolvidables</h2>
-                    <p>Belpa Beauty y BelFlora nacieron con el propósito de transformar un detalle en un recuerdo duradero. Cada uno de nuestros ramos de flores eternas en limpiapipas y combinaciones de cosméticos está pensado para regalar sonrisas y amor genuino.</p>
+                    <h2 class="section-title text-left">Una marca, dos pasiones</h2>
+                    <p>Belpa nació con el propósito de ofrecer dos experiencias complementarias: realzar tu belleza personal a través de <strong>BelpaBeauty</strong> y crear recuerdos eternos e inolvidables a través del arte floral en <strong>BelFlora</strong>.</p>
                     <div class="about-points">
-                        <div class="about-point">🌸 <strong>Flores en Limpiapipas:</strong> Suaves, coloridas y duraderas por años sin marchitarse.</div>
-                        <div class="about-point">👑 <strong>Diseños Personalizados:</strong> Creamos tu ramo a la medida de tu personaje o estilo favorito.</div>
+                        <div class="about-point">💄 <strong>BelpaBeauty:</strong> Cosméticos, maquillaje trendy y skincare.</div>
+                        <div class="about-point">🌹 <strong>BelFlora:</strong> Flores en limpiapipas, temáticas de princesas y peluches.</div>
                         <div class="about-point">✈️ <strong>Hecho en Cúcuta:</strong> Con envíos seguros y protegidos a nivel nacional.</div>
                     </div>
                 </div>
@@ -242,32 +294,32 @@
             <div class="section-header">
                 <span class="section-tag-badge">❓ Ayuda & Respuestas ❓</span>
                 <h2 class="section-title">Preguntas Frecuentes</h2>
-                <p class="section-subtitle">Resolvemos todas tus dudas sobre pagos, entregas y personalizaciones.</p>
+                <p class="section-subtitle">Resolvemos todas tus dudas sobre pedidos, pagos y entregas.</p>
             </div>
             
             <div class="faq-grid">
                 <div class="faq-card">
+                    <button class="faq-question">¿Puedo comprar maquillaje y flores en un mismo pedido? <span>➕</span></button>
+                    <div class="faq-answer">
+                        <p>¡Sí, claro! Nuestro carrito es 100% unificado. Puedes agregar productos de BelpaBeauty y BelFlora y se procesarán juntos en una sola entrega.</p>
+                    </div>
+                </div>
+                <div class="faq-card">
                     <button class="faq-question">¿Qué medios de pago aceptan? <span>➕</span></button>
                     <div class="faq-answer">
-                        <p>Aceptamos transferencias por Nequi, Daviplata, Bancolombia y pago contra entrega o efectivo si te encuentras en la ciudad de Cúcuta.</p>
+                        <p>Aceptamos transferencias por Nequi, Daviplata, Bancolombia y pago contra entrega en la ciudad de Cúcuta.</p>
                     </div>
                 </div>
                 <div class="faq-card">
                     <button class="faq-question">¿Hacen entregas a domicilio? <span>➕</span></button>
                     <div class="faq-answer">
-                        <p>¡Sí! Realizamos domicilios en toda el área metropolitana de Cúcuta y enviamos por transportadora asegurada a cualquier ciudad o municipio de Colombia.</p>
+                        <p>¡Sí! Realizamos domicilios en toda el área metropolitana de Cúcuta y enviamos por transportadora asegurada a toda Colombia.</p>
                     </div>
                 </div>
                 <div class="faq-card">
                     <button class="faq-question">¿Cuánto tiempo tarda la entrega? <span>➕</span></button>
                     <div class="faq-answer">
-                        <p>Como cada flor y figura se teje artesanalmente a mano, el tiempo de despacho es de <strong>2 a 3 días hábiles</strong>. Recomendamos pedir con anticipación para fechas especiales.</p>
-                    </div>
-                </div>
-                <div class="faq-card">
-                    <button class="faq-question">¿Puedo personalizar los colores y la dedicatoria? <span>➕</span></button>
-                    <div class="faq-answer">
-                        <p>¡Totalmente! Puedes elegir la combinación de colores de las flores, el papel de envoltura, y enviarnos la frase o dedicatoria para incluir en la tarjeta de regalo sin costo adicional.</p>
+                        <p>Para cosméticos el despacho es inmediato. Para flores artesanales tejidas a mano, el tiempo de elaboración y despacho es de <strong>2 a 3 días hábiles</strong>.</p>
                     </div>
                 </div>
             </div>
@@ -277,7 +329,7 @@
         <section id="contacto" class="contact-section">
             <div class="section-header">
                 <span class="section-tag-badge">💌 Escríbenos Directo 💌</span>
-                <h2 class="section-title">¿Tienes un Pedido Especial en Mente?</h2>
+                <h2 class="section-title">¿Tienes una Consulta o Pedido Especial?</h2>
                 <p class="section-subtitle">Escríbenos directamente y te asesoramos para armar el regalo perfecto.</p>
             </div>
             
@@ -287,8 +339,16 @@
                     <input type="text" id="name" required placeholder="Ej. Valentina Gómez">
                 </div>
                 <div class="form-group">
-                    <label for="message-text">¿Qué arreglo o producto te gustaría cotizar?:</label>
-                    <textarea id="message-text" rows="4" required placeholder="Cuéntanos el modelo de flores, colores o fecha especial..."></textarea>
+                    <label for="contact-brand-select">Línea de Interés:</label>
+                    <select id="contact-brand-select" class="cart-select">
+                        <option value="BelFlora (Flores & Regalos)">🌹 BelFlora (Flores & Regalos)</option>
+                        <option value="BelpaBeauty (Maquillaje & Belleza)">💄 BelpaBeauty (Maquillaje & Belleza)</option>
+                        <option value="Ambas Líneas">🌸 Ambas Líneas (Combo)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message-text">¿Qué producto te gustaría cotizar?:</label>
+                    <textarea id="message-text" rows="4" required placeholder="Cuéntanos el modelo de flores, maquillaje o fecha especial..."></textarea>
                 </div>
                 <button type="submit" class="btn-primary-premium w-full">Enviar Consulta por WhatsApp 💬</button>
             </form>
@@ -300,29 +360,30 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-brand">
-                <span class="brand-name">Belpa Beauty & BelFlora 🌸</span>
-                <p>Flores eternas artesanales y regalos personalizados con amor.</p>
+                <span class="brand-name">Belpa 🌸</span>
+                <p><strong>BelpaBeauty:</strong> Cosméticos & Makeup • <strong>BelFlora:</strong> Rosas hechas a mano.</p>
                 <p class="footer-location">📍 Cúcuta, Norte de Santander - Colombia</p>
-                <p class="footer-social"><a href="https://www.tiktok.com/@belflora.co?_r=1&_t=ZS-9864qTXpjMr" target="_blank" rel="noreferrer">🎵 TikTok: @belflora.col</a></p>
+                <p class="footer-social"><a href="https://www.instagram.com/belflora.co" target="_blank" rel="noreferrer">📷 Instagram: @belflora.co</a></p>
             </div>
             <div class="footer-links">
-                <a href="#inicio">Inicio</a>
-                <a href="#catalogo">Catálogo</a>
+                <a href="#inicio" onclick="setBrandView('all')">Inicio</a>
+                <a href="#beauty" onclick="setBrandView('beauty')">💄 BelpaBeauty</a>
+                <a href="#flora" onclick="setBrandView('flora')">🌹 BelFlora</a>
                 <a href="#faq">Preguntas</a>
                 <a href="https://wa.me/message/Z4TVXHB3UPMRI1" target="_blank" rel="noreferrer">WhatsApp</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Belpa Beauty & BelFlora. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Belpa (BelpaBeauty & BelFlora). Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- Shopping Cart Drawer -->
+    <!-- Global Cart Drawer -->
     <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
     <aside class="cart-drawer" id="cart-drawer" aria-label="Carrito de compras">
         <div class="cart-drawer-header">
             <div class="cart-drawer-title">
-                <h3>Tu Carrito de Regalos 🛍️</h3>
+                <h3>Tu Carrito Belpa 🛍️</h3>
                 <span class="cart-drawer-count" id="cart-drawer-items-count">(0)</span>
             </div>
             <button class="cart-drawer-close" id="cart-drawer-close" aria-label="Cerrar carrito">✕</button>
@@ -351,8 +412,8 @@
                     <input type="text" id="cart-client-address" placeholder="Ej. Barrio Los Pinos, Cúcuta" class="cart-input">
                 </div>
                 <div class="cart-form-field">
-                    <label for="cart-client-notes">Mensaje para tarjeta o nota especial (Opcional):</label>
-                    <input type="text" id="cart-client-notes" placeholder="Ej. 'Feliz Cumpleaños Mamá, con amor...'" class="cart-input">
+                    <label for="cart-client-notes">Nota especial o dedicatoria (Opcional):</label>
+                    <input type="text" id="cart-client-notes" placeholder="Ej. 'Feliz Cumpleaños Mamá...'" class="cart-input">
                 </div>
             </div>
 
@@ -364,7 +425,7 @@
             <button class="btn-checkout-whatsapp" id="cart-checkout-btn">
                 <span>📲 Enviar Pedido por WhatsApp</span>
             </button>
-            <p class="cart-secure-notice">🔒 Tu pedido se enviará organizado para coordinar pago y entrega.</p>
+            <p class="cart-secure-notice">🔒 Tu pedido unificado de BelpaBeauty y BelFlora se enviará en un solo mensaje.</p>
         </div>
     </aside>
 
