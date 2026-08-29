@@ -1109,6 +1109,55 @@ const productsCatalog = [
 ];
 const fullCatalog = productsCatalog;
 
+// ============================================================
+// CONFIGURACIÓN DE REELS DE INSTAGRAM / INSPIRACIÓN 🌸✨
+// ¡Aquí puedes agregar o cambiar fácilmente las URLs de tus Reels oficiales!
+// ============================================================
+const instagramConfig = {
+    profileUrl: "https://www.instagram.com/belflora.co", // URL oficial de tu perfil de Instagram
+    reels: [
+        {
+            id: 1,
+            title: "Proceso de Rosas Eternas",
+            tag: "🌹 Hecho a Mano",
+            // 👉 Pega aquí la URL oficial de tu Reel de Instagram (ej: "https://www.instagram.com/reel/Cxxxxxx/"):
+            reelUrl: "https://www.instagram.com/belflora.co",
+            previewImage: "assets/hero_main.jpg",
+            caption: "Moldeando cada pétalo a mano con limpiapipas suaves y dedicación ✨"
+        },
+        {
+            id: 2,
+            title: "Unboxing de Regalos & Luces",
+            tag: "🎁 Empaque & Regalos",
+            // 👉 Pega aquí la URL oficial de tu Reel de Instagram:
+            reelUrl: "https://www.instagram.com/belflora.co",
+            previewImage: "assets/product_1.jpg",
+            caption: "Cajitas perfumadas con viruta de colores y series LED cálidas 🎀"
+        },
+        {
+            id: 3,
+            title: "Colección Temática Rapunzel",
+            tag: "👑 Disney & Peluches",
+            // 👉 Pega aquí la URL oficial de tu Reel de Instagram:
+            reelUrl: "https://www.instagram.com/belflora.co",
+            previewImage: "assets/catalog/item_1_MAHQOp8EUfM.jpg",
+            caption: "Detalles mágicos inspirados en princesas y flores fulgor doradas 🌸"
+        },
+        {
+            id: 4,
+            title: "Maquillaje Viral & Tendencias",
+            tag: "💄 Cosméticos & Belleza",
+            // 👉 Pega aquí la URL oficial de tu Reel de Instagram:
+            reelUrl: "https://www.instagram.com/belflora.co",
+            previewImage: "assets/product_4.jpg",
+            caption: "Brillos con microdestellos y tintas para tu rutina diaria 💕"
+        }
+    ]
+};
+
+window.belpaInstagramConfig = instagramConfig;
+
+
 // Mapa de productos por ID para acceso rápido
 const productsMap = {};
 fullCatalog.forEach(p => { productsMap[p.id] = p; });
@@ -1201,7 +1250,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMascot();
     initContactForm();
     initSparkles();
-    initVideo();
+    initInstagramReels();
     initThreeJS();
 });
 
@@ -1765,16 +1814,32 @@ function initSparkles() {
     });
 }
 
-// --- 10. VIDEO DE UNBOXING ---
-function initVideo() {
-    const video = document.getElementById('belpa-video');
-    const muteBtn = document.getElementById('video-mute-btn');
-    if (video && muteBtn) {
-        muteBtn.addEventListener('click', () => {
-            video.muted = !video.muted;
-            muteBtn.textContent = video.muted ? '🔇' : '🔊';
-        });
+// --- 10. REELS DE INSTAGRAM & INSPIRACIÓN ---
+function initInstagramReels() {
+    const container = document.getElementById('instagram-reels-container');
+    const profileBtn = document.getElementById('btn-instagram-profile');
+    if (profileBtn && instagramConfig.profileUrl) {
+        profileBtn.href = instagramConfig.profileUrl;
     }
+    if (!container) return;
+
+    container.innerHTML = instagramConfig.reels.map(reel => {
+        const targetUrl = reel.reelUrl || instagramConfig.profileUrl;
+        return `
+            <a href="${targetUrl}" target="_blank" rel="noreferrer" class="reel-card" title="${reel.title}">
+                <div class="reel-media-wrapper">
+                    <img src="${reel.previewImage}" alt="${reel.title}" class="reel-preview-img" loading="lazy">
+                    <span class="reel-badge-tag">${reel.tag}</span>
+                    <div class="reel-play-overlay">▶</div>
+                    <div class="reel-content-overlay">
+                        <h4 class="reel-title">${reel.title}</h4>
+                        <p class="reel-caption">${reel.caption}</p>
+                        <span class="reel-action-link">Ver Reel en Instagram ↗</span>
+                    </div>
+                </div>
+            </a>
+        `;
+    }).join('');
 }
 
 // --- 11. ESCENA 3D THREE.JS ---
