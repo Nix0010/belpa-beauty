@@ -9,7 +9,7 @@
     window.BELPA_CONFIG = {
         SUPABASE_URL: storedUrl || "https://tu-proyecto.supabase.co",
         SUPABASE_ANON_KEY: storedKey || "tu-anon-key-de-supabase",
-        STORAGE_BUCKET: "belpa-products",
+        STORAGE_BUCKET: "product-images",
 
         isConfigured: function() {
             return Boolean(
