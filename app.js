@@ -1348,12 +1348,27 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- ENRUTAMIENTO Y SWITCH DE MARCAS (BELPABEAUTY / BELFLORA) ---
 function initRouting() {
     function handleHash() {
-        const hash = window.location.hash.toLowerCase();
-        if (hash === '#beauty' || hash === '#belpabeauty') {
+        const rawHash = window.location.hash.toLowerCase();
+        
+        // Deep linking para productos individuales (ej. #producto-12 o #item-5)
+        const productMatch = rawHash.match(/^#(?:producto|item)-(\d+)$/);
+        if (productMatch) {
+            const productId = parseInt(productMatch[1], 10);
+            const p = productsMap[productId];
+            if (p) {
+                setBrandView(p.brand, false);
+                setTimeout(() => {
+                    openQuickView(productId);
+                }, 150);
+                return;
+            }
+        }
+
+        if (rawHash === '#beauty' || rawHash === '#belpabeauty') {
             setBrandView('beauty', true);
-        } else if (hash === '#flora' || hash === '#belflora') {
+        } else if (rawHash === '#flora' || rawHash === '#belflora') {
             setBrandView('flora', true);
-        } else if (hash === '#catalogo') {
+        } else if (rawHash === '#catalogo') {
             setBrandView('all', false);
         } else {
             setBrandView('all', false);
@@ -1577,11 +1592,12 @@ function renderProducts() {
     grid.innerHTML = filtered.map(p => {
         const imageSrc = p.images && p.images[0] ? p.images[0] : 'assets/optimized/product_1.webp';
         const brandTag = p.brand === 'beauty' ? '💄 BelpaBeauty' : '🌹 BelFlora';
+        const altText = `${p.name} - ${p.brand === 'beauty' ? 'Cosméticos y Maquillaje BelpaBeauty' : 'Rosas y Flores Eternas BelFlora Cúcuta'}`;
         
         return `
             <div class="product-card" data-product-id="${p.id}">
                 <div class="product-image-container" onclick="openQuickView(${p.id})">
-                    <img src="${imageSrc}" alt="${p.name}" class="product-img" loading="lazy" decoding="async">
+                    <img src="${imageSrc}" alt="${altText}" class="product-img" loading="lazy" decoding="async">
                     <span class="product-badge">${p.badge || 'Handmade 🌸'}</span>
                     <button class="quickview-hover-btn" title="Vista Rápida" onclick="event.stopPropagation(); openQuickView(${p.id})">
                         <span>👁️ Ver detalles</span>

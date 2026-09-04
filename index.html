@@ -3,18 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belpa | 💄 BelpaBeauty & 🌹 BelFlora • Boutique Oficial</title>
-    <!-- Meta SEO -->
-    <meta name="description" content="Belpa: una marca, dos mundos de encanto. BelpaBeauty con cosméticos y maquillaje viral. BelFlora con rosas eternas hechas a mano en limpiapipas y regalos personalizados.">
-    <meta name="keywords" content="belpabeauty, belflora, maquillaje cucuta, flores limpiapipas, rosas eternas, regalos personalizados">
+    <title>Belpa 🌸 Rosas Eternas & Cosméticos • BelFlora & BelpaBeauty Cúcuta</title>
+    <!-- Meta SEO Principal -->
+    <meta name="description" content="Tienda boutique en Cúcuta con envíos a Colombia. BelFlora: rosas eternas tejidas a mano en limpiapipas y peluches. BelpaBeauty: maquillaje viral y skincare.">
+    <meta name="keywords" content="rosas eternas cucuta, flores limpiapipas, ramos personalizados, regalos cumpleaños cucuta, belpabeauty, belflora, maquillaje cucuta">
+    <link rel="canonical" href="https://belpa-beauty.vercel.app/">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/jpg" href="assets/logo.jpg">
+    <link rel="apple-touch-icon" href="assets/optimized/logo.webp">
+
+    <!-- Open Graph / WhatsApp / Facebook / Instagram -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Belpa Boutique">
+    <meta property="og:title" content="Belpa 🌸 BelFlora & BelpaBeauty • Rosas Eternas y Cosméticos">
+    <meta property="og:description" content="Rosas eternas hechas a mano en limpiapipas, ramos temáticos Disney y cosméticos virales en Cúcuta y Colombia. ¡Haz tu pedido fácil por WhatsApp!">
+    <meta property="og:image" content="https://belpa-beauty.vercel.app/assets/optimized/hero_main.webp">
+    <meta property="og:image:secure_url" content="https://belpa-beauty.vercel.app/assets/optimized/hero_main.webp">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:image:alt" content="Belpa Boutique - Rosas Eternas BelFlora y Cosméticos BelpaBeauty">
+    <meta property="og:url" content="https://belpa-beauty.vercel.app/">
+    <meta property="og:locale" content="es_CO">
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Belpa 🌸 BelFlora & BelpaBeauty • Rosas Eternas y Cosméticos">
+    <meta name="twitter:description" content="Rosas eternas hechas a mano en limpiapipas, ramos temáticos Disney y cosméticos virales en Cúcuta y Colombia.">
+    <meta name="twitter:image" content="https://belpa-beauty.vercel.app/assets/optimized/hero_main.webp">
+
+    <!-- Geo Tags / Local SEO -->
+    <meta name="geo.region" content="CO-NSA">
+    <meta name="geo.placename" content="Cúcuta">
+    <meta name="geo.position" content="7.8939;-72.5078">
+    <meta name="ICBM" content="7.8939, -72.5078">
+
+    <!-- Datos Estructurados JSON-LD (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Florist",
+          "@id": "https://belpa-beauty.vercel.app/#store",
+          "name": "Belpa - BelFlora & BelpaBeauty",
+          "alternateName": "Belpa Boutique Cúcuta",
+          "url": "https://belpa-beauty.vercel.app/",
+          "logo": "https://belpa-beauty.vercel.app/assets/optimized/logo.webp",
+          "image": "https://belpa-beauty.vercel.app/assets/optimized/hero_main.webp",
+          "description": "Boutique especializada en rosas eternas artesanales hechas a mano en limpiapipas (BelFlora) y cosméticos de tendencia viral (BelpaBeauty) en Cúcuta, Colombia.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Cúcuta",
+            "addressRegion": "Norte de Santander",
+            "addressCountry": "CO"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 7.8939,
+            "longitude": -72.5078
+          },
+          "priceRange": "$15.000 COP - $140.000 COP",
+          "currenciesAccepted": "COP",
+          "paymentAccepted": "Nequi, Daviplata, Bancolombia, Pago Contra Entrega en Cúcuta",
+          "sameAs": [
+            "https://www.instagram.com/belflora.co"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://belpa-beauty.vercel.app/#website",
+          "url": "https://belpa-beauty.vercel.app/",
+          "name": "Belpa",
+          "description": "Boutique de Rosas Eternas y Cosméticos",
+          "publisher": {
+            "@id": "https://belpa-beauty.vercel.app/#store"
+          },
+          "inLanguage": "es-CO"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://belpa-beauty.vercel.app/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Puedo comprar maquillaje y flores en un mismo pedido?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "¡Sí, claro! Nuestro carrito es 100% unificado. Puedes agregar productos de BelpaBeauty y BelFlora y se procesarán juntos en una sola entrega."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué medios de pago aceptan?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Aceptamos transferencias por Nequi, Daviplata, Bancolombia y pago contra entrega en la ciudad de Cúcuta."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Hacen entregas a domicilio?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "¡Sí! Realizamos domicilios en toda el área metropolitana de Cúcuta y enviamos por transportadora asegurada a toda Colombia."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cuánto tiempo tarda la entrega?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Para cosméticos el despacho es inmediato. Para flores artesanales tejidas a mano, el tiempo de elaboración y despacho es de 2 a 3 días hábiles."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <!-- Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Three.js (con defer para rendimiento) -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 

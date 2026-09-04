@@ -1,0 +1,7 @@
+# Robots.txt para Belpa (BelpaBeauty & BelFlora)
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /assets/optimized/
+
+Sitemap: https://belpa-beauty.vercel.app/sitemap.xml
