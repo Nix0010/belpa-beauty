@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belpa CMS • Panel Administrativo</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito:wght@600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Supabase JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- 1. SECCIÓN LOGIN (VISIBLE CUANDO NO HAY SESIÓN) -->
+    <section id="login-section" class="login-wrapper">
+        <div class="login-card">
+            <img src="../assets/optimized/logo.webp" alt="Belpa Logo" class="login-logo">
+            <h1 class="login-title">Belpa Boutique</h1>
+            <p class="login-subtitle">Panel Administrativo & CMS de Productos</p>
+            
+            <div id="login-error-alert" style="display:none; background:#FFF5F5; color:#C92A2A; border:1px solid #FFA8A8; padding:8px 12px; border-radius:8px; font-size:0.82rem; margin-bottom:14px; font-weight:700;"></div>
+
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="login-email">Correo Electrónico:</label>
+                    <input type="email" id="login-email" class="form-input" required placeholder="admin@belpa.co" autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Contraseña:</label>
+                    <input type="password" id="login-password" class="form-input" required placeholder="••••••••••••" autocomplete="current-password">
+                </div>
+                <button type="submit" id="login-submit-btn" class="btn-admin-primary w-full">
+                    <span>Iniciar Sesión 🌸</span>
+                </button>
+                <div style="margin-top:12px; text-align:center;">
+                    <button type="button" id="btn-open-config-login" class="btn-admin-secondary" style="font-size:0.78rem; padding:6px 12px; width:100%;">
+                        ⚙️ Configurar Conexión Supabase
+                    </button>
+                </div>
+            </form>
+
+            <div style="margin-top:20px; font-size:0.75rem; color:#8E8287;">
+                🔒 Acceso restringido exclusivamente al propietario de Belpa.
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. SECCIÓN DASHBOARD (VISIBLE CON SESIÓN ACTIVA) -->
+    <section id="dashboard-section" style="display:none;">
+        <nav class="admin-navbar">
+            <a href="#" class="admin-nav-brand">
+                <span>Belpa 🌸</span>
+                <small style="font-size:0.72rem; color:var(--text-muted); font-family:var(--font-cute);">CMS Admin</small>
+            </a>
+            <div class="admin-nav-actions">
+                <a href="../" target="_blank" class="btn-admin-secondary">Ver Tienda Pública 🛍️</a>
+                <button id="btn-open-config-nav" class="btn-admin-secondary" title="Configuración de Base de Datos Cloud" style="padding:6px 10px;">⚙️</button>
+                <span class="admin-user-badge" id="admin-user-email">admin@belpa.co</span>
+                <button id="logout-btn" class="btn-admin-secondary" style="color:#C92A2A;">Cerrar Sesión 🔒</button>
+            </div>
+        </nav>
+
+        <main class="admin-container">
+            <!-- Métricas -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <span>Total Productos</span>
+                        <h3 id="stat-total-products">0</h3>
+                    </div>
+                    <div class="stat-icon">🛍️</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <span>BelFlora (Flores)</span>
+                        <h3 id="stat-flora-products">0</h3>
+                    </div>
+                    <div class="stat-icon">🌹</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <span>BelpaBeauty (Makeup)</span>
+                        <h3 id="stat-beauty-products">0</h3>
+                    </div>
+                    <div class="stat-icon">💄</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <span>Productos Activos</span>
+                        <h3 id="stat-active-products" style="color:var(--green-success);">0</h3>
+                    </div>
+                    <div class="stat-icon">✅</div>
+                </div>
+            </div>
+
+            <!-- Barra de Controles y Filtros -->
+            <div class="toolbar-card">
+                <div class="toolbar-filters">
+                    <div class="search-input-wrapper">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="admin-search-input" placeholder="Buscar por nombre, categoría o precio...">
+                    </div>
+                    <select id="admin-filter-brand" class="form-select" style="width:auto;">
+                        <option value="all">Todas las Marcas</option>
+                        <option value="flora">🌹 BelFlora</option>
+                        <option value="beauty">💄 BelpaBeauty</option>
+                    </select>
+                    <select id="admin-filter-status" class="form-select" style="width:auto;">
+                        <option value="all">Todos los Estados</option>
+                        <option value="active">Activos en Tienda</option>
+                        <option value="inactive">Inactivos / Ocultos</option>
+                    </select>
+                </div>
+                <button id="btn-open-create-modal" class="btn-admin-primary">
+                    <span>+ Nuevo Producto 🌸</span>
+                </button>
+            </div>
+
+            <!-- Tabla de Productos -->
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Producto</th>
+                            <th>Marca</th>
+                            <th>Categoría</th>
+                            <th>Precio (COP)</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-products-tbody">
+                        <tr>
+                            <td colspan="7" style="text-align:center; padding:30px; color:var(--text-muted);">
+                                Cargando catálogo de Belpa... 🌸
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </section>
+
+    <!-- 3. MODAL DE CREAR / EDITAR PRODUCTO -->
+    <div class="modal-overlay" id="product-modal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="modal-product-title">Crear Nuevo Producto</h3>
+                <button class="modal-close" id="modal-close-btn">&times;</button>
+            </div>
+            <form id="product-form">
+                <input type="hidden" id="prod-id">
+                
+                <div class="form-group" style="margin-bottom:12px;">
+                    <label>Fotografía del Producto (Conversión automática a WebP):</label>
+                    <div class="image-dropzone" id="image-dropzone">
+                        <span>📷 Haz clic para seleccionar una foto</span>
+                        <input type="file" id="prod-file-input" accept="image/png, image/jpeg, image/webp" style="display:none;">
+                    </div>
+                    <img id="prod-image-preview" class="image-preview-box" alt="Previsualización">
+                    <input type="hidden" id="prod-current-image-url">
+                </div>
+
+                <div class="form-group" style="margin-bottom:12px;">
+                    <label for="prod-name">Nombre del Producto: *</label>
+                    <input type="text" id="prod-name" class="form-input" required placeholder="Ej. Ramo Rapunzel Deluxe">
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+                    <div class="form-group">
+                        <label for="prod-brand">Línea de Marca: *</label>
+                        <select id="prod-brand" class="form-select" required>
+                            <option value="flora">🌹 BelFlora (Flores & Regalos)</option>
+                            <option value="beauty">💄 BelpaBeauty (Cosméticos)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-price">Precio en COP (Ej. 80000): *</label>
+                        <input type="number" id="prod-raw-price" class="form-input" required placeholder="80000" min="0" step="500">
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+                    <div class="form-group">
+                        <label for="prod-category">Nombre de Categoría:</label>
+                        <input type="text" id="prod-category" class="form-input" placeholder="TEMÁTICAS & DISNEY" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-badge">Etiqueta / Badge:</label>
+                        <input type="text" id="prod-badge" class="form-input" placeholder="Princesas 👑">
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom:16px;">
+                    <label for="prod-desc">Descripción Completa:</label>
+                    <textarea id="prod-desc" class="form-textarea" rows="3" placeholder="Detalles, flores incluidas, empaque..."></textarea>
+                </div>
+
+                <div class="form-group" style="margin-bottom:20px;">
+                    <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                        <input type="checkbox" id="prod-active" checked style="width:16px; height:16px;">
+                        <span>Producto Activo (Visible en la tienda pública)</span>
+                    </label>
+                </div>
+
+                <div style="display:flex; justify-content:flex-end; gap:10px;">
+                    <button type="button" class="btn-admin-secondary" id="modal-cancel-btn">Cancelar</button>
+                    <button type="submit" id="modal-save-btn" class="btn-admin-primary">
+                        <span>Guardar Producto 🌸</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+    <!-- 4. MODAL DE CONFIGURACIÓN SUPABASE -->
+    <div class="modal-overlay" id="config-modal">
+        <div class="modal-box" style="max-width:540px;">
+            <div class="modal-header">
+                <h3>⚙️ Configuración de Conexión Cloud (Supabase)</h3>
+                <button class="modal-close" id="config-modal-close-btn">&times;</button>
+            </div>
+            <div style="padding:10px 0;">
+                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px; line-height:1.5;">
+                    Conecta tu base de datos y almacenamiento de <strong>Supabase</strong> para que los cambios en productos y fotos se guarden en la nube de forma segura.
+                </p>
+
+                <form id="config-form">
+                    <div class="form-group" style="margin-bottom:12px;">
+                        <label for="cfg-url">Supabase Project URL:</label>
+                        <input type="url" id="cfg-url" class="form-input" placeholder="https://xyzcompany.supabase.co" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom:14px;">
+                        <label for="cfg-key">Supabase Anon Public Key:</label>
+                        <textarea id="cfg-key" class="form-textarea" rows="3" placeholder="eyJhbGciOiJIUzI1NiIsIn..." required></textarea>
+                    </div>
+                    <div style="background:#FFF9FA; border:1px solid #FFE3EC; border-radius:10px; padding:12px; font-size:0.8rem; margin-bottom:16px;">
+                        <strong style="color:var(--burgundy-primary);">📋 Pasos Rápidos para Configurar:</strong>
+                        <ol style="margin:6px 0 0 16px; padding:0; color:var(--text-muted); line-height:1.6;">
+                            <li>Crea un proyecto gratis en <a href="https://supabase.com" target="_blank" style="color:var(--burgundy-primary); font-weight:700;">supabase.com</a>.</li>
+                            <li>En el SQL Editor, pega y ejecuta <code>admin/supabase-schema.sql</code>.</li>
+                            <li>Luego pega y ejecuta <code>admin/seed-products.sql</code> para cargar los 79 productos originales.</li>
+                            <li>Crea tu usuario administrador en Supabase Authentication.</li>
+                            <li>Pega aquí tu <strong>Project URL</strong> y tu <strong>Anon Key</strong> (de Project Settings &gt; API).</li>
+                        </ol>
+                    </div>
+
+                    <div style="display:flex; justify-content:flex-end; gap:10px;">
+                        <button type="button" class="btn-admin-secondary" id="config-modal-cancel-btn">Cerrar</button>
+                        <button type="submit" class="btn-admin-primary">
+                            <span>Guardar y Probar Conexión ✨</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-msg" id="admin-toast"></div>
+
+    <script src="config.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

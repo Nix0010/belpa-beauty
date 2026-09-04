@@ -1187,11 +1187,15 @@ const productsCatalog = [
         ]
     }
 ];
-const fullCatalog = productsCatalog;
+let fullCatalog = [...productsCatalog];
 
 // Mapa de productos por ID
 const productsMap = {};
-fullCatalog.forEach(p => { productsMap[p.id] = p; });
+function rebuildProductsMap() {
+    Object.keys(productsMap).forEach(k => delete productsMap[k]);
+    fullCatalog.forEach(p => { productsMap[p.id] = p; });
+}
+rebuildProductsMap();
 
 const whatsappLinkBase = 'https://wa.me/message/Z4TVXHB3UPMRI1';
 
@@ -1302,6 +1306,51 @@ function showToast(message, icon = '🌸') {
     }, 2500);
 }
 
+
+// ============================================================
+// CONEXIÓN EN TIEMPO REAL CON SUPABASE (FALLBACK A CATÁLOGO LOCAL)
+// ============================================================
+async function initCloudProducts() {
+    try {
+        const config = window.BELPA_CONFIG;
+        if (!config || typeof config.isConfigured !== 'function' || !config.isConfigured()) {
+            return;
+        }
+
+        const endpoint = `${config.SUPABASE_URL.replace(/\/+$/, '')}/rest/v1/products?select=*&is_active=eq.true&order=id.asc`;
+        const res = await fetch(endpoint, {
+            headers: {
+                'apikey': config.SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${config.SUPABASE_ANON_KEY}`
+            }
+        });
+
+        if (!res.ok) return;
+        const data = await res.json();
+
+        if (Array.isArray(data) && data.length > 0) {
+            fullCatalog = data.map(row => ({
+                id: row.id,
+                name: row.name,
+                category: row.category,
+                filterCategory: row.filter_category || 'rosas_ramos',
+                price: row.price || formatCOP(row.raw_price || 0),
+                rawPrice: Number(row.raw_price) || 0,
+                badge: row.badge || '',
+                description: row.description || '',
+                mediaId: row.media_id || '',
+                images: Array.isArray(row.images) ? row.images : (typeof row.images === 'string' ? JSON.parse(row.images || '[]') : []),
+                brand: row.brand || 'flora'
+            }));
+            rebuildProductsMap();
+            renderCategoryFilters();
+            renderProducts();
+        }
+    } catch (err) {
+        console.warn('Belpa Cloud Sync: Usando catálogo local optimizado.', err);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Menú Móvil
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -1343,6 +1392,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     initSparkles();
     initThreeJS();
+    initCloudProducts();
 });
 
 // --- ENRUTAMIENTO Y SWITCH DE MARCAS (BELPABEAUTY / BELFLORA) ---
