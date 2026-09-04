@@ -396,8 +396,9 @@
         <div class="cart-drawer-footer" id="cart-drawer-footer">
             <div class="cart-checkout-details">
                 <div class="cart-form-field">
-                    <label for="cart-client-name">Tu Nombre:</label>
-                    <input type="text" id="cart-client-name" placeholder="Ej. Daniela Pérez" class="cart-input">
+                    <label for="cart-client-name">Tu Nombre: <span class="required-star">*</span></label>
+                    <input type="text" id="cart-client-name" placeholder="Ej. Daniela Pérez" class="cart-input" autocomplete="name">
+                    <span class="field-error-msg" id="err-cart-client-name" style="display:none;"></span>
                 </div>
                 <div class="cart-form-field">
                     <label for="cart-delivery-method">Método de Entrega:</label>
@@ -407,14 +408,29 @@
                         <option value="Recoger en punto (Cúcuta)">📍 Recoger en persona</option>
                     </select>
                 </div>
-                <div class="cart-form-field">
-                    <label for="cart-client-address">Dirección / Ciudad:</label>
-                    <input type="text" id="cart-client-address" placeholder="Ej. Barrio Los Pinos, Cúcuta" class="cart-input">
+                <div class="cart-form-field" id="cart-date-field-container">
+                    <label for="cart-delivery-date" id="cart-date-label">¿Para qué fecha necesitas tu pedido? <span class="required-star" id="cart-date-required-star">*</span></label>
+                    <input type="date" id="cart-delivery-date" class="cart-input">
+                    <span class="field-hint" id="cart-date-hint">🌹 Los ramos artesanales requieren tiempo de confección a mano.</span>
+                    <span class="field-error-msg" id="err-cart-delivery-date" style="display:none;"></span>
+                </div>
+                <div class="cart-form-field" id="cart-address-field-container">
+                    <label for="cart-client-address" id="cart-address-label">Dirección / Barrio: <span class="required-star" id="cart-address-required-star">*</span></label>
+                    <input type="text" id="cart-client-address" placeholder="Ej. Barrio Los Pinos, Calle 10 #5-20" class="cart-input" autocomplete="street-address">
+                    <span class="field-error-msg" id="err-cart-client-address" style="display:none;"></span>
                 </div>
                 <div class="cart-form-field">
                     <label for="cart-client-notes">Nota especial o dedicatoria (Opcional):</label>
                     <input type="text" id="cart-client-notes" placeholder="Ej. 'Feliz Cumpleaños Mamá...'" class="cart-input">
                 </div>
+            </div>
+
+            <div class="cart-shipping-notice-box">
+                <div class="cart-shipping-row">
+                    <span>🚚 Envío / Domicilio:</span>
+                    <strong class="cart-shipping-tag">A coordinar por WhatsApp</strong>
+                </div>
+                <p class="cart-shipping-subtext">El valor exacto del domicilio se confirma según tu dirección.</p>
             </div>
 
             <div class="cart-subtotal-row">

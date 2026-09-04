@@ -1701,6 +1701,50 @@ function initCartSystem() {
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', checkoutWhatsApp);
     }
+
+    // Dynamic delivery method change
+    const deliveryMethodSelect = document.getElementById('cart-delivery-method');
+    if (deliveryMethodSelect) {
+        deliveryMethodSelect.addEventListener('change', () => {
+            updateAddressFieldRequirement();
+        });
+    }
+
+    // Real-time input error clearing on user typing
+    ['cart-client-name', 'cart-delivery-date', 'cart-client-address'].forEach(fieldId => {
+        const inputEl = document.getElementById(fieldId);
+        if (inputEl) {
+            inputEl.addEventListener('input', () => {
+                inputEl.classList.remove('input-error');
+                const errEl = document.getElementById(`err-${fieldId}`);
+                if (errEl) {
+                    errEl.style.display = 'none';
+                    errEl.textContent = '';
+                }
+            });
+        }
+    });
+}
+
+function updateAddressFieldRequirement() {
+    const deliveryMethod = document.getElementById('cart-delivery-method')?.value || '';
+    const addressStar = document.getElementById('cart-address-required-star');
+    const addressLabel = document.getElementById('cart-address-label');
+    const addressInput = document.getElementById('cart-client-address');
+    const addressErr = document.getElementById('err-cart-client-address');
+
+    if (deliveryMethod.includes('Recoger')) {
+        if (addressStar) addressStar.style.display = 'none';
+        if (addressLabel) addressLabel.innerHTML = 'Dirección / Barrio (Opcional - Punto físico):';
+        if (addressInput) addressInput.classList.remove('input-error');
+        if (addressErr) {
+            addressErr.style.display = 'none';
+            addressErr.textContent = '';
+        }
+    } else {
+        if (addressStar) addressStar.style.display = 'inline';
+        if (addressLabel) addressLabel.innerHTML = 'Dirección / Barrio: <span class="required-star" id="cart-address-required-star">*</span>';
+    }
 }
 
 function addToCart(productId, quantity = 1) {
@@ -1812,6 +1856,37 @@ function renderCartDrawer() {
             </div>
         `;
     }).join('');
+
+    // Dynamic configuration of date picker & requirements based on cart content
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    const minDateStr = `${yyyy}-${mm}-${dd}`;
+
+    const dateInput = document.getElementById('cart-delivery-date');
+    if (dateInput) {
+        dateInput.min = minDateStr;
+    }
+
+    const hasFlora = cart.some(i => i.brand === 'flora');
+    const isBeautyOnly = cart.length > 0 && cart.every(i => i.brand === 'beauty');
+
+    const dateRequiredStar = document.getElementById('cart-date-required-star');
+    const dateLabel = document.getElementById('cart-date-label');
+    const dateHint = document.getElementById('cart-date-hint');
+
+    if (isBeautyOnly) {
+        if (dateRequiredStar) dateRequiredStar.style.display = 'none';
+        if (dateLabel) dateLabel.innerHTML = 'Fecha deseada de entrega (Opcional):';
+        if (dateHint) dateHint.textContent = '💄 Despacho inmediato para productos de maquillaje y skincare.';
+    } else {
+        if (dateRequiredStar) dateRequiredStar.style.display = 'inline';
+        if (dateLabel) dateLabel.innerHTML = '¿Para qué fecha necesitas tu pedido? <span class="required-star" id="cart-date-required-star">*</span>';
+        if (dateHint) dateHint.textContent = '🌹 Los ramos artesanales requieren tiempo de confección a mano.';
+    }
+
+    updateAddressFieldRequirement();
 }
 
 window.changeCartItemQty = function(id, delta) {
@@ -1829,18 +1904,121 @@ window.removeCartItem = function(id) {
     saveCart();
 };
 
-function checkoutWhatsApp() {
-    if (cart.length === 0) return;
+function formatDateSpanish(dateStr) {
+    if (!dateStr) return '';
+    try {
+        const parts = dateStr.split('-');
+        if (parts.length !== 3) return dateStr;
+        const [y, m, d] = parts;
+        const months = [
+            'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+            'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+        ];
+        const monthName = months[parseInt(m, 10) - 1] || m;
+        return `${parseInt(d, 10)} de ${monthName} de ${y}`;
+    } catch (e) {
+        return dateStr;
+    }
+}
 
-    const clientName = document.getElementById('cart-client-name')?.value.trim() || 'Cliente Web';
+function checkoutWhatsApp() {
+    if (cart.length === 0) {
+        showToast('Tu carrito está vacío 🌸', '🛒');
+        return;
+    }
+
+    // Reset error visuals
+    ['cart-client-name', 'cart-delivery-date', 'cart-client-address'].forEach(id => {
+        const inputEl = document.getElementById(id);
+        if (inputEl) inputEl.classList.remove('input-error');
+        const errEl = document.getElementById(`err-${id}`);
+        if (errEl) {
+            errEl.style.display = 'none';
+            errEl.textContent = '';
+        }
+    });
+
+    const nameInput = document.getElementById('cart-client-name');
+    const clientName = nameInput?.value.trim() || '';
     const deliveryMethod = document.getElementById('cart-delivery-method')?.value || 'Cúcuta (Domicilio)';
-    const clientAddress = document.getElementById('cart-client-address')?.value.trim() || 'Por coordinar';
+    const dateInput = document.getElementById('cart-delivery-date');
+    const deliveryDate = dateInput?.value || '';
+    const addressInput = document.getElementById('cart-client-address');
+    const clientAddress = addressInput?.value.trim() || '';
     const clientNotes = document.getElementById('cart-client-notes')?.value.trim() || '';
+
+    const hasFlora = cart.some(i => i.brand === 'flora');
+    const isPickup = deliveryMethod.includes('Recoger');
+
+    // 1. Validar Nombre
+    if (clientName.length < 2) {
+        if (nameInput) {
+            nameInput.classList.add('input-error');
+            nameInput.focus();
+        }
+        const errName = document.getElementById('err-cart-client-name');
+        if (errName) {
+            errName.textContent = 'Por favor, indícanos tu nombre para poder preparar tu pedido.';
+            errName.style.display = 'block';
+        }
+        showToast('Por favor, indícanos tu nombre 🌸', '⚠️');
+        return;
+    }
+
+    // 2. Validar Fecha de Entrega (Obligatoria si contiene BelFlora)
+    if (hasFlora && !deliveryDate) {
+        if (dateInput) {
+            dateInput.classList.add('input-error');
+            dateInput.focus();
+        }
+        const errDate = document.getElementById('err-cart-delivery-date');
+        if (errDate) {
+            errDate.textContent = 'Por favor selecciona la fecha en la que necesitas tus flores.';
+            errDate.style.display = 'block';
+        }
+        showToast('Selecciona la fecha de entrega para tus flores 🌹', '📅');
+        return;
+    }
+
+    // Validar que la fecha no sea anterior a hoy
+    if (deliveryDate) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const selectedDate = new Date(deliveryDate + 'T00:00:00');
+        if (selectedDate < today) {
+            if (dateInput) {
+                dateInput.classList.add('input-error');
+                dateInput.focus();
+            }
+            const errDate = document.getElementById('err-cart-delivery-date');
+            if (errDate) {
+                errDate.textContent = 'La fecha de entrega no puede ser anterior al día de hoy.';
+                errDate.style.display = 'block';
+            }
+            showToast('La fecha de entrega no puede ser anterior a hoy 📅', '⚠️');
+            return;
+        }
+    }
+
+    // 3. Validar Dirección (Obligatoria si es Domicilio o Envío Nacional)
+    if (!isPickup && clientAddress.length < 3) {
+        if (addressInput) {
+            addressInput.classList.add('input-error');
+            addressInput.focus();
+        }
+        const errAddress = document.getElementById('err-cart-client-address');
+        if (errAddress) {
+            errAddress.textContent = 'Por favor ingresa tu dirección o barrio para coordinar la entrega.';
+            errAddress.style.display = 'block';
+        }
+        showToast('Por favor ingresa tu dirección de entrega 🛵', '📍');
+        return;
+    }
 
     const subtotal = cart.reduce((sum, i) => sum + (i.rawPrice * i.quantity), 0);
 
     let message = `¡Hola Belpa! 💖✨\n`;
-    message += `Vengo de su página web y quiero realizar el siguiente pedido unificado:\n\n`;
+    message += `Vengo de su tienda web y quiero realizar el siguiente pedido:\n\n`;
     message += `🛍️ *RESUMEN DEL PEDIDO:*\n`;
 
     cart.forEach(item => {
@@ -1850,12 +2028,17 @@ function checkoutWhatsApp() {
 
     message += `\n💰 *Subtotal Productos:* ${formatCOP(subtotal)}\n`;
     message += `🚚 *Método de Entrega:* ${deliveryMethod}\n`;
-    message += `👤 *Nombre:* ${clientName}\n`;
-    message += `📍 *Ciudad / Dirección:* ${clientAddress}\n`;
+    if (!isPickup && clientAddress) {
+        message += `📍 *Dirección / Ciudad:* ${clientAddress}\n`;
+    }
+    if (deliveryDate) {
+        message += `📅 *Fecha de Entrega:* ${formatDateSpanish(deliveryDate)}\n`;
+    }
+    message += `👤 *Nombre del Cliente:* ${clientName}\n`;
     if (clientNotes) {
         message += `💌 *Dedicatoria / Notas:* "${clientNotes}"\n`;
     }
-    message += `\n¿Me confirman disponibilidad y los datos para el pago? ¡Muchas gracias! 🌸🎀`;
+    message += `\n¿Me confirman disponibilidad y el valor del envío para coordinar el pago? ¡Muchas gracias! 🌸🎀`;
 
     window.open(`${whatsappLinkBase}?text=${encodeURIComponent(message)}`, '_blank');
 }
