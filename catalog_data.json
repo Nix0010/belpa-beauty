@@ -1,1182 +1,1182 @@
 [
-  {
-    "id": 1,
-    "name": "Ramo Rapunzel Ref 001",
-    "category": "TEMÁTICAS & DISNEY",
-    "filterCategory": "tematicas",
-    "price": "$80,000 COP",
-    "rawPrice": 80000,
-    "badge": "Princesas 👑",
-    "description": "Ramo temático de Rapunzel en limpiapipas artesanales de alta calidad. Incluye: 4 Lirios, 2 Gerberas, 2 Margaritas, 1 Tulipán, 1 Flor gota de sol, 1 Rosa, camaleón Pascal en limpiapipa, follaje y luces LED decorativas.",
-    "mediaId": "MAHQOp8EUfM",
-    "images": [
-      "assets/catalog/item_1_MAHQOp8EUfM.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 2,
-    "name": "Ramo Rapunzel Ref 002",
-    "category": "TEMÁTICAS & DISNEY",
-    "filterCategory": "tematicas",
-    "price": "$115,000 COP",
-    "rawPrice": 115000,
-    "badge": "Princesas 👑",
-    "description": "Ramo premium de Rapunzel tejido a mano. Incluye: 1 Lirio, 3 Gerberas, 2 Jazmín, 6 Tulipanes, 1 Flor gota de sol, 1 figura de Pascal artesanal, follaje y luces LED.",
-    "mediaId": "MAHShGd7zIc",
-    "images": [
-      "assets/catalog/item_2_MAHShGd7zIc.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 3,
-    "name": "Ramo Cenicienta",
-    "category": "TEMÁTICAS & DISNEY",
-    "filterCategory": "tematicas",
-    "price": "$80,000 COP",
-    "rawPrice": 80000,
-    "badge": "Princesas 👑",
-    "description": "Ramo mágico de Cenicienta con tonos celestes y blancos. Incluye flores artesanales, detalles temáticos de princesa, follaje decorativo y luces LED.",
-    "mediaId": "MAHRoxdMUYc",
-    "images": [
-      "assets/catalog/item_3_MAHRoxdMUYc.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 4,
-    "name": "Ramo La Princesa y el Sapo",
-    "category": "TEMÁTICAS & DISNEY",
-    "filterCategory": "tematicas",
-    "price": "$115,000 COP",
-    "rawPrice": 115000,
-    "badge": "Princesas 👑",
-    "description": "Inspirado en Tiana y el pantano mágico. Incluye: 1 Flor de loto, 1 Gerbera, 1 Tulipán, 2 Lirios, 2 ramas de follaje, figura de la luciérnaga Ray en limpiapipas y luces LED.",
-    "mediaId": "MAHRowNcbB8",
-    "images": [
-      "assets/catalog/item_4_MAHRowNcbB8.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 5,
-    "name": "Ramo Lotso Deluxe (7 Tulipanes & Lirios)",
-    "category": "RAMOS CON PELUCHES",
-    "filterCategory": "peluches",
-    "price": "$135,000 COP",
-    "rawPrice": 135000,
-    "badge": "Peluches 🧸",
-    "description": "Hermoso bouquet con peluche Lotso, 7 Tulipanes, 3 Lirios, 1 Lirio especial, 5 ramas de follaje y envoltura de lujo.",
-    "mediaId": "MAHQ4CuIp3g",
-    "images": [
-      "assets/catalog/item_5_MAHQ4CuIp3g.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 6,
-    "name": "Ramo Lotso Rosas & Gerberas",
-    "category": "RAMOS CON PELUCHES",
-    "filterCategory": "peluches",
-    "price": "$110,000 COP",
-    "rawPrice": 110000,
-    "badge": "Peluches 🧸",
-    "description": "Bouquet dulce de 7 Tulipanes, 2 Rosas, 3 Gerberas, follaje y peluche de Lotso con aroma delicioso.",
-    "mediaId": "MAHPmj2Tpbk",
-    "images": [
-      "assets/catalog/item_6_MAHPmj2Tpbk.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 7,
-    "name": "Ramo Lotso Clásico (7 Tulipanes)",
-    "category": "RAMOS CON PELUCHES",
-    "filterCategory": "peluches",
-    "price": "$80,000 COP",
-    "rawPrice": 80000,
-    "badge": "Peluches 🧸",
-    "description": "Ramo tierno con peluche de Lotso. Incluye: 7 Tulipanes, ramas de follaje y peluche suave de Lotso.",
-    "mediaId": "MAHS1Qb4eEc",
-    "images": [
-      "assets/catalog/item_7_MAHS1Qb4eEc.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 8,
-    "name": "Ramo Lotso Dormilón (Peluche 35 cm)",
-    "category": "RAMOS CON PELUCHES",
-    "filterCategory": "peluches",
-    "price": "$135,000 COP",
-    "rawPrice": 135000,
-    "badge": "Peluches 🧸",
-    "description": "Ramo especial con peluche Lotso de 35 cm. Incluye: 6 Tulipanes, 3 Rosas, 1 Anémona, follaje y peluche grande de Lotso.",
-    "mediaId": "MAHS1RY-jEE",
-    "images": [
-      "assets/catalog/item_8_MAHS1RY-jEE.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 9,
-    "name": "Ramo Annita Rosado",
-    "category": "RAMOS CON PELUCHES",
-    "filterCategory": "peluches",
-    "price": "$120,000 COP",
-    "rawPrice": 120000,
-    "badge": "Peluches 🧸",
-    "description": "Tierno ramo en tono Rosado con peluche. Incluye: 6 Tulipanes, 3 Lirios, 2 ramas de follaje y peluche afelpado.",
-    "mediaId": "MAHQudzb4eg",
-    "images": [
-      "assets/catalog/item_9_MAHQudzb4eg.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 10,
-    "name": "Ramo Anny 2.0 Rosado Pastel",
-    "category": "RAMOS CON PELUCHES",
-    "filterCategory": "peluches",
-    "price": "$120,000 COP",
-    "rawPrice": 120000,
-    "badge": "Peluches 🧸",
-    "description": "Ramo en tonalidad Rosado Pastel. Incluye: 6 Tulipanes, 3 Lirios, 2 ramas de follaje y peluche delicado.",
-    "mediaId": "MAHQ4KYCeEQ",
-    "images": [
-      "assets/catalog/item_10_MAHQ4KYCeEQ.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 11,
-    "name": "Ramo Anny Ovejita Nude",
-    "category": "RAMOS CON PELUCHES",
-    "filterCategory": "peluches",
-    "price": "$125,000 COP",
-    "rawPrice": 125000,
-    "badge": "Peluches 🧸",
-    "description": "Elegante bouquet en tono Rosado Nude. Incluye: 7 Tulipanes, 3 Lirios, 3 Rosas, follaje y peluche de ovejita ultra suave.",
-    "mediaId": "MAHPmncoNSc",
-    "images": [
-      "assets/catalog/item_11_MAHPmncoNSc.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 12,
-    "name": "Ramo My Melody",
-    "category": "RAMOS CON PELUCHES",
-    "filterCategory": "peluches",
-    "price": "$70,000 COP",
-    "rawPrice": 70000,
-    "badge": "Sanrio 🎀",
-    "description": "Inspirado en My Melody. Incluye: 7 Tulipanes tejidos, follaje y peluche original de My Melody.",
-    "mediaId": "MAHQOsxcTQs",
-    "images": [
-      "assets/catalog/item_12_MAHQOsxcTQs.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 13,
-    "name": "Ramo Hello Kitty Ref 001",
-    "category": "RAMOS CON PELUCHES",
-    "filterCategory": "peluches",
-    "price": "$125,000 COP",
-    "rawPrice": 125000,
-    "badge": "Sanrio 🎀",
-    "description": "Precioso ramo de Hello Kitty. Incluye: 5 Tulipanes, 3 Lirios, 3 Gerberas, 2 ramas de follaje y peluche de Hello Kitty.",
-    "mediaId": "MAHQaR4F-LI",
-    "images": [
-      "assets/catalog/item_13_MAHQaR4F-LI.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 14,
-    "name": "Ramo Hello Kitty Ref 002 (45 cm)",
-    "category": "RAMOS CON PELUCHES",
-    "filterCategory": "peluches",
-    "price": "$150,000 COP",
-    "rawPrice": 150000,
-    "badge": "Sanrio 🎀",
-    "description": "Gran bouquet con peluche Hello Kitty gigante de 45 cm. Incluye: 10 Tulipanes, 4 Lirios, 1 Gerbera y follaje.",
-    "mediaId": "MAHS16mtKgM",
-    "images": [
-      "assets/catalog/item_14_MAHS16mtKgM.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 15,
-    "name": "Ramo Hello Kitty Ref 003 (6 Tulipanes)",
-    "category": "RAMOS CON PELUCHES",
-    "filterCategory": "peluches",
-    "price": "$70,000 COP",
-    "rawPrice": 70000,
-    "badge": "Sanrio 🎀",
-    "description": "Bouquet tierno de 6 Tulipanes, 2 ramas de follaje y peluche Hello Kitty de 45 cm.",
-    "mediaId": "MAHRMue2NRs",
-    "images": [
-      "assets/catalog/item_15_MAHRMue2NRs.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 16,
-    "name": "Ramo Hello Kitty Ref 004 (50 cm)",
-    "category": "RAMOS CON PELUCHES",
-    "filterCategory": "peluches",
-    "price": "$150,000 COP",
-    "rawPrice": 150000,
-    "badge": "Sanrio 🎀",
-    "description": "El regalo supremo para fans de Hello Kitty. Incluye: 5 Tulipanes, 4 Lirios, 2 Gerberas, Margarita mini, follaje y peluche Hello Kitty de 50 cm.",
-    "mediaId": "MAHRMuZHRJc",
-    "images": [
-      "assets/catalog/item_16_MAHRMuZHRJc.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 17,
-    "name": "Ramo Snoopy Ref 01",
-    "category": "RAMOS CON PELUCHES",
-    "filterCategory": "peluches",
-    "price": "$78,000 COP",
-    "rawPrice": 78000,
-    "badge": "Snoopy 🐶",
-    "description": "Encantador ramo de 4 Tulipanes, 3 Gerberas, follaje y figura artesanal de Snoopy tejida en limpiapipas.",
-    "mediaId": "MAHRo4IM_QY",
-    "images": [
-      "assets/catalog/item_17_MAHRo4IM_QY.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 18,
-    "name": "Ramo Snoopy Ref 02 (12 Tulipanes)",
-    "category": "RAMOS CON PELUCHES",
-    "filterCategory": "peluches",
-    "price": "$70,000 COP",
-    "rawPrice": 70000,
-    "badge": "Snoopy 🐶",
-    "description": "Arreglo primaveral de 12 Tulipanes artesanales, follaje y figura tejida de Snoopy en limpiapipas.",
-    "mediaId": "MAHST6bI3dM",
-    "images": [
-      "assets/catalog/item_18_MAHST6bI3dM.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 19,
-    "name": "Ramo Delirio (12 Lirios con Luces & Banda)",
-    "category": "LIRIOS",
-    "filterCategory": "lirios",
-    "price": "$110,000 COP",
-    "rawPrice": 110000,
-    "badge": "Lirios 🪷",
-    "description": "Impactante ramo de 12 Lirios eternos hechos a mano, follaje, banda personalizada con frase y serie de luces LED.",
-    "mediaId": "MAHS1lNKdhw",
-    "images": [
-      "assets/catalog/item_19_MAHS1lNKdhw.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 20,
-    "name": "Ramo Belkis Lirios",
-    "category": "LIRIOS",
-    "filterCategory": "lirios",
-    "price": "$90,000 COP",
-    "rawPrice": 90000,
-    "badge": "Lirios 🪷",
-    "description": "Ramo clásico y elegante con 12 Lirios eternos tejidos a mano y fino follaje decorativo.",
-    "mediaId": "MAHS14muKlY",
-    "images": [
-      "assets/catalog/item_20_MAHS14muKlY.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 21,
-    "name": "Ramo Gloria con Luces",
-    "category": "LIRIOS",
-    "filterCategory": "lirios",
-    "price": "$50,000 COP",
-    "rawPrice": 50000,
-    "badge": "Lirios 🪷",
-    "description": "Delicado bouquet de 5 Lirios eternos artesanales, follaje y luces LED decorativas.",
-    "mediaId": "MAHS15WkPNM",
-    "images": [
-      "assets/catalog/item_21_MAHS15WkPNM.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 22,
-    "name": "Ramo Tuli (14 Tulipanes)",
-    "category": "TULIPANES",
-    "filterCategory": "tulipanes",
-    "price": "$65,000 COP",
-    "rawPrice": 65000,
-    "badge": "Tulipanes 🌷",
-    "description": "Bouquet voluminoso y colorido de 14 Tulipanes tejidos a mano con limpiapipas de alta calidad y follaje.",
-    "mediaId": "MAHPmp3eA2I",
-    "images": [
-      "assets/catalog/item_22_MAHPmp3eA2I.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 23,
-    "name": "Ramo Belkis Tulipanes (15 Tulipanes)",
-    "category": "TULIPANES",
-    "filterCategory": "tulipanes",
-    "price": "$55,000 COP",
-    "rawPrice": 55000,
-    "badge": "Tulipanes 🌷",
-    "description": "Ramillete dulce y duradero de 15 Tulipanes eternos en combinación de tonos pasteles.",
-    "mediaId": "MAHS15aJDEc",
-    "images": [
-      "assets/catalog/item_23_MAHS15aJDEc.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 24,
-    "name": "Ramo Mila (10 Tulipanes)",
-    "category": "TULIPANES",
-    "filterCategory": "tulipanes",
-    "price": "$50,000 COP",
-    "rawPrice": 50000,
-    "badge": "Tulipanes 🌷",
-    "description": "Ramo coqueto de 10 Tulipanes eternos y ramas de follaje suave.",
-    "mediaId": "MAHS1_XlHvk",
-    "images": [
-      "assets/catalog/item_24_MAHS1_XlHvk.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 25,
-    "name": "Ramo Evelyn Tulipanes & Lirios",
-    "category": "TULIPANES",
-    "filterCategory": "tulipanes",
-    "price": "$70,000 COP",
-    "rawPrice": 70000,
-    "badge": "Tulipanes 🌷",
-    "description": "Hermosa combinación de 7 Tulipanes, 3 Lirios, 6 copitos (flores mini) y follaje.",
-    "mediaId": "MAHQW71FD-c",
-    "images": [
-      "assets/catalog/item_25_MAHQW71FD-c.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 26,
-    "name": "Ramo Lolita (6 Tulisnoopy)",
-    "category": "TULIPANES",
-    "filterCategory": "tulipanes",
-    "price": "$55,000 COP",
-    "rawPrice": 55000,
-    "badge": "Tulipanes 🌷",
-    "description": "Ramo con 6 Tulisnoopy (tulipanes combinados con carita de Snoopy) y follaje decorativo.",
-    "mediaId": "MAHS1hLOLCI",
-    "images": [
-      "assets/catalog/item_26_MAHS1hLOLCI.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 27,
-    "name": "Ramo Evelyn Mini Mix",
-    "category": "TULIPANES",
-    "filterCategory": "tulipanes",
-    "price": "$46,000 COP",
-    "rawPrice": 46000,
-    "badge": "Tulipanes 🌷",
-    "description": "Ramo accesible y tierno con 3 Tulipanes, 2 Tulisnoopy, 1 Lirio y follaje.",
-    "mediaId": "MAHS1m_fq6s",
-    "images": [
-      "assets/catalog/item_27_MAHS1m_fq6s.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 28,
-    "name": "Ramo Majo (3 Girasoles & 3 Tulipanes)",
-    "category": "GIRASOLES",
-    "filterCategory": "girasoles",
-    "price": "$65,000 COP",
-    "rawPrice": 65000,
-    "badge": "Girasoles 🌻",
-    "description": "Lleno de energía y luz. Incluye: 3 Girasoles grandes, 3 Tulipanes y ramas de follaje.",
-    "mediaId": "MAHRiZYz2-Q",
-    "images": [
-      "assets/catalog/item_28_MAHRiZYz2-Q.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 29,
-    "name": "Ramo Yari (2 Girasoles & 2 Tulipanes)",
-    "category": "GIRASOLES",
-    "filterCategory": "girasoles",
-    "price": "$50,000 COP",
-    "rawPrice": 50000,
-    "badge": "Girasoles 🌻",
-    "description": "Detalle radiante de 2 Girasoles y 2 Tulipanes artesanales con follaje verde.",
-    "mediaId": "MAHS1jyP-yc",
-    "images": [
-      "assets/catalog/item_29_MAHS1jyP-yc.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 30,
-    "name": "Ramo Luz con Corona & Banda",
-    "category": "GIRASOLES",
-    "filterCategory": "girasoles",
-    "price": "$92,000 COP",
-    "rawPrice": 92000,
-    "badge": "Girasoles 🌻",
-    "description": "Ramo regio de 6 Girasoles eternos, follaje, corona dorada decorativa y banda floral con frase personalizada.",
-    "mediaId": "MAHS1gXeVI0",
-    "images": [
-      "assets/catalog/item_30_MAHS1gXeVI0.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 31,
-    "name": "Ramo Sol (7 Girasoles Mini)",
-    "category": "GIRASOLES",
-    "filterCategory": "girasoles",
-    "price": "$60,000 COP",
-    "rawPrice": 60000,
-    "badge": "Girasoles 🌻",
-    "description": "Ramo alegre compuesto por 7 Girasoles mini y follaje natural decorativo.",
-    "mediaId": "MAHS2HJml-s",
-    "images": [
-      "assets/catalog/item_31_MAHS2HJml-s.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 32,
-    "name": "Ramo Dariana (6 Gerberas & 6 Tulipanes)",
-    "category": "GERBERAS",
-    "filterCategory": "gerberas",
-    "price": "$65,000 COP",
-    "rawPrice": 65000,
-    "badge": "Gerberas 🌸",
-    "description": "Colorido ramo que reúne 6 Gerberas y 6 Tulipanes tejidos a mano con follaje.",
-    "mediaId": "MAHS2IldEgw",
-    "images": [
-      "assets/catalog/item_32_MAHS2IldEgw.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 33,
-    "name": "Ramo Jasley (12 Gerberas)",
-    "category": "GERBERAS",
-    "filterCategory": "gerberas",
-    "price": "$75,000 COP",
-    "rawPrice": 75000,
-    "badge": "Gerberas 🌸",
-    "description": "Abundante bouquet de 12 Gerberas eternas en paleta vibrante de colores y follaje.",
-    "mediaId": "MAHS2PRaE_E",
-    "images": [
-      "assets/catalog/item_33_MAHS2PRaE_E.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 34,
-    "name": "Ramo Yenni con Lavandas",
-    "category": "RAMOS PRIMAVERA",
-    "filterCategory": "primavera",
-    "price": "$60,000 COP",
-    "rawPrice": 60000,
-    "badge": "Primavera 💐",
-    "description": "Delicada armonía de 6 Tulipanes, 3 Lirios, 2 ramitas de Lavanda aromática y follaje.",
-    "mediaId": "MAHS1mDKXcg",
-    "images": [
-      "assets/catalog/item_34_MAHS1mDKXcg.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 35,
-    "name": "Ramo Evelyn Gran Primavera",
-    "category": "RAMOS PRIMAVERA",
-    "filterCategory": "primavera",
-    "price": "$115,000 COP",
-    "rawPrice": 115000,
-    "badge": "Primavera 💐",
-    "description": "El arreglo primaveral más completo: 7 Tulipanes, 3 Lirios, 2 Girasoles, 2 Gerberas, 2 Margaritas, 1 Anémona y follaje.",
-    "mediaId": "MAHS1vHW5rE",
-    "images": [
-      "assets/catalog/item_35_MAHS1vHW5rE.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 36,
-    "name": "Ramo Floral",
-    "category": "RAMOS PRIMAVERA",
-    "filterCategory": "primavera",
-    "price": "$70,000 COP",
-    "rawPrice": 70000,
-    "badge": "Primavera 💐",
-    "description": "Hermosa combinación de 4 Tulipanes, 4 Lirios, 2 Margaritas, 2 Gerberas y ramas de follaje.",
-    "mediaId": "MAHPmkuxQdY",
-    "images": [
-      "assets/catalog/item_36_MAHPmkuxQdY.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 37,
-    "name": "Ramo Lili",
-    "category": "RAMOS PRIMAVERA",
-    "filterCategory": "primavera",
-    "price": "$55,000 COP",
-    "rawPrice": 55000,
-    "badge": "Primavera 💐",
-    "description": "Ramo balanceado de 3 Tulipanes, 4 Lirios y follaje decorativo.",
-    "mediaId": "MAHS1hpx7Ks",
-    "images": [
-      "assets/catalog/item_37_MAHS1hpx7Ks.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 38,
-    "name": "Ramo Van Gogh",
-    "category": "RAMOS PRIMAVERA",
-    "filterCategory": "primavera",
-    "price": "$75,000 COP",
-    "rawPrice": 75000,
-    "badge": "Inspiración 🎨",
-    "description": "Inspirado en la paleta de colores de Vincent Van Gogh. Incluye: 7 Tulipanes, 1 Girasol, 2 Gerberas y follaje.",
-    "mediaId": "MAHQOl9WAv4",
-    "images": [
-      "assets/catalog/item_38_MAHQOl9WAv4.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 39,
-    "name": "Ramo Moli",
-    "category": "RAMOS PRIMAVERA",
-    "filterCategory": "primavera",
-    "price": "$75,000 COP",
-    "rawPrice": 75000,
-    "badge": "Primavera 💐",
-    "description": "Bouquet dulce y fresco con 7 Tulipanes, 2 Lirios y follaje.",
-    "mediaId": "MAHPmqpV1sY",
-    "images": [
-      "assets/catalog/item_39_MAHPmqpV1sY.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 40,
-    "name": "Ramo Tamy (8 Tulipanes & 8 Lirios)",
-    "category": "RAMOS PRIMAVERA",
-    "filterCategory": "primavera",
-    "price": "$100,000 COP",
-    "rawPrice": 100000,
-    "badge": "Primavera 💐",
-    "description": "Gran bouquet de 8 Tulipanes y 8 Lirios eternos con envoltura de satín de lujo.",
-    "mediaId": "MAHNZFjOzxA",
-    "images": [
-      "assets/catalog/item_40_MAHNZFjOzxA.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 41,
-    "name": "Ramo Love (Rosas, Tulipanes & Girasol)",
-    "category": "RAMOS PRIMAVERA",
-    "filterCategory": "primavera",
-    "price": "$70,000 COP",
-    "rawPrice": 70000,
-    "badge": "Romance 💕",
-    "description": "Ramo romántico de 5 Tulipanes, 1 Girasol, 5 Rosas eternas y follaje.",
-    "mediaId": "MAHNaRFaFjE",
-    "images": [
-      "assets/catalog/item_41_MAHNaRFaFjE.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 42,
-    "name": "Ramo Mía",
-    "category": "RAMOS PRIMAVERA",
-    "filterCategory": "primavera",
-    "price": "$45,000 COP",
-    "rawPrice": 45000,
-    "badge": "Primavera 💐",
-    "description": "Mix primaveral: 1 Girasol, 1 Lirio, 1 Margarita, 1 Capullo, 1 Anémona, 2 Gerberas y follaje.",
-    "mediaId": "MAHIuBIvVmQ",
-    "images": [
-      "assets/catalog/item_42_MAHIuBIvVmQ.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 43,
-    "name": "Ramo Beth con Hortensia",
-    "category": "RAMOS PRIMAVERA",
-    "filterCategory": "primavera",
-    "price": "$95,000 COP",
-    "rawPrice": 95000,
-    "badge": "Primavera 💐",
-    "description": "Arreglo exclusivo de 2 Lirios, 2 Gerberas, 2 Anémonas, 2 Rosas, 2 Tulipanes, 1 Hortensia y follaje.",
-    "mediaId": "MAHS2MZ2ubY",
-    "images": [
-      "assets/catalog/item_43_MAHS2MZ2ubY.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 44,
-    "name": "Ramo Ashley",
-    "category": "RAMOS PRIMAVERA",
-    "filterCategory": "primavera",
-    "price": "$55,000 COP",
-    "rawPrice": 55000,
-    "badge": "Primavera 💐",
-    "description": "Ramillete dulce con 7 Tulipanes, 2 Gerberas, 1 Lirio y follaje.",
-    "mediaId": "MAHQaUTpCPQ",
-    "images": [
-      "assets/catalog/item_44_MAHQaUTpCPQ.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 45,
-    "name": "Ramo Thalía",
-    "category": "RAMOS PRIMAVERA",
-    "filterCategory": "primavera",
-    "price": "$55,000 COP",
-    "rawPrice": 55000,
-    "badge": "Primavera 💐",
-    "description": "Incluye: 2 Lirios, 2 Gerberas, 1 Girasol, 1 Tulipán, 1 Capullo y follaje.",
-    "mediaId": "MAHQcrNeUCI",
-    "images": [
-      "assets/catalog/item_45_MAHQcrNeUCI.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 46,
-    "name": "Ramo Jess con Espejo",
-    "category": "FLORES CON ESPEJO",
-    "filterCategory": "espejos",
-    "price": "$110,000 COP",
-    "rawPrice": 110000,
-    "badge": "Con Espejo 🪞",
-    "description": "Innovador arreglo sobre espejo decorativo. Incluye: 2 Lirios, 1 Margarita, 1 Gerbera, 2 Tulipanes, 1 Girasol mini, 1 Rosa, follaje y espejo incorporado.",
-    "mediaId": "MAHQcxF-Omg",
-    "images": [
-      "assets/catalog/item_46_MAHQcxF-Omg.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 47,
-    "name": "Ramo Juli con Espejo",
-    "category": "FLORES CON ESPEJO",
-    "filterCategory": "espejos",
-    "price": "$105,000 COP",
-    "rawPrice": 105000,
-    "badge": "Con Espejo 🪞",
-    "description": "Diseño elegante con espejo: 2 Tulipanes, 1 Girasol mini, 1 Gerbera, 3 Lirios, 1 Margarita, follaje y espejo.",
-    "mediaId": "MAHQc4kU0J0",
-    "images": [
-      "assets/catalog/item_47_MAHQc4kU0J0.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 48,
-    "name": "Ramo Cecilia con Espejo",
-    "category": "FLORES CON ESPEJO",
-    "filterCategory": "espejos",
-    "price": "$95,000 COP",
-    "rawPrice": 95000,
-    "badge": "Con Espejo 🪞",
-    "description": "Incluye: 3 Lirios, 1 Margarita, 2 Gerberas, 1 Tulipán, 1 Girasol, 1 Girasol mini, follaje y espejo.",
-    "mediaId": "MAHQcw8Hnw8",
-    "images": [
-      "assets/catalog/item_48_MAHQcw8Hnw8.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 49,
-    "name": "Ramo Romy (9 Gerberas con Espejo)",
-    "category": "FLORES CON ESPEJO",
-    "filterCategory": "espejos",
-    "price": "$85,000 COP",
-    "rawPrice": 85000,
-    "badge": "Con Espejo 🪞",
-    "description": "Hermoso conjunto de 9 Gerberas eternas montadas con espejo decorativo y follaje.",
-    "mediaId": "MAHQcxvnl8s",
-    "images": [
-      "assets/catalog/item_49_MAHQcxvnl8s.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 50,
-    "name": "Cápsula Girasol Grande",
-    "category": "CÁPSULAS DE CRISTAL",
-    "filterCategory": "capsulas",
-    "price": "$40,000 COP",
-    "rawPrice": 40000,
-    "badge": "Cúpula Cristal 🔮",
-    "description": "Cápsula de cristal fino con 1 Girasol artesanal grande en base de madera decorativa.",
-    "mediaId": "MAHQW-0A_E8",
-    "images": [
-      "assets/catalog/item_50_MAHQW-0A_E8.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 51,
-    "name": "Cápsula Girasol Mini",
-    "category": "CÁPSULAS DE CRISTAL",
-    "filterCategory": "capsulas",
-    "price": "$16,000 COP",
-    "rawPrice": 16000,
-    "badge": "Mini Cúpula 🔮",
-    "description": "Cápsula compacta con 1 Girasol mini tejido a mano, ideal para escritorio o detalle sorpresa.",
-    "mediaId": "MAHQW_SOR_o",
-    "images": [
-      "assets/catalog/item_51_MAHQW_SOR_o.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 52,
-    "name": "Cápsula Girasol con Luces LED",
-    "category": "CÁPSULAS DE CRISTAL",
-    "filterCategory": "capsulas",
-    "price": "$40,000 COP",
-    "rawPrice": 40000,
-    "badge": "Con Luces ✨",
-    "description": "Cápsula de cristal con Girasol grande, base y luces LED a pila que crean una atmósfera mágica de noche.",
-    "mediaId": "MAHQW9Qr7Yc",
-    "images": [
-      "assets/catalog/item_52_MAHQW9Qr7Yc.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 53,
-    "name": "Cápsula Rapunzel Flor Fulgor",
-    "category": "CÁPSULAS DE CRISTAL",
-    "filterCategory": "capsulas",
-    "price": "$45,000 COP",
-    "rawPrice": 45000,
-    "badge": "Princesas 👑",
-    "description": "Inspirada en la Flor Dorada de Rapunzel. Incluye cúpula de cristal, flor fulgor tejida y luces LED a pila.",
-    "mediaId": "MAHQWx9ZlBE",
-    "images": [
-      "assets/catalog/item_53_MAHQWx9ZlBE.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 54,
-    "name": "Cápsula Love (Rosa Grande)",
-    "category": "CÁPSULAS DE CRISTAL",
-    "filterCategory": "capsulas",
-    "price": "$35,000 COP",
-    "rawPrice": 35000,
-    "badge": "Cúpula Cristal 🔮",
-    "description": "Cápsula de cristal con 1 Rosa eterna grande de crochet artesanal.",
-    "mediaId": "MAHQW1udt2g",
-    "images": [
-      "assets/catalog/item_54_MAHQW1udt2g.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 55,
-    "name": "Cápsula Rouse Triple (3 Rosas)",
-    "category": "CÁPSULAS DE CRISTAL",
-    "filterCategory": "capsulas",
-    "price": "$60,000 COP",
-    "rawPrice": 60000,
-    "badge": "Cúpula Cristal 🔮",
-    "description": "Cápsula de cristal con 3 Rosas eternas combinadas en tonos románticos.",
-    "mediaId": "MAHQWw6P6m4",
-    "images": [
-      "assets/catalog/item_55_MAHQWw6P6m4.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 56,
-    "name": "Cápsula Pink (Rosa Preservada)",
-    "category": "CÁPSULAS DE CRISTAL",
-    "filterCategory": "capsulas",
-    "price": "$55,000 COP",
-    "rawPrice": 55000,
-    "badge": "Preservadas 🌸",
-    "description": "Cápsula de cristal de lujo con Rosa rosada grande preservada de larga duración.",
-    "mediaId": "MAHQWzuw9OQ",
-    "images": [
-      "assets/catalog/item_56_MAHQWzuw9OQ.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 57,
-    "name": "Cápsula Rosa Amarilla Preservada",
-    "category": "CÁPSULAS DE CRISTAL",
-    "filterCategory": "capsulas",
-    "price": "$55,000 COP",
-    "rawPrice": 55000,
-    "badge": "Preservadas 💛",
-    "description": "Cápsula de cristal con Rosa amarilla grande preservada que simboliza alegría y luz eterna.",
-    "mediaId": "MAHQW6wxDo4",
-    "images": [
-      "assets/catalog/item_57_MAHQW6wxDo4.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 58,
-    "name": "Bouquet Ramo Enredados con Hello Kitty",
-    "category": "BOUQUETS",
-    "filterCategory": "bouquets",
-    "price": "$85,000 COP",
-    "rawPrice": 85000,
-    "badge": "Bouquet 🎀",
-    "description": "Bouquet temático con 2 Lirios, 5 Tulipanes, follaje y peluche de Hello Kitty.",
-    "mediaId": "MAHPRzSttpY",
-    "images": [
-      "assets/catalog/item_58_MAHPRzSttpY.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 59,
-    "name": "Bouquet Ramo Ashley con Peluche",
-    "category": "BOUQUETS",
-    "filterCategory": "bouquets",
-    "price": "$73,000 COP",
-    "rawPrice": 73000,
-    "badge": "Bouquet 🎀",
-    "description": "Bouquet primaveral con 3 Tulipanes, 1 Gerbera, 1 Rosa, 1 Anémona, follaje y peluche tierno.",
-    "mediaId": "MAHQbeC55WU",
-    "images": [
-      "assets/catalog/item_59_MAHQbeC55WU.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 60,
-    "name": "Cuadro Eterno Mía",
-    "category": "CUADROS ETERNOS",
-    "filterCategory": "cuadros",
-    "price": "$44,000 COP",
-    "rawPrice": 44000,
-    "badge": "Cuadros 🖼️",
-    "description": "Cuadro decorativo 3D con flores eternas, luces LED integradas y frase personalizada a elección.",
-    "mediaId": "MAHQXPO_784",
-    "images": [
-      "assets/catalog/item_60_MAHQXPO_784.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 61,
-    "name": "Cuadro Eterno Sol",
-    "category": "CUADROS ETERNOS",
-    "filterCategory": "cuadros",
-    "price": "$45,000 COP",
-    "rawPrice": 45000,
-    "badge": "Cuadros 🖼️",
-    "description": "Cuadro con composición de girasoles y flores amarillas, luces LED y dedicatoria personalizada.",
-    "mediaId": "MAHQXMNSJy0",
-    "images": [
-      "assets/catalog/item_61_MAHQXMNSJy0.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 62,
-    "name": "Cuadro Eterno Lía",
-    "category": "CUADROS ETERNOS",
-    "filterCategory": "cuadros",
-    "price": "$50,000 COP",
-    "rawPrice": 50000,
-    "badge": "Cuadros 🖼️",
-    "description": "Hermoso cuadro de fondo pastel con ramo de flores de crochet en relieve, luces cálidas y dedicatoria.",
-    "mediaId": "MAHQXK9ApYM",
-    "images": [
-      "assets/catalog/item_62_MAHQXK9ApYM.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 63,
-    "name": "Cuadro Eterno Antonella",
-    "category": "CUADROS ETERNOS",
-    "filterCategory": "cuadros",
-    "price": "$35,000 COP",
-    "rawPrice": 35000,
-    "badge": "Cuadros 🖼️",
-    "description": "Cuadro compacto de flores eternas con luces LED y mensaje personalizado para esa persona especial.",
-    "mediaId": "MAHQXBS9UAw",
-    "images": [
-      "assets/catalog/item_63_MAHQXBS9UAw.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 64,
-    "name": "Materito Carli",
-    "category": "MATERITOS & JARRONES",
-    "filterCategory": "materitos",
-    "price": "$14,000 COP",
-    "rawPrice": 14000,
-    "badge": "Materito 🪴",
-    "description": "Materito artesanal con flor tejida en limpiapipas, perfecto para decoración de escritorio o repisa.",
-    "mediaId": "MAHQck5nZrI",
-    "images": [
-      "assets/catalog/item_64_MAHQck5nZrI.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 65,
-    "name": "Jarrón de Vidrio Blanca",
-    "category": "MATERITOS & JARRONES",
-    "filterCategory": "materitos",
-    "price": "$95,000 COP",
-    "rawPrice": 95000,
-    "badge": "Jarrón Lujo 🏺",
-    "description": "Elegante jarrón de vidrio con arreglo floral completo de flores eternas tejidas a mano.",
-    "mediaId": "MAHQcoXs6oo",
-    "images": [
-      "assets/catalog/item_65_MAHQcoXs6oo.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 66,
-    "name": "Materito Belinda",
-    "category": "MATERITOS & JARRONES",
-    "filterCategory": "materitos",
-    "price": "$15,000 COP",
-    "rawPrice": 15000,
-    "badge": "Materito 🪴",
-    "description": "Materito decorativo con flor de crochet en maceta miniatura.",
-    "mediaId": "MAHQcku9IYs",
-    "images": [
-      "assets/catalog/item_66_MAHQcku9IYs.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 67,
-    "name": "Materito Roxi",
-    "category": "MATERITOS & JARRONES",
-    "filterCategory": "materitos",
-    "price": "$18,000 COP",
-    "rawPrice": 18000,
-    "badge": "Materito 🪴",
-    "description": "Materito artesanal con diseño floral especial en maceta de color pastel.",
-    "mediaId": "MAHQcmSBWVg",
-    "images": [
-      "assets/catalog/item_67_MAHQcmSBWVg.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 68,
-    "name": "Figurita Vaquita Lola",
-    "category": "FIGURITAS",
-    "filterCategory": "figuritas",
-    "price": "$40,000 COP",
-    "rawPrice": 40000,
-    "badge": "Figuritas ✨",
-    "description": "Figura coleccionable de la Vaquita Lola modelada artesanalmente con limpiapipas de alta suavidad.",
-    "mediaId": "MAHQcwpIBq8",
-    "images": [
-      "assets/catalog/item_68_MAHQcwpIBq8.png"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 69,
-    "name": "Figurita Pingüi",
-    "category": "FIGURITAS",
-    "filterCategory": "figuritas",
-    "price": "$30,000 COP",
-    "rawPrice": 30000,
-    "badge": "Figuritas ✨",
-    "description": "Adorable pingüinito artesanal hecho 100% a mano con limpiapipas.",
-    "mediaId": "MAHQrZJuXQU",
-    "images": [
-      "assets/catalog/item_69_MAHQrZJuXQU.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 70,
-    "name": "Figurita Snoopy",
-    "category": "FIGURITAS",
-    "filterCategory": "figuritas",
-    "price": "$40,000 COP",
-    "rawPrice": 40000,
-    "badge": "Snoopy 🐶",
-    "description": "Figura 3D de Snoopy en limpiapipas, con detalles tiernos y base decorativa.",
-    "mediaId": "MAHQrYgr7ZY",
-    "images": [
-      "assets/catalog/item_70_MAHQrYgr7ZY.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 71,
-    "name": "Figurita Hombre Araña (Spider-Man)",
-    "category": "FIGURITAS",
-    "filterCategory": "figuritas",
-    "price": "$25,000 COP",
-    "rawPrice": 25000,
-    "badge": "Marvel 🕷️",
-    "description": "Figura flexible y detallada de Spider-Man hecha a mano con limpiapipas rojo y azul.",
-    "mediaId": "MAHRNDSL_Lc",
-    "images": [
-      "assets/catalog/item_71_MAHRNDSL_Lc.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 72,
-    "name": "Figurita Virgen de Guadalupe",
-    "category": "FIGURITAS",
-    "filterCategory": "figuritas",
-    "price": "$40,000 COP",
-    "rawPrice": 40000,
-    "badge": "Especial 🕊️",
-    "description": "Hermosa representación artesanal de la Virgen de Guadalupe con manto estrellado y aureola dorada.",
-    "mediaId": "MAHST6fgGYw",
-    "images": [
-      "assets/catalog/item_72_MAHST6fgGYw.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 73,
-    "name": "Figurita Rapunzel",
-    "category": "FIGURITAS",
-    "filterCategory": "figuritas",
-    "price": "$45,000 COP",
-    "rawPrice": 45000,
-    "badge": "Princesas 👑",
-    "description": "Figura de Rapunzel con su largo cabello dorado trenzado con florecitas y vestido lila.",
-    "mediaId": "MAHS2PEK93E",
-    "images": [
-      "assets/catalog/item_73_MAHS2PEK93E.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 74,
-    "name": "Llavero Gerbera Artesanal",
-    "category": "LLAVEROS",
-    "filterCategory": "llaveros",
-    "price": "$15,000 COP",
-    "rawPrice": 15000,
-    "badge": "Llaveros 🔑",
-    "description": "Lindo llavero con gerbera tejida a mano y herraje resistente para tus llaves, bolso o morral.",
-    "mediaId": "MAHS2NuSbvY",
-    "images": [
-      "assets/catalog/item_74_MAHS2NuSbvY.jpg"
-    ],
-    "brand": "flora"
-  },
-  {
-    "id": 75,
-    "name": "Kit de Skincare Rutina Completa",
-    "category": "CUIDADO FACIAL",
-    "filterCategory": "skincare",
-    "brand": "beauty",
-    "price": "$38,000 COP",
-    "rawPrice": 38000,
-    "badge": "Viral 🔥",
-    "description": "El set definitivo para el cuidado facial diario. Incluye gel limpiador suave, tónico equilibrante y crema hidratante iluminadora para dejar la piel fresca, suave y protegida.",
-    "images": [
-      "assets/product_2.jpg"
-    ]
-  },
-  {
-    "id": 76,
-    "name": "Combo Moño Satín & Lip Gloss Trend",
-    "category": "ACCESORIOS Y LABIOS",
-    "filterCategory": "accesorios",
-    "brand": "beauty",
-    "price": "$22,000 COP",
-    "rawPrice": 22000,
-    "badge": "Nuevo 🎀",
-    "description": "El kit ideal de moños elegantes estilo satín combinados con brillo labial ultra hidratante. Perfecto para añadir un toque tierno a tu look diario.",
-    "images": [
-      "assets/product_3.jpg"
-    ]
-  },
-  {
-    "id": 77,
-    "name": "Sheglam Lip Gloss Sparkling",
-    "category": "MAQUILLAJE LABIOS",
-    "filterCategory": "maquillaje",
-    "brand": "beauty",
-    "price": "$18,000 COP",
-    "rawPrice": 18000,
-    "badge": "Best Seller ⭐",
-    "description": "Brillo labial viral con micro-destellos de purpurina que reflejan la luz de manera espectacular. Proporciona hidratación profunda y volumen óptico sin sensación pegajosa.",
-    "images": [
-      "assets/product_4.jpg"
-    ]
-  },
-  {
-    "id": 78,
-    "name": "Pestañina Prosa 4 en 1 Waterproof",
-    "category": "MAQUILLAJE OJOS",
-    "filterCategory": "maquillaje",
-    "brand": "beauty",
-    "price": "$12,000 COP",
-    "rawPrice": 12000,
-    "badge": "Básico 👀",
-    "description": "Fórmula profesional de larga duración resistente al agua. Enriquecida con aceites naturales de hueso de mamey, sábila, jojoba y germen de trigo.",
-    "images": [
-      "assets/product_5.jpg"
-    ]
-  },
-  {
-    "id": 79,
-    "name": "Alissha Jelly Blush Tinta Rubor",
-    "category": "MAQUILLAJE MEJILLAS",
-    "filterCategory": "maquillaje",
-    "brand": "beauty",
-    "price": "$15,000 COP",
-    "rawPrice": 15000,
-    "badge": "Nuevo Rubor 🍮",
-    "description": "Divertido rubor y tinta multiusos con una textura jelly gelatinosa única. Es sumamente fácil de difuminar, refresca tu piel y aporta una tinta de larga duración.",
-    "images": [
-      "assets/product_6.jpg"
-    ]
-  }
+    {
+        "id": 1,
+        "name": "Ramo Rapunzel Ref 001",
+        "category": "TEMÁTICAS & DISNEY",
+        "filterCategory": "tematicas",
+        "price": "$80,000 COP",
+        "rawPrice": 80000,
+        "badge": "Princesas 👑",
+        "description": "Ramo temático de Rapunzel en limpiapipas artesanales de alta calidad. Incluye: 4 Lirios, 2 Gerberas, 2 Margaritas, 1 Tulipán, 1 Flor gota de sol, 1 Rosa, camaleón Pascal en limpiapipa, follaje y luces LED decorativas.",
+        "mediaId": "MAHQOp8EUfM",
+        "images": [
+            "assets/optimized/catalog/item_1_MAHQOp8EUfM.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 2,
+        "name": "Ramo Rapunzel Ref 002",
+        "category": "TEMÁTICAS & DISNEY",
+        "filterCategory": "tematicas",
+        "price": "$115,000 COP",
+        "rawPrice": 115000,
+        "badge": "Princesas 👑",
+        "description": "Ramo premium de Rapunzel tejido a mano. Incluye: 1 Lirio, 3 Gerberas, 2 Jazmín, 6 Tulipanes, 1 Flor gota de sol, 1 figura de Pascal artesanal, follaje y luces LED.",
+        "mediaId": "MAHShGd7zIc",
+        "images": [
+            "assets/optimized/catalog/item_2_MAHShGd7zIc.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 3,
+        "name": "Ramo Cenicienta",
+        "category": "TEMÁTICAS & DISNEY",
+        "filterCategory": "tematicas",
+        "price": "$80,000 COP",
+        "rawPrice": 80000,
+        "badge": "Princesas 👑",
+        "description": "Ramo mágico de Cenicienta con tonos celestes y blancos. Incluye flores artesanales, detalles temáticos de princesa, follaje decorativo y luces LED.",
+        "mediaId": "MAHRoxdMUYc",
+        "images": [
+            "assets/optimized/catalog/item_3_MAHRoxdMUYc.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 4,
+        "name": "Ramo La Princesa y el Sapo",
+        "category": "TEMÁTICAS & DISNEY",
+        "filterCategory": "tematicas",
+        "price": "$115,000 COP",
+        "rawPrice": 115000,
+        "badge": "Princesas 👑",
+        "description": "Inspirado en Tiana y el pantano mágico. Incluye: 1 Flor de loto, 1 Gerbera, 1 Tulipán, 2 Lirios, 2 ramas de follaje, figura de la luciérnaga Ray en limpiapipas y luces LED.",
+        "mediaId": "MAHRowNcbB8",
+        "images": [
+            "assets/optimized/catalog/item_4_MAHRowNcbB8.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 5,
+        "name": "Ramo Lotso Deluxe (7 Tulipanes & Lirios)",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$135,000 COP",
+        "rawPrice": 135000,
+        "badge": "Peluches 🧸",
+        "description": "Hermoso bouquet con peluche Lotso, 7 Tulipanes, 3 Lirios, 1 Lirio especial, 5 ramas de follaje y envoltura de lujo.",
+        "mediaId": "MAHQ4CuIp3g",
+        "images": [
+            "assets/optimized/catalog/item_5_MAHQ4CuIp3g.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 6,
+        "name": "Ramo Lotso Rosas & Gerberas",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$110,000 COP",
+        "rawPrice": 110000,
+        "badge": "Peluches 🧸",
+        "description": "Bouquet dulce de 7 Tulipanes, 2 Rosas, 3 Gerberas, follaje y peluche de Lotso con aroma delicioso.",
+        "mediaId": "MAHPmj2Tpbk",
+        "images": [
+            "assets/optimized/catalog/item_6_MAHPmj2Tpbk.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 7,
+        "name": "Ramo Lotso Clásico (7 Tulipanes)",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$80,000 COP",
+        "rawPrice": 80000,
+        "badge": "Peluches 🧸",
+        "description": "Ramo tierno con peluche de Lotso. Incluye: 7 Tulipanes, ramas de follaje y peluche suave de Lotso.",
+        "mediaId": "MAHS1Qb4eEc",
+        "images": [
+            "assets/optimized/catalog/item_7_MAHS1Qb4eEc.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 8,
+        "name": "Ramo Lotso Dormilón (Peluche 35 cm)",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$135,000 COP",
+        "rawPrice": 135000,
+        "badge": "Peluches 🧸",
+        "description": "Ramo especial con peluche Lotso de 35 cm. Incluye: 6 Tulipanes, 3 Rosas, 1 Anémona, follaje y peluche grande de Lotso.",
+        "mediaId": "MAHS1RY-jEE",
+        "images": [
+            "assets/optimized/catalog/item_8_MAHS1RY-jEE.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 9,
+        "name": "Ramo Annita Rosado",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$120,000 COP",
+        "rawPrice": 120000,
+        "badge": "Peluches 🧸",
+        "description": "Tierno ramo en tono Rosado con peluche. Incluye: 6 Tulipanes, 3 Lirios, 2 ramas de follaje y peluche afelpado.",
+        "mediaId": "MAHQudzb4eg",
+        "images": [
+            "assets/optimized/catalog/item_9_MAHQudzb4eg.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 10,
+        "name": "Ramo Anny 2.0 Rosado Pastel",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$120,000 COP",
+        "rawPrice": 120000,
+        "badge": "Peluches 🧸",
+        "description": "Ramo en tonalidad Rosado Pastel. Incluye: 6 Tulipanes, 3 Lirios, 2 ramas de follaje y peluche delicado.",
+        "mediaId": "MAHQ4KYCeEQ",
+        "images": [
+            "assets/optimized/catalog/item_10_MAHQ4KYCeEQ.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 11,
+        "name": "Ramo Anny Ovejita Nude",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$125,000 COP",
+        "rawPrice": 125000,
+        "badge": "Peluches 🧸",
+        "description": "Elegante bouquet en tono Rosado Nude. Incluye: 7 Tulipanes, 3 Lirios, 3 Rosas, follaje y peluche de ovejita ultra suave.",
+        "mediaId": "MAHPmncoNSc",
+        "images": [
+            "assets/optimized/catalog/item_11_MAHPmncoNSc.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 12,
+        "name": "Ramo My Melody",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$70,000 COP",
+        "rawPrice": 70000,
+        "badge": "Sanrio 🎀",
+        "description": "Inspirado en My Melody. Incluye: 7 Tulipanes tejidos, follaje y peluche original de My Melody.",
+        "mediaId": "MAHQOsxcTQs",
+        "images": [
+            "assets/optimized/catalog/item_12_MAHQOsxcTQs.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 13,
+        "name": "Ramo Hello Kitty Ref 001",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$125,000 COP",
+        "rawPrice": 125000,
+        "badge": "Sanrio 🎀",
+        "description": "Precioso ramo de Hello Kitty. Incluye: 5 Tulipanes, 3 Lirios, 3 Gerberas, 2 ramas de follaje y peluche de Hello Kitty.",
+        "mediaId": "MAHQaR4F-LI",
+        "images": [
+            "assets/optimized/catalog/item_13_MAHQaR4F-LI.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 14,
+        "name": "Ramo Hello Kitty Ref 002 (45 cm)",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$150,000 COP",
+        "rawPrice": 150000,
+        "badge": "Sanrio 🎀",
+        "description": "Gran bouquet con peluche Hello Kitty gigante de 45 cm. Incluye: 10 Tulipanes, 4 Lirios, 1 Gerbera y follaje.",
+        "mediaId": "MAHS16mtKgM",
+        "images": [
+            "assets/optimized/catalog/item_14_MAHS16mtKgM.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 15,
+        "name": "Ramo Hello Kitty Ref 003 (6 Tulipanes)",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$70,000 COP",
+        "rawPrice": 70000,
+        "badge": "Sanrio 🎀",
+        "description": "Bouquet tierno de 6 Tulipanes, 2 ramas de follaje y peluche Hello Kitty de 45 cm.",
+        "mediaId": "MAHRMue2NRs",
+        "images": [
+            "assets/optimized/catalog/item_15_MAHRMue2NRs.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 16,
+        "name": "Ramo Hello Kitty Ref 004 (50 cm)",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$150,000 COP",
+        "rawPrice": 150000,
+        "badge": "Sanrio 🎀",
+        "description": "El regalo supremo para fans de Hello Kitty. Incluye: 5 Tulipanes, 4 Lirios, 2 Gerberas, Margarita mini, follaje y peluche Hello Kitty de 50 cm.",
+        "mediaId": "MAHRMuZHRJc",
+        "images": [
+            "assets/optimized/catalog/item_16_MAHRMuZHRJc.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 17,
+        "name": "Ramo Snoopy Ref 01",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$78,000 COP",
+        "rawPrice": 78000,
+        "badge": "Snoopy 🐶",
+        "description": "Encantador ramo de 4 Tulipanes, 3 Gerberas, follaje y figura artesanal de Snoopy tejida en limpiapipas.",
+        "mediaId": "MAHRo4IM_QY",
+        "images": [
+            "assets/optimized/catalog/item_17_MAHRo4IM_QY.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 18,
+        "name": "Ramo Snoopy Ref 02 (12 Tulipanes)",
+        "category": "RAMOS CON PELUCHES",
+        "filterCategory": "peluches",
+        "price": "$70,000 COP",
+        "rawPrice": 70000,
+        "badge": "Snoopy 🐶",
+        "description": "Arreglo primaveral de 12 Tulipanes artesanales, follaje y figura tejida de Snoopy en limpiapipas.",
+        "mediaId": "MAHST6bI3dM",
+        "images": [
+            "assets/optimized/catalog/item_18_MAHST6bI3dM.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 19,
+        "name": "Ramo Delirio (12 Lirios con Luces & Banda)",
+        "category": "LIRIOS",
+        "filterCategory": "lirios",
+        "price": "$110,000 COP",
+        "rawPrice": 110000,
+        "badge": "Lirios 🪷",
+        "description": "Impactante ramo de 12 Lirios eternos hechos a mano, follaje, banda personalizada con frase y serie de luces LED.",
+        "mediaId": "MAHS1lNKdhw",
+        "images": [
+            "assets/optimized/catalog/item_19_MAHS1lNKdhw.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 20,
+        "name": "Ramo Belkis Lirios",
+        "category": "LIRIOS",
+        "filterCategory": "lirios",
+        "price": "$90,000 COP",
+        "rawPrice": 90000,
+        "badge": "Lirios 🪷",
+        "description": "Ramo clásico y elegante con 12 Lirios eternos tejidos a mano y fino follaje decorativo.",
+        "mediaId": "MAHS14muKlY",
+        "images": [
+            "assets/optimized/catalog/item_20_MAHS14muKlY.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 21,
+        "name": "Ramo Gloria con Luces",
+        "category": "LIRIOS",
+        "filterCategory": "lirios",
+        "price": "$50,000 COP",
+        "rawPrice": 50000,
+        "badge": "Lirios 🪷",
+        "description": "Delicado bouquet de 5 Lirios eternos artesanales, follaje y luces LED decorativas.",
+        "mediaId": "MAHS15WkPNM",
+        "images": [
+            "assets/optimized/catalog/item_21_MAHS15WkPNM.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 22,
+        "name": "Ramo Tuli (14 Tulipanes)",
+        "category": "TULIPANES",
+        "filterCategory": "tulipanes",
+        "price": "$65,000 COP",
+        "rawPrice": 65000,
+        "badge": "Tulipanes 🌷",
+        "description": "Bouquet voluminoso y colorido de 14 Tulipanes tejidos a mano con limpiapipas de alta calidad y follaje.",
+        "mediaId": "MAHPmp3eA2I",
+        "images": [
+            "assets/optimized/catalog/item_22_MAHPmp3eA2I.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 23,
+        "name": "Ramo Belkis Tulipanes (15 Tulipanes)",
+        "category": "TULIPANES",
+        "filterCategory": "tulipanes",
+        "price": "$55,000 COP",
+        "rawPrice": 55000,
+        "badge": "Tulipanes 🌷",
+        "description": "Ramillete dulce y duradero de 15 Tulipanes eternos en combinación de tonos pasteles.",
+        "mediaId": "MAHS15aJDEc",
+        "images": [
+            "assets/optimized/catalog/item_23_MAHS15aJDEc.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 24,
+        "name": "Ramo Mila (10 Tulipanes)",
+        "category": "TULIPANES",
+        "filterCategory": "tulipanes",
+        "price": "$50,000 COP",
+        "rawPrice": 50000,
+        "badge": "Tulipanes 🌷",
+        "description": "Ramo coqueto de 10 Tulipanes eternos y ramas de follaje suave.",
+        "mediaId": "MAHS1_XlHvk",
+        "images": [
+            "assets/optimized/catalog/item_24_MAHS1_XlHvk.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 25,
+        "name": "Ramo Evelyn Tulipanes & Lirios",
+        "category": "TULIPANES",
+        "filterCategory": "tulipanes",
+        "price": "$70,000 COP",
+        "rawPrice": 70000,
+        "badge": "Tulipanes 🌷",
+        "description": "Hermosa combinación de 7 Tulipanes, 3 Lirios, 6 copitos (flores mini) y follaje.",
+        "mediaId": "MAHQW71FD-c",
+        "images": [
+            "assets/optimized/catalog/item_25_MAHQW71FD-c.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 26,
+        "name": "Ramo Lolita (6 Tulisnoopy)",
+        "category": "TULIPANES",
+        "filterCategory": "tulipanes",
+        "price": "$55,000 COP",
+        "rawPrice": 55000,
+        "badge": "Tulipanes 🌷",
+        "description": "Ramo con 6 Tulisnoopy (tulipanes combinados con carita de Snoopy) y follaje decorativo.",
+        "mediaId": "MAHS1hLOLCI",
+        "images": [
+            "assets/optimized/catalog/item_26_MAHS1hLOLCI.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 27,
+        "name": "Ramo Evelyn Mini Mix",
+        "category": "TULIPANES",
+        "filterCategory": "tulipanes",
+        "price": "$46,000 COP",
+        "rawPrice": 46000,
+        "badge": "Tulipanes 🌷",
+        "description": "Ramo accesible y tierno con 3 Tulipanes, 2 Tulisnoopy, 1 Lirio y follaje.",
+        "mediaId": "MAHS1m_fq6s",
+        "images": [
+            "assets/optimized/catalog/item_27_MAHS1m_fq6s.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 28,
+        "name": "Ramo Majo (3 Girasoles & 3 Tulipanes)",
+        "category": "GIRASOLES",
+        "filterCategory": "girasoles",
+        "price": "$65,000 COP",
+        "rawPrice": 65000,
+        "badge": "Girasoles 🌻",
+        "description": "Lleno de energía y luz. Incluye: 3 Girasoles grandes, 3 Tulipanes y ramas de follaje.",
+        "mediaId": "MAHRiZYz2-Q",
+        "images": [
+            "assets/optimized/catalog/item_28_MAHRiZYz2-Q.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 29,
+        "name": "Ramo Yari (2 Girasoles & 2 Tulipanes)",
+        "category": "GIRASOLES",
+        "filterCategory": "girasoles",
+        "price": "$50,000 COP",
+        "rawPrice": 50000,
+        "badge": "Girasoles 🌻",
+        "description": "Detalle radiante de 2 Girasoles y 2 Tulipanes artesanales con follaje verde.",
+        "mediaId": "MAHS1jyP-yc",
+        "images": [
+            "assets/optimized/catalog/item_29_MAHS1jyP-yc.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 30,
+        "name": "Ramo Luz con Corona & Banda",
+        "category": "GIRASOLES",
+        "filterCategory": "girasoles",
+        "price": "$92,000 COP",
+        "rawPrice": 92000,
+        "badge": "Girasoles 🌻",
+        "description": "Ramo regio de 6 Girasoles eternos, follaje, corona dorada decorativa y banda floral con frase personalizada.",
+        "mediaId": "MAHS1gXeVI0",
+        "images": [
+            "assets/optimized/catalog/item_30_MAHS1gXeVI0.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 31,
+        "name": "Ramo Sol (7 Girasoles Mini)",
+        "category": "GIRASOLES",
+        "filterCategory": "girasoles",
+        "price": "$60,000 COP",
+        "rawPrice": 60000,
+        "badge": "Girasoles 🌻",
+        "description": "Ramo alegre compuesto por 7 Girasoles mini y follaje natural decorativo.",
+        "mediaId": "MAHS2HJml-s",
+        "images": [
+            "assets/optimized/catalog/item_31_MAHS2HJml-s.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 32,
+        "name": "Ramo Dariana (6 Gerberas & 6 Tulipanes)",
+        "category": "GERBERAS",
+        "filterCategory": "gerberas",
+        "price": "$65,000 COP",
+        "rawPrice": 65000,
+        "badge": "Gerberas 🌸",
+        "description": "Colorido ramo que reúne 6 Gerberas y 6 Tulipanes tejidos a mano con follaje.",
+        "mediaId": "MAHS2IldEgw",
+        "images": [
+            "assets/optimized/catalog/item_32_MAHS2IldEgw.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 33,
+        "name": "Ramo Jasley (12 Gerberas)",
+        "category": "GERBERAS",
+        "filterCategory": "gerberas",
+        "price": "$75,000 COP",
+        "rawPrice": 75000,
+        "badge": "Gerberas 🌸",
+        "description": "Abundante bouquet de 12 Gerberas eternas en paleta vibrante de colores y follaje.",
+        "mediaId": "MAHS2PRaE_E",
+        "images": [
+            "assets/optimized/catalog/item_33_MAHS2PRaE_E.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 34,
+        "name": "Ramo Yenni con Lavandas",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$60,000 COP",
+        "rawPrice": 60000,
+        "badge": "Primavera 💐",
+        "description": "Delicada armonía de 6 Tulipanes, 3 Lirios, 2 ramitas de Lavanda aromática y follaje.",
+        "mediaId": "MAHS1mDKXcg",
+        "images": [
+            "assets/optimized/catalog/item_34_MAHS1mDKXcg.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 35,
+        "name": "Ramo Evelyn Gran Primavera",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$115,000 COP",
+        "rawPrice": 115000,
+        "badge": "Primavera 💐",
+        "description": "El arreglo primaveral más completo: 7 Tulipanes, 3 Lirios, 2 Girasoles, 2 Gerberas, 2 Margaritas, 1 Anémona y follaje.",
+        "mediaId": "MAHS1vHW5rE",
+        "images": [
+            "assets/optimized/catalog/item_35_MAHS1vHW5rE.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 36,
+        "name": "Ramo Floral",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$70,000 COP",
+        "rawPrice": 70000,
+        "badge": "Primavera 💐",
+        "description": "Hermosa combinación de 4 Tulipanes, 4 Lirios, 2 Margaritas, 2 Gerberas y ramas de follaje.",
+        "mediaId": "MAHPmkuxQdY",
+        "images": [
+            "assets/optimized/catalog/item_36_MAHPmkuxQdY.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 37,
+        "name": "Ramo Lili",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$55,000 COP",
+        "rawPrice": 55000,
+        "badge": "Primavera 💐",
+        "description": "Ramo balanceado de 3 Tulipanes, 4 Lirios y follaje decorativo.",
+        "mediaId": "MAHS1hpx7Ks",
+        "images": [
+            "assets/optimized/catalog/item_37_MAHS1hpx7Ks.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 38,
+        "name": "Ramo Van Gogh",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$75,000 COP",
+        "rawPrice": 75000,
+        "badge": "Inspiración 🎨",
+        "description": "Inspirado en la paleta de colores de Vincent Van Gogh. Incluye: 7 Tulipanes, 1 Girasol, 2 Gerberas y follaje.",
+        "mediaId": "MAHQOl9WAv4",
+        "images": [
+            "assets/optimized/catalog/item_38_MAHQOl9WAv4.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 39,
+        "name": "Ramo Moli",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$75,000 COP",
+        "rawPrice": 75000,
+        "badge": "Primavera 💐",
+        "description": "Bouquet dulce y fresco con 7 Tulipanes, 2 Lirios y follaje.",
+        "mediaId": "MAHPmqpV1sY",
+        "images": [
+            "assets/optimized/catalog/item_39_MAHPmqpV1sY.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 40,
+        "name": "Ramo Tamy (8 Tulipanes & 8 Lirios)",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$100,000 COP",
+        "rawPrice": 100000,
+        "badge": "Primavera 💐",
+        "description": "Gran bouquet de 8 Tulipanes y 8 Lirios eternos con envoltura de satín de lujo.",
+        "mediaId": "MAHNZFjOzxA",
+        "images": [
+            "assets/optimized/catalog/item_40_MAHNZFjOzxA.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 41,
+        "name": "Ramo Love (Rosas, Tulipanes & Girasol)",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$70,000 COP",
+        "rawPrice": 70000,
+        "badge": "Romance 💕",
+        "description": "Ramo romántico de 5 Tulipanes, 1 Girasol, 5 Rosas eternas y follaje.",
+        "mediaId": "MAHNaRFaFjE",
+        "images": [
+            "assets/optimized/catalog/item_41_MAHNaRFaFjE.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 42,
+        "name": "Ramo Mía",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$45,000 COP",
+        "rawPrice": 45000,
+        "badge": "Primavera 💐",
+        "description": "Mix primaveral: 1 Girasol, 1 Lirio, 1 Margarita, 1 Capullo, 1 Anémona, 2 Gerberas y follaje.",
+        "mediaId": "MAHIuBIvVmQ",
+        "images": [
+            "assets/optimized/catalog/item_42_MAHIuBIvVmQ.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 43,
+        "name": "Ramo Beth con Hortensia",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$95,000 COP",
+        "rawPrice": 95000,
+        "badge": "Primavera 💐",
+        "description": "Arreglo exclusivo de 2 Lirios, 2 Gerberas, 2 Anémonas, 2 Rosas, 2 Tulipanes, 1 Hortensia y follaje.",
+        "mediaId": "MAHS2MZ2ubY",
+        "images": [
+            "assets/optimized/catalog/item_43_MAHS2MZ2ubY.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 44,
+        "name": "Ramo Ashley",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$55,000 COP",
+        "rawPrice": 55000,
+        "badge": "Primavera 💐",
+        "description": "Ramillete dulce con 7 Tulipanes, 2 Gerberas, 1 Lirio y follaje.",
+        "mediaId": "MAHQaUTpCPQ",
+        "images": [
+            "assets/optimized/catalog/item_44_MAHQaUTpCPQ.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 45,
+        "name": "Ramo Thalía",
+        "category": "RAMOS PRIMAVERA",
+        "filterCategory": "primavera",
+        "price": "$55,000 COP",
+        "rawPrice": 55000,
+        "badge": "Primavera 💐",
+        "description": "Incluye: 2 Lirios, 2 Gerberas, 1 Girasol, 1 Tulipán, 1 Capullo y follaje.",
+        "mediaId": "MAHQcrNeUCI",
+        "images": [
+            "assets/optimized/catalog/item_45_MAHQcrNeUCI.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 46,
+        "name": "Ramo Jess con Espejo",
+        "category": "FLORES CON ESPEJO",
+        "filterCategory": "espejos",
+        "price": "$110,000 COP",
+        "rawPrice": 110000,
+        "badge": "Con Espejo 🪞",
+        "description": "Innovador arreglo sobre espejo decorativo. Incluye: 2 Lirios, 1 Margarita, 1 Gerbera, 2 Tulipanes, 1 Girasol mini, 1 Rosa, follaje y espejo incorporado.",
+        "mediaId": "MAHQcxF-Omg",
+        "images": [
+            "assets/optimized/catalog/item_46_MAHQcxF-Omg.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 47,
+        "name": "Ramo Juli con Espejo",
+        "category": "FLORES CON ESPEJO",
+        "filterCategory": "espejos",
+        "price": "$105,000 COP",
+        "rawPrice": 105000,
+        "badge": "Con Espejo 🪞",
+        "description": "Diseño elegante con espejo: 2 Tulipanes, 1 Girasol mini, 1 Gerbera, 3 Lirios, 1 Margarita, follaje y espejo.",
+        "mediaId": "MAHQc4kU0J0",
+        "images": [
+            "assets/optimized/catalog/item_47_MAHQc4kU0J0.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 48,
+        "name": "Ramo Cecilia con Espejo",
+        "category": "FLORES CON ESPEJO",
+        "filterCategory": "espejos",
+        "price": "$95,000 COP",
+        "rawPrice": 95000,
+        "badge": "Con Espejo 🪞",
+        "description": "Incluye: 3 Lirios, 1 Margarita, 2 Gerberas, 1 Tulipán, 1 Girasol, 1 Girasol mini, follaje y espejo.",
+        "mediaId": "MAHQcw8Hnw8",
+        "images": [
+            "assets/optimized/catalog/item_48_MAHQcw8Hnw8.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 49,
+        "name": "Ramo Romy (9 Gerberas con Espejo)",
+        "category": "FLORES CON ESPEJO",
+        "filterCategory": "espejos",
+        "price": "$85,000 COP",
+        "rawPrice": 85000,
+        "badge": "Con Espejo 🪞",
+        "description": "Hermoso conjunto de 9 Gerberas eternas montadas con espejo decorativo y follaje.",
+        "mediaId": "MAHQcxvnl8s",
+        "images": [
+            "assets/optimized/catalog/item_49_MAHQcxvnl8s.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 50,
+        "name": "Cápsula Girasol Grande",
+        "category": "CÁPSULAS DE CRISTAL",
+        "filterCategory": "capsulas",
+        "price": "$40,000 COP",
+        "rawPrice": 40000,
+        "badge": "Cúpula Cristal 🔮",
+        "description": "Cápsula de cristal fino con 1 Girasol artesanal grande en base de madera decorativa.",
+        "mediaId": "MAHQW-0A_E8",
+        "images": [
+            "assets/optimized/catalog/item_50_MAHQW-0A_E8.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 51,
+        "name": "Cápsula Girasol Mini",
+        "category": "CÁPSULAS DE CRISTAL",
+        "filterCategory": "capsulas",
+        "price": "$16,000 COP",
+        "rawPrice": 16000,
+        "badge": "Mini Cúpula 🔮",
+        "description": "Cápsula compacta con 1 Girasol mini tejido a mano, ideal para escritorio o detalle sorpresa.",
+        "mediaId": "MAHQW_SOR_o",
+        "images": [
+            "assets/optimized/catalog/item_51_MAHQW_SOR_o.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 52,
+        "name": "Cápsula Girasol con Luces LED",
+        "category": "CÁPSULAS DE CRISTAL",
+        "filterCategory": "capsulas",
+        "price": "$40,000 COP",
+        "rawPrice": 40000,
+        "badge": "Con Luces ✨",
+        "description": "Cápsula de cristal con Girasol grande, base y luces LED a pila que crean una atmósfera mágica de noche.",
+        "mediaId": "MAHQW9Qr7Yc",
+        "images": [
+            "assets/optimized/catalog/item_52_MAHQW9Qr7Yc.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 53,
+        "name": "Cápsula Rapunzel Flor Fulgor",
+        "category": "CÁPSULAS DE CRISTAL",
+        "filterCategory": "capsulas",
+        "price": "$45,000 COP",
+        "rawPrice": 45000,
+        "badge": "Princesas 👑",
+        "description": "Inspirada en la Flor Dorada de Rapunzel. Incluye cúpula de cristal, flor fulgor tejida y luces LED a pila.",
+        "mediaId": "MAHQWx9ZlBE",
+        "images": [
+            "assets/optimized/catalog/item_53_MAHQWx9ZlBE.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 54,
+        "name": "Cápsula Love (Rosa Grande)",
+        "category": "CÁPSULAS DE CRISTAL",
+        "filterCategory": "capsulas",
+        "price": "$35,000 COP",
+        "rawPrice": 35000,
+        "badge": "Cúpula Cristal 🔮",
+        "description": "Cápsula de cristal con 1 Rosa eterna grande de crochet artesanal.",
+        "mediaId": "MAHQW1udt2g",
+        "images": [
+            "assets/optimized/catalog/item_54_MAHQW1udt2g.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 55,
+        "name": "Cápsula Rouse Triple (3 Rosas)",
+        "category": "CÁPSULAS DE CRISTAL",
+        "filterCategory": "capsulas",
+        "price": "$60,000 COP",
+        "rawPrice": 60000,
+        "badge": "Cúpula Cristal 🔮",
+        "description": "Cápsula de cristal con 3 Rosas eternas combinadas en tonos románticos.",
+        "mediaId": "MAHQWw6P6m4",
+        "images": [
+            "assets/optimized/catalog/item_55_MAHQWw6P6m4.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 56,
+        "name": "Cápsula Pink (Rosa Preservada)",
+        "category": "CÁPSULAS DE CRISTAL",
+        "filterCategory": "capsulas",
+        "price": "$55,000 COP",
+        "rawPrice": 55000,
+        "badge": "Preservadas 🌸",
+        "description": "Cápsula de cristal de lujo con Rosa rosada grande preservada de larga duración.",
+        "mediaId": "MAHQWzuw9OQ",
+        "images": [
+            "assets/optimized/catalog/item_56_MAHQWzuw9OQ.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 57,
+        "name": "Cápsula Rosa Amarilla Preservada",
+        "category": "CÁPSULAS DE CRISTAL",
+        "filterCategory": "capsulas",
+        "price": "$55,000 COP",
+        "rawPrice": 55000,
+        "badge": "Preservadas 💛",
+        "description": "Cápsula de cristal con Rosa amarilla grande preservada que simboliza alegría y luz eterna.",
+        "mediaId": "MAHQW6wxDo4",
+        "images": [
+            "assets/optimized/catalog/item_57_MAHQW6wxDo4.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 58,
+        "name": "Bouquet Ramo Enredados con Hello Kitty",
+        "category": "BOUQUETS",
+        "filterCategory": "bouquets",
+        "price": "$85,000 COP",
+        "rawPrice": 85000,
+        "badge": "Bouquet 🎀",
+        "description": "Bouquet temático con 2 Lirios, 5 Tulipanes, follaje y peluche de Hello Kitty.",
+        "mediaId": "MAHPRzSttpY",
+        "images": [
+            "assets/optimized/catalog/item_58_MAHPRzSttpY.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 59,
+        "name": "Bouquet Ramo Ashley con Peluche",
+        "category": "BOUQUETS",
+        "filterCategory": "bouquets",
+        "price": "$73,000 COP",
+        "rawPrice": 73000,
+        "badge": "Bouquet 🎀",
+        "description": "Bouquet primaveral con 3 Tulipanes, 1 Gerbera, 1 Rosa, 1 Anémona, follaje y peluche tierno.",
+        "mediaId": "MAHQbeC55WU",
+        "images": [
+            "assets/optimized/catalog/item_59_MAHQbeC55WU.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 60,
+        "name": "Cuadro Eterno Mía",
+        "category": "CUADROS ETERNOS",
+        "filterCategory": "cuadros",
+        "price": "$44,000 COP",
+        "rawPrice": 44000,
+        "badge": "Cuadros 🖼️",
+        "description": "Cuadro decorativo 3D con flores eternas, luces LED integradas y frase personalizada a elección.",
+        "mediaId": "MAHQXPO_784",
+        "images": [
+            "assets/optimized/catalog/item_60_MAHQXPO_784.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 61,
+        "name": "Cuadro Eterno Sol",
+        "category": "CUADROS ETERNOS",
+        "filterCategory": "cuadros",
+        "price": "$45,000 COP",
+        "rawPrice": 45000,
+        "badge": "Cuadros 🖼️",
+        "description": "Cuadro con composición de girasoles y flores amarillas, luces LED y dedicatoria personalizada.",
+        "mediaId": "MAHQXMNSJy0",
+        "images": [
+            "assets/optimized/catalog/item_61_MAHQXMNSJy0.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 62,
+        "name": "Cuadro Eterno Lía",
+        "category": "CUADROS ETERNOS",
+        "filterCategory": "cuadros",
+        "price": "$50,000 COP",
+        "rawPrice": 50000,
+        "badge": "Cuadros 🖼️",
+        "description": "Hermoso cuadro de fondo pastel con ramo de flores de crochet en relieve, luces cálidas y dedicatoria.",
+        "mediaId": "MAHQXK9ApYM",
+        "images": [
+            "assets/optimized/catalog/item_62_MAHQXK9ApYM.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 63,
+        "name": "Cuadro Eterno Antonella",
+        "category": "CUADROS ETERNOS",
+        "filterCategory": "cuadros",
+        "price": "$35,000 COP",
+        "rawPrice": 35000,
+        "badge": "Cuadros 🖼️",
+        "description": "Cuadro compacto de flores eternas con luces LED y mensaje personalizado para esa persona especial.",
+        "mediaId": "MAHQXBS9UAw",
+        "images": [
+            "assets/optimized/catalog/item_63_MAHQXBS9UAw.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 64,
+        "name": "Materito Carli",
+        "category": "MATERITOS & JARRONES",
+        "filterCategory": "materitos",
+        "price": "$14,000 COP",
+        "rawPrice": 14000,
+        "badge": "Materito 🪴",
+        "description": "Materito artesanal con flor tejida en limpiapipas, perfecto para decoración de escritorio o repisa.",
+        "mediaId": "MAHQck5nZrI",
+        "images": [
+            "assets/optimized/catalog/item_64_MAHQck5nZrI.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 65,
+        "name": "Jarrón de Vidrio Blanca",
+        "category": "MATERITOS & JARRONES",
+        "filterCategory": "materitos",
+        "price": "$95,000 COP",
+        "rawPrice": 95000,
+        "badge": "Jarrón Lujo 🏺",
+        "description": "Elegante jarrón de vidrio con arreglo floral completo de flores eternas tejidas a mano.",
+        "mediaId": "MAHQcoXs6oo",
+        "images": [
+            "assets/optimized/catalog/item_65_MAHQcoXs6oo.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 66,
+        "name": "Materito Belinda",
+        "category": "MATERITOS & JARRONES",
+        "filterCategory": "materitos",
+        "price": "$15,000 COP",
+        "rawPrice": 15000,
+        "badge": "Materito 🪴",
+        "description": "Materito decorativo con flor de crochet en maceta miniatura.",
+        "mediaId": "MAHQcku9IYs",
+        "images": [
+            "assets/optimized/catalog/item_66_MAHQcku9IYs.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 67,
+        "name": "Materito Roxi",
+        "category": "MATERITOS & JARRONES",
+        "filterCategory": "materitos",
+        "price": "$18,000 COP",
+        "rawPrice": 18000,
+        "badge": "Materito 🪴",
+        "description": "Materito artesanal con diseño floral especial en maceta de color pastel.",
+        "mediaId": "MAHQcmSBWVg",
+        "images": [
+            "assets/optimized/catalog/item_67_MAHQcmSBWVg.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 68,
+        "name": "Figurita Vaquita Lola",
+        "category": "FIGURITAS",
+        "filterCategory": "figuritas",
+        "price": "$40,000 COP",
+        "rawPrice": 40000,
+        "badge": "Figuritas ✨",
+        "description": "Figura coleccionable de la Vaquita Lola modelada artesanalmente con limpiapipas de alta suavidad.",
+        "mediaId": "MAHQcwpIBq8",
+        "images": [
+            "assets/optimized/catalog/item_68_MAHQcwpIBq8.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 69,
+        "name": "Figurita Pingüi",
+        "category": "FIGURITAS",
+        "filterCategory": "figuritas",
+        "price": "$30,000 COP",
+        "rawPrice": 30000,
+        "badge": "Figuritas ✨",
+        "description": "Adorable pingüinito artesanal hecho 100% a mano con limpiapipas.",
+        "mediaId": "MAHQrZJuXQU",
+        "images": [
+            "assets/optimized/catalog/item_69_MAHQrZJuXQU.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 70,
+        "name": "Figurita Snoopy",
+        "category": "FIGURITAS",
+        "filterCategory": "figuritas",
+        "price": "$40,000 COP",
+        "rawPrice": 40000,
+        "badge": "Snoopy 🐶",
+        "description": "Figura 3D de Snoopy en limpiapipas, con detalles tiernos y base decorativa.",
+        "mediaId": "MAHQrYgr7ZY",
+        "images": [
+            "assets/optimized/catalog/item_70_MAHQrYgr7ZY.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 71,
+        "name": "Figurita Hombre Araña (Spider-Man)",
+        "category": "FIGURITAS",
+        "filterCategory": "figuritas",
+        "price": "$25,000 COP",
+        "rawPrice": 25000,
+        "badge": "Marvel 🕷️",
+        "description": "Figura flexible y detallada de Spider-Man hecha a mano con limpiapipas rojo y azul.",
+        "mediaId": "MAHRNDSL_Lc",
+        "images": [
+            "assets/optimized/catalog/item_71_MAHRNDSL_Lc.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 72,
+        "name": "Figurita Virgen de Guadalupe",
+        "category": "FIGURITAS",
+        "filterCategory": "figuritas",
+        "price": "$40,000 COP",
+        "rawPrice": 40000,
+        "badge": "Especial 🕊️",
+        "description": "Hermosa representación artesanal de la Virgen de Guadalupe con manto estrellado y aureola dorada.",
+        "mediaId": "MAHST6fgGYw",
+        "images": [
+            "assets/optimized/catalog/item_72_MAHST6fgGYw.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 73,
+        "name": "Figurita Rapunzel",
+        "category": "FIGURITAS",
+        "filterCategory": "figuritas",
+        "price": "$45,000 COP",
+        "rawPrice": 45000,
+        "badge": "Princesas 👑",
+        "description": "Figura de Rapunzel con su largo cabello dorado trenzado con florecitas y vestido lila.",
+        "mediaId": "MAHS2PEK93E",
+        "images": [
+            "assets/optimized/catalog/item_73_MAHS2PEK93E.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 74,
+        "name": "Llavero Gerbera Artesanal",
+        "category": "LLAVEROS",
+        "filterCategory": "llaveros",
+        "price": "$15,000 COP",
+        "rawPrice": 15000,
+        "badge": "Llaveros 🔑",
+        "description": "Lindo llavero con gerbera tejida a mano y herraje resistente para tus llaves, bolso o morral.",
+        "mediaId": "MAHS2NuSbvY",
+        "images": [
+            "assets/optimized/catalog/item_74_MAHS2NuSbvY.webp"
+        ],
+        "brand": "flora"
+    },
+    {
+        "id": 75,
+        "name": "Kit de Skincare Rutina Completa",
+        "category": "CUIDADO FACIAL",
+        "filterCategory": "skincare",
+        "brand": "beauty",
+        "price": "$38,000 COP",
+        "rawPrice": 38000,
+        "badge": "Viral 🔥",
+        "description": "El set definitivo para el cuidado facial diario. Incluye gel limpiador suave, tónico equilibrante y crema hidratante iluminadora para dejar la piel fresca, suave y protegida.",
+        "images": [
+            "assets/optimized/product_2.webp"
+        ]
+    },
+    {
+        "id": 76,
+        "name": "Combo Moño Satín & Lip Gloss Trend",
+        "category": "ACCESORIOS Y LABIOS",
+        "filterCategory": "accesorios",
+        "brand": "beauty",
+        "price": "$22,000 COP",
+        "rawPrice": 22000,
+        "badge": "Nuevo 🎀",
+        "description": "El kit ideal de moños elegantes estilo satín combinados con brillo labial ultra hidratante. Perfecto para añadir un toque tierno a tu look diario.",
+        "images": [
+            "assets/optimized/product_3.webp"
+        ]
+    },
+    {
+        "id": 77,
+        "name": "Sheglam Lip Gloss Sparkling",
+        "category": "MAQUILLAJE LABIOS",
+        "filterCategory": "maquillaje",
+        "brand": "beauty",
+        "price": "$18,000 COP",
+        "rawPrice": 18000,
+        "badge": "Best Seller ⭐",
+        "description": "Brillo labial viral con micro-destellos de purpurina que reflejan la luz de manera espectacular. Proporciona hidratación profunda y volumen óptico sin sensación pegajosa.",
+        "images": [
+            "assets/optimized/product_4.webp"
+        ]
+    },
+    {
+        "id": 78,
+        "name": "Pestañina Prosa 4 en 1 Waterproof",
+        "category": "MAQUILLAJE OJOS",
+        "filterCategory": "maquillaje",
+        "brand": "beauty",
+        "price": "$12,000 COP",
+        "rawPrice": 12000,
+        "badge": "Básico 👀",
+        "description": "Fórmula profesional de larga duración resistente al agua. Enriquecida con aceites naturales de hueso de mamey, sábila, jojoba y germen de trigo.",
+        "images": [
+            "assets/optimized/product_5.webp"
+        ]
+    },
+    {
+        "id": 79,
+        "name": "Alissha Jelly Blush Tinta Rubor",
+        "category": "MAQUILLAJE MEJILLAS",
+        "filterCategory": "maquillaje",
+        "brand": "beauty",
+        "price": "$15,000 COP",
+        "rawPrice": 15000,
+        "badge": "Nuevo Rubor 🍮",
+        "description": "Divertido rubor y tinta multiusos con una textura jelly gelatinosa única. Es sumamente fácil de difuminar, refresca tu piel y aporta una tinta de larga duración.",
+        "images": [
+            "assets/optimized/product_6.webp"
+        ]
+    }
 ]

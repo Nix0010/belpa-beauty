@@ -17,7 +17,7 @@ const productsCatalog = [
         "description": "Ramo temático de Rapunzel en limpiapipas artesanales de alta calidad. Incluye: 4 Lirios, 2 Gerberas, 2 Margaritas, 1 Tulipán, 1 Flor gota de sol, 1 Rosa, camaleón Pascal en limpiapipa, follaje y luces LED decorativas.",
         "mediaId": "MAHQOp8EUfM",
         "images": [
-            "assets/catalog/item_1_MAHQOp8EUfM.jpg"
+            "assets/optimized/catalog/item_1_MAHQOp8EUfM.webp"
         ],
         "brand": "flora"
     },
@@ -32,7 +32,7 @@ const productsCatalog = [
         "description": "Ramo premium de Rapunzel tejido a mano. Incluye: 1 Lirio, 3 Gerberas, 2 Jazmín, 6 Tulipanes, 1 Flor gota de sol, 1 figura de Pascal artesanal, follaje y luces LED.",
         "mediaId": "MAHShGd7zIc",
         "images": [
-            "assets/catalog/item_2_MAHShGd7zIc.jpg"
+            "assets/optimized/catalog/item_2_MAHShGd7zIc.webp"
         ],
         "brand": "flora"
     },
@@ -47,7 +47,7 @@ const productsCatalog = [
         "description": "Ramo mágico de Cenicienta con tonos celestes y blancos. Incluye flores artesanales, detalles temáticos de princesa, follaje decorativo y luces LED.",
         "mediaId": "MAHRoxdMUYc",
         "images": [
-            "assets/catalog/item_3_MAHRoxdMUYc.jpg"
+            "assets/optimized/catalog/item_3_MAHRoxdMUYc.webp"
         ],
         "brand": "flora"
     },
@@ -62,7 +62,7 @@ const productsCatalog = [
         "description": "Inspirado en Tiana y el pantano mágico. Incluye: 1 Flor de loto, 1 Gerbera, 1 Tulipán, 2 Lirios, 2 ramas de follaje, figura de la luciérnaga Ray en limpiapipas y luces LED.",
         "mediaId": "MAHRowNcbB8",
         "images": [
-            "assets/catalog/item_4_MAHRowNcbB8.png"
+            "assets/optimized/catalog/item_4_MAHRowNcbB8.webp"
         ],
         "brand": "flora"
     },
@@ -77,7 +77,7 @@ const productsCatalog = [
         "description": "Hermoso bouquet con peluche Lotso, 7 Tulipanes, 3 Lirios, 1 Lirio especial, 5 ramas de follaje y envoltura de lujo.",
         "mediaId": "MAHQ4CuIp3g",
         "images": [
-            "assets/catalog/item_5_MAHQ4CuIp3g.png"
+            "assets/optimized/catalog/item_5_MAHQ4CuIp3g.webp"
         ],
         "brand": "flora"
     },
@@ -92,7 +92,7 @@ const productsCatalog = [
         "description": "Bouquet dulce de 7 Tulipanes, 2 Rosas, 3 Gerberas, follaje y peluche de Lotso con aroma delicioso.",
         "mediaId": "MAHPmj2Tpbk",
         "images": [
-            "assets/catalog/item_6_MAHPmj2Tpbk.jpg"
+            "assets/optimized/catalog/item_6_MAHPmj2Tpbk.webp"
         ],
         "brand": "flora"
     },
@@ -107,7 +107,7 @@ const productsCatalog = [
         "description": "Ramo tierno con peluche de Lotso. Incluye: 7 Tulipanes, ramas de follaje y peluche suave de Lotso.",
         "mediaId": "MAHS1Qb4eEc",
         "images": [
-            "assets/catalog/item_7_MAHS1Qb4eEc.jpg"
+            "assets/optimized/catalog/item_7_MAHS1Qb4eEc.webp"
         ],
         "brand": "flora"
     },
@@ -122,7 +122,7 @@ const productsCatalog = [
         "description": "Ramo especial con peluche Lotso de 35 cm. Incluye: 6 Tulipanes, 3 Rosas, 1 Anémona, follaje y peluche grande de Lotso.",
         "mediaId": "MAHS1RY-jEE",
         "images": [
-            "assets/catalog/item_8_MAHS1RY-jEE.jpg"
+            "assets/optimized/catalog/item_8_MAHS1RY-jEE.webp"
         ],
         "brand": "flora"
     },
@@ -137,7 +137,7 @@ const productsCatalog = [
         "description": "Tierno ramo en tono Rosado con peluche. Incluye: 6 Tulipanes, 3 Lirios, 2 ramas de follaje y peluche afelpado.",
         "mediaId": "MAHQudzb4eg",
         "images": [
-            "assets/catalog/item_9_MAHQudzb4eg.jpg"
+            "assets/optimized/catalog/item_9_MAHQudzb4eg.webp"
         ],
         "brand": "flora"
     },
@@ -152,7 +152,7 @@ const productsCatalog = [
         "description": "Ramo en tonalidad Rosado Pastel. Incluye: 6 Tulipanes, 3 Lirios, 2 ramas de follaje y peluche delicado.",
         "mediaId": "MAHQ4KYCeEQ",
         "images": [
-            "assets/catalog/item_10_MAHQ4KYCeEQ.png"
+            "assets/optimized/catalog/item_10_MAHQ4KYCeEQ.webp"
         ],
         "brand": "flora"
     },
@@ -167,7 +167,7 @@ const productsCatalog = [
         "description": "Elegante bouquet en tono Rosado Nude. Incluye: 7 Tulipanes, 3 Lirios, 3 Rosas, follaje y peluche de ovejita ultra suave.",
         "mediaId": "MAHPmncoNSc",
         "images": [
-            "assets/catalog/item_11_MAHPmncoNSc.jpg"
+            "assets/optimized/catalog/item_11_MAHPmncoNSc.webp"
         ],
         "brand": "flora"
     },
@@ -182,7 +182,7 @@ const productsCatalog = [
         "description": "Inspirado en My Melody. Incluye: 7 Tulipanes tejidos, follaje y peluche original de My Melody.",
         "mediaId": "MAHQOsxcTQs",
         "images": [
-            "assets/catalog/item_12_MAHQOsxcTQs.png"
+            "assets/optimized/catalog/item_12_MAHQOsxcTQs.webp"
         ],
         "brand": "flora"
     },
@@ -197,7 +197,7 @@ const productsCatalog = [
         "description": "Precioso ramo de Hello Kitty. Incluye: 5 Tulipanes, 3 Lirios, 3 Gerberas, 2 ramas de follaje y peluche de Hello Kitty.",
         "mediaId": "MAHQaR4F-LI",
         "images": [
-            "assets/catalog/item_13_MAHQaR4F-LI.jpg"
+            "assets/optimized/catalog/item_13_MAHQaR4F-LI.webp"
         ],
         "brand": "flora"
     },
@@ -212,7 +212,7 @@ const productsCatalog = [
         "description": "Gran bouquet con peluche Hello Kitty gigante de 45 cm. Incluye: 10 Tulipanes, 4 Lirios, 1 Gerbera y follaje.",
         "mediaId": "MAHS16mtKgM",
         "images": [
-            "assets/catalog/item_14_MAHS16mtKgM.png"
+            "assets/optimized/catalog/item_14_MAHS16mtKgM.webp"
         ],
         "brand": "flora"
     },
@@ -227,7 +227,7 @@ const productsCatalog = [
         "description": "Bouquet tierno de 6 Tulipanes, 2 ramas de follaje y peluche Hello Kitty de 45 cm.",
         "mediaId": "MAHRMue2NRs",
         "images": [
-            "assets/catalog/item_15_MAHRMue2NRs.jpg"
+            "assets/optimized/catalog/item_15_MAHRMue2NRs.webp"
         ],
         "brand": "flora"
     },
@@ -242,7 +242,7 @@ const productsCatalog = [
         "description": "El regalo supremo para fans de Hello Kitty. Incluye: 5 Tulipanes, 4 Lirios, 2 Gerberas, Margarita mini, follaje y peluche Hello Kitty de 50 cm.",
         "mediaId": "MAHRMuZHRJc",
         "images": [
-            "assets/catalog/item_16_MAHRMuZHRJc.jpg"
+            "assets/optimized/catalog/item_16_MAHRMuZHRJc.webp"
         ],
         "brand": "flora"
     },
@@ -257,7 +257,7 @@ const productsCatalog = [
         "description": "Encantador ramo de 4 Tulipanes, 3 Gerberas, follaje y figura artesanal de Snoopy tejida en limpiapipas.",
         "mediaId": "MAHRo4IM_QY",
         "images": [
-            "assets/catalog/item_17_MAHRo4IM_QY.jpg"
+            "assets/optimized/catalog/item_17_MAHRo4IM_QY.webp"
         ],
         "brand": "flora"
     },
@@ -272,7 +272,7 @@ const productsCatalog = [
         "description": "Arreglo primaveral de 12 Tulipanes artesanales, follaje y figura tejida de Snoopy en limpiapipas.",
         "mediaId": "MAHST6bI3dM",
         "images": [
-            "assets/catalog/item_18_MAHST6bI3dM.jpg"
+            "assets/optimized/catalog/item_18_MAHST6bI3dM.webp"
         ],
         "brand": "flora"
     },
@@ -287,7 +287,7 @@ const productsCatalog = [
         "description": "Impactante ramo de 12 Lirios eternos hechos a mano, follaje, banda personalizada con frase y serie de luces LED.",
         "mediaId": "MAHS1lNKdhw",
         "images": [
-            "assets/catalog/item_19_MAHS1lNKdhw.jpg"
+            "assets/optimized/catalog/item_19_MAHS1lNKdhw.webp"
         ],
         "brand": "flora"
     },
@@ -302,7 +302,7 @@ const productsCatalog = [
         "description": "Ramo clásico y elegante con 12 Lirios eternos tejidos a mano y fino follaje decorativo.",
         "mediaId": "MAHS14muKlY",
         "images": [
-            "assets/catalog/item_20_MAHS14muKlY.png"
+            "assets/optimized/catalog/item_20_MAHS14muKlY.webp"
         ],
         "brand": "flora"
     },
@@ -317,7 +317,7 @@ const productsCatalog = [
         "description": "Delicado bouquet de 5 Lirios eternos artesanales, follaje y luces LED decorativas.",
         "mediaId": "MAHS15WkPNM",
         "images": [
-            "assets/catalog/item_21_MAHS15WkPNM.png"
+            "assets/optimized/catalog/item_21_MAHS15WkPNM.webp"
         ],
         "brand": "flora"
     },
@@ -332,7 +332,7 @@ const productsCatalog = [
         "description": "Bouquet voluminoso y colorido de 14 Tulipanes tejidos a mano con limpiapipas de alta calidad y follaje.",
         "mediaId": "MAHPmp3eA2I",
         "images": [
-            "assets/catalog/item_22_MAHPmp3eA2I.jpg"
+            "assets/optimized/catalog/item_22_MAHPmp3eA2I.webp"
         ],
         "brand": "flora"
     },
@@ -347,7 +347,7 @@ const productsCatalog = [
         "description": "Ramillete dulce y duradero de 15 Tulipanes eternos en combinación de tonos pasteles.",
         "mediaId": "MAHS15aJDEc",
         "images": [
-            "assets/catalog/item_23_MAHS15aJDEc.png"
+            "assets/optimized/catalog/item_23_MAHS15aJDEc.webp"
         ],
         "brand": "flora"
     },
@@ -362,7 +362,7 @@ const productsCatalog = [
         "description": "Ramo coqueto de 10 Tulipanes eternos y ramas de follaje suave.",
         "mediaId": "MAHS1_XlHvk",
         "images": [
-            "assets/catalog/item_24_MAHS1_XlHvk.png"
+            "assets/optimized/catalog/item_24_MAHS1_XlHvk.webp"
         ],
         "brand": "flora"
     },
@@ -377,7 +377,7 @@ const productsCatalog = [
         "description": "Hermosa combinación de 7 Tulipanes, 3 Lirios, 6 copitos (flores mini) y follaje.",
         "mediaId": "MAHQW71FD-c",
         "images": [
-            "assets/catalog/item_25_MAHQW71FD-c.png"
+            "assets/optimized/catalog/item_25_MAHQW71FD-c.webp"
         ],
         "brand": "flora"
     },
@@ -392,7 +392,7 @@ const productsCatalog = [
         "description": "Ramo con 6 Tulisnoopy (tulipanes combinados con carita de Snoopy) y follaje decorativo.",
         "mediaId": "MAHS1hLOLCI",
         "images": [
-            "assets/catalog/item_26_MAHS1hLOLCI.jpg"
+            "assets/optimized/catalog/item_26_MAHS1hLOLCI.webp"
         ],
         "brand": "flora"
     },
@@ -407,7 +407,7 @@ const productsCatalog = [
         "description": "Ramo accesible y tierno con 3 Tulipanes, 2 Tulisnoopy, 1 Lirio y follaje.",
         "mediaId": "MAHS1m_fq6s",
         "images": [
-            "assets/catalog/item_27_MAHS1m_fq6s.jpg"
+            "assets/optimized/catalog/item_27_MAHS1m_fq6s.webp"
         ],
         "brand": "flora"
     },
@@ -422,7 +422,7 @@ const productsCatalog = [
         "description": "Lleno de energía y luz. Incluye: 3 Girasoles grandes, 3 Tulipanes y ramas de follaje.",
         "mediaId": "MAHRiZYz2-Q",
         "images": [
-            "assets/catalog/item_28_MAHRiZYz2-Q.jpg"
+            "assets/optimized/catalog/item_28_MAHRiZYz2-Q.webp"
         ],
         "brand": "flora"
     },
@@ -437,7 +437,7 @@ const productsCatalog = [
         "description": "Detalle radiante de 2 Girasoles y 2 Tulipanes artesanales con follaje verde.",
         "mediaId": "MAHS1jyP-yc",
         "images": [
-            "assets/catalog/item_29_MAHS1jyP-yc.jpg"
+            "assets/optimized/catalog/item_29_MAHS1jyP-yc.webp"
         ],
         "brand": "flora"
     },
@@ -452,7 +452,7 @@ const productsCatalog = [
         "description": "Ramo regio de 6 Girasoles eternos, follaje, corona dorada decorativa y banda floral con frase personalizada.",
         "mediaId": "MAHS1gXeVI0",
         "images": [
-            "assets/catalog/item_30_MAHS1gXeVI0.jpg"
+            "assets/optimized/catalog/item_30_MAHS1gXeVI0.webp"
         ],
         "brand": "flora"
     },
@@ -467,7 +467,7 @@ const productsCatalog = [
         "description": "Ramo alegre compuesto por 7 Girasoles mini y follaje natural decorativo.",
         "mediaId": "MAHS2HJml-s",
         "images": [
-            "assets/catalog/item_31_MAHS2HJml-s.png"
+            "assets/optimized/catalog/item_31_MAHS2HJml-s.webp"
         ],
         "brand": "flora"
     },
@@ -482,7 +482,7 @@ const productsCatalog = [
         "description": "Colorido ramo que reúne 6 Gerberas y 6 Tulipanes tejidos a mano con follaje.",
         "mediaId": "MAHS2IldEgw",
         "images": [
-            "assets/catalog/item_32_MAHS2IldEgw.png"
+            "assets/optimized/catalog/item_32_MAHS2IldEgw.webp"
         ],
         "brand": "flora"
     },
@@ -497,7 +497,7 @@ const productsCatalog = [
         "description": "Abundante bouquet de 12 Gerberas eternas en paleta vibrante de colores y follaje.",
         "mediaId": "MAHS2PRaE_E",
         "images": [
-            "assets/catalog/item_33_MAHS2PRaE_E.png"
+            "assets/optimized/catalog/item_33_MAHS2PRaE_E.webp"
         ],
         "brand": "flora"
     },
@@ -512,7 +512,7 @@ const productsCatalog = [
         "description": "Delicada armonía de 6 Tulipanes, 3 Lirios, 2 ramitas de Lavanda aromática y follaje.",
         "mediaId": "MAHS1mDKXcg",
         "images": [
-            "assets/catalog/item_34_MAHS1mDKXcg.jpg"
+            "assets/optimized/catalog/item_34_MAHS1mDKXcg.webp"
         ],
         "brand": "flora"
     },
@@ -527,7 +527,7 @@ const productsCatalog = [
         "description": "El arreglo primaveral más completo: 7 Tulipanes, 3 Lirios, 2 Girasoles, 2 Gerberas, 2 Margaritas, 1 Anémona y follaje.",
         "mediaId": "MAHS1vHW5rE",
         "images": [
-            "assets/catalog/item_35_MAHS1vHW5rE.jpg"
+            "assets/optimized/catalog/item_35_MAHS1vHW5rE.webp"
         ],
         "brand": "flora"
     },
@@ -542,7 +542,7 @@ const productsCatalog = [
         "description": "Hermosa combinación de 4 Tulipanes, 4 Lirios, 2 Margaritas, 2 Gerberas y ramas de follaje.",
         "mediaId": "MAHPmkuxQdY",
         "images": [
-            "assets/catalog/item_36_MAHPmkuxQdY.jpg"
+            "assets/optimized/catalog/item_36_MAHPmkuxQdY.webp"
         ],
         "brand": "flora"
     },
@@ -557,7 +557,7 @@ const productsCatalog = [
         "description": "Ramo balanceado de 3 Tulipanes, 4 Lirios y follaje decorativo.",
         "mediaId": "MAHS1hpx7Ks",
         "images": [
-            "assets/catalog/item_37_MAHS1hpx7Ks.jpg"
+            "assets/optimized/catalog/item_37_MAHS1hpx7Ks.webp"
         ],
         "brand": "flora"
     },
@@ -572,7 +572,7 @@ const productsCatalog = [
         "description": "Inspirado en la paleta de colores de Vincent Van Gogh. Incluye: 7 Tulipanes, 1 Girasol, 2 Gerberas y follaje.",
         "mediaId": "MAHQOl9WAv4",
         "images": [
-            "assets/catalog/item_38_MAHQOl9WAv4.jpg"
+            "assets/optimized/catalog/item_38_MAHQOl9WAv4.webp"
         ],
         "brand": "flora"
     },
@@ -587,7 +587,7 @@ const productsCatalog = [
         "description": "Bouquet dulce y fresco con 7 Tulipanes, 2 Lirios y follaje.",
         "mediaId": "MAHPmqpV1sY",
         "images": [
-            "assets/catalog/item_39_MAHPmqpV1sY.jpg"
+            "assets/optimized/catalog/item_39_MAHPmqpV1sY.webp"
         ],
         "brand": "flora"
     },
@@ -602,7 +602,7 @@ const productsCatalog = [
         "description": "Gran bouquet de 8 Tulipanes y 8 Lirios eternos con envoltura de satín de lujo.",
         "mediaId": "MAHNZFjOzxA",
         "images": [
-            "assets/catalog/item_40_MAHNZFjOzxA.jpg"
+            "assets/optimized/catalog/item_40_MAHNZFjOzxA.webp"
         ],
         "brand": "flora"
     },
@@ -617,7 +617,7 @@ const productsCatalog = [
         "description": "Ramo romántico de 5 Tulipanes, 1 Girasol, 5 Rosas eternas y follaje.",
         "mediaId": "MAHNaRFaFjE",
         "images": [
-            "assets/catalog/item_41_MAHNaRFaFjE.jpg"
+            "assets/optimized/catalog/item_41_MAHNaRFaFjE.webp"
         ],
         "brand": "flora"
     },
@@ -632,7 +632,7 @@ const productsCatalog = [
         "description": "Mix primaveral: 1 Girasol, 1 Lirio, 1 Margarita, 1 Capullo, 1 Anémona, 2 Gerberas y follaje.",
         "mediaId": "MAHIuBIvVmQ",
         "images": [
-            "assets/catalog/item_42_MAHIuBIvVmQ.jpg"
+            "assets/optimized/catalog/item_42_MAHIuBIvVmQ.webp"
         ],
         "brand": "flora"
     },
@@ -647,7 +647,7 @@ const productsCatalog = [
         "description": "Arreglo exclusivo de 2 Lirios, 2 Gerberas, 2 Anémonas, 2 Rosas, 2 Tulipanes, 1 Hortensia y follaje.",
         "mediaId": "MAHS2MZ2ubY",
         "images": [
-            "assets/catalog/item_43_MAHS2MZ2ubY.jpg"
+            "assets/optimized/catalog/item_43_MAHS2MZ2ubY.webp"
         ],
         "brand": "flora"
     },
@@ -662,7 +662,7 @@ const productsCatalog = [
         "description": "Ramillete dulce con 7 Tulipanes, 2 Gerberas, 1 Lirio y follaje.",
         "mediaId": "MAHQaUTpCPQ",
         "images": [
-            "assets/catalog/item_44_MAHQaUTpCPQ.jpg"
+            "assets/optimized/catalog/item_44_MAHQaUTpCPQ.webp"
         ],
         "brand": "flora"
     },
@@ -677,7 +677,7 @@ const productsCatalog = [
         "description": "Incluye: 2 Lirios, 2 Gerberas, 1 Girasol, 1 Tulipán, 1 Capullo y follaje.",
         "mediaId": "MAHQcrNeUCI",
         "images": [
-            "assets/catalog/item_45_MAHQcrNeUCI.png"
+            "assets/optimized/catalog/item_45_MAHQcrNeUCI.webp"
         ],
         "brand": "flora"
     },
@@ -692,7 +692,7 @@ const productsCatalog = [
         "description": "Innovador arreglo sobre espejo decorativo. Incluye: 2 Lirios, 1 Margarita, 1 Gerbera, 2 Tulipanes, 1 Girasol mini, 1 Rosa, follaje y espejo incorporado.",
         "mediaId": "MAHQcxF-Omg",
         "images": [
-            "assets/catalog/item_46_MAHQcxF-Omg.png"
+            "assets/optimized/catalog/item_46_MAHQcxF-Omg.webp"
         ],
         "brand": "flora"
     },
@@ -707,7 +707,7 @@ const productsCatalog = [
         "description": "Diseño elegante con espejo: 2 Tulipanes, 1 Girasol mini, 1 Gerbera, 3 Lirios, 1 Margarita, follaje y espejo.",
         "mediaId": "MAHQc4kU0J0",
         "images": [
-            "assets/catalog/item_47_MAHQc4kU0J0.png"
+            "assets/optimized/catalog/item_47_MAHQc4kU0J0.webp"
         ],
         "brand": "flora"
     },
@@ -722,7 +722,7 @@ const productsCatalog = [
         "description": "Incluye: 3 Lirios, 1 Margarita, 2 Gerberas, 1 Tulipán, 1 Girasol, 1 Girasol mini, follaje y espejo.",
         "mediaId": "MAHQcw8Hnw8",
         "images": [
-            "assets/catalog/item_48_MAHQcw8Hnw8.png"
+            "assets/optimized/catalog/item_48_MAHQcw8Hnw8.webp"
         ],
         "brand": "flora"
     },
@@ -737,7 +737,7 @@ const productsCatalog = [
         "description": "Hermoso conjunto de 9 Gerberas eternas montadas con espejo decorativo y follaje.",
         "mediaId": "MAHQcxvnl8s",
         "images": [
-            "assets/catalog/item_49_MAHQcxvnl8s.png"
+            "assets/optimized/catalog/item_49_MAHQcxvnl8s.webp"
         ],
         "brand": "flora"
     },
@@ -752,7 +752,7 @@ const productsCatalog = [
         "description": "Cápsula de cristal fino con 1 Girasol artesanal grande en base de madera decorativa.",
         "mediaId": "MAHQW-0A_E8",
         "images": [
-            "assets/catalog/item_50_MAHQW-0A_E8.png"
+            "assets/optimized/catalog/item_50_MAHQW-0A_E8.webp"
         ],
         "brand": "flora"
     },
@@ -767,7 +767,7 @@ const productsCatalog = [
         "description": "Cápsula compacta con 1 Girasol mini tejido a mano, ideal para escritorio o detalle sorpresa.",
         "mediaId": "MAHQW_SOR_o",
         "images": [
-            "assets/catalog/item_51_MAHQW_SOR_o.png"
+            "assets/optimized/catalog/item_51_MAHQW_SOR_o.webp"
         ],
         "brand": "flora"
     },
@@ -782,7 +782,7 @@ const productsCatalog = [
         "description": "Cápsula de cristal con Girasol grande, base y luces LED a pila que crean una atmósfera mágica de noche.",
         "mediaId": "MAHQW9Qr7Yc",
         "images": [
-            "assets/catalog/item_52_MAHQW9Qr7Yc.png"
+            "assets/optimized/catalog/item_52_MAHQW9Qr7Yc.webp"
         ],
         "brand": "flora"
     },
@@ -797,7 +797,7 @@ const productsCatalog = [
         "description": "Inspirada en la Flor Dorada de Rapunzel. Incluye cúpula de cristal, flor fulgor tejida y luces LED a pila.",
         "mediaId": "MAHQWx9ZlBE",
         "images": [
-            "assets/catalog/item_53_MAHQWx9ZlBE.png"
+            "assets/optimized/catalog/item_53_MAHQWx9ZlBE.webp"
         ],
         "brand": "flora"
     },
@@ -812,7 +812,7 @@ const productsCatalog = [
         "description": "Cápsula de cristal con 1 Rosa eterna grande de crochet artesanal.",
         "mediaId": "MAHQW1udt2g",
         "images": [
-            "assets/catalog/item_54_MAHQW1udt2g.png"
+            "assets/optimized/catalog/item_54_MAHQW1udt2g.webp"
         ],
         "brand": "flora"
     },
@@ -827,7 +827,7 @@ const productsCatalog = [
         "description": "Cápsula de cristal con 3 Rosas eternas combinadas en tonos románticos.",
         "mediaId": "MAHQWw6P6m4",
         "images": [
-            "assets/catalog/item_55_MAHQWw6P6m4.png"
+            "assets/optimized/catalog/item_55_MAHQWw6P6m4.webp"
         ],
         "brand": "flora"
     },
@@ -842,7 +842,7 @@ const productsCatalog = [
         "description": "Cápsula de cristal de lujo con Rosa rosada grande preservada de larga duración.",
         "mediaId": "MAHQWzuw9OQ",
         "images": [
-            "assets/catalog/item_56_MAHQWzuw9OQ.png"
+            "assets/optimized/catalog/item_56_MAHQWzuw9OQ.webp"
         ],
         "brand": "flora"
     },
@@ -857,7 +857,7 @@ const productsCatalog = [
         "description": "Cápsula de cristal con Rosa amarilla grande preservada que simboliza alegría y luz eterna.",
         "mediaId": "MAHQW6wxDo4",
         "images": [
-            "assets/catalog/item_57_MAHQW6wxDo4.png"
+            "assets/optimized/catalog/item_57_MAHQW6wxDo4.webp"
         ],
         "brand": "flora"
     },
@@ -872,7 +872,7 @@ const productsCatalog = [
         "description": "Bouquet temático con 2 Lirios, 5 Tulipanes, follaje y peluche de Hello Kitty.",
         "mediaId": "MAHPRzSttpY",
         "images": [
-            "assets/catalog/item_58_MAHPRzSttpY.jpg"
+            "assets/optimized/catalog/item_58_MAHPRzSttpY.webp"
         ],
         "brand": "flora"
     },
@@ -887,7 +887,7 @@ const productsCatalog = [
         "description": "Bouquet primaveral con 3 Tulipanes, 1 Gerbera, 1 Rosa, 1 Anémona, follaje y peluche tierno.",
         "mediaId": "MAHQbeC55WU",
         "images": [
-            "assets/catalog/item_59_MAHQbeC55WU.jpg"
+            "assets/optimized/catalog/item_59_MAHQbeC55WU.webp"
         ],
         "brand": "flora"
     },
@@ -902,7 +902,7 @@ const productsCatalog = [
         "description": "Cuadro decorativo 3D con flores eternas, luces LED integradas y frase personalizada a elección.",
         "mediaId": "MAHQXPO_784",
         "images": [
-            "assets/catalog/item_60_MAHQXPO_784.png"
+            "assets/optimized/catalog/item_60_MAHQXPO_784.webp"
         ],
         "brand": "flora"
     },
@@ -917,7 +917,7 @@ const productsCatalog = [
         "description": "Cuadro con composición de girasoles y flores amarillas, luces LED y dedicatoria personalizada.",
         "mediaId": "MAHQXMNSJy0",
         "images": [
-            "assets/catalog/item_61_MAHQXMNSJy0.png"
+            "assets/optimized/catalog/item_61_MAHQXMNSJy0.webp"
         ],
         "brand": "flora"
     },
@@ -932,7 +932,7 @@ const productsCatalog = [
         "description": "Hermoso cuadro de fondo pastel con ramo de flores de crochet en relieve, luces cálidas y dedicatoria.",
         "mediaId": "MAHQXK9ApYM",
         "images": [
-            "assets/catalog/item_62_MAHQXK9ApYM.png"
+            "assets/optimized/catalog/item_62_MAHQXK9ApYM.webp"
         ],
         "brand": "flora"
     },
@@ -947,7 +947,7 @@ const productsCatalog = [
         "description": "Cuadro compacto de flores eternas con luces LED y mensaje personalizado para esa persona especial.",
         "mediaId": "MAHQXBS9UAw",
         "images": [
-            "assets/catalog/item_63_MAHQXBS9UAw.png"
+            "assets/optimized/catalog/item_63_MAHQXBS9UAw.webp"
         ],
         "brand": "flora"
     },
@@ -962,7 +962,7 @@ const productsCatalog = [
         "description": "Materito artesanal con flor tejida en limpiapipas, perfecto para decoración de escritorio o repisa.",
         "mediaId": "MAHQck5nZrI",
         "images": [
-            "assets/catalog/item_64_MAHQck5nZrI.png"
+            "assets/optimized/catalog/item_64_MAHQck5nZrI.webp"
         ],
         "brand": "flora"
     },
@@ -977,7 +977,7 @@ const productsCatalog = [
         "description": "Elegante jarrón de vidrio con arreglo floral completo de flores eternas tejidas a mano.",
         "mediaId": "MAHQcoXs6oo",
         "images": [
-            "assets/catalog/item_65_MAHQcoXs6oo.png"
+            "assets/optimized/catalog/item_65_MAHQcoXs6oo.webp"
         ],
         "brand": "flora"
     },
@@ -992,7 +992,7 @@ const productsCatalog = [
         "description": "Materito decorativo con flor de crochet en maceta miniatura.",
         "mediaId": "MAHQcku9IYs",
         "images": [
-            "assets/catalog/item_66_MAHQcku9IYs.png"
+            "assets/optimized/catalog/item_66_MAHQcku9IYs.webp"
         ],
         "brand": "flora"
     },
@@ -1007,7 +1007,7 @@ const productsCatalog = [
         "description": "Materito artesanal con diseño floral especial en maceta de color pastel.",
         "mediaId": "MAHQcmSBWVg",
         "images": [
-            "assets/catalog/item_67_MAHQcmSBWVg.png"
+            "assets/optimized/catalog/item_67_MAHQcmSBWVg.webp"
         ],
         "brand": "flora"
     },
@@ -1022,7 +1022,7 @@ const productsCatalog = [
         "description": "Figura coleccionable de la Vaquita Lola modelada artesanalmente con limpiapipas de alta suavidad.",
         "mediaId": "MAHQcwpIBq8",
         "images": [
-            "assets/catalog/item_68_MAHQcwpIBq8.png"
+            "assets/optimized/catalog/item_68_MAHQcwpIBq8.webp"
         ],
         "brand": "flora"
     },
@@ -1037,7 +1037,7 @@ const productsCatalog = [
         "description": "Adorable pingüinito artesanal hecho 100% a mano con limpiapipas.",
         "mediaId": "MAHQrZJuXQU",
         "images": [
-            "assets/catalog/item_69_MAHQrZJuXQU.jpg"
+            "assets/optimized/catalog/item_69_MAHQrZJuXQU.webp"
         ],
         "brand": "flora"
     },
@@ -1052,7 +1052,7 @@ const productsCatalog = [
         "description": "Figura 3D de Snoopy en limpiapipas, con detalles tiernos y base decorativa.",
         "mediaId": "MAHQrYgr7ZY",
         "images": [
-            "assets/catalog/item_70_MAHQrYgr7ZY.jpg"
+            "assets/optimized/catalog/item_70_MAHQrYgr7ZY.webp"
         ],
         "brand": "flora"
     },
@@ -1067,7 +1067,7 @@ const productsCatalog = [
         "description": "Figura flexible y detallada de Spider-Man hecha a mano con limpiapipas rojo y azul.",
         "mediaId": "MAHRNDSL_Lc",
         "images": [
-            "assets/catalog/item_71_MAHRNDSL_Lc.jpg"
+            "assets/optimized/catalog/item_71_MAHRNDSL_Lc.webp"
         ],
         "brand": "flora"
     },
@@ -1082,7 +1082,7 @@ const productsCatalog = [
         "description": "Hermosa representación artesanal de la Virgen de Guadalupe con manto estrellado y aureola dorada.",
         "mediaId": "MAHST6fgGYw",
         "images": [
-            "assets/catalog/item_72_MAHST6fgGYw.jpg"
+            "assets/optimized/catalog/item_72_MAHST6fgGYw.webp"
         ],
         "brand": "flora"
     },
@@ -1097,7 +1097,7 @@ const productsCatalog = [
         "description": "Figura de Rapunzel con su largo cabello dorado trenzado con florecitas y vestido lila.",
         "mediaId": "MAHS2PEK93E",
         "images": [
-            "assets/catalog/item_73_MAHS2PEK93E.jpg"
+            "assets/optimized/catalog/item_73_MAHS2PEK93E.webp"
         ],
         "brand": "flora"
     },
@@ -1112,7 +1112,7 @@ const productsCatalog = [
         "description": "Lindo llavero con gerbera tejida a mano y herraje resistente para tus llaves, bolso o morral.",
         "mediaId": "MAHS2NuSbvY",
         "images": [
-            "assets/catalog/item_74_MAHS2NuSbvY.jpg"
+            "assets/optimized/catalog/item_74_MAHS2NuSbvY.webp"
         ],
         "brand": "flora"
     },
@@ -1127,7 +1127,7 @@ const productsCatalog = [
         "badge": "Viral 🔥",
         "description": "El set definitivo para el cuidado facial diario. Incluye gel limpiador suave, tónico equilibrante y crema hidratante iluminadora para dejar la piel fresca, suave y protegida.",
         "images": [
-            "assets/product_2.jpg"
+            "assets/optimized/product_2.webp"
         ]
     },
     {
@@ -1141,7 +1141,7 @@ const productsCatalog = [
         "badge": "Nuevo 🎀",
         "description": "El kit ideal de moños elegantes estilo satín combinados con brillo labial ultra hidratante. Perfecto para añadir un toque tierno a tu look diario.",
         "images": [
-            "assets/product_3.jpg"
+            "assets/optimized/product_3.webp"
         ]
     },
     {
@@ -1155,7 +1155,7 @@ const productsCatalog = [
         "badge": "Best Seller ⭐",
         "description": "Brillo labial viral con micro-destellos de purpurina que reflejan la luz de manera espectacular. Proporciona hidratación profunda y volumen óptico sin sensación pegajosa.",
         "images": [
-            "assets/product_4.jpg"
+            "assets/optimized/product_4.webp"
         ]
     },
     {
@@ -1169,7 +1169,7 @@ const productsCatalog = [
         "badge": "Básico 👀",
         "description": "Fórmula profesional de larga duración resistente al agua. Enriquecida con aceites naturales de hueso de mamey, sábila, jojoba y germen de trigo.",
         "images": [
-            "assets/product_5.jpg"
+            "assets/optimized/product_5.webp"
         ]
     },
     {
@@ -1183,7 +1183,7 @@ const productsCatalog = [
         "badge": "Nuevo Rubor 🍮",
         "description": "Divertido rubor y tinta multiusos con una textura jelly gelatinosa única. Es sumamente fácil de difuminar, refresca tu piel y aporta una tinta de larga duración.",
         "images": [
-            "assets/product_6.jpg"
+            "assets/optimized/product_6.webp"
         ]
     }
 ];
@@ -1211,7 +1211,7 @@ const instagramConfig = {
             title: "Proceso de Rosas Eternas",
             tag: "🌹 BelFlora • Hecho a Mano",
             reelUrl: "https://www.instagram.com/belflora.co",
-            previewImage: "assets/hero_main.jpg",
+            previewImage: "assets/optimized/hero_main.webp",
             caption: "Moldeando cada pétalo a mano con limpiapipas suaves y dedicación ✨"
         },
         {
@@ -1220,7 +1220,7 @@ const instagramConfig = {
             title: "Unboxing de Regalos & Luces",
             tag: "🎁 BelFlora • Empaque",
             reelUrl: "https://www.instagram.com/belflora.co",
-            previewImage: "assets/product_1.jpg",
+            previewImage: "assets/optimized/product_1.webp",
             caption: "Cajitas perfumadas con viruta de colores y series LED cálidas 🎀"
         },
         {
@@ -1229,7 +1229,7 @@ const instagramConfig = {
             title: "Colección Temática Rapunzel",
             tag: "👑 BelFlora • Disney",
             reelUrl: "https://www.instagram.com/belflora.co",
-            previewImage: "assets/catalog/item_1_MAHQOp8EUfM.jpg",
+            previewImage: "assets/optimized/catalog/item_1_MAHQOp8EUfM.webp",
             caption: "Detalles mágicos inspirados en princesas y flores fulgor doradas 🌸"
         },
         // Reels de BelpaBeauty (Cosméticos & Maquillaje)
@@ -1239,7 +1239,7 @@ const instagramConfig = {
             title: "Maquillaje Viral & Tendencias",
             tag: "💄 BelpaBeauty • Labios",
             reelUrl: "https://www.instagram.com/belflora.co",
-            previewImage: "assets/product_4.jpg",
+            previewImage: "assets/optimized/product_4.webp",
             caption: "Brillos con microdestellos y tintas para tu rutina diaria 💕"
         },
         {
@@ -1248,7 +1248,7 @@ const instagramConfig = {
             title: "Rutina Glow & Skincare",
             tag: "🧴 BelpaBeauty • Skincare",
             reelUrl: "https://www.instagram.com/belflora.co",
-            previewImage: "assets/product_2.jpg",
+            previewImage: "assets/optimized/product_2.webp",
             caption: "Piel luminosa y protegida con nuestros combos de hidratación ✨"
         }
     ]
@@ -1575,13 +1575,13 @@ function renderProducts() {
     }
 
     grid.innerHTML = filtered.map(p => {
-        const imageSrc = p.images && p.images[0] ? p.images[0] : 'assets/product_1.jpg';
+        const imageSrc = p.images && p.images[0] ? p.images[0] : 'assets/optimized/product_1.webp';
         const brandTag = p.brand === 'beauty' ? '💄 BelpaBeauty' : '🌹 BelFlora';
         
         return `
             <div class="product-card" data-product-id="${p.id}">
                 <div class="product-image-container" onclick="openQuickView(${p.id})">
-                    <img src="${imageSrc}" alt="${p.name}" class="product-img" loading="lazy">
+                    <img src="${imageSrc}" alt="${p.name}" class="product-img" loading="lazy" decoding="async">
                     <span class="product-badge">${p.badge || 'Handmade 🌸'}</span>
                     <button class="quickview-hover-btn" title="Vista Rápida" onclick="event.stopPropagation(); openQuickView(${p.id})">
                         <span>👁️ Ver detalles</span>
@@ -1761,7 +1761,7 @@ function addToCart(productId, quantity = 1) {
             name: p.name,
             price: p.price,
             rawPrice: p.rawPrice,
-            image: p.images && p.images[0] ? p.images[0] : 'assets/product_1.jpg',
+            image: p.images && p.images[0] ? p.images[0] : 'assets/optimized/product_1.webp',
             quantity: quantity
         });
     }
@@ -2118,7 +2118,7 @@ window.openQuickView = function(productId) {
     if (modalDescription) modalDescription.textContent = p.description;
     if (modalQtyVal) modalQtyVal.textContent = '1';
 
-    const images = p.images && p.images.length > 0 ? p.images : ['assets/product_1.jpg'];
+    const images = p.images && p.images.length > 0 ? p.images : ['assets/optimized/product_1.webp'];
     if (modalMainImg) {
         modalMainImg.src = images[0];
         modalMainImg.alt = p.name;
