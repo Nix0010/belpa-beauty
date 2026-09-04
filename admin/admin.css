@@ -1,5 +1,5 @@
 /* ==========================================================================
-   BELPA CMS - ESTILOS ADMINISTRATIVOS BOUTIQUE / CLEAN LUXURY 🌸✨
+   BELPA CMS - ESTILOS ADMINISTRATIVOS BOUTIQUE DE PRODUCCIÓN (BLOQUE 5) 🌸✨
    Paleta: Marfil, Rosa Empolvado, Burgundy, Oro Sutil, Blanco Cálido
    ========================================================================== */
 
@@ -21,9 +21,9 @@
     --green-soft: #EBFBEE;
     --red-error: #C92A2A;
     --red-soft: #FFF5F5;
-    --blue-accent: #339AF0;
+    --blue-accent: #1C7ED6;
     --blue-soft: #E7F5FF;
-    --amber-accent: #F59F00;
+    --amber-accent: #E67700;
     --amber-soft: #FFF9DB;
     --shadow-soft: 0 4px 20px rgba(122, 28, 56, 0.06);
     --shadow-card: 0 10px 30px rgba(122, 28, 56, 0.08);
@@ -50,6 +50,12 @@ body {
     min-height: 100vh;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+}
+
+/* Enfoque accesible por teclado */
+:focus-visible {
+    outline: 2px solid var(--burgundy-accent);
+    outline-offset: 2px;
 }
 
 /* --- 1. PANTALLA DE LOGIN --- */
@@ -144,6 +150,9 @@ body {
     padding: 4px;
     color: var(--text-muted);
     user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .login-options-row {
@@ -265,6 +274,7 @@ body {
     justify-content: center;
     gap: 8px;
     box-shadow: 0 4px 12px rgba(122, 28, 56, 0.18);
+    min-height: 38px;
 }
 
 .btn-admin-primary:hover {
@@ -293,6 +303,8 @@ body {
     align-items: center;
     justify-content: center;
     text-decoration: none;
+    gap: 6px;
+    min-height: 36px;
 }
 
 .btn-admin-secondary:hover {
@@ -312,13 +324,14 @@ body {
 .btn-sm {
     padding: 6px 14px;
     font-size: 0.8rem;
+    min-height: 32px;
 }
 
 .w-full {
     width: 100%;
 }
 
-/* --- 4. NAVBAR SUPERIOR & TABS --- */
+/* --- 4. NAVBAR SUPERIOR & STATUS BADGES --- */
 .admin-navbar {
     background: var(--card-bg);
     border-bottom: 1px solid var(--rose-border);
@@ -331,6 +344,7 @@ body {
     z-index: 100;
     box-shadow: var(--shadow-soft);
     gap: 16px;
+    flex-wrap: wrap;
 }
 
 .admin-nav-brand {
@@ -356,6 +370,65 @@ body {
     font-size: 0.72rem;
     color: var(--text-muted);
     font-family: var(--font-cute);
+}
+
+/* Badge de Estado de Conexión */
+.connection-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 14px;
+    border-radius: var(--radius-full);
+    font-size: 0.76rem;
+    font-weight: 700;
+    font-family: var(--font-cute);
+    border: 1px solid var(--rose-border);
+    background: #FFFFFF;
+    transition: all 0.2s ease;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.connection-status-pill.connected {
+    background: var(--green-soft);
+    color: var(--green-success);
+    border-color: #B2F2BB;
+}
+.connection-status-pill.connected .status-dot {
+    background: var(--green-success);
+    box-shadow: 0 0 0 3px rgba(43, 138, 62, 0.2);
+}
+
+.connection-status-pill.warning {
+    background: var(--amber-soft);
+    color: var(--amber-accent);
+    border-color: #FFD43B;
+}
+.connection-status-pill.warning .status-dot {
+    background: var(--amber-accent);
+}
+
+.connection-status-pill.unconfigured {
+    background: var(--red-soft);
+    color: var(--red-error);
+    border-color: #FFA8A8;
+}
+.connection-status-pill.unconfigured .status-dot {
+    background: var(--red-error);
+}
+
+.connection-status-pill.local {
+    background: var(--rose-soft);
+    color: var(--burgundy-primary);
+    border-color: var(--rose-border);
+}
+.connection-status-pill.local .status-dot {
+    background: var(--burgundy-accent);
 }
 
 .admin-nav-tabs {
@@ -406,15 +479,50 @@ body {
     border: 1px solid var(--rose-border);
 }
 
-/* --- 5. CONTENEDOR PRINCIPAL & VISTAS --- */
+/* --- 5. BANNER DE DIAGNÓSTICO Y CONTENEDOR PRINCIPAL --- */
 .admin-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 24px 20px 80px 20px;
+    padding: 20px 20px 80px 20px;
 }
 
 .admin-view {
     animation: fadeIn 0.2s ease-in-out;
+}
+
+.sync-diagnostic-banner {
+    background: var(--card-bg);
+    border: 1px solid var(--rose-border);
+    border-radius: var(--radius-md);
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.82rem;
+}
+
+.diagnostic-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.diagnostic-icon {
+    font-size: 1.2rem;
+}
+
+.diag-sep {
+    color: var(--rose-dusty);
+    margin: 0 6px;
+}
+
+.diag-timestamp {
+    color: var(--text-muted);
+    font-size: 0.78rem;
 }
 
 .dashboard-header-banner {
@@ -423,6 +531,7 @@ body {
     justify-content: space-between;
     margin-bottom: 24px;
     gap: 16px;
+    flex-wrap: wrap;
 }
 
 .view-title {
@@ -437,10 +546,10 @@ body {
     font-family: var(--font-cute);
 }
 
-/* --- 6. TARJETAS DE KPIS / STATS GRID --- */
+/* --- 6. STATS / KPIS GRID --- */
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 16px;
     margin-bottom: 24px;
 }
@@ -468,7 +577,7 @@ body {
 }
 
 .stat-info span {
-    font-size: 0.76rem;
+    font-size: 0.74rem;
     font-weight: 700;
     color: var(--text-muted);
     text-transform: uppercase;
@@ -601,7 +710,7 @@ body {
     font-size: 0.84rem;
 }
 
-/* --- 8. BARRA DE ACCIONES MASIVAS (BULK ACTIONS STICKY) --- */
+/* --- 8. BARRA DE ACCIONES MASIVAS (BULK STICKY) --- */
 .bulk-actions-bar {
     position: sticky;
     top: 72px;
@@ -654,6 +763,7 @@ body {
     font-family: var(--font-cute);
     cursor: pointer;
     transition: all 0.15s ease;
+    min-height: 32px;
 }
 
 .btn-bulk-success {
@@ -698,7 +808,7 @@ body {
 }
 .btn-bulk-cancel:hover { background: #F1F3F5; color: var(--charcoal-deep); }
 
-/* --- 9. TOOLBAR DE FILTROS AVANZADOS --- */
+/* --- 9. TOOLBAR DE FILTROS --- */
 .toolbar-card {
     background: var(--card-bg);
     border: 1px solid var(--rose-border);
@@ -710,7 +820,7 @@ body {
 
 .toolbar-filters-grid {
     display: grid;
-    grid-template-columns: 2fr repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: 2fr repeat(auto-fit, minmax(150px, 1fr));
     gap: 12px;
     align-items: center;
 }
@@ -776,7 +886,7 @@ body {
     font-family: var(--font-cute);
 }
 
-/* --- 10. TABLA DE PRODUCTOS DESKTOP --- */
+/* --- 10. TABLA DE PRODUCTOS DESKTOP & STICKY HEADER --- */
 .catalog-list-wrapper {
     background: var(--card-bg);
     border: 1px solid var(--rose-border);
@@ -787,6 +897,7 @@ body {
 
 .table-container {
     overflow-x: auto;
+    max-height: 720px;
 }
 
 .admin-table {
@@ -806,6 +917,9 @@ body {
     padding: 14px 16px;
     border-bottom: 2px solid var(--rose-border);
     white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .admin-table td {
@@ -816,6 +930,10 @@ body {
 
 .admin-table tr:hover td {
     background-color: #FFF9FA;
+}
+
+.admin-table tr.row-selected td {
+    background-color: #FFF0F4;
 }
 
 .table-product-thumb {
@@ -926,23 +1044,22 @@ body {
     border-color: #FFA8A8;
 }
 
-.table-loading-cell {
-    text-align: center;
-    padding: 40px;
-    color: var(--text-muted);
-    font-size: 0.9rem;
+/* Skeleton Loading */
+.skeleton-row td {
+    padding: 16px;
 }
 
-.spinner-inline {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    border: 2px solid var(--rose-dusty);
-    border-top-color: var(--burgundy-primary);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    vertical-align: middle;
-    margin-right: 8px;
+.skeleton-bar {
+    height: 18px;
+    background: linear-gradient(90deg, #F5EAEF 25%, #FFF0F5 50%, #F5EAEF 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
 /* --- 11. PAGINACIÓN --- */
@@ -1031,7 +1148,7 @@ body {
     gap: 6px;
 }
 
-/* --- 13. MODALES --- */
+/* --- 13. MODALES Y GALERÍA DE IMÁGENES --- */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -1099,6 +1216,9 @@ body {
     color: var(--text-muted);
     cursor: pointer;
     line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-close:hover {
@@ -1123,13 +1243,57 @@ body {
     background: var(--rose-soft);
 }
 
-.image-preview-box {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
+.image-gallery-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.gallery-thumb-item {
+    position: relative;
+    width: 72px;
+    height: 72px;
     border-radius: 8px;
     border: 1px solid var(--rose-border);
-    margin-top: 10px;
+    overflow: hidden;
+    background: #FAFAFA;
+}
+
+.gallery-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-thumb-badge {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    background: rgba(122, 28, 56, 0.85);
+    color: #FFFFFF;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 1px 4px;
+    border-radius: 3px;
+}
+
+.btn-delete-thumb {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: rgba(201, 42, 42, 0.9);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
 .switches-row {
@@ -1213,8 +1377,4 @@ body {
 @keyframes toastSlideUp {
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
 }

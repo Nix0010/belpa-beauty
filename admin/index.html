@@ -65,7 +65,7 @@
          ========================================================================= -->
     <section id="dashboard-section" style="display:none;">
         
-        <!-- Navbar Superior -->
+        <!-- Navbar Superior con Diagnóstico y Acciones -->
         <nav class="admin-navbar">
             <div class="admin-nav-brand">
                 <img src="../assets/optimized/logo.webp" alt="Belpa Logo" class="admin-nav-logo" width="36" height="36">
@@ -75,25 +75,34 @@
                 </div>
             </div>
 
+            <!-- Badge de Estado de Conexión en Tiempo Real -->
+            <div class="connection-status-pill" id="connection-status-pill" role="status" aria-live="polite" title="Estado de la conexión">
+                <span class="status-dot" id="status-dot"></span>
+                <span class="status-text" id="connection-status-text">Verificando conexión...</span>
+            </div>
+
             <!-- Tabs de Navegación del Panel -->
-            <div class="admin-nav-tabs">
-                <button type="button" class="nav-tab-btn active" id="tab-btn-dashboard" data-tab="dashboard">
+            <div class="admin-nav-tabs" role="tablist">
+                <button type="button" class="nav-tab-btn active" id="tab-btn-dashboard" data-tab="dashboard" role="tab" aria-selected="true" aria-controls="view-dashboard">
                     📊 Dashboard & Métricas
                 </button>
-                <button type="button" class="nav-tab-btn" id="tab-btn-catalog" data-tab="catalog">
+                <button type="button" class="nav-tab-btn" id="tab-btn-catalog" data-tab="catalog" role="tab" aria-selected="false" aria-controls="view-catalog">
                     🛍️ Gestión de Catálogo
                 </button>
             </div>
 
             <div class="admin-nav-actions">
-                <a href="../" target="_blank" rel="noopener" class="btn-admin-secondary btn-sm" title="Abrir tienda pública">
+                <button id="btn-sync-catalog" class="btn-admin-secondary btn-sm" title="Sincronizar y recargar datos de catálogo" aria-label="Sincronizar catálogo">
+                    <span class="sync-icon">🔄</span> Sincronizar
+                </button>
+                <a href="../" target="_blank" rel="noopener" class="btn-admin-secondary btn-sm" title="Abrir tienda pública en nueva pestaña">
                     Ver Tienda 🛍️
                 </a>
-                <button id="btn-open-config-nav" class="btn-admin-secondary btn-sm" title="Configurar conexión cloud">
+                <button id="btn-open-config-nav" class="btn-admin-secondary btn-sm" title="Configurar conexión Supabase Cloud">
                     ⚙️ Config
                 </button>
                 <span class="admin-user-badge" id="admin-user-email">admin@belpa.co</span>
-                <button id="logout-btn" class="btn-admin-secondary btn-sm btn-danger" aria-label="Cerrar sesión">
+                <button id="logout-btn" class="btn-admin-secondary btn-sm btn-danger" aria-label="Cerrar sesión de administrador">
                     Salir 🔒
                 </button>
             </div>
@@ -104,8 +113,26 @@
             <!-- =============================================================
                  VISTA A: DASHBOARD VISUAL Y MÉTRICAS EN TIEMPO REAL
                  ============================================================= -->
-            <div id="view-dashboard" class="admin-view active">
+            <div id="view-dashboard" class="admin-view active" role="tabpanel" aria-labelledby="tab-btn-dashboard">
                 
+                <!-- Banner de Diagnóstico y Estado de Sincronización -->
+                <div class="sync-diagnostic-banner" id="sync-diagnostic-banner">
+                    <div class="diagnostic-info">
+                        <span class="diagnostic-icon" id="diag-icon">⚡</span>
+                        <div>
+                            <strong id="diag-title">Origen de Datos Activo:</strong>
+                            <span id="diag-source-text">Cargando origen de datos...</span>
+                            <span class="diag-sep">•</span>
+                            <span class="diag-timestamp" id="last-sync-time">Última sincronización: Hace unos instantes</span>
+                        </div>
+                    </div>
+                    <div class="diagnostic-action">
+                        <button type="button" class="btn-admin-secondary btn-sm" id="btn-reconnect" style="display:none;">
+                            Reintentar Conexión Cloud ☁️
+                        </button>
+                    </div>
+                </div>
+
                 <div class="dashboard-header-banner">
                     <div>
                         <h1 class="view-title">Resumen Ejecutivo del Catálogo 🌸</h1>
@@ -116,7 +143,7 @@
                     </button>
                 </div>
 
-                <!-- 8 Tarjetas de KPIs Principales -->
+                <!-- Tarjetas de KPIs Principales -->
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-info">
@@ -172,6 +199,15 @@
                         <div class="stat-icon" aria-hidden="true">✨</div>
                     </div>
 
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span>Con Promoción</span>
+                            <h3 id="stat-promo-products" style="color:#D9480F;">0</h3>
+                            <small class="stat-note">Precio rebajado</small>
+                        </div>
+                        <div class="stat-icon" aria-hidden="true">🏷️</div>
+                    </div>
+
                     <div class="stat-card card-highlight">
                         <div class="stat-info">
                             <span>Valor del Inventario</span>
@@ -204,7 +240,7 @@
                                 <div class="quality-alert-icon">⚠️</div>
                                 <div class="quality-alert-text">
                                     <strong id="alert-no-desc-count">0 productos</strong> sin descripción detallada.
-                                    <p>Agregar descripción mejora el SEO y la conversión.</p>
+                                    <p>Agregar descripción mejora el SEO y la conversión en la tienda.</p>
                                 </div>
                             </div>
                             <div class="quality-alert-item" id="alert-item-nophoto">
@@ -253,7 +289,7 @@
             <!-- =============================================================
                  VISTA B: GESTIÓN DE CATÁLOGO & CRUD AVANZADO
                  ============================================================= -->
-            <div id="view-catalog" class="admin-view" style="display:none;">
+            <div id="view-catalog" class="admin-view" style="display:none;" role="tabpanel" aria-labelledby="tab-btn-catalog">
                 
                 <!-- Barra Flotante de Acciones Masivas (Bulk Actions Sticky Bar) -->
                 <div id="bulk-actions-bar" class="bulk-actions-bar" style="display:none;">
@@ -293,7 +329,7 @@
                         <div class="search-input-wrapper">
                             <span class="search-icon" aria-hidden="true">🔍</span>
                             <input type="text" id="admin-search-input" placeholder="Buscar por nombre, categoría, badge o precio..." aria-label="Buscar productos">
-                            <button type="button" id="btn-clear-search" class="search-clear-btn" style="display:none;" title="Limpiar búsqueda">✕</button>
+                            <button type="button" id="btn-clear-search" class="search-clear-btn" style="display:none;" title="Limpiar búsqueda" aria-label="Limpiar búsqueda">✕</button>
                         </div>
 
                         <!-- Filtro Marca -->
@@ -358,9 +394,14 @@
                         <div class="filter-results-counter" id="filter-results-counter">
                             Cargando catálogo...
                         </div>
-                        <button id="btn-open-create-modal" class="btn-admin-primary">
-                            <span>+ Nuevo Producto 🌸</span>
-                        </button>
+                        <div style="display:flex; gap:10px;">
+                            <button type="button" id="btn-reset-filters" class="btn-admin-secondary btn-sm" style="display:none;">
+                                ✕ Limpiar Filtros
+                            </button>
+                            <button id="btn-open-create-modal" class="btn-admin-primary">
+                                <span>+ Nuevo Producto 🌸</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -372,7 +413,7 @@
                             <thead>
                                 <tr>
                                     <th style="width:40px; text-align:center;">
-                                        <input type="checkbox" id="master-select-checkbox" title="Seleccionar todos los visibles" aria-label="Seleccionar todos">
+                                        <input type="checkbox" id="master-select-checkbox" title="Seleccionar todos los visibles" aria-label="Seleccionar todos los productos visibles">
                                     </th>
                                     <th style="width:64px;">Foto</th>
                                     <th>Producto</th>
@@ -386,11 +427,10 @@
                                 </tr>
                             </thead>
                             <tbody id="admin-products-tbody">
-                                <tr>
-                                    <td colspan="10" class="table-loading-cell">
-                                        <div class="spinner-inline"></div> Cargando catálogo de Belpa... 🌸
-                                    </td>
-                                </tr>
+                                <!-- Skeleton rows during loading -->
+                                <tr class="skeleton-row"><td colspan="10"><div class="skeleton-bar"></div></td></tr>
+                                <tr class="skeleton-row"><td colspan="10"><div class="skeleton-bar"></div></td></tr>
+                                <tr class="skeleton-row"><td colspan="10"><div class="skeleton-bar"></div></td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -402,9 +442,9 @@
                     <div class="pagination-bar" id="admin-pagination-bar" style="display:none;">
                         <div class="pagination-info" id="pagination-info">Mostrando productos</div>
                         <div class="pagination-buttons">
-                            <button id="btn-prev-page" class="btn-admin-secondary btn-sm" disabled>‹ Anterior</button>
+                            <button id="btn-prev-page" class="btn-admin-secondary btn-sm" disabled aria-label="Página anterior">‹ Anterior</button>
                             <span id="pagination-current-page" class="page-badge">1 / 1</span>
-                            <button id="btn-next-page" class="btn-admin-secondary btn-sm" disabled>Siguiente ›</button>
+                            <button id="btn-next-page" class="btn-admin-secondary btn-sm" disabled aria-label="Página siguiente">Siguiente ›</button>
                         </div>
                     </div>
 
@@ -416,7 +456,7 @@
     </section>
 
     <!-- =========================================================================
-         3. MODAL DE CREAR / EDITAR PRODUCTO (CRUD AVANZADO)
+         3. MODAL DE CREAR / EDITAR PRODUCTO (CRUD AVANZADO & GALERÍA DE IMÁGENES)
          ========================================================================= -->
     <div class="modal-overlay" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-product-title">
         <div class="modal-box modal-box-large">
@@ -428,18 +468,16 @@
             <form id="product-form" novalidate>
                 <input type="hidden" id="prod-id">
                 
-                <!-- Sección Fotografía y WebP -->
+                <!-- Sección Fotografía y WebP con Galería de Previsualización -->
                 <div class="form-group" style="margin-bottom:16px;">
-                    <label>Fotografía del Producto (Conversión automática a WebP max 800px):</label>
-                    <div class="image-dropzone" id="image-dropzone" tabindex="0" role="button" aria-label="Seleccionar o arrastrar imagen">
-                        <span id="dropzone-text">📷 Haz clic o arrastra una imagen aquí (JPEG, PNG, WebP)</span>
-                        <input type="file" id="prod-file-input" accept="image/png, image/jpeg, image/webp" style="display:none;">
+                    <label>Fotografías del Producto (Compresión automática WebP máx. 800px):</label>
+                    <div class="image-dropzone" id="image-dropzone" tabindex="0" role="button" aria-label="Seleccionar o arrastrar imagen de producto">
+                        <span id="dropzone-text">📷 Haz clic o arrastra fotos aquí (JPEG, PNG, WebP)</span>
+                        <input type="file" id="prod-file-input" accept="image/png, image/jpeg, image/webp" multiple style="display:none;">
                     </div>
                     
-                    <!-- Previsualización de imágenes -->
-                    <div class="images-preview-container" id="images-preview-container">
-                        <img id="prod-image-preview" class="image-preview-box" alt="Previsualización de producto" style="display:none;">
-                    </div>
+                    <!-- Galería de Miniaturas de Imágenes -->
+                    <div class="image-gallery-preview" id="image-gallery-preview"></div>
                     <input type="hidden" id="prod-current-image-url">
                     <span class="field-error" id="error-prod-image"></span>
                 </div>
@@ -447,7 +485,7 @@
                 <!-- Nombre -->
                 <div class="form-group" style="margin-bottom:14px;">
                     <label for="prod-name">Nombre del Producto: <span class="req">*</span></label>
-                    <input type="text" id="prod-name" class="form-input" required placeholder="Ej. Ramo Rapunzel Deluxe con Luces LED">
+                    <input type="text" id="prod-name" class="form-input" required placeholder="Ej. Ramo Rapunzel Deluxe con Luces LED" maxlength="150">
                     <span class="field-error" id="error-prod-name"></span>
                 </div>
 
@@ -469,7 +507,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="prod-original-price">Precio Anterior (Opcional):</label>
+                        <label for="prod-original-price">Precio Regular / Anterior (Opcional):</label>
                         <input type="number" id="prod-original-price" class="form-input" placeholder="Ej. 100000" min="0" step="500">
                         <span class="field-error" id="error-prod-original-price"></span>
                     </div>
@@ -492,12 +530,19 @@
                     </div>
                 </div>
 
-                <!-- Orden de aparición y Descripción -->
-                <div class="form-group" style="margin-bottom:14px;">
-                    <label for="prod-sort-order">Prioridad de Orden (0 = normal, mayor número = primero):</label>
-                    <input type="number" id="prod-sort-order" class="form-input" value="0" min="0" step="1">
+                <!-- Prioridad de Orden y Media ID -->
+                <div class="form-row-2" style="margin-bottom:14px;">
+                    <div class="form-group">
+                        <label for="prod-sort-order">Prioridad de Orden (0 = normal, mayor = primero):</label>
+                        <input type="number" id="prod-sort-order" class="form-input" value="0" min="0" step="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-media-id">Media ID / Video (Opcional):</label>
+                        <input type="text" id="prod-media-id" class="form-input" placeholder="MAHQOp8EUfM">
+                    </div>
                 </div>
 
+                <!-- Descripción Detallada -->
                 <div class="form-group" style="margin-bottom:14px;">
                     <label for="prod-desc">Descripción Detallada:</label>
                     <textarea id="prod-desc" class="form-textarea" rows="3" placeholder="Detalles artesanales, flores incluidas, empaque de regalo..."></textarea>
@@ -528,11 +573,11 @@
     <!-- =========================================================================
          4. MODAL DE CONFIRMACIÓN DE ELIMINACIÓN INDIVIDUAL
          ========================================================================= -->
-    <div class="modal-overlay" id="delete-modal" role="dialog" aria-modal="true">
+    <div class="modal-overlay" id="delete-modal" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
         <div class="modal-box" style="max-width:440px;">
             <div class="modal-header">
-                <h3 style="color:var(--burgundy-primary);">Confirmar Eliminación</h3>
-                <button class="modal-close" id="delete-modal-close-btn">&times;</button>
+                <h3 id="delete-modal-title" style="color:var(--burgundy-primary);">Confirmar Eliminación</h3>
+                <button class="modal-close" id="delete-modal-close-btn" aria-label="Cerrar modal de eliminación">&times;</button>
             </div>
             <div style="padding:10px 0; text-align:center;">
                 <img id="delete-prod-img" src="" alt="" style="width:70px; height:70px; object-fit:cover; border-radius:10px; margin-bottom:10px; border:1px solid #FFE3EC;">
@@ -560,11 +605,11 @@
     <!-- =========================================================================
          5. MODAL DE CONFIRMACIÓN DE ACCIONES MASIVAS
          ========================================================================= -->
-    <div class="modal-overlay" id="bulk-modal" role="dialog" aria-modal="true">
+    <div class="modal-overlay" id="bulk-modal" role="dialog" aria-modal="true" aria-labelledby="bulk-modal-title">
         <div class="modal-box" style="max-width:460px;">
             <div class="modal-header">
                 <h3 id="bulk-modal-title" style="color:var(--burgundy-primary);">Confirmar Acción Masiva</h3>
-                <button class="modal-close" id="bulk-modal-close-btn">&times;</button>
+                <button class="modal-close" id="bulk-modal-close-btn" aria-label="Cerrar modal de acción masiva">&times;</button>
             </div>
             <div style="padding:12px 0; text-align:center;">
                 <p id="bulk-modal-message" style="font-size:0.9rem; color:var(--charcoal-deep); line-height:1.5; margin-bottom:16px;">
@@ -585,11 +630,11 @@
     <!-- =========================================================================
          6. MODAL DE RECUPERACIÓN DE CONTRASEÑA
          ========================================================================= -->
-    <div class="modal-overlay" id="forgot-modal" role="dialog" aria-modal="true">
+    <div class="modal-overlay" id="forgot-modal" role="dialog" aria-modal="true" aria-labelledby="forgot-modal-title">
         <div class="modal-box" style="max-width:420px;">
             <div class="modal-header">
-                <h3>Recuperar Contraseña 🔑</h3>
-                <button class="modal-close" id="forgot-modal-close-btn">&times;</button>
+                <h3 id="forgot-modal-title">Recuperar Contraseña 🔑</h3>
+                <button class="modal-close" id="forgot-modal-close-btn" aria-label="Cerrar modal de recuperación">&times;</button>
             </div>
             <form id="forgot-form" style="padding-top:10px;">
                 <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:14px; line-height:1.5;">
@@ -612,11 +657,11 @@
     <!-- =========================================================================
          7. MODAL DE CONFIGURACIÓN DE CONEXIÓN SUPABASE
          ========================================================================= -->
-    <div class="modal-overlay" id="config-modal" role="dialog" aria-modal="true">
+    <div class="modal-overlay" id="config-modal" role="dialog" aria-modal="true" aria-labelledby="config-modal-title">
         <div class="modal-box" style="max-width:540px;">
             <div class="modal-header">
-                <h3>⚙️ Conexión Cloud (Supabase)</h3>
-                <button class="modal-close" id="config-modal-close-btn">&times;</button>
+                <h3 id="config-modal-title">⚙️ Conexión Cloud (Supabase)</h3>
+                <button class="modal-close" id="config-modal-close-btn" aria-label="Cerrar modal de configuración">&times;</button>
             </div>
             <form id="config-form" style="padding:10px 0;">
                 <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:14px; line-height:1.5;">
@@ -634,7 +679,7 @@
                 <div class="config-instructions-box">
                     <strong>📋 Pasos para conectar:</strong>
                     <ol>
-                        <li>Ejecuta el script <code>supabase/block4_database.sql</code> en el SQL Editor de Supabase.</li>
+                        <li>Ejecuta el script <code>supabase/block5_database.sql</code> en el SQL Editor de Supabase.</li>
                         <li>Crea tu usuario administrador en Supabase Authentication.</li>
                         <li>Copia tu <strong>Project URL</strong> y tu <strong>Anon Public Key</strong> (Project Settings > API).</li>
                     </ol>
