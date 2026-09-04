@@ -1779,7 +1779,88 @@ async function executeHardDelete(id) {
 // 15. MÓDULO DE GESTIÓN COMERCIAL & PEDIDOS (BLOQUE 7) 🌸📦
 // ==========================================================================
 
+
+async function syncPendingOrders() {
+    if (!supabase || !window.BELPA_CONFIG || !window.BELPA_CONFIG.isConfigured()) return;
+    try {
+        const pendingRaw = localStorage.getItem('belpa_pending_orders');
+        if (!pendingRaw) return;
+        const pending = JSON.parse(pendingRaw);
+        if (!Array.isArray(pending) || pending.length === 0) return;
+
+        const remaining = [];
+        for (const ord of pending) {
+            try {
+                // Verificar si ya existe en Supabase Cloud para evitar duplicados
+                const { data: existing } = await supabase
+                    .from('orders')
+                    .select('id')
+                    .eq('order_number', ord.order_number)
+                    .maybeSingle();
+
+                let orderId = existing ? existing.id : null;
+
+                if (!existing) {
+                    const { data: inserted, error: insErr } = await supabase
+                        .from('orders')
+                        .insert([{
+                            order_number: ord.order_number,
+                            customer_name: ord.customer_name,
+                            customer_phone: ord.customer_phone,
+                            customer_email: ord.customer_email || '',
+                            delivery_method: ord.delivery_method || 'delivery',
+                            delivery_date: ord.delivery_date || null,
+                            delivery_address: ord.delivery_address || '',
+                            client_notes: ord.client_notes || '',
+                            subtotal: ord.subtotal || 0,
+                            delivery_cost: ord.delivery_cost || 0,
+                            discount: ord.discount || 0,
+                            total: ord.total || 0,
+                            currency: ord.currency || 'COP',
+                            status: ord.status || 'pending',
+                            payment_status: ord.payment_status || 'pending',
+                            source: ord.source || 'website',
+                            whatsapp_message: ord.whatsapp_message || ''
+                        }])
+                        .select();
+
+                    if (insErr) {
+                        console.warn('Error al sincronizar orden:', ord.order_number, insErr);
+                        remaining.push(ord);
+                        continue;
+                    }
+                    if (inserted && inserted[0]) {
+                        orderId = inserted[0].id;
+                    }
+                }
+
+                // Sincronizar items históricos
+                if (orderId && Array.isArray(ord.items) && ord.items.length > 0) {
+                    const itemsToInsert = ord.items.map(it => ({
+                        order_id: orderId,
+                        product_id: it.product_id || null,
+                        product_name: it.product_name || 'Producto Belpa',
+                        product_brand: it.product_brand || 'flora',
+                        unit_price: it.unit_price || 0,
+                        quantity: it.quantity || 1,
+                        line_total: it.line_total || (it.unit_price * it.quantity),
+                        product_image: it.product_image || ''
+                    }));
+                    await supabase.from('order_items').insert(itemsToInsert);
+                }
+            } catch (errOne) {
+                console.warn('Error sincronizando orden individual:', errOne);
+                remaining.push(ord);
+            }
+        }
+        localStorage.setItem('belpa_pending_orders', JSON.stringify(remaining));
+    } catch (e) {
+        console.warn('Error en syncPendingOrders:', e);
+    }
+}
+
 async function loadOrders() {
+    await syncPendingOrders();
     const tbody = document.getElementById('admin-orders-tbody');
     if (tbody && allOrders.length === 0) {
         tbody.innerHTML = '<tr class="skeleton-row"><td colspan="9"><div class="skeleton-bar"></div></td></tr>' +
