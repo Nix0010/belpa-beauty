@@ -92,6 +92,9 @@
                 <button type="button" class="nav-tab-btn" id="tab-btn-orders" data-tab="orders" role="tab" aria-selected="false" aria-controls="view-orders">
                     📦 Pedidos (<span id="nav-orders-badge">0</span>)
                 </button>
+                <button type="button" class="nav-tab-btn" id="tab-btn-payments" data-tab="payments" role="tab" aria-selected="false" aria-controls="view-payments">
+                    💳 Pagos (<span id="nav-payments-badge">0</span>)
+                </button>
             </div>
 
             <div class="admin-nav-actions">
@@ -280,6 +283,61 @@
                             <small class="stat-note">Total pedidos tienda</small>
                         </div>
                         <div class="stat-icon" aria-hidden="true">💳</div>
+                    <!-- KPIs Financieros y Control de Pagos (Bloque 9) -->
+                    <div class="stat-card" style="border-left: 4px solid var(--burgundy-primary);">
+                        <div class="stat-icon" aria-hidden="true">💵</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Ventas Hoy</span>
+                            <h3 id="stat-fin-sales-today" style="font-size:1.3rem; color:var(--burgundy-primary);">$0</h3>
+                            <span class="stat-sublabel">Recaudación del día</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" style="border-left: 4px solid #1098AD;">
+                        <div class="stat-icon" aria-hidden="true">📅</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Ventas Mes</span>
+                            <h3 id="stat-fin-sales-month" style="font-size:1.3rem; color:#1098AD;">$0</h3>
+                            <span class="stat-sublabel">Mes calendario actual</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" style="border-left: 4px solid var(--green-success);">
+                        <div class="stat-icon" aria-hidden="true">✅</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Pagos Aprobados</span>
+                            <h3 id="stat-fin-payments-approved" style="font-size:1.3rem; color:var(--green-success);">0</h3>
+                            <span class="stat-sublabel">Transacciones confirmadas</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" style="border-left: 4px solid #F59F00;">
+                        <div class="stat-icon" aria-hidden="true">⏳</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Pagos Pendientes</span>
+                            <h3 id="stat-fin-payments-pending" style="font-size:1.3rem; color:#F59F00;">0</h3>
+                            <span class="stat-sublabel">Por verificar</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" style="border-left: 4px solid #FA5252;">
+                        <div class="stat-icon" aria-hidden="true">↩️</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Reembolsos</span>
+                            <h3 id="stat-fin-refunds" style="font-size:1.3rem; color:#FA5252;">0</h3>
+                            <span class="stat-sublabel">Anulaciones</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" style="border-left: 4px solid #7950F2;">
+                        <div class="stat-icon" aria-hidden="true">🎯</div>
+                        <div class="stat-info">
+                            <span class="stat-label">Ticket Promedio</span>
+                            <h3 id="stat-fin-avg-ticket" style="font-size:1.3rem; color:#7950F2;">$0</h3>
+                            <span class="stat-sublabel">Promedio por pedido</span>
+                        </div>
+                    </div>
+
                     </div>
                 </div>
 
@@ -307,6 +365,37 @@
                         <div class="widget-body" id="dashboard-upcoming-deliveries-list">
                             <div class="empty-widget-state">Sin entregas pendientes en agenda.</div>
                         </div>
+                    <!-- Widget: Últimos Pagos Registrados (Bloque 9) -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h4>💳 Últimos Pagos Registrados</h4>
+                            <button type="button" class="link-btn" id="btn-view-all-payments">Ver todos ›</button>
+                        </div>
+                        <div class="widget-body" id="dashboard-recent-payments-list">
+                            <div class="empty-widget-state">No hay pagos registrados aún.</div>
+                        </div>
+                    </div>
+
+                    <!-- Widget: Productos Más Vendidos (Bloque 9) -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h4>🔥 Productos Más Vendidos</h4>
+                        </div>
+                        <div class="widget-body" id="dashboard-top-products-list">
+                            <div class="empty-widget-state">Calculando ranking de ventas...</div>
+                        </div>
+                    </div>
+
+                    <!-- Widget: Clientes Frecuentes (Bloque 9) -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h4>👑 Clientes Frecuentes</h4>
+                        </div>
+                        <div class="widget-body" id="dashboard-top-customers-list">
+                            <div class="empty-widget-state">Sin historial de clientes frecuentes aún.</div>
+                        </div>
+                    </div>
+
                     </div>
 
                     <!-- Widget: Alertas de Calidad -->
@@ -497,7 +586,126 @@
             <!-- =============================================================
                  VISTA B: GESTIÓN DE CATÁLOGO & CRUD AVANZADO
                  ============================================================= -->
-            <div id="view-catalog" class="admin-view" style="display:none;" role="tabpanel" aria-labelledby="tab-btn-catalog">
+            
+            <!-- ==========================================================
+                 VISTA 4: CONTROL FINANCIERO Y PAGOS (BLOQUE 9) 💳
+                 ========================================================== -->
+            <div id="view-payments" class="admin-view" style="display:none;" role="tabpanel" aria-labelledby="tab-btn-payments">
+                <div class="view-header-bar">
+                    <div>
+                        <h1 class="view-title">Control Financiero & Pagos 💳</h1>
+                        <p class="view-subtitle">Registro de transacciones, estados de pago, conciliación y auditoría financiera.</p>
+                    </div>
+                    <div class="header-actions-group">
+                        <button type="button" class="action-btn secondary-btn" id="btn-refresh-payments" title="Refrescar lista de pagos">
+                            🔄 Actualizar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pills de Filtro Rápido por Estado de Pago -->
+                <div class="orders-quick-filter-bar">
+                    <span class="quick-filter-label">Estado de Pago:</span>
+                    <div class="quick-filter-pills" role="group" aria-label="Filtrar por estado de pago">
+                        <button type="button" class="order-quick-pill active" data-pay-status="all">Todos (<span id="pill-pay-count-all">0</span>)</button>
+                        <button type="button" class="order-quick-pill" data-pay-status="pending">Pendientes (<span id="pill-pay-count-pending">0</span>)</button>
+                        <button type="button" class="order-quick-pill" data-pay-status="processing">En Proceso (<span id="pill-pay-count-processing">0</span>)</button>
+                        <button type="button" class="order-quick-pill" data-pay-status="approved">Aprobados (<span id="pill-pay-count-approved">0</span>)</button>
+                        <button type="button" class="order-quick-pill" data-pay-status="rejected">Rechazados (<span id="pill-pay-count-rejected">0</span>)</button>
+                        <button type="button" class="order-quick-pill" data-pay-status="refunded">Reembolsados (<span id="pill-pay-count-refunded">0</span>)</button>
+                    </div>
+                </div>
+
+                <!-- Barra de Búsqueda y Filtros Combinados -->
+                <div class="orders-filter-control-grid">
+                    <div class="search-box-wrapper">
+                        <span class="search-icon" aria-hidden="true">🔍</span>
+                        <input type="search" id="payments-search-input" placeholder="Buscar por referencia, pedido, cliente..." class="search-input" autocomplete="off">
+                        <button type="button" id="btn-clear-payments-search" class="clear-search-btn" style="display:none;" aria-label="Limpiar búsqueda">✕</button>
+                    </div>
+                    <div class="filter-dropdown-wrapper">
+                        <label for="payments-filter-status" class="visually-hidden">Estado</label>
+                        <select id="payments-filter-status" class="filter-select">
+                            <option value="all">Todos los estados</option>
+                            <option value="pending">⏳ Pendiente</option>
+                            <option value="processing">🔄 En proceso</option>
+                            <option value="approved">✅ Aprobado</option>
+                            <option value="rejected">❌ Rechazado</option>
+                            <option value="cancelled">🚫 Cancelado</option>
+                            <option value="refunded">↩️ Reembolsado</option>
+                        </select>
+                    </div>
+                    <div class="filter-dropdown-wrapper">
+                        <label for="payments-filter-method" class="visually-hidden">Método</label>
+                        <select id="payments-filter-method" class="filter-select">
+                            <option value="all">Todos los métodos</option>
+                            <option value="cash">💵 Contra entrega</option>
+                            <option value="bank_transfer">🏦 Bancolombia</option>
+                            <option value="nequi">📱 Nequi</option>
+                            <option value="daviplata">📱 Daviplata</option>
+                            <option value="card">💳 Tarjeta / PSE</option>
+                        </select>
+                    </div>
+                    <div class="filter-dropdown-wrapper">
+                        <label for="payments-filter-provider" class="visually-hidden">Proveedor</label>
+                        <select id="payments-filter-provider" class="filter-select">
+                            <option value="all">Todos los proveedores</option>
+                            <option value="manual">Manual / Directo</option>
+                            <option value="wompi">Wompi</option>
+                            <option value="mercadopago">MercadoPago</option>
+                            <option value="stripe">Stripe</option>
+                        </select>
+                    </div>
+                    <div class="filter-dropdown-wrapper">
+                        <label for="payments-sort-by" class="visually-hidden">Ordenar</label>
+                        <select id="payments-sort-by" class="filter-select">
+                            <option value="created_desc">Más recientes primero</option>
+                            <option value="created_asc">Más antiguos primero</option>
+                            <option value="amount_desc">Mayor monto</option>
+                            <option value="amount_asc">Menor monto</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Tabla de Pagos Desktop -->
+                <div class="admin-table-container desktop-orders-table">
+                    <table class="admin-table" aria-label="Listado de pagos">
+                        <thead>
+                            <tr>
+                                <th>Referencia</th>
+                                <th>Pedido</th>
+                                <th>Cliente</th>
+                                <th>Monto</th>
+                                <th>Método</th>
+                                <th>Proveedor</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th style="text-align:right;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-payments-tbody">
+                            <!-- Inyectado dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Tarjetas Mobile de Pagos -->
+                <div class="mobile-orders-container" id="admin-payments-cards">
+                    <!-- Inyectado dinámicamente -->
+                </div>
+
+                <!-- Paginación de Pagos -->
+                <div class="orders-pagination-bar" id="payments-pagination-bar">
+                    <span class="pagination-info" id="payments-pagination-info">Mostrando 0 de 0 pagos</span>
+                    <div class="pagination-buttons">
+                        <button type="button" class="btn-pagination" id="btn-payments-prev" disabled>‹ Anterior</button>
+                        <span class="pagination-current-page" id="payments-current-page-text">Pág. 1</span>
+                        <button type="button" class="btn-pagination" id="btn-payments-next" disabled>Siguiente ›</button>
+                    </div>
+                </div>
+            </div>
+
+<div id="view-catalog" class="admin-view" style="display:none;" role="tabpanel" aria-labelledby="tab-btn-catalog">
                 
                 <!-- Barra Flotante de Acciones Masivas (Bulk Actions Sticky Bar) -->
                 <div id="bulk-actions-bar" class="bulk-actions-bar" style="display:none;">
@@ -1065,5 +1273,96 @@
     <!-- Scripts -->
     <script src="config.js"></script>
     <script src="admin.js"></script>
+
+    <!-- ==============================================================
+         MODAL DETALLE DE PAGO & TRANSICIÓN (BLOQUE 9) 💳
+         ============================================================== -->
+    <div id="payment-detail-modal" class="admin-modal-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="payment-modal-title">
+        <div class="admin-modal-box order-detail-modal-box">
+            <div class="admin-modal-header">
+                <div class="order-modal-title-group">
+                    <span class="order-modal-icon">💳</span>
+                    <div>
+                        <h2 id="payment-modal-title" class="admin-modal-title">Detalle de Pago</h2>
+                        <span class="order-modal-number" id="detail-payment-ref">PAY-BELPA-2026-000001</span>
+                    </div>
+                </div>
+                <button type="button" class="modal-close-btn" id="btn-close-payment-modal" aria-label="Cerrar modal">✕</button>
+            </div>
+
+            <div class="admin-modal-body order-detail-body">
+                <div class="order-detail-grid">
+                    <div class="order-info-card">
+                        <h4 class="order-card-title">Información de la Transacción</h4>
+                        <div class="order-info-row">
+                            <span class="info-label">Pedido Asociado:</span>
+                            <span class="info-value highlight" id="detail-payment-order">BELPA-2026-000001</span>
+                        </div>
+                        <div class="order-info-row">
+                            <span class="info-label">Cliente:</span>
+                            <span class="info-value" id="detail-payment-customer">María Rodríguez</span>
+                        </div>
+                        <div class="order-info-row">
+                            <span class="info-label">Monto Total:</span>
+                            <span class="info-value total-price" id="detail-payment-amount" style="font-size:1.2rem; color:var(--burgundy-primary);">$0 COP</span>
+                        </div>
+                        <div class="order-info-row">
+                            <span class="info-label">Método de Pago:</span>
+                            <span class="info-value" id="detail-payment-method">Transferencia Bancaria</span>
+                        </div>
+                        <div class="order-info-row">
+                            <span class="info-label">Proveedor:</span>
+                            <span class="info-value" id="detail-payment-provider">Manual</span>
+                        </div>
+                        <div class="order-info-row">
+                            <span class="info-label">ID Transacción Proveedor:</span>
+                            <span class="info-value" id="detail-payment-provider-id">—</span>
+                        </div>
+                        <div class="order-info-row">
+                            <span class="info-label">Fecha Creación:</span>
+                            <span class="info-value" id="detail-payment-date">—</span>
+                        </div>
+                        <div class="order-info-row">
+                            <span class="info-label">Fecha Aprobación:</span>
+                            <span class="info-value" id="detail-payment-paid-at">—</span>
+                        </div>
+                    </div>
+
+                    <div class="order-info-card">
+                        <h4 class="order-card-title">Actualizar Estado de Pago</h4>
+                        <form id="payment-status-form" class="order-status-update-form">
+                            <div class="form-field-group">
+                                <label for="select-payment-new-status">Nuevo Estado de Pago:</label>
+                                <select id="select-payment-new-status" class="admin-input-select">
+                                    <option value="pending">⏳ Pendiente</option>
+                                    <option value="processing">🔄 En proceso</option>
+                                    <option value="approved">✅ Aprobado / Recibido</option>
+                                    <option value="rejected">❌ Rechazado</option>
+                                    <option value="cancelled">🚫 Cancelado</option>
+                                    <option value="refunded">↩️ Reembolsado</option>
+                                </select>
+                            </div>
+                            <div class="form-field-group">
+                                <label for="payment-status-note">Nota de Auditoría / Comprobante:</label>
+                                <input type="text" id="payment-status-note" placeholder="Ej. Aprobado contra comprobante Bancolombia #88219" class="admin-input-text">
+                            </div>
+                            <button type="submit" class="action-btn primary-btn" id="btn-save-payment-status" style="width:100%; margin-top:0.5rem;">
+                                💾 Registrar Cambio de Pago
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Historial y Auditoría del Pago -->
+                <div class="order-timeline-card" style="margin-top:1.5rem;">
+                    <h4 class="order-card-title">Historial de Auditoría de Pago</h4>
+                    <div class="order-timeline-container" id="payment-status-history-container">
+                        <!-- Inyectado dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

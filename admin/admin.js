@@ -230,6 +230,7 @@ function showDashboard(user) {
 
     loadProducts();
     loadOrders();
+    loadPayments();
 }
 
 // 2. SISTEMA DE TABS (DASHBOARD / CATÁLOGO)
@@ -317,13 +318,17 @@ window.switchAdminTab = function(tabName) {
     const viewDash = document.getElementById('view-dashboard');
     const viewCat = document.getElementById('view-catalog');
     const viewOrders = document.getElementById('view-orders');
+    const viewPayments = document.getElementById('view-payments');
 
     if (viewDash) viewDash.style.display = tabName === 'dashboard' ? 'block' : 'none';
     if (viewCat) viewCat.style.display = tabName === 'catalog' ? 'block' : 'none';
     if (viewOrders) viewOrders.style.display = tabName === 'orders' ? 'block' : 'none';
+    if (viewPayments) viewPayments.style.display = tabName === 'payments' ? 'block' : 'none';
 
     if (tabName === 'orders') {
         loadOrders();
+    } else if (tabName === 'payments') {
+        loadPayments();
     }
 };
 
@@ -2510,4 +2515,772 @@ function closeOrderDetailModal() {
     const modal = document.getElementById('order-detail-modal');
     if (modal) modal.classList.remove('open');
     activeDetailOrderId = null;
+}
+
+
+// ==========================================================================
+// 16. MÓDULO DE PAGOS, NOTIFICACIONES Y CONTROL FINANCIERO (BLOQUE 9) 💳🌸
+// ==========================================================================
+
+let allPayments = [];
+let activePaymentFilters = {
+    status: 'all',
+    method: 'all',
+    provider: 'all',
+    search: '',
+    sortBy: 'created_desc'
+};
+let paymentsPagination = {
+    page: 1,
+    limit: 15
+};
+let activePaymentDetail = null;
+
+// Abstracción Conceptual PaymentProvider
+const PaymentProvider = {
+    createPayment: async function(order, providerName = 'manual') {
+        return {
+            reference: 'PAY-' + (order.order_number || Date.now()),
+            status: 'pending',
+            provider: providerName,
+            amount: order.total || 0,
+            currency: 'COP',
+            created_at: new Date().toISOString()
+        };
+    },
+    getPaymentStatus: async function(reference) {
+        return { reference, status: 'pending' };
+    },
+    refundPayment: async function(reference, amount, note) {
+        return { reference, status: 'refunded', amount, note, refunded_at: new Date().toISOString() };
+    }
+};
+
+async function syncPendingPayments() {
+    if (!supabase || !window.BELPA_CONFIG || !window.BELPA_CONFIG.isConfigured()) return;
+    try {
+        const pendingRaw = localStorage.getItem('belpa_pending_payments');
+        if (!pendingRaw) return;
+        const pending = JSON.parse(pendingRaw);
+        if (!Array.isArray(pending) || pending.length === 0) return;
+
+        const remaining = [];
+        for (const pay of pending) {
+            try {
+                // Verificar si ya existe en Cloud
+                const { data: existing } = await supabase
+                    .from('payments')
+                    .select('id')
+                    .eq('payment_reference', pay.payment_reference)
+                    .maybeSingle();
+
+                if (!existing) {
+                    // Buscar order_id si existe
+                    let orderId = null;
+                    if (pay.order_number) {
+                        const { data: ord } = await supabase
+                            .from('orders')
+                            .select('id')
+                            .eq('order_number', pay.order_number)
+                            .maybeSingle();
+                        if (ord) orderId = ord.id;
+                    }
+
+                    if (orderId) {
+                        const { error: insErr } = await supabase
+                            .from('payments')
+                            .insert([{
+                                order_id: orderId,
+                                payment_reference: pay.payment_reference,
+                                provider: pay.provider || 'manual',
+                                method: pay.method || 'cash',
+                                amount: pay.amount || 0,
+                                currency: pay.currency || 'COP',
+                                status: pay.status || 'pending',
+                                provider_transaction_id: pay.provider_transaction_id || ''
+                            }]);
+                        if (insErr) remaining.push(pay);
+                    } else {
+                        remaining.push(pay);
+                    }
+                }
+            } catch (e) {
+                remaining.push(pay);
+            }
+        }
+        localStorage.setItem('belpa_pending_payments', JSON.stringify(remaining));
+    } catch (e) {
+        console.warn('Error en syncPendingPayments:', e);
+    }
+}
+
+async function loadPayments() {
+    await syncPendingPayments();
+
+    const tbody = document.getElementById('admin-payments-tbody');
+    if (tbody && allPayments.length === 0) {
+        tbody.innerHTML = '<tr class="skeleton-row"><td colspan="9"><div class="skeleton-bar"></div></td></tr>';
+    }
+
+    try {
+        if (supabase && window.BELPA_CONFIG && window.BELPA_CONFIG.isConfigured()) {
+            const { data, error } = await supabase
+                .from('payments')
+                .select('*, orders(*)')
+                .order('created_at', { ascending: false });
+
+            if (error) throw error;
+            if (Array.isArray(data)) {
+                allPayments = data.map(p => ({
+                    ...p,
+                    order_number: p.orders ? p.orders.order_number : (p.order_number || 'BELPA-ORD'),
+                    customer_name: p.orders ? p.orders.customer_name : (p.customer_name || 'Cliente')
+                }));
+            } else {
+                loadLocalPaymentsFallback();
+            }
+        } else {
+            loadLocalPaymentsFallback();
+        }
+
+        updateDashboardFinancialMetrics();
+        renderPaymentsTable();
+    } catch (err) {
+        console.warn('Aviso carga pagos Supabase, usando local:', err);
+        loadLocalPaymentsFallback();
+        updateDashboardFinancialMetrics();
+        renderPaymentsTable();
+    }
+}
+
+function loadLocalPaymentsFallback() {
+    try {
+        const pending = JSON.parse(localStorage.getItem('belpa_pending_payments') || '[]');
+        const history = JSON.parse(localStorage.getItem('belpa_payments_history') || '[]');
+        
+        const map = new Map();
+        [...pending, ...history].forEach(p => {
+            if (p && p.payment_reference && !map.has(p.payment_reference)) {
+                map.set(p.payment_reference, p);
+            }
+        });
+
+        allPayments = Array.from(map.values());
+
+        // Si no hay pagos guardados pero hay pedidos locales, derivar pagos coherentes
+        if (allPayments.length === 0 && Array.isArray(allOrders) && allOrders.length > 0) {
+            allOrders.forEach(ord => {
+                const payRef = ord.payment_reference || ('PAY-' + ord.order_number);
+                allPayments.push({
+                    id: 'pay_' + ord.order_number,
+                    order_number: ord.order_number,
+                    payment_reference: payRef,
+                    customer_name: ord.customer_name,
+                    provider: ord.payment_method === 'card' ? 'wompi' : 'manual',
+                    method: ord.payment_method || 'cash',
+                    amount: ord.total || ord.subtotal || 0,
+                    currency: ord.currency || 'COP',
+                    status: ord.payment_status || 'pending',
+                    provider_transaction_id: '',
+                    created_at: ord.created_at || new Date().toISOString()
+                });
+            });
+        }
+    } catch (e) {
+        console.error('Error al leer pagos locales:', e);
+        allPayments = [];
+    }
+}
+
+function updateDashboardFinancialMetrics() {
+    const todayStr = new Date().toISOString().slice(0, 10);
+    const thisMonthStr = new Date().toISOString().slice(0, 7);
+
+    let salesToday = 0;
+    let salesMonth = 0;
+    let approvedCount = 0;
+    let pendingCount = 0;
+    let refundsCount = 0;
+    let totalSales = 0;
+    let totalPaidOrders = 0;
+
+    allPayments.forEach(p => {
+        const pDate = (p.created_at || '').slice(0, 10);
+        const pMonth = (p.created_at || '').slice(0, 7);
+        const amt = Number(p.amount) || 0;
+
+        if (p.status === 'approved') {
+            approvedCount++;
+            totalPaidOrders++;
+            totalSales += amt;
+            if (pDate === todayStr) salesToday += amt;
+            if (pMonth === thisMonthStr) salesMonth += amt;
+        } else if (p.status === 'pending' || p.status === 'processing') {
+            pendingCount++;
+        } else if (p.status === 'refunded') {
+            refundsCount++;
+        }
+    });
+
+    // Si no hay pagos aprobados explícitos, usar pedidos no cancelados
+    if (totalSales === 0 && allOrders.length > 0) {
+        allOrders.forEach(o => {
+            const oDate = (o.created_at || '').slice(0, 10);
+            const oMonth = (o.created_at || '').slice(0, 7);
+            const tot = Number(o.total) || 0;
+            if (o.status !== 'cancelled') {
+                totalSales += tot;
+                totalPaidOrders++;
+                if (oDate === todayStr) salesToday += tot;
+                if (oMonth === thisMonthStr) salesMonth += tot;
+            }
+        });
+    }
+
+    const avgTicket = totalPaidOrders > 0 ? Math.round(totalSales / totalPaidOrders) : 0;
+
+    const elSalesToday = document.getElementById('stat-fin-sales-today');
+    const elSalesMonth = document.getElementById('stat-fin-sales-month');
+    const elAppr = document.getElementById('stat-fin-payments-approved');
+    const elPend = document.getElementById('stat-fin-payments-pending');
+    const elRef = document.getElementById('stat-fin-refunds');
+    const elAvg = document.getElementById('stat-fin-avg-ticket');
+    const navBadge = document.getElementById('nav-payments-badge');
+
+    if (elSalesToday) elSalesToday.textContent = '$' + salesToday.toLocaleString('es-CO');
+    if (elSalesMonth) elSalesMonth.textContent = '$' + salesMonth.toLocaleString('es-CO');
+    if (elAppr) elAppr.textContent = approvedCount.toString();
+    if (elPend) elPend.textContent = pendingCount.toString();
+    if (elRef) elRef.textContent = refundsCount.toString();
+    if (elAvg) elAvg.textContent = '$' + avgTicket.toLocaleString('es-CO');
+
+    if (navBadge) {
+        if (pendingCount > 0) {
+            navBadge.textContent = pendingCount.toString();
+            navBadge.style.display = 'inline-flex';
+        } else {
+            navBadge.style.display = 'none';
+        }
+    }
+
+    // Renderizar widgets financieros y comerciales
+    renderDashboardRecentPayments();
+    renderDashboardTopProducts();
+    renderDashboardTopCustomers();
+}
+
+function renderDashboardRecentPayments() {
+    const listEl = document.getElementById('dashboard-recent-payments-list');
+    if (!listEl) return;
+
+    if (allPayments.length === 0) {
+        listEl.innerHTML = '<p class="empty-hint">No hay pagos registrados aún.</p>';
+        return;
+    }
+
+    const recent = [...allPayments]
+        .sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0))
+        .slice(0, 5);
+
+    let html = '<div class="dash-recent-orders-feed">';
+    recent.forEach(p => {
+        const dateStr = p.created_at ? new Date(p.created_at).toLocaleDateString('es-CO') : 'Hoy';
+        const amtStr = '$' + (Number(p.amount) || 0).toLocaleString('es-CO');
+        const badgeClass = 'pay-' + (p.status || 'pending');
+        
+        html += `
+            <div class="dash-recent-order-row" onclick="openPaymentDetailModal('${escapeHTML(p.payment_reference)}')" style="cursor:pointer;">
+                <div class="recent-order-left">
+                    <span class="recent-order-num">${escapeHTML(p.payment_reference)}</span>
+                    <span class="recent-order-customer">${escapeHTML(p.customer_name || 'Cliente')} • ${escapeHTML(p.order_number || '')}</span>
+                </div>
+                <div class="recent-order-right">
+                    <span class="recent-order-total" style="color:var(--burgundy-primary); font-weight:700;">${amtStr}</span>
+                    <span class="pay-status-badge ${badgeClass}">${escapeHTML(p.status || 'pending')}</span>
+                </div>
+            </div>
+        `;
+    });
+    html += '</div>';
+    listEl.innerHTML = html;
+}
+
+function renderDashboardTopProducts() {
+    const listEl = document.getElementById('dashboard-top-products-list');
+    if (!listEl) return;
+
+    // Agregar items desde todos los pedidos
+    const productMap = new Map();
+    allOrders.forEach(o => {
+        if (Array.isArray(o.items)) {
+            o.items.forEach(it => {
+                const name = it.product_name || 'Producto';
+                const qty = Number(it.quantity) || 1;
+                const total = Number(it.line_total) || (Number(it.unit_price) * qty) || 0;
+                
+                if (!productMap.has(name)) {
+                    productMap.set(name, { name, qty: 0, revenue: 0 });
+                }
+                const cur = productMap.get(name);
+                cur.qty += qty;
+                cur.revenue += total;
+            });
+        }
+    });
+
+    const ranking = Array.from(productMap.values())
+        .sort((a, b) => b.qty - a.qty)
+        .slice(0, 5);
+
+    if (ranking.length === 0) {
+        listEl.innerHTML = '<p class="empty-hint">Sin historial de ventas para calcular ranking.</p>';
+        return;
+    }
+
+    let html = '<div class="dash-ranking-list">';
+    ranking.forEach((r, idx) => {
+        html += `
+            <div class="ranking-item">
+                <div class="ranking-item-left">
+                    <span class="ranking-position">#${idx + 1}</span>
+                    <div>
+                        <div class="ranking-name">${escapeHTML(r.name)}</div>
+                        <div class="ranking-count">${r.qty} unidades vendidas</div>
+                    </div>
+                </div>
+                <span class="ranking-amount">$${r.revenue.toLocaleString('es-CO')}</span>
+            </div>
+        `;
+    });
+    html += '</div>';
+    listEl.innerHTML = html;
+}
+
+function renderDashboardTopCustomers() {
+    const listEl = document.getElementById('dashboard-top-customers-list');
+    if (!listEl) return;
+
+    const customerMap = new Map();
+    allOrders.forEach(o => {
+        const key = (o.customer_name || 'Cliente').trim().toLowerCase();
+        const total = Number(o.total) || 0;
+
+        if (!customerMap.has(key)) {
+            customerMap.set(key, {
+                name: o.customer_name || 'Cliente',
+                phone: o.customer_phone || '',
+                orderCount: 0,
+                totalSpent: 0
+            });
+        }
+        const cur = customerMap.get(key);
+        cur.orderCount++;
+        cur.totalSpent += total;
+    });
+
+    const topCustomers = Array.from(customerMap.values())
+        .sort((a, b) => b.totalSpent - a.totalSpent)
+        .slice(0, 5);
+
+    if (topCustomers.length === 0) {
+        listEl.innerHTML = '<p class="empty-hint">Sin clientes registrados aún.</p>';
+        return;
+    }
+
+    let html = '<div class="dash-ranking-list">';
+    topCustomers.forEach((c, idx) => {
+        html += `
+            <div class="ranking-item">
+                <div class="ranking-item-left">
+                    <span class="ranking-position">#${idx + 1}</span>
+                    <div>
+                        <div class="ranking-name">${escapeHTML(c.name)}</div>
+                        <div class="ranking-count">${c.orderCount} pedido(s) • ${escapeHTML(c.phone)}</div>
+                    </div>
+                </div>
+                <span class="ranking-amount">$${c.totalSpent.toLocaleString('es-CO')}</span>
+            </div>
+        `;
+    });
+    html += '</div>';
+    listEl.innerHTML = html;
+}
+
+function renderPaymentsTable() {
+    const tbody = document.getElementById('admin-payments-tbody');
+    const cardsContainer = document.getElementById('admin-payments-cards');
+    if (!tbody && !cardsContainer) return;
+
+    // Filtrar pagos
+    let filtered = allPayments.filter(p => {
+        if (activePaymentFilters.status !== 'all' && p.status !== activePaymentFilters.status) return false;
+        if (activePaymentFilters.method !== 'all' && p.method !== activePaymentFilters.method) return false;
+        if (activePaymentFilters.provider !== 'all' && p.provider !== activePaymentFilters.provider) return false;
+        if (activePaymentFilters.search) {
+            const q = activePaymentFilters.search.toLowerCase();
+            const ref = (p.payment_reference || '').toLowerCase();
+            const ord = (p.order_number || '').toLowerCase();
+            const cust = (p.customer_name || '').toLowerCase();
+            if (!ref.includes(q) && !ord.includes(q) && !cust.includes(q)) return false;
+        }
+        return true;
+    });
+
+    // Ordenar
+    filtered.sort((a, b) => {
+        if (activePaymentFilters.sortBy === 'created_asc') return new Date(a.created_at || 0) - new Date(b.created_at || 0);
+        if (activePaymentFilters.sortBy === 'amount_desc') return (Number(b.amount) || 0) - (Number(a.amount) || 0);
+        if (activePaymentFilters.sortBy === 'amount_asc') return (Number(a.amount) || 0) - (Number(b.amount) || 0);
+        return new Date(b.created_at || 0) - new Date(a.created_at || 0);
+    });
+
+    // Actualizar conteos de pills
+    updatePaymentPillsCount();
+
+    // Paginación
+    const totalItems = filtered.length;
+    const limit = paymentsPagination.limit;
+    const totalPages = Math.max(1, Math.ceil(totalItems / limit));
+    if (paymentsPagination.page > totalPages) paymentsPagination.page = totalPages;
+    const startIndex = (paymentsPagination.page - 1) * limit;
+    const paginated = filtered.slice(startIndex, startIndex + limit);
+
+    // Renderizar Desktop Table
+    if (tbody) {
+        if (paginated.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="9" class="table-empty-state"><p>No se encontraron pagos con los filtros seleccionados.</p></td></tr>';
+        } else {
+            let trs = '';
+            paginated.forEach(p => {
+                const dateStr = p.created_at ? new Date(p.created_at).toLocaleDateString('es-CO') : 'Hoy';
+                const amtStr = '$' + (Number(p.amount) || 0).toLocaleString('es-CO') + ' ' + (p.currency || 'COP');
+                const badgeClass = 'pay-' + (p.status || 'pending');
+
+                const methodLabels = {
+                    'cash': '💵 Contra entrega',
+                    'bank_transfer': '🏦 Bancolombia',
+                    'nequi': '📱 Nequi',
+                    'daviplata': '📱 Daviplata',
+                    'card': '💳 Tarjeta / PSE'
+                };
+                const mLabel = methodLabels[p.method] || p.method || 'Directo';
+
+                trs += `
+                    <tr>
+                        <td><strong>${escapeHTML(p.payment_reference || '')}</strong></td>
+                        <td><span class="order-id-link" onclick="switchAdminTab('orders')" style="cursor:pointer; color:var(--burgundy-primary); text-decoration:underline;">${escapeHTML(p.order_number || '—')}</span></td>
+                        <td>${escapeHTML(p.customer_name || 'Cliente')}</td>
+                        <td><strong style="color:var(--burgundy-primary);">${amtStr}</strong></td>
+                        <td>${escapeHTML(mLabel)}</td>
+                        <td>${escapeHTML(p.provider || 'manual')}</td>
+                        <td><span class="pay-status-badge ${badgeClass}">${escapeHTML(p.status || 'pending')}</span></td>
+                        <td>${escapeHTML(dateStr)}</td>
+                        <td style="text-align:right;">
+                            <button type="button" class="action-btn secondary-btn" style="padding:4px 8px; font-size:0.75rem;" onclick="openPaymentDetailModal('${escapeHTML(p.payment_reference)}')">
+                                👁️ Detalle
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = trs;
+        }
+    }
+
+    // Renderizar Mobile Cards
+    if (cardsContainer) {
+        if (paginated.length === 0) {
+            cardsContainer.innerHTML = '<p class="empty-hint" style="text-align:center; padding:2rem 0;">No se encontraron pagos.</p>';
+        } else {
+            let cards = '';
+            paginated.forEach(p => {
+                const dateStr = p.created_at ? new Date(p.created_at).toLocaleDateString('es-CO') : 'Hoy';
+                const amtStr = '$' + (Number(p.amount) || 0).toLocaleString('es-CO');
+                const badgeClass = 'pay-' + (p.status || 'pending');
+
+                cards += `
+                    <div class="mobile-payment-card" onclick="openPaymentDetailModal('${escapeHTML(p.payment_reference)}')">
+                        <div class="mobile-payment-header">
+                            <div>
+                                <span class="mobile-payment-ref">${escapeHTML(p.payment_reference)}</span>
+                                <div style="font-size:0.75rem; color:var(--text-muted);">Pedido: ${escapeHTML(p.order_number || '—')} • ${escapeHTML(p.customer_name || '')}</div>
+                            </div>
+                            <span class="pay-status-badge ${badgeClass}">${escapeHTML(p.status || 'pending')}</span>
+                        </div>
+                        <div class="mobile-payment-details">
+                            <div>Monto: <strong class="mobile-payment-amount">${amtStr}</strong></div>
+                            <div>Método: ${escapeHTML(p.method || 'cash')} • ${escapeHTML(dateStr)}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            cardsContainer.innerHTML = cards;
+        }
+    }
+
+    // Actualizar UI Paginación
+    const infoEl = document.getElementById('payments-pagination-info');
+    const pageTextEl = document.getElementById('payments-current-page-text');
+    const prevBtn = document.getElementById('btn-payments-prev');
+    const nextBtn = document.getElementById('btn-payments-next');
+
+    if (infoEl) infoEl.textContent = `Mostrando ${paginated.length} de ${totalItems} pagos`;
+    if (pageTextEl) pageTextEl.textContent = `Pág. ${paymentsPagination.page} de ${totalPages}`;
+    if (prevBtn) prevBtn.disabled = paymentsPagination.page <= 1;
+    if (nextBtn) nextBtn.disabled = paymentsPagination.page >= totalPages;
+}
+
+function updatePaymentPillsCount() {
+    const counts = { all: allPayments.length, pending: 0, processing: 0, approved: 0, rejected: 0, refunded: 0 };
+    allPayments.forEach(p => {
+        if (counts[p.status] !== undefined) counts[p.status]++;
+    });
+
+    Object.keys(counts).forEach(st => {
+        const el = document.getElementById(`pill-pay-count-${st}`);
+        if (el) el.textContent = counts[st].toString();
+    });
+}
+
+window.openPaymentDetailModal = function(paymentRef) {
+    const payment = allPayments.find(p => p.payment_reference === paymentRef);
+    if (!payment) return;
+
+    activePaymentDetail = payment;
+
+    const modal = document.getElementById('payment-detail-modal');
+    const elRef = document.getElementById('detail-payment-ref');
+    const elOrder = document.getElementById('detail-payment-order');
+    const elCust = document.getElementById('detail-payment-customer');
+    const elAmt = document.getElementById('detail-payment-amount');
+    const elMethod = document.getElementById('detail-payment-method');
+    const elProv = document.getElementById('detail-payment-provider');
+    const elProvId = document.getElementById('detail-payment-provider-id');
+    const elDate = document.getElementById('detail-payment-date');
+    const elPaidAt = document.getElementById('detail-payment-paid-at');
+    const selStatus = document.getElementById('select-payment-new-status');
+
+    if (elRef) elRef.textContent = payment.payment_reference;
+    if (elOrder) elOrder.textContent = payment.order_number || '—';
+    if (elCust) elCust.textContent = payment.customer_name || 'Cliente';
+    if (elAmt) elAmt.textContent = '$' + (Number(payment.amount) || 0).toLocaleString('es-CO') + ' ' + (payment.currency || 'COP');
+    if (elMethod) elMethod.textContent = payment.method || 'cash';
+    if (elProv) elProv.textContent = payment.provider || 'manual';
+    if (elProvId) elProvId.textContent = payment.provider_transaction_id || '—';
+    if (elDate) elDate.textContent = payment.created_at ? new Date(payment.created_at).toLocaleString('es-CO') : '—';
+    if (elPaidAt) elPaidAt.textContent = payment.paid_at ? new Date(payment.paid_at).toLocaleString('es-CO') : '—';
+    if (selStatus) selStatus.value = payment.status || 'pending';
+
+    renderPaymentStatusHistory(payment);
+
+    if (modal) modal.style.display = 'flex';
+};
+
+window.closePaymentDetailModal = function() {
+    const modal = document.getElementById('payment-detail-modal');
+    if (modal) modal.style.display = 'none';
+    activePaymentDetail = null;
+};
+
+function renderPaymentStatusHistory(payment) {
+    const container = document.getElementById('payment-status-history-container');
+    if (!container) return;
+
+    const historyKey = 'belpa_pay_history_' + payment.payment_reference;
+    const history = JSON.parse(localStorage.getItem(historyKey) || '[]');
+
+    if (history.length === 0) {
+        container.innerHTML = '<p class="empty-hint" style="padding:8px 0;">Pago registrado en estado inicial: <strong>' + escapeHTML(payment.status || 'pending') + '</strong>.</p>';
+        return;
+    }
+
+    let html = '';
+    history.slice().reverse().forEach(h => {
+        const timeStr = h.created_at ? new Date(h.created_at).toLocaleString('es-CO') : '—';
+        html += `
+            <div class="order-history-item">
+                <div class="order-history-left">
+                    <span class="pay-status-badge pay-${h.new_status}">${escapeHTML(h.new_status)}</span>
+                    <div>
+                        <div>Por: <strong>${escapeHTML(h.changed_by || 'admin')}</strong> • ${escapeHTML(timeStr)}</div>
+                        ${h.note ? `<div class="order-history-note">"${escapeHTML(h.note)}"</div>` : ''}
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    container.innerHTML = html;
+}
+
+function initPaymentsListeners() {
+    // Pills de filtro
+    const pills = document.querySelectorAll('.order-quick-pill[data-pay-status]');
+    pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            pills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            activePaymentFilters.status = pill.getAttribute('data-pay-status');
+            paymentsPagination.page = 1;
+            renderPaymentsTable();
+        });
+    });
+
+    // Búsqueda
+    const searchInput = document.getElementById('payments-search-input');
+    const clearSearchBtn = document.getElementById('btn-clear-payments-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            activePaymentFilters.search = e.target.value.trim();
+            if (clearSearchBtn) clearSearchBtn.style.display = activePaymentFilters.search ? 'block' : 'none';
+            paymentsPagination.page = 1;
+            renderPaymentsTable();
+        });
+    }
+    if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', () => {
+            if (searchInput) searchInput.value = '';
+            activePaymentFilters.search = '';
+            clearSearchBtn.style.display = 'none';
+            paymentsPagination.page = 1;
+            renderPaymentsTable();
+        });
+    }
+
+    // Filtros dropdown
+    const filterStatus = document.getElementById('payments-filter-status');
+    const filterMethod = document.getElementById('payments-filter-method');
+    const filterProvider = document.getElementById('payments-filter-provider');
+    const sortBy = document.getElementById('payments-sort-by');
+    const refreshBtn = document.getElementById('btn-refresh-payments');
+
+    if (filterStatus) {
+        filterStatus.addEventListener('change', (e) => {
+            activePaymentFilters.status = e.target.value;
+            paymentsPagination.page = 1;
+            renderPaymentsTable();
+        });
+    }
+    if (filterMethod) {
+        filterMethod.addEventListener('change', (e) => {
+            activePaymentFilters.method = e.target.value;
+            paymentsPagination.page = 1;
+            renderPaymentsTable();
+        });
+    }
+    if (filterProvider) {
+        filterProvider.addEventListener('change', (e) => {
+            activePaymentFilters.provider = e.target.value;
+            paymentsPagination.page = 1;
+            renderPaymentsTable();
+        });
+    }
+    if (sortBy) {
+        sortBy.addEventListener('change', (e) => {
+            activePaymentFilters.sortBy = e.target.value;
+            paymentsPagination.page = 1;
+            renderPaymentsTable();
+        });
+    }
+    if (refreshBtn) {
+        refreshBtn.addEventListener('click', () => {
+            loadPayments();
+            showAdminToast('Listado de pagos actualizado 🔄', 'info');
+        });
+    }
+
+    // Paginación
+    const prevBtn = document.getElementById('btn-payments-prev');
+    const nextBtn = document.getElementById('btn-payments-next');
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (paymentsPagination.page > 1) {
+                paymentsPagination.page--;
+                renderPaymentsTable();
+            }
+        });
+    }
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            paymentsPagination.page++;
+            renderPaymentsTable();
+        });
+    }
+
+    // Modal de pago
+    const closeBtn = document.getElementById('btn-close-payment-modal');
+    if (closeBtn) closeBtn.addEventListener('click', closePaymentDetailModal);
+
+    const paymentForm = document.getElementById('payment-status-form');
+    if (paymentForm) {
+        paymentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!activePaymentDetail) return;
+
+            const newStatus = document.getElementById('select-payment-new-status').value;
+            const noteInput = document.getElementById('payment-status-note');
+            const note = noteInput ? noteInput.value.trim() : '';
+            const previousStatus = activePaymentDetail.status;
+
+            if (newStatus === previousStatus && !note) {
+                showAdminToast('El estado no ha cambiado.', 'info');
+                return;
+            }
+
+            // Actualizar localmente
+            activePaymentDetail.status = newStatus;
+            activePaymentDetail.updated_at = new Date().toISOString();
+            if (newStatus === 'approved') {
+                activePaymentDetail.paid_at = new Date().toISOString();
+            }
+
+            // Guardar en historial
+            const historyKey = 'belpa_pay_history_' + activePaymentDetail.payment_reference;
+            const history = JSON.parse(localStorage.getItem(historyKey) || '[]');
+            history.push({
+                payment_reference: activePaymentDetail.payment_reference,
+                old_status: previousStatus,
+                new_status: newStatus,
+                changed_by: currentUser ? currentUser.email : 'admin@belpa.co',
+                note: note,
+                created_at: new Date().toISOString()
+            });
+            localStorage.setItem(historyKey, JSON.stringify(history));
+
+            // Actualizar en localStorage
+            localStorage.setItem('belpa_payments_history', JSON.stringify(allPayments));
+
+            // Actualizar en Supabase si está disponible
+            if (supabase && window.BELPA_CONFIG && window.BELPA_CONFIG.isConfigured()) {
+                try {
+                    await supabase
+                        .from('payments')
+                        .update({
+                            status: newStatus,
+                            paid_at: newStatus === 'approved' ? new Date().toISOString() : null,
+                            updated_at: new Date().toISOString()
+                        })
+                        .eq('payment_reference', activePaymentDetail.payment_reference);
+
+                    // Si hay id en BD, registrar historial
+                    if (activePaymentDetail.id && typeof activePaymentDetail.id === 'number') {
+                        await supabase.from('payment_status_history').insert([{
+                            payment_id: activePaymentDetail.id,
+                            old_status: previousStatus,
+                            new_status: newStatus,
+                            changed_by: currentUser ? currentUser.email : 'admin@belpa.co',
+                            note: note
+                        }]);
+                    }
+                } catch (err) {
+                    console.warn('Error sincronizando estado de pago:', err);
+                }
+            }
+
+            if (noteInput) noteInput.value = '';
+            renderPaymentStatusHistory(activePaymentDetail);
+            updateDashboardFinancialMetrics();
+            renderPaymentsTable();
+            showAdminToast(`Estado de pago actualizado a: ${newStatus} ✅`, 'success');
+        });
+    }
 }

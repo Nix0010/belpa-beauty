@@ -2152,6 +2152,8 @@ async function checkoutWhatsApp() {
     message += `\n💰 *Subtotal:* ${formatCOP(subtotal)}\n`;
     message += `🚚 *Domicilio:* A coordinar por WhatsApp\n`;
     message += `💵 *TOTAL:* ${formatCOP(subtotal)}\n`;
+    message += `💳 *Método de Pago:* ${paymentLabel}\n`;
+    message += `📌 *Estado del Pago:* Pendiente\n`;
 
     if (clientNotes) {
         message += `\n💌 *Dedicatoria / Notas:* "${clientNotes}"\n`;
@@ -2178,9 +2180,24 @@ async function checkoutWhatsApp() {
         payment_status: 'pending',
         source: 'website',
         whatsapp_message: message,
+        payment_method: paymentMethod,
+        payment_reference: 'PAY-' + orderNumber,
         items: orderItems,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString()
+    };
+
+    const paymentRecord = {
+        id: Date.now(),
+        order_number: orderNumber,
+        payment_reference: 'PAY-' + orderNumber,
+        provider: paymentMethod === 'card' ? 'wompi' : 'manual',
+        method: paymentMethod,
+        amount: subtotal,
+        currency: 'COP',
+        status: 'pending',
+        provider_transaction_id: '',
+        created_at: new Date().toISOString()
     };
 
     // Guardar en almacenamiento local offline
@@ -2192,8 +2209,16 @@ async function checkoutWhatsApp() {
         const ordersHistory = JSON.parse(localStorage.getItem('belpa_orders_history') || '[]');
         ordersHistory.unshift(orderRecord);
         localStorage.setItem('belpa_orders_history', JSON.stringify(ordersHistory));
+
+        const pendingPayments = JSON.parse(localStorage.getItem('belpa_pending_payments') || '[]');
+        pendingPayments.unshift(paymentRecord);
+        localStorage.setItem('belpa_pending_payments', JSON.stringify(pendingPayments));
+
+        const paymentsHistory = JSON.parse(localStorage.getItem('belpa_payments_history') || '[]');
+        paymentsHistory.unshift(paymentRecord);
+        localStorage.setItem('belpa_payments_history', JSON.stringify(paymentsHistory));
     } catch (err) {
-        console.warn('Aviso localStorage pedido:', err);
+        console.warn('Aviso localStorage pedido/pago:', err);
     }
 
     // Intentar sincronización asíncrona con Supabase si está disponible
@@ -2236,6 +2261,18 @@ async function checkoutWhatsApp() {
                     product_image: it.product_image
                 }));
                 await client.from('order_items').insert(itemsToInsert);
+
+                // Insertar registro de pago inicial
+                await client.from('payments').insert([{
+                    order_id: orderId,
+                    payment_reference: paymentRecord.payment_reference,
+                    provider: paymentRecord.provider,
+                    method: paymentRecord.method,
+                    amount: paymentRecord.amount,
+                    currency: paymentRecord.currency,
+                    status: paymentRecord.status,
+                    provider_transaction_id: ''
+                }]);
             }
         } catch (e) {
             console.warn('Sincronización Supabase Cloud en segundo plano:', e.message);

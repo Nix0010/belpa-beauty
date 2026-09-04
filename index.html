@@ -546,6 +546,16 @@
                     <span class="field-error-msg" id="err-cart-client-address" style="display:none;"></span>
                 </div>
                 <div class="cart-form-field">
+                    <label for="cart-payment-method">Método de Pago:</label>
+                    <select id="cart-payment-method" class="cart-select">
+                        <option value="cash" selected>💵 Pago contra entrega</option>
+                        <option value="bank_transfer">🏦 Transferencia Bancaria (Bancolombia)</option>
+                        <option value="nequi">📱 Nequi</option>
+                        <option value="daviplata">📱 Daviplata</option>
+                        <option value="card">💳 Pago en línea (Tarjeta / PSE / Wompi)</option>
+                    </select>
+                </div>
+                <div class="cart-form-field">
                     <label for="cart-client-notes">Nota especial o dedicatoria (Opcional):</label>
                     <input type="text" id="cart-client-notes" placeholder="Ej. 'Feliz Cumpleaños Mamá...'" class="cart-input">
                 </div>

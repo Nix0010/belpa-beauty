@@ -1551,3 +1551,137 @@ body {
     font-size: 0.72rem;
     margin-top: 2px;
 }
+
+
+/* ==========================================================================
+   ESTILOS DE PAGOS, CONTROL FINANCIERO Y AUDITORÍA (BLOQUE 9) 💳
+   ========================================================================== */
+
+.pay-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.pay-status-badge.pay-pending {
+    background: #FFF9DB;
+    color: #F59F00;
+    border: 1px solid #FFE066;
+}
+
+.pay-status-badge.pay-processing {
+    background: #E7F5FF;
+    color: #1971C2;
+    border: 1px solid #A5D8FF;
+}
+
+.pay-status-badge.pay-approved {
+    background: #E6FCF5;
+    color: #0CA678;
+    border: 1px solid #63E6BE;
+}
+
+.pay-status-badge.pay-rejected {
+    background: #FFF5F5;
+    color: #E03131;
+    border: 1px solid #FFC9C9;
+}
+
+.pay-status-badge.pay-cancelled {
+    background: #F1F3F5;
+    color: #868E96;
+    border: 1px solid #CED4DA;
+}
+
+.pay-status-badge.pay-refunded {
+    background: #F3F0FF;
+    color: #7950F2;
+    border: 1px solid #D0BFFF;
+}
+
+/* Tarjetas Mobile de Pagos */
+.mobile-payment-card {
+    background: #FFFFFF;
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0,0,0,0.06);
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mobile-payment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #F5EAEF;
+}
+
+.mobile-payment-ref {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--burgundy-primary);
+}
+
+.mobile-payment-amount {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--burgundy-primary);
+}
+
+.mobile-payment-details {
+    font-size: 0.78rem;
+    color: var(--charcoal-soft);
+}
+
+/* Widgets de Rankings y Clientes */
+.dash-ranking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ranking-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 10px;
+    background: var(--rose-soft);
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
+}
+
+.ranking-item-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ranking-position {
+    font-weight: 800;
+    color: var(--burgundy-primary);
+    width: 20px;
+}
+
+.ranking-name {
+    font-weight: 600;
+}
+
+.ranking-count {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+.ranking-amount {
+    font-weight: 700;
+    color: var(--burgundy-primary);
+}
