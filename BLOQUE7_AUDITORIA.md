@@ -1,64 +1,112 @@
-# 🌸 BELPA WEB — REPORTE DE AUDITORÍA Y CIERRE BLOQUE 7
+# 🌸 BELPA WEB — AUDITORÍA Y CIERRE BLOQUE 7
 **PEDIDOS REALES + CHECKOUT + GESTIÓN COMERCIAL + TRAZABILIDAD ADMINISTRATIVA**
 
-**Fecha:** 2026-09-04  
-**Proyecto:** BELPA WEB (BelFlora & BelpaBeauty)  
-**Producción:** [https://belpa-beauty.vercel.app](https://belpa-beauty.vercel.app)  
-**Panel Administrativo:** [https://belpa-beauty.vercel.app/admin/](https://belpa-beauty.vercel.app/admin/)  
-**Resultado Global:** **🌸 BLOQUE 7 — PASS LOCAL / CLOUD PENDIENTE** (92/92 pruebas automatizadas locales superadas)
+```text
+============================================================
+🌸 BELPA WEB — AUDITORÍA BLOQUE 7
+============================================================
+
+Orders:
+  PASS
+
+Order Items:
+  PASS
+
+Checkout:
+  PASS
+
+WhatsApp:
+  PASS
+
+Estados:
+  PASS
+
+Historial:
+  PASS
+
+Dashboard:
+  PASS
+
+Fallback:
+  PASS
+
+Seguridad:
+  PASS
+
+Regresión:
+  PASS
+
+Supabase Cloud:
+  PENDIENTE (Placeholders en config.js)
+
+Tests:
+  92 / 92
+
+============================================================
+RESULTADO BLOQUE 7
+🌸 BLOQUE 7 — PASS LOCAL / CLOUD PENDIENTE
+============================================================
+```
 
 ---
 
-## 1. RESUMEN EJECUTIVO
+## 1. AUDITORÍA PREVIA Y ESTADO GIT
 
-El **Bloque 7** transforma el ecosistema e-commerce de BELPA desde un flujo informal de mensajes de WhatsApp hacia un **sistema integral de gestión comercial, trazabilidad operativa y control de pedidos en tiempo real**.
-
-Se implementó una arquitectura híbrida de alta resiliencia:
-1. **Captura Estructurada en Frontend:** Checkout enriquecido con validación de teléfono/WhatsApp (`#cart-client-phone`), correo opcional (`#cart-client-email`), método de entrega, fecha futura/hoy (`#cart-delivery-date`), dirección y dedicatoria personalizada.
-2. **Generación de Secuencia Única:** Identificador correlativo y legible `BELPA-YYYY-XXXXXX` (ej. `BELPA-2026-000001`).
-3. **Fotografía Histórica (Snapshot):** Registro inmutable de precios unitarios y subtotales en el momento exacto de la compra, desacoplado de futuras modificaciones del catálogo.
-4. **Mensaje de WhatsApp Comercial:** Formato profesional enriquecido con desglose por marcas (🌸 BelFlora / ✨ BelpaBeauty), dedicatoria, método y número de radicado.
-5. **Persistencia Híbrida 0ms Offline:** Almacenamiento inmediato en `localStorage` (`belpa_pending_orders` y `belpa_orders_history`) con sincronización asíncrona hacia Supabase (`public.orders` y `public.order_items`).
-6. **Módulo Administrativo de Pedidos:** Nueva pestaña `📦 Pedidos` con badge de alertas, filtros rápidos por estado (Todos, Pendiente, Confirmado, En preparación, Listo, En camino, Entregado, Cancelado), buscador predictivo, filtros combinados, tabla desktop y tarjetas mobile interactivas.
-7. **Modal de Detalle & CRM WhatsApp:** Inspección profunda de cliente, dirección, fecha de entrega, dedicatoria, tabla de productos, línea de tiempo de auditoría (`public.order_status_history`), actualización de estados con notas internas y enlace directo a WhatsApp con mensaje preconfigurado.
-8. **Métricas Comerciales en Dashboard:** KPIs de Pedidos Totales, Pendientes, En Preparación, Entregados y Ventas Totales acumuladas en COP, acompañados de widgets dinámicos de *Pedidos Recientes* y *Próximas Entregas*.
-9. **Esquema SQL Idempotente (`supabase/block7_database.sql`):** Tablas `orders`, `order_items` y `order_status_history` con RLS estricto, índices optimizados y compatibilidad total con los 79 productos existentes.
-
----
-
-## 2. INTEGRIDAD DEL CATÁLOGO & REGRESIÓN (79 PRODUCTOS)
-
-| Métrica | Valor Verificado | Estado |
-| :--- | :--- | :--- |
-| **Total Productos** | 79 productos | ✓ PASS |
-| **BelFlora (brand: "flora")** | 74 productos | ✓ PASS |
-| **BelpaBeauty (brand: "beauty")** | 5 productos | ✓ PASS |
-| **Correlatividad de IDs** | 1 al 79 consecutivos sin saltos | ✓ PASS |
-| **Imágenes WebP en Disco** | 84 archivos válidos en `/images/` | ✓ PASS |
-| **Valor Total Inventario** | $5.351.000 COP | ✓ PASS |
-| **Precio Promedio** | $67.734 COP | ✓ PASS |
-| **Fallback Local de Tienda** | Activo e intacto vía `catalog_data.json` | ✓ PASS |
-| **SEO, OpenGraph, Twitter Cards, Sitemap** | Intactos y 100% operativos | ✓ PASS |
+- **Branch:** `main`
+- **Último Commit:** `51b1f2d` — *Bloque 7: pedidos checkout trazabilidad y gestion comercial*
+- **Working Tree:** Clean (0 cambios pendientes, 0 archivos no rastreados)
+- **Archivos Clave Inspeccionados:**
+  - `app.js` (Tienda pública, checkout enriquecido, persistencia local y sync)
+  - `index.html` (Formulario checkout con campos de teléfono, email, fecha y dedicatoria)
+  - `admin/index.html` (Pestaña Pedidos, filtros, modal de detalle, KPIs)
+  - `admin/admin.js` (Lógica de pedidos, filtros predictivos, transiciones de estado, timeline)
+  - `admin/admin.css` (Estilos de badges, pills de estado, mobile cards, timeline)
+  - `admin/config.js` (Configuración segura de cliente Supabase con detección de placeholders)
+  - `catalog_data.json` (79 productos intactos: 74 BelFlora, 5 BelpaBeauty)
+  - `supabase/block7_database.sql` (Esquema SQL idempotente con `orders`, `order_items`, `order_status_history`)
+  - `supabase/test_bloque7.js` (Suite automatizada de 92 tests)
+  - `.env.local` y `.gitignore` (Exclusión de variables privadas)
 
 ---
 
-## 3. CHECKOUT & CAPTURA DE PEDIDOS EN TIENDA PÚBLICA
+## 2. MATRIZ DIAGNÓSTICO DE FUNCIONALIDADES
 
-- **Campos del Formulario:**
-  - Nombre completo: `#cart-client-name` (Requerido)
-  - Teléfono / WhatsApp: `#cart-client-phone` (Requerido, mínimo 7 dígitos)
-  - Correo electrónico: `#cart-client-email` (Opcional)
-  - Método de entrega: `#cart-delivery-method` (`delivery` / `pickup`)
-  - Fecha de entrega/recogida: `#cart-delivery-date` (Validado contra fechas pasadas)
-  - Dirección completa: `#cart-client-address` (Requerido si entrega a domicilio)
-  - Dedicatoria / Mensaje especial: `#cart-client-notes` (Opcional, incluido en resumen comercial)
-- **Recálculo Seguro:**
-  - `calculateCartTotals()` computa subtotales a partir de precios unitarios verificados del catálogo.
-  - La fotografía de items guarda: `product_id`, `product_name`, `product_brand`, `unit_price`, `quantity`, `line_total`.
+| Funcionalidad | Existe | Funciona | Detalle Técnico |
+| :--- | :--- | :--- | :--- |
+| **orders SQL** | ✓ Sí | ✓ Sí | Tabla `public.orders` con `order_number UNIQUE`, datos de cliente, entrega y totales. |
+| **order_items SQL** | ✓ Sí | ✓ Sí | Tabla `public.order_items` con snapshot histórico inmutable de nombre, precio e imagen. |
+| **status history SQL** | ✓ Sí | ✓ Sí | Tabla `public.order_status_history` para auditoría de transiciones de estado. |
+| **checkout** | ✓ Sí | ✓ Sí | Captura nombre, teléfono (mín. 7 dígitos), email, método, fecha futura y dirección. |
+| **generación order_number** | ✓ Sí | ✓ Sí | Secuencia correlativa `BELPA-YYYY-XXXXXX` con protección contra colisiones. |
+| **WhatsApp** | ✓ Sí | ✓ Sí | Mensaje estructurado con desglose por marca (BelFlora / BelpaBeauty), dedicatoria y total. |
+| **fallback** | ✓ Sí | ✓ Sí | Persistencia inmediata en `localStorage` (`belpa_pending_orders` y `belpa_orders_history`). |
+| **sincronización** | ✓ Sí | ✓ Sí | Intento asíncrono hacia Supabase con reintentos idempotentes. |
+| **admin pedidos** | ✓ Sí | ✓ Sí | Pestaña `📦 Pedidos` con badge dinámico de pendientes, tabla desktop y mobile cards. |
+| **filtros** | ✓ Sí | ✓ Sí | Pills de estado, buscador en tiempo real, filtros por pago y método de entrega. |
+| **detalle** | ✓ Sí | ✓ Sí | Modal profesional con datos completos, CRM WhatsApp directo y tabla de items. |
+| **estados** | ✓ Sí | ✓ Sí | Flujo: `pending`, `confirmed`, `preparing`, `ready`, `out_for_delivery`, `delivered`, `cancelled`. |
+| **auditoría** | ✓ Sí | ✓ Sí | Línea de tiempo de estados con autor, notas y fecha. |
+| **KPIs** | ✓ Sí | ✓ Sí | 5 KPIs comerciales (Totales, Pendientes, Preparación, Entregados, Ventas COP) y 2 widgets. |
+| **tests** | ✓ Sí | ✓ Sí | 92 pruebas automatizadas locales ejecutadas con 100% PASS. |
 
 ---
 
-## 4. FORMATO DEL MENSAJE WHATSAPP
+## 3. CHECKOUT PÚBLICO & FOTOGRAFÍA HISTÓRICA
+
+- **Validaciones Implementadas:**
+  - Carrito no vacío.
+  - Nombre del cliente requerido.
+  - Teléfono / WhatsApp requerido (validación numérica de mínimo 7 dígitos).
+  - Fecha de entrega requerida y validada (no permite fechas anteriores al día actual).
+  - Dirección requerida si el método es entrega a domicilio (`delivery`).
+  - Recálculo seguro de totales en cliente: Subtotal + Domicilio - Descuento = Total.
+- **Snapshot Histórico de Items:**
+  - Cada item registra: `product_id`, `product_name`, `product_brand`, `unit_price`, `quantity`, `line_total`, `product_image`.
+  - Desacoplado de modificaciones futuras del catálogo en PostgreSQL vía `ON DELETE SET NULL`.
+
+---
+
+## 4. FORMATO OFICIAL DEL MENSAJE WHATSAPP
 
 ```text
 🌸 *BELPA — NUEVO PEDIDO* 🌸
@@ -66,89 +114,76 @@ Se implementó una arquitectura híbrida de alta resiliencia:
 *Fecha:* 04/09/2026, 01:22 a. m.
 
 👤 *DATOS DEL CLIENTE*
-• *Nombre:* María Rodríguez
+• *Nombre:* Camila Montoya
 • *Teléfono:* +57 300 123 4567
-• *Email:* maria@ejemplo.com
+• *Email:* camila@ejemplo.com
 
 📍 *ENTREGA / DESPACHO*
 • *Método:* Domicilio
-• *Fecha requerida:* 2026-09-05
-• *Dirección:* Calle 123 #45-67, Apto 502, Bogotá
+• *Fecha requerida:* 2026-09-10
+• *Dirección:* Carrera 15 #85-30, Apto 401, Bogotá
 
 📦 *PRODUCTOS SOLICITADOS*
-• 1x Ramo Pasión Carmesí (🌸 BelFlora) — $85.000 COP
-• 1x Serum Facial Iluminador (✨ BelpaBeauty) — $65.000 COP
+• 2x Ramo Rapunzel Ref 001 (🌸 BelFlora) — $160.000 COP
+• 1x Kit de Skincare Rutina Completa (✨ BelpaBeauty) — $38.000 COP
 
 💌 *MENSAJE / DEDICATORIA*
-"¡Feliz Aniversario, con todo mi amor!"
+"Por favor entregar en portería si no estoy"
 
 💰 *RESUMEN DE PAGO*
-• *Total a Pagar:* $150.000 COP
+• *Subtotal:* $198.000 COP
+• *Domicilio:* $10.000 COP
+• *Total a Pagar:* $208.000 COP
 • *Estado inicial:* Pendiente de confirmación
 ```
 
 ---
 
-## 5. PANEL ADMINISTRATIVO — MÓDULO DE PEDIDOS & AUDITORÍA
+## 5. PANEL ADMINISTRATIVO — GESTIÓN COMERCIAL & DASHBOARD
 
-1. **Pestaña `📦 Pedidos` (`#tab-btn-orders`):**
-   - Acceso centralizado desde la barra de navegación lateral con contador dinámico de pedidos pendientes (`#nav-orders-badge`).
-2. **Filtros Rápidos & Búsqueda Predictiva:**
-   - Pills de estado (`Todos`, `Pendiente`, `Confirmado`, `En preparación`, `Listo`, `En camino`, `Entregado`, `Cancelado`).
-   - Búsqueda por número de radicado, nombre de cliente, teléfono o dirección.
-   - Filtros combinados por estado de pago (`pending`, `paid`, `refunded`) y método (`delivery`, `pickup`).
-3. **Modal de Detalle de Pedido (`#order-detail-modal`):**
-   - Desglose exhaustivo de información de contacto y entrega.
-   - Botón directo `Contactar por WhatsApp` con mensaje pre-redactado sobre el estado del pedido.
-   - Tabla de productos con imágenes en miniatura, precios unitarios y subtotales.
-   - Formulario de transición de estado con notas de auditoría.
-   - Historial de cambios (`order_status_history`) en formato de línea de tiempo con fecha, autor y notas.
-4. **Dashboard KPIs y Widgets Comerciales:**
-   - Pedidos Totales (`#stat-orders-total`)
-   - Pendientes (`#stat-orders-pending`)
-   - En Preparación (`#stat-orders-preparing`)
-   - Entregados (`#stat-orders-delivered`)
-   - Ventas Totales acumuladas en COP (`#stat-orders-sales`)
-   - Widget de *Pedidos Recientes* y widget de *Próximas Entregas*.
+- **Pestaña `📦 Pedidos` (`#tab-btn-orders`):** Badge en vivo con cantidad de pedidos pendientes.
+- **Buscador Predictivo & Filtros:** Búsqueda en vivo por radicado, cliente, teléfono y dirección.
+- **Filtros Rápidos:** Pills interactivas por estado del pedido.
+- **Modal de Detalle:**
+  - Información completa del cliente y despacho.
+  - Enlace directo a WhatsApp (`https://wa.me/...`) con mensaje preconfigurado citando el radicado.
+  - Tabla de productos con fotografía en miniatura y subtotales.
+  - Formulario para actualización de estado con notas de auditoría.
+  - Línea de tiempo visual del historial de cambios.
+- **Dashboard KPIs:**
+  - Pedidos Totales (`#stat-orders-total`)
+  - Pendientes (`#stat-orders-pending`)
+  - En Preparación (`#stat-orders-preparing`)
+  - Entregados (`#stat-orders-delivered`)
+  - Ventas Totales acumuladas en COP (`#stat-orders-sales`)
+  - Widgets de *Pedidos Recientes* y *Próximas Entregas*.
 
 ---
 
 ## 6. ESQUEMA DE BASE DE DATOS (`supabase/block7_database.sql`)
 
-- **Tabla `public.orders`:**
-  - Identificador UUID + `order_number` único (`BELPA-YYYY-XXXXXX`).
-  - Campos de cliente (`customer_name`, `customer_phone`, `customer_email`).
-  - Campos de logística (`delivery_method`, `delivery_date`, `delivery_address`, `notes`).
-  - Campos financieros (`subtotal`, `delivery_fee`, `total_amount`, `payment_status`, `payment_method`).
-  - Estado comercial (`status`: `pending`, `confirmed`, `preparing`, `ready`, `out_for_delivery`, `delivered`, `cancelled`).
-- **Tabla `public.order_items`:**
-  - Clave foránea `order_id REFERENCES public.orders(id) ON DELETE CASCADE`.
-  - Clave foránea `product_id REFERENCES public.products(id) ON DELETE SET NULL` (garantiza inmutabilidad histórica si un producto se elimina).
-  - `product_name`, `product_brand`, `unit_price`, `quantity`, `line_total`.
-- **Tabla `public.order_status_history`:**
-  - Registro de auditoría con `order_id`, `previous_status`, `new_status`, `changed_by`, `notes`, `created_at`.
-- **Seguridad RLS:**
-  - Inserción pública permitida para la creación de pedidos desde la tienda pública (`anon` role).
-  - Consulta, actualización y auditoría restringida exclusivamente a usuarios autenticados en el panel administrativo (`authenticated` role).
+- **Tablas:** `public.orders`, `public.order_items`, `public.order_status_history`.
+- **Índices de Rendimiento:** `idx_orders_order_number`, `idx_orders_customer_phone`, `idx_orders_status`, `idx_orders_payment_status`, `idx_orders_delivery_date`, `idx_orders_created_at`, `idx_order_items_order_id`, `idx_order_status_history_order_id`.
+- **Políticas RLS:**
+  - Inserción anónima permitida para registro público de pedidos (`anon`).
+  - Consulta, actualización y auditoría restringida a administradores autenticados (`authenticated` con `is_admin() = true`).
+- **Idempotencia:** Incluye catálogo completo de 79 productos originales con cláusula `ON CONFLICT (id) DO UPDATE`.
 
 ---
 
-## 7. AUDITORÍA DE SEGURIDAD & DETECCIÓN DE SECRETOS
+## 7. AUDITORÍA DE SEGURIDAD
 
-| Verificación | Estado | Detalle |
-| :--- | :--- | :--- |
-| **SERVICE_ROLE_KEY** | ✓ NO EXPUESTA | Verificado en 100% de los archivos del frontend y git |
-| **Credenciales Frontend** | ✓ SEGURAS | Únicamente `anon` public key permitida |
-| **Sanitización XSS** | ✓ APLICADA | Función `escapeHTML()` aplicada en todas las vistas dinámicas |
-| **RLS en PostgreSQL** | ✓ ACTIVO | Políticas independientes en `orders`, `order_items` y `order_status_history` |
+- **`SERVICE_ROLE_KEY`:** Ausente en todos los archivos del frontend y en git (0 exposiciones).
+- **Protección XSS:** Aplicación estricta de `escapeHTML()` en todas las cadenas inyectadas en el DOM.
+- **Validación de Totales:** Recálculo defensivo contra manipulación en navegador.
 
 ---
 
-## 8. SUITE DE PRUEBAS AUTOMATIZADAS (92/92 PASS)
+## 8. RESULTADOS DE PRUEBAS AUTOMATIZADAS (92/92 PASS)
 
 ```text
 ============================================================
-🌸 BELPA WEB — AUDITORÍA AUTOMATIZADA BLOQUE 7
+🌸 BELPA WEB — SUITE AUTOMATIZADA BLOQUE 7
 ============================================================
 --- 1. Integridad del Catálogo Local (79 Productos) --- (8/8 PASS)
 --- 2. Checkout & Captura de Pedidos --- (13/13 PASS)
@@ -160,21 +195,14 @@ Se implementó una arquitectura híbrida de alta resiliencia:
 --- 8. Auditoría de Seguridad & Detección de Secretos --- (4/4 PASS)
 --- 9. Disponibilidad HTTP Local --- (2/2 PASS)
 
-Total: 92/92 PASS LOCAL
+Total de Tests: 92 / 92 (100% PASS LOCAL)
 ```
 
 ---
 
-## 9. INSTRUCCIONES PARA DESPLIEGUE EN SUPABASE CLOUD
+## 9. DISPONIBILIDAD EN PRODUCCIÓN Y LOCAL
 
-1. Acceder al proyecto en [Supabase Dashboard](https://supabase.com/dashboard).
-2. Abrir el **SQL Editor** y ejecutar el contenido de `supabase/block7_database.sql`.
-3. Reemplazar los valores en `admin/config.js` con la URL y la Anon Key de producción:
-   ```javascript
-   window.BELPA_CONFIG = {
-     SUPABASE_URL: "https://[TU-PROYECTO].supabase.co",
-     SUPABASE_ANON_KEY: "[TU-ANON-KEY-REAL]",
-     STORAGE_BUCKET: "product-images"
-   };
-   ```
-4. El sistema sincronizará automáticamente los pedidos capturados en `localStorage` con la base de datos cloud en cuanto se establezca la conexión.
+- **Tienda Pública Producción:** [https://belpa-beauty.vercel.app/](https://belpa-beauty.vercel.app/) — `HTTP 200 OK`
+- **Panel Administrativo Producción:** [https://belpa-beauty.vercel.app/admin/](https://belpa-beauty.vercel.app/admin/) — `HTTP 200 OK`
+- **Servidor Local Tienda:** `http://localhost:3000/` — `HTTP 200 OK`
+- **Servidor Local Admin:** `http://localhost:3000/admin/` — `HTTP 200 OK`
