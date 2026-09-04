@@ -89,6 +89,9 @@
                 <button type="button" class="nav-tab-btn" id="tab-btn-catalog" data-tab="catalog" role="tab" aria-selected="false" aria-controls="view-catalog">
                     🛍️ Gestión de Catálogo
                 </button>
+                <button type="button" class="nav-tab-btn" id="tab-btn-orders" data-tab="orders" role="tab" aria-selected="false" aria-controls="view-orders">
+                    📦 Pedidos (<span id="nav-orders-badge">0</span>)
+                </button>
             </div>
 
             <div class="admin-nav-actions">
@@ -227,9 +230,85 @@
                     </div>
                 </div>
 
+                
+                <!-- Tarjetas de KPIs Comerciales y Pedidos (Bloque 7) -->
+                <div class="stats-section-title" style="margin-top:24px; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+                    <span style="font-size:1.1rem;">📦</span>
+                    <h3 style="font-size:1.05rem; font-family:var(--font-serif); color:var(--burgundy-primary); margin:0;">Métricas Comerciales & Pedidos</h3>
+                </div>
+                <div class="stats-grid stats-grid-orders" style="margin-bottom:24px;">
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span>Pedidos Registrados</span>
+                            <h3 id="stat-orders-total">0</h3>
+                            <small class="stat-note">Histórico total</small>
+                        </div>
+                        <div class="stat-icon" aria-hidden="true">📦</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span>Pendientes</span>
+                            <h3 id="stat-orders-pending" style="color:#D9480F;">0</h3>
+                            <small class="stat-note">Por confirmar</small>
+                        </div>
+                        <div class="stat-icon" aria-hidden="true">🟡</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span>En Preparación</span>
+                            <h3 id="stat-orders-preparing" style="color:#7950F2;">0</h3>
+                            <small class="stat-note">En taller artesanal</small>
+                        </div>
+                        <div class="stat-icon" aria-hidden="true">🧵</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span>Entregados</span>
+                            <h3 id="stat-orders-delivered" style="color:var(--green-success);">0</h3>
+                            <small class="stat-note">Completados con éxito</small>
+                        </div>
+                        <div class="stat-icon" aria-hidden="true">🟢</div>
+                    </div>
+
+                    <div class="stat-card card-highlight">
+                        <div class="stat-info">
+                            <span>Ventas Registradas</span>
+                            <h3 id="stat-orders-sales" style="font-size:1.35rem; color:var(--burgundy-primary);">$0</h3>
+                            <small class="stat-note">Total pedidos tienda</small>
+                        </div>
+                        <div class="stat-icon" aria-hidden="true">💳</div>
+                    </div>
+                </div>
+
                 <!-- Paneles de Análisis Rápido y Alertas -->
                 <div class="dashboard-widgets-grid">
                     
+                    
+                    <!-- Widget: Últimos Pedidos Recibidos (Bloque 7) -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h4>📦 Últimos Pedidos Recibidos</h4>
+                            <button type="button" class="link-btn" id="btn-view-all-orders">Ver todos ›</button>
+                        </div>
+                        <div class="widget-body" id="dashboard-recent-orders-list">
+                            <div class="empty-widget-state">No hay pedidos registrados aún.</div>
+                        </div>
+                    </div>
+
+                    <!-- Widget: Próximas Entregas (Bloque 7) -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h4>📅 Próximas Entregas Programadas</h4>
+                            <button type="button" class="link-btn" id="btn-view-delivery-orders">Ver agenda ›</button>
+                        </div>
+                        <div class="widget-body" id="dashboard-upcoming-deliveries-list">
+                            <div class="empty-widget-state">Sin entregas pendientes en agenda.</div>
+                        </div>
+                    </div>
+
                     <!-- Widget: Alertas de Calidad -->
                     <div class="widget-card">
                         <div class="widget-header">
@@ -282,6 +361,135 @@
                         </div>
                     </div>
 
+                </div>
+
+            </div>
+
+            
+            <!-- =============================================================
+                 VISTA C: GESTIÓN DE PEDIDOS & COMERCIAL (BLOQUE 7)
+                 ============================================================= -->
+            <div id="view-orders" class="admin-view" style="display:none;" role="tabpanel" aria-labelledby="tab-btn-orders">
+                
+                <div class="dashboard-header-banner">
+                    <div>
+                        <h1 class="view-title">Gestión Comercial & Pedidos 📦</h1>
+                        <p class="view-subtitle">Seguimiento de pedidos, estados de entrega, trazabilidad y atención por WhatsApp.</p>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <button type="button" class="btn-admin-secondary btn-sm" id="btn-refresh-orders">
+                            <span>🔄 Actualizar Pedidos</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pills de Filtro Rápido por Estado -->
+                <div class="order-status-quick-pills" style="margin-bottom:18px; display:flex; flex-wrap:wrap; gap:8px;">
+                    <button type="button" class="order-quick-pill active" data-order-status="all">Todos (<span id="quick-count-all">0</span>)</button>
+                    <button type="button" class="order-quick-pill status-pending" data-order-status="pending">🟡 Pendientes (<span id="quick-count-pending">0</span>)</button>
+                    <button type="button" class="order-quick-pill status-confirmed" data-order-status="confirmed">🔵 Confirmados (<span id="quick-count-confirmed">0</span>)</button>
+                    <button type="button" class="order-quick-pill status-preparing" data-order-status="preparing">🟣 En Preparación (<span id="quick-count-preparing">0</span>)</button>
+                    <button type="button" class="order-quick-pill status-ready" data-order-status="ready">✨ Listos (<span id="quick-count-ready">0</span>)</button>
+                    <button type="button" class="order-quick-pill status-out" data-order-status="out_for_delivery">🛵 En Camino (<span id="quick-count-out">0</span>)</button>
+                    <button type="button" class="order-quick-pill status-delivered" data-order-status="delivered">🟢 Entregados (<span id="quick-count-delivered">0</span>)</button>
+                    <button type="button" class="order-quick-pill status-cancelled" data-order-status="cancelled">🔴 Cancelados (<span id="quick-count-cancelled">0</span>)</button>
+                </div>
+
+                <!-- Toolbar de Filtros de Pedidos -->
+                <div class="toolbar-card">
+                    <div class="toolbar-filters-grid">
+                        <div class="search-input-wrapper">
+                            <span class="search-icon" aria-hidden="true">🔍</span>
+                            <input type="text" id="orders-search-input" placeholder="Buscar por # pedido, cliente, teléfono..." aria-label="Buscar pedidos">
+                            <button type="button" id="btn-clear-orders-search" class="search-clear-btn" style="display:none;" title="Limpiar búsqueda">✕</button>
+                        </div>
+
+                        <select id="orders-filter-status" class="form-select" aria-label="Filtrar por estado de pedido">
+                            <option value="all">Todos los Estados</option>
+                            <option value="pending">🟡 Pendiente</option>
+                            <option value="confirmed">🔵 Confirmado</option>
+                            <option value="preparing">🟣 En Preparación</option>
+                            <option value="ready">✨ Listo</option>
+                            <option value="out_for_delivery">🛵 En Camino</option>
+                            <option value="delivered">🟢 Entregado</option>
+                            <option value="cancelled">🔴 Cancelado</option>
+                        </select>
+
+                        <select id="orders-filter-payment" class="form-select" aria-label="Filtrar por estado de pago">
+                            <option value="all">Todos los Pagos</option>
+                            <option value="pending">🟡 Pago Pendiente</option>
+                            <option value="paid">🟢 Pagado</option>
+                            <option value="partial">🟠 Abono Parcial</option>
+                            <option value="refunded">⚪ Reembolsado</option>
+                        </select>
+
+                        <select id="orders-filter-delivery" class="form-select" aria-label="Filtrar por método de entrega">
+                            <option value="all">Todos los Métodos</option>
+                            <option value="Cúcuta (Domicilio)">🛵 Domicilio en Cúcuta</option>
+                            <option value="Envío Nacional (Colombia)">✈️ Envío Nacional</option>
+                            <option value="Recoger en punto (Cúcuta)">📍 Recoger en Persona</option>
+                        </select>
+
+                        <select id="orders-sort-by" class="form-select" aria-label="Ordenar pedidos">
+                            <option value="created_desc">🕒 Más Recientes</option>
+                            <option value="created_asc">🕒 Más Antiguos</option>
+                            <option value="delivery_asc">📅 Fecha de Entrega (Próximos)</option>
+                            <option value="total_desc">💵 Mayor Total</option>
+                            <option value="total_asc">💵 Menor Total</option>
+                        </select>
+
+                        <select id="orders-page-size" class="form-select" aria-label="Pedidos por página">
+                            <option value="10">10 por pág.</option>
+                            <option value="20" selected>20 por pág.</option>
+                            <option value="50">50 por pág.</option>
+                            <option value="all">Ver Todos</option>
+                        </select>
+                    </div>
+
+                    <div class="toolbar-actions-row">
+                        <div class="filter-results-counter" id="orders-results-counter">
+                            Cargando pedidos...
+                        </div>
+                        <button type="button" id="btn-reset-orders-filters" class="btn-admin-secondary btn-sm" style="display:none;">
+                            ✕ Limpiar Filtros
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tabla de Pedidos Desktop + Tarjetas Mobile -->
+                <div class="catalog-list-wrapper">
+                    <div class="table-container desktop-table-view">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th># Pedido</th>
+                                    <th>Cliente & Teléfono</th>
+                                    <th>Fecha Entrega</th>
+                                    <th>Método</th>
+                                    <th>Total</th>
+                                    <th style="text-align:center;">Estado Pedido</th>
+                                    <th style="text-align:center;">Estado Pago</th>
+                                    <th>Fecha Registro</th>
+                                    <th style="text-align:right;">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-orders-tbody">
+                                <tr class="skeleton-row"><td colspan="9"><div class="skeleton-bar"></div></td></tr>
+                                <tr class="skeleton-row"><td colspan="9"><div class="skeleton-bar"></div></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mobile-cards-view" id="admin-orders-cards" style="display:none;"></div>
+
+                    <div class="pagination-bar" id="orders-pagination-bar" style="display:none;">
+                        <div class="pagination-info" id="orders-pagination-info">Mostrando pedidos</div>
+                        <div class="pagination-buttons">
+                            <button id="btn-orders-prev-page" class="btn-admin-secondary btn-sm" disabled>‹ Anterior</button>
+                            <span id="orders-pagination-current-page" class="page-badge">1 / 1</span>
+                            <button id="btn-orders-next-page" class="btn-admin-secondary btn-sm" disabled>Siguiente ›</button>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -458,6 +666,162 @@
     <!-- =========================================================================
          3. MODAL DE CREAR / EDITAR PRODUCTO (CRUD AVANZADO & GALERÍA DE IMÁGENES)
          ========================================================================= -->
+    
+    <!-- =========================================================================
+         7. MODAL DE DETALLE DE PEDIDO & TRAZABILIDAD (BLOQUE 7)
+         ========================================================================= -->
+    <div class="modal-overlay" id="order-detail-modal" role="dialog" aria-modal="true" aria-labelledby="detail-order-number">
+        <div class="modal-box modal-box-large">
+            <div class="modal-header" style="align-items:flex-start;">
+                <div>
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;">
+                        <h3 id="detail-order-number" style="font-family:var(--font-serif); color:var(--burgundy-primary); font-size:1.35rem;">BELPA-2026-000001</h3>
+                        <span id="detail-order-status-pill" class="order-status-badge status-pending">Pendiente</span>
+                        <span id="detail-payment-status-pill" class="order-payment-badge payment-pending">Pago Pendiente</span>
+                    </div>
+                    <span id="detail-order-timestamp" style="font-size:0.76rem; color:var(--text-muted);">Registrado el 15 de marzo de 2026, 10:30 am</span>
+                </div>
+                <button class="modal-close" id="order-modal-close-btn" aria-label="Cerrar detalle de pedido">&times;</button>
+            </div>
+
+            <div class="order-detail-body" style="padding-top:10px;">
+                
+                <!-- Grid de Información del Cliente y Entrega -->
+                <div class="order-info-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:18px;">
+                    
+                    <div class="order-info-card" style="background:var(--rose-soft); padding:14px 16px; border-radius:var(--radius-sm);">
+                        <h4 style="font-size:0.85rem; color:var(--burgundy-primary); margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+                            👤 Datos del Cliente
+                        </h4>
+                        <p style="font-size:0.88rem; font-weight:700; color:var(--charcoal-deep);" id="detail-customer-name">Daniela Pérez</p>
+                        <div style="display:flex; align-items:center; gap:8px; margin-top:4px;">
+                            <span style="font-size:0.82rem; color:var(--charcoal-soft);" id="detail-customer-phone">📱 310 123 4567</span>
+                            <a id="detail-whatsapp-btn" href="#" target="_blank" rel="noopener" class="btn-admin-secondary btn-sm" style="padding:2px 8px; font-size:0.74rem;">
+                                💬 Abrir WhatsApp
+                            </a>
+                        </div>
+                        <p style="font-size:0.8rem; color:var(--text-muted); margin-top:4px;" id="detail-customer-email">📧 danielaperez@gmail.com</p>
+                    </div>
+
+                    <div class="order-info-card" style="background:#FFF9DB; padding:14px 16px; border-radius:var(--radius-sm); border:1px solid #FFE066;">
+                        <h4 style="font-size:0.85rem; color:#D9480F; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+                            🚚 Datos de Entrega
+                        </h4>
+                        <p style="font-size:0.85rem; color:var(--charcoal-deep); margin-bottom:4px;">
+                            <strong>Método:</strong> <span id="detail-delivery-method">Domicilio en Cúcuta</span>
+                        </p>
+                        <p style="font-size:0.85rem; color:var(--charcoal-deep); margin-bottom:4px;">
+                            <strong>Fecha Requerida:</strong> <span id="detail-delivery-date" style="font-weight:700; color:var(--burgundy-accent);">15 de marzo de 2026</span>
+                        </p>
+                        <p style="font-size:0.82rem; color:var(--charcoal-soft);">
+                            <strong>Dirección:</strong> <span id="detail-delivery-address">Barrio Los Pinos, Calle 10 #5-20</span>
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Dedicatoria o Notas -->
+                <div id="detail-notes-card" style="background:#F8F9FA; border-left:3px solid var(--burgundy-accent); padding:10px 14px; border-radius:4px; margin-bottom:18px;">
+                    <strong style="font-size:0.82rem; color:var(--burgundy-primary);">💌 Dedicatoria / Nota Especial:</strong>
+                    <p id="detail-client-notes" style="font-size:0.84rem; color:var(--charcoal-deep); margin-top:4px; font-style:italic;">"Feliz cumpleaños mamá, te amamos mucho."</p>
+                </div>
+
+                <!-- Tabla de Productos del Pedido (Items Snapshot) -->
+                <div style="margin-bottom:18px;">
+                    <h4 style="font-size:0.9rem; color:var(--charcoal-deep); margin-bottom:8px;">🛍️ Productos del Pedido:</h4>
+                    <div style="max-height:180px; overflow-y:auto; border:1px solid var(--rose-border); border-radius:var(--radius-sm);">
+                        <table class="admin-table" style="font-size:0.82rem;">
+                            <thead>
+                                <tr>
+                                    <th style="width:48px;">Foto</th>
+                                    <th>Producto</th>
+                                    <th>Marca</th>
+                                    <th style="text-align:right;">Precio Unitario</th>
+                                    <th style="text-align:center;">Cant.</th>
+                                    <th style="text-align:right;">Total Línea</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detail-order-items-tbody">
+                                <!-- Filas de productos inyectadas dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Resumen Financiero -->
+                <div class="order-financial-summary" style="display:flex; justify-content:flex-end; margin-bottom:20px;">
+                    <div style="min-width:240px; background:#FAFAFA; padding:12px 16px; border-radius:var(--radius-sm); border:1px solid #EEEEEE;">
+                        <div style="display:flex; justify-content:space-between; font-size:0.82rem; margin-bottom:4px;">
+                            <span>Subtotal:</span>
+                            <strong id="detail-subtotal">$0 COP</strong>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; font-size:0.82rem; margin-bottom:4px; color:var(--text-muted);">
+                            <span>Domicilio / Envío:</span>
+                            <span id="detail-delivery-cost">$0 COP</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; font-size:1rem; font-weight:800; color:var(--burgundy-primary); border-top:1px dashed #DDD; padding-top:6px; margin-top:6px;">
+                            <span>TOTAL:</span>
+                            <span id="detail-total">$0 COP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Control de Cambio de Estado y Trazabilidad -->
+                <div class="order-status-management" style="background:var(--ivory-bg); padding:16px; border-radius:var(--radius-md); border:1px solid var(--rose-border); margin-bottom:20px;">
+                    <h4 style="font-size:0.88rem; color:var(--burgundy-primary); margin-bottom:10px; display:flex; align-items:center; gap:6px;">
+                        ⚙️ Gestión y Actualización del Estado
+                    </h4>
+                    <form id="order-status-form" style="display:grid; grid-template-columns:1fr 1fr 1.5fr auto; gap:10px; align-items:flex-end;">
+                        <div class="form-group" style="margin:0;">
+                            <label for="detail-select-status" style="font-size:0.76rem;">Estado del Pedido:</label>
+                            <select id="detail-select-status" class="form-select" style="font-size:0.82rem; padding:8px 10px;">
+                                <option value="pending">🟡 Pendiente</option>
+                                <option value="confirmed">🔵 Confirmado</option>
+                                <option value="preparing">🟣 En Preparación</option>
+                                <option value="ready">✨ Listo para Entrega</option>
+                                <option value="out_for_delivery">🛵 En Camino / Domicilio</option>
+                                <option value="delivered">🟢 Entregado</option>
+                                <option value="cancelled">🔴 Cancelado</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" style="margin:0;">
+                            <label for="detail-select-payment" style="font-size:0.76rem;">Estado del Pago:</label>
+                            <select id="detail-select-payment" class="form-select" style="font-size:0.82rem; padding:8px 10px;">
+                                <option value="pending">🟡 Pendiente</option>
+                                <option value="paid">🟢 Pagado Completo</option>
+                                <option value="partial">🟠 Abono Parcial</option>
+                                <option value="refunded">⚪ Reembolsado</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" style="margin:0;">
+                            <label for="detail-status-note" style="font-size:0.76rem;">Nota de Trazabilidad (Opcional):</label>
+                            <input type="text" id="detail-status-note" class="form-input" placeholder="Ej. Cliente transfirió 50% por Nequi..." style="font-size:0.82rem; padding:8px 10px;">
+                        </div>
+
+                        <button type="submit" id="btn-save-order-status" class="btn-admin-primary" style="height:36px; padding:0 16px;">
+                            <span>Actualizar 🌸</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Historial Cronológico de Trazabilidad (Auditoría) -->
+                <div>
+                    <h4 style="font-size:0.85rem; color:var(--charcoal-deep); margin-bottom:10px;">🕒 Historial de Trazabilidad del Pedido:</h4>
+                    <div id="detail-status-history-container" style="max-height:130px; overflow-y:auto; background:#FAFAFA; border:1px solid #EEEEEE; border-radius:var(--radius-sm); padding:10px 14px; font-size:0.78rem;">
+                        <div class="empty-widget-state">Sin cambios de estado registrados.</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer-actions" style="margin-top:16px;">
+                <button type="button" class="btn-admin-secondary" id="detail-modal-close-btn">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
     <div class="modal-overlay" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-product-title">
         <div class="modal-box modal-box-large">
             <div class="modal-header">

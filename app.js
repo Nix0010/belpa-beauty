@@ -1991,14 +1991,22 @@ function formatDateSpanish(dateStr) {
     }
 }
 
-function checkoutWhatsApp() {
+function generateOrderNumber() {
+    const year = new Date().getFullYear();
+    let currentSeq = parseInt(localStorage.getItem('belpa_order_seq') || '0', 10) + 1;
+    localStorage.setItem('belpa_order_seq', currentSeq.toString());
+    const seqStr = String(currentSeq).padStart(6, '0');
+    return `BELPA-${year}-${seqStr}`;
+}
+
+async function checkoutWhatsApp() {
     if (cart.length === 0) {
         showToast('Tu carrito está vacío 🌸', '🛒');
         return;
     }
 
     // Reset error visuals
-    ['cart-client-name', 'cart-delivery-date', 'cart-client-address'].forEach(id => {
+    ['cart-client-name', 'cart-client-phone', 'cart-client-email', 'cart-delivery-date', 'cart-client-address'].forEach(id => {
         const inputEl = document.getElementById(id);
         if (inputEl) inputEl.classList.remove('input-error');
         const errEl = document.getElementById(`err-${id}`);
@@ -2010,6 +2018,10 @@ function checkoutWhatsApp() {
 
     const nameInput = document.getElementById('cart-client-name');
     const clientName = nameInput?.value.trim() || '';
+    const phoneInput = document.getElementById('cart-client-phone');
+    const clientPhone = phoneInput?.value.trim() || '';
+    const emailInput = document.getElementById('cart-client-email');
+    const clientEmail = emailInput?.value.trim() || '';
     const deliveryMethod = document.getElementById('cart-delivery-method')?.value || 'Cúcuta (Domicilio)';
     const dateInput = document.getElementById('cart-delivery-date');
     const deliveryDate = dateInput?.value || '';
@@ -2035,7 +2047,22 @@ function checkoutWhatsApp() {
         return;
     }
 
-    // 2. Validar Fecha de Entrega (Obligatoria si contiene BelFlora)
+    // 2. Validar Teléfono
+    if (clientPhone.length < 7) {
+        if (phoneInput) {
+            phoneInput.classList.add('input-error');
+            phoneInput.focus();
+        }
+        const errPhone = document.getElementById('err-cart-client-phone');
+        if (errPhone) {
+            errPhone.textContent = 'Ingresa un número de teléfono o WhatsApp válido (mínimo 7 dígitos).';
+            errPhone.style.display = 'block';
+        }
+        showToast('Ingresa tu número de teléfono / WhatsApp 📱', '⚠️');
+        return;
+    }
+
+    // 3. Validar Fecha de Entrega (Obligatoria si contiene BelFlora)
     if (hasFlora && !deliveryDate) {
         if (dateInput) {
             dateInput.classList.add('input-error');
@@ -2070,7 +2097,7 @@ function checkoutWhatsApp() {
         }
     }
 
-    // 3. Validar Dirección (Obligatoria si es Domicilio o Envío Nacional)
+    // 4. Validar Dirección (Obligatoria si es Domicilio o Envío Nacional)
     if (!isPickup && clientAddress.length < 3) {
         if (addressInput) {
             addressInput.classList.add('input-error');
@@ -2085,31 +2112,137 @@ function checkoutWhatsApp() {
         return;
     }
 
-    const subtotal = cart.reduce((sum, i) => sum + (i.rawPrice * i.quantity), 0);
+    // Recalcular subtotal con base en datos confiables
+    const subtotal = cart.reduce((sum, i) => sum + (Number(i.rawPrice) * Number(i.quantity)), 0);
+    const orderNumber = generateOrderNumber();
+    const formattedDate = deliveryDate ? formatDateSpanish(deliveryDate) : 'No especificada';
 
-    let message = `¡Hola Belpa! 💖✨\n`;
-    message += `Vengo de su tienda web y quiero realizar el siguiente pedido:\n\n`;
-    message += `🛍️ *RESUMEN DEL PEDIDO:*\n`;
-
-    cart.forEach(item => {
-        const brandTag = item.brand === 'beauty' ? '[💄 BelpaBeauty]' : '[🌹 BelFlora]';
-        message += `• ${brandTag} *${item.quantity}x ${item.name}* (${formatCOP(item.rawPrice * item.quantity)})\n`;
-    });
-
-    message += `\n💰 *Subtotal Productos:* ${formatCOP(subtotal)}\n`;
-    message += `🚚 *Método de Entrega:* ${deliveryMethod}\n`;
+    // Construir mensaje estructurado de WhatsApp
+    let message = `🌸 *BELPA — NUEVO PEDIDO*\n`;
+    message += `📋 *Pedido:* ${orderNumber}\n\n`;
+    message += `👤 *Cliente:* ${clientName}\n`;
+    message += `📱 *Teléfono:* ${clientPhone}\n`;
+    if (clientEmail) message += `📧 *Correo:* ${clientEmail}\n`;
+    message += `\n🚚 *ENTREGA:*\n`;
+    message += `• *Método:* ${deliveryMethod}\n`;
     if (!isPickup && clientAddress) {
-        message += `📍 *Dirección / Ciudad:* ${clientAddress}\n`;
+        message += `• *Dirección:* ${clientAddress}\n`;
     }
     if (deliveryDate) {
-        message += `📅 *Fecha de Entrega:* ${formatDateSpanish(deliveryDate)}\n`;
+        message += `• *Fecha de Entrega:* ${formattedDate}\n`;
     }
-    message += `👤 *Nombre del Cliente:* ${clientName}\n`;
+    message += `\n🛍️ *PRODUCTOS:*\n`;
+
+    const orderItems = [];
+    cart.forEach(item => {
+        const brandTag = item.brand === 'beauty' ? '[💄 BelpaBeauty]' : '[🌹 BelFlora]';
+        const lineTotal = Number(item.rawPrice) * Number(item.quantity);
+        message += `• ${brandTag} *${item.quantity}x ${item.name}* (${formatCOP(lineTotal)})\n`;
+        orderItems.push({
+            product_id: item.id || null,
+            product_name: item.name,
+            product_brand: item.brand || 'flora',
+            unit_price: Number(item.rawPrice),
+            quantity: Number(item.quantity),
+            line_total: lineTotal,
+            product_image: (item.images && item.images[0]) ? item.images[0] : ''
+        });
+    });
+
+    message += `\n💰 *Subtotal:* ${formatCOP(subtotal)}\n`;
+    message += `🚚 *Domicilio:* A coordinar por WhatsApp\n`;
+    message += `💵 *TOTAL:* ${formatCOP(subtotal)}\n`;
+
     if (clientNotes) {
-        message += `💌 *Dedicatoria / Notas:* "${clientNotes}"\n`;
+        message += `\n💌 *Dedicatoria / Notas:* "${clientNotes}"\n`;
     }
     message += `\n¿Me confirman disponibilidad y el valor del envío para coordinar el pago? ¡Muchas gracias! 🌸🎀`;
 
+    // Crear objeto del pedido para almacenamiento local / Supabase
+    const orderRecord = {
+        id: Date.now(),
+        order_number: orderNumber,
+        customer_name: clientName,
+        customer_phone: clientPhone,
+        customer_email: clientEmail,
+        delivery_method: deliveryMethod,
+        delivery_date: deliveryDate || null,
+        delivery_address: clientAddress,
+        client_notes: clientNotes,
+        subtotal: subtotal,
+        delivery_cost: 0,
+        discount: 0,
+        total: subtotal,
+        currency: 'COP',
+        status: 'pending',
+        payment_status: 'pending',
+        source: 'website',
+        whatsapp_message: message,
+        items: orderItems,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+    };
+
+    // Guardar en almacenamiento local offline
+    try {
+        const pendingOrders = JSON.parse(localStorage.getItem('belpa_pending_orders') || '[]');
+        pendingOrders.unshift(orderRecord);
+        localStorage.setItem('belpa_pending_orders', JSON.stringify(pendingOrders));
+
+        const ordersHistory = JSON.parse(localStorage.getItem('belpa_orders_history') || '[]');
+        ordersHistory.unshift(orderRecord);
+        localStorage.setItem('belpa_orders_history', JSON.stringify(ordersHistory));
+    } catch (err) {
+        console.warn('Aviso localStorage pedido:', err);
+    }
+
+    // Intentar sincronización asíncrona con Supabase si está disponible
+    if (typeof window !== 'undefined' && window.supabase && window.BELPA_CONFIG && window.BELPA_CONFIG.isConfigured()) {
+        try {
+            const client = window.supabase.createClient(window.BELPA_CONFIG.SUPABASE_URL, window.BELPA_CONFIG.SUPABASE_ANON_KEY);
+            const { data: insertedOrder, error: orderErr } = await client
+                .from('orders')
+                .insert([{
+                    order_number: orderRecord.order_number,
+                    customer_name: orderRecord.customer_name,
+                    customer_phone: orderRecord.customer_phone,
+                    customer_email: orderRecord.customer_email,
+                    delivery_method: orderRecord.delivery_method,
+                    delivery_date: orderRecord.delivery_date,
+                    delivery_address: orderRecord.delivery_address,
+                    client_notes: orderRecord.client_notes,
+                    subtotal: orderRecord.subtotal,
+                    delivery_cost: orderRecord.delivery_cost,
+                    discount: orderRecord.discount,
+                    total: orderRecord.total,
+                    currency: orderRecord.currency,
+                    status: orderRecord.status,
+                    payment_status: orderRecord.payment_status,
+                    source: orderRecord.source,
+                    whatsapp_message: orderRecord.whatsapp_message
+                }])
+                .select();
+
+            if (!orderErr && insertedOrder && insertedOrder[0]) {
+                const orderId = insertedOrder[0].id;
+                const itemsToInsert = orderItems.map(it => ({
+                    order_id: orderId,
+                    product_id: it.product_id,
+                    product_name: it.product_name,
+                    product_brand: it.product_brand,
+                    unit_price: it.unit_price,
+                    quantity: it.quantity,
+                    line_total: it.line_total,
+                    product_image: it.product_image
+                }));
+                await client.from('order_items').insert(itemsToInsert);
+            }
+        } catch (e) {
+            console.warn('Sincronización Supabase Cloud en segundo plano:', e.message);
+        }
+    }
+
+    showToast(`¡Pedido ${orderNumber} registrado! Redirigiendo a WhatsApp 📲`, '🌸');
     window.open(`${whatsappLinkBase}?text=${encodeURIComponent(message)}`, '_blank');
 }
 

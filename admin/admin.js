@@ -6,6 +6,11 @@
 
 let supabase = null;
 let allProducts = [];
+let allOrders = [];
+let currentOrdersPage = 1;
+let ordersPageSize = 20;
+let activeOrderQuickFilter = "all";
+let activeDetailOrderId = null;
 let currentUser = null;
 let currentPage = 1;
 let pageSize = 20;
@@ -98,6 +103,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initEventListeners();
     initTabNavigation();
     initAccessibilityKeyboard();
+    initOrdersListeners();
     await checkSession();
 });
 
@@ -223,6 +229,7 @@ function showDashboard(user) {
     }
 
     loadProducts();
+    loadOrders();
 }
 
 // 2. SISTEMA DE TABS (DASHBOARD / CATÁLOGO)
@@ -264,6 +271,29 @@ function initTabNavigation() {
         await loadProducts();
     });
 
+    
+    document.getElementById('btn-view-all-orders')?.addEventListener('click', () => {
+        switchAdminTab('orders');
+    });
+
+    document.getElementById('btn-view-delivery-orders')?.addEventListener('click', () => {
+        switchAdminTab('orders');
+        const sortSel = document.getElementById('orders-sort-by');
+        if (sortSel) {
+            sortSel.value = 'delivery_asc';
+            renderOrdersTable();
+        }
+    });
+
+    document.getElementById('btn-refresh-orders')?.addEventListener('click', async () => {
+        showAdminToast('Actualizando pedidos...');
+        await loadOrders();
+    });
+
+    document.getElementById('btn-reset-orders-filters')?.addEventListener('click', () => {
+        resetAllOrdersFilters();
+    });
+
     document.getElementById('btn-sync-catalog')?.addEventListener('click', async () => {
         const syncBtn = document.getElementById('btn-sync-catalog');
         if (syncBtn) syncBtn.classList.add('spinning');
@@ -286,13 +316,14 @@ window.switchAdminTab = function(tabName) {
 
     const viewDash = document.getElementById('view-dashboard');
     const viewCat = document.getElementById('view-catalog');
+    const viewOrders = document.getElementById('view-orders');
 
-    if (tabName === 'dashboard') {
-        if (viewDash) viewDash.style.display = 'block';
-        if (viewCat) viewCat.style.display = 'none';
-    } else {
-        if (viewDash) viewDash.style.display = 'none';
-        if (viewCat) viewCat.style.display = 'block';
+    if (viewDash) viewDash.style.display = tabName === 'dashboard' ? 'block' : 'none';
+    if (viewCat) viewCat.style.display = tabName === 'catalog' ? 'block' : 'none';
+    if (viewOrders) viewOrders.style.display = tabName === 'orders' ? 'block' : 'none';
+
+    if (tabName === 'orders') {
+        loadOrders();
     }
 };
 
@@ -1741,4 +1772,661 @@ async function executeHardDelete(id) {
         console.error('Error al eliminar:', err);
         alert('Error al eliminar: ' + err.message);
     }
+}
+
+
+// ==========================================================================
+// 15. MÓDULO DE GESTIÓN COMERCIAL & PEDIDOS (BLOQUE 7) 🌸📦
+// ==========================================================================
+
+async function loadOrders() {
+    const tbody = document.getElementById('admin-orders-tbody');
+    if (tbody && allOrders.length === 0) {
+        tbody.innerHTML = '<tr class="skeleton-row"><td colspan="9"><div class="skeleton-bar"></div></td></tr>' +
+                          '<tr class="skeleton-row"><td colspan="9"><div class="skeleton-bar"></div></td></tr>';
+    }
+
+    try {
+        if (supabase && window.BELPA_CONFIG && window.BELPA_CONFIG.isConfigured()) {
+            const { data, error } = await supabase
+                .from('orders')
+                .select('*, order_items(*)')
+                .order('created_at', { ascending: false });
+
+            if (error) throw error;
+            if (Array.isArray(data)) {
+                allOrders = data.map(o => ({
+                    ...o,
+                    items: o.order_items || []
+                }));
+            } else {
+                loadLocalOrdersFallback();
+            }
+        } else {
+            loadLocalOrdersFallback();
+        }
+
+        updateDashboardOrderMetrics();
+        renderOrdersTable();
+    } catch (err) {
+        console.warn('Aviso carga órdenes Supabase, usando local:', err);
+        loadLocalOrdersFallback();
+        updateDashboardOrderMetrics();
+        renderOrdersTable();
+    }
+}
+
+function loadLocalOrdersFallback() {
+    try {
+        const pending = JSON.parse(localStorage.getItem('belpa_pending_orders') || '[]');
+        const history = JSON.parse(localStorage.getItem('belpa_orders_history') || '[]');
+        
+        // Unificar pedidos evitando duplicados por order_number
+        const map = new Map();
+        [...pending, ...history].forEach(o => {
+            if (o && o.order_number && !map.has(o.order_number)) {
+                map.set(o.order_number, o);
+            }
+        });
+
+        allOrders = Array.from(map.values());
+
+        // Si no hay pedidos locales aún, proveer un estado limpio listo para compras
+        if (allOrders.length === 0) {
+            allOrders = [];
+        }
+    } catch (e) {
+        console.error('Error al leer pedidos locales:', e);
+        allOrders = [];
+    }
+}
+
+function updateDashboardOrderMetrics() {
+    const totalEl = document.getElementById('stat-orders-total');
+    const pendingEl = document.getElementById('stat-orders-pending');
+    const prepEl = document.getElementById('stat-orders-preparing');
+    const delivEl = document.getElementById('stat-orders-delivered');
+    const salesEl = document.getElementById('stat-orders-sales');
+    const badgeEl = document.getElementById('nav-orders-badge');
+
+    const total = allOrders.length;
+    const pending = allOrders.filter(o => o.status === 'pending').length;
+    const preparing = allOrders.filter(o => o.status === 'preparing').length;
+    const delivered = allOrders.filter(o => o.status === 'delivered').length;
+    const totalSales = allOrders
+        .filter(o => o.status !== 'cancelled')
+        .reduce((sum, o) => sum + (Number(o.total) || 0), 0);
+
+    if (totalEl) totalEl.textContent = total;
+    if (pendingEl) pendingEl.textContent = pending;
+    if (prepEl) prepEl.textContent = preparing;
+    if (delivEl) delivEl.textContent = delivered;
+    if (salesEl) salesEl.textContent = formatCOP(totalSales);
+    if (badgeEl) badgeEl.textContent = total;
+
+    // Actualizar conteos de Quick Filter Pills
+    const statusCounts = {
+        all: total,
+        pending: pending,
+        confirmed: allOrders.filter(o => o.status === 'confirmed').length,
+        preparing: preparing,
+        ready: allOrders.filter(o => o.status === 'ready').length,
+        out_for_delivery: allOrders.filter(o => o.status === 'out_for_delivery').length,
+        delivered: delivered,
+        cancelled: allOrders.filter(o => o.status === 'cancelled').length
+    };
+
+    const countAllEl = document.getElementById('quick-count-all');
+    if (countAllEl) countAllEl.textContent = statusCounts.all;
+    ['pending', 'confirmed', 'preparing', 'ready', 'delivered', 'cancelled'].forEach(st => {
+        const el = document.getElementById('quick-count-' + st);
+        if (el) el.textContent = statusCounts[st] || 0;
+    });
+    const countOutEl = document.getElementById('quick-count-out');
+    if (countOutEl) countOutEl.textContent = statusCounts.out_for_delivery || 0;
+
+    // Widget: Últimos Pedidos Recibidos (Top 4)
+    const recentOrdersListEl = document.getElementById('dashboard-recent-orders-list');
+    if (recentOrdersListEl) {
+        if (allOrders.length === 0) {
+            recentOrdersListEl.innerHTML = '<div class="empty-widget-state">No hay pedidos registrados aún. 🌸</div>';
+        } else {
+            const sorted = [...allOrders].sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0)).slice(0, 4);
+            recentOrdersListEl.innerHTML = sorted.map(o => {
+                const dateStr = o.created_at ? new Date(o.created_at).toLocaleDateString('es-CO', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' }) : 'Hoy';
+                return '<div class="widget-product-row" style="cursor:pointer;" onclick="openOrderDetailModal(\'' + escapeHTML(o.id || o.order_number) + '\')">' +
+                    '<div class="widget-prod-left">' +
+                        '<div style="font-size:1.4rem;">📦</div>' +
+                        '<div>' +
+                            '<strong style="font-size:0.84rem; color:var(--charcoal-deep); display:block;">' + escapeHTML(o.order_number) + '</strong>' +
+                            '<span style="font-size:0.74rem; color:var(--text-muted);">' + escapeHTML(o.customer_name) + ' • ' + escapeHTML(dateStr) + '</span>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div style="text-align:right;">' +
+                        '<span style="font-size:0.85rem; font-weight:800; color:var(--burgundy-primary); display:block;">' + formatCOP(o.total) + '</span>' +
+                        '<span class="order-status-badge status-' + escapeHTML(o.status) + '" style="font-size:0.65rem;">' + getStatusLabel(o.status) + '</span>' +
+                    '</div>' +
+                '</div>';
+            }).join('');
+        }
+    }
+
+    // Widget: Próximas Entregas Programadas (Top 4)
+    const upcomingListEl = document.getElementById('dashboard-upcoming-deliveries-list');
+    if (upcomingListEl) {
+        const scheduled = allOrders
+            .filter(o => o.delivery_date && o.status !== 'delivered' && o.status !== 'cancelled')
+            .sort((a, b) => new Date(a.delivery_date) - new Date(b.delivery_date))
+            .slice(0, 4);
+
+        if (scheduled.length === 0) {
+            upcomingListEl.innerHTML = '<div class="empty-widget-state">Sin entregas pendientes en agenda. ✨</div>';
+        } else {
+            upcomingListEl.innerHTML = scheduled.map(o => {
+                return '<div class="widget-product-row" style="cursor:pointer;" onclick="openOrderDetailModal(\'' + escapeHTML(o.id || o.order_number) + '\')">' +
+                    '<div class="widget-prod-left">' +
+                        '<div style="font-size:1.4rem;">📅</div>' +
+                        '<div>' +
+                            '<strong style="font-size:0.84rem; color:var(--charcoal-deep); display:block;">' + escapeHTML(o.customer_name) + ' (' + escapeHTML(o.order_number) + ')</strong>' +
+                            '<span style="font-size:0.74rem; color:var(--burgundy-accent); font-weight:700;">Fecha: ' + escapeHTML(o.delivery_date) + '</span>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div style="text-align:right;">' +
+                        '<span class="order-status-badge status-' + escapeHTML(o.status) + '" style="font-size:0.65rem;">' + getStatusLabel(o.status) + '</span>' +
+                    '</div>' +
+                '</div>';
+            }).join('');
+        }
+    }
+}
+
+function getStatusLabel(status) {
+    const map = {
+        pending: '🟡 Pendiente',
+        confirmed: '🔵 Confirmado',
+        preparing: '🟣 En Preparación',
+        ready: '✨ Listo',
+        out_for_delivery: '🛵 En Camino',
+        delivered: '🟢 Entregado',
+        cancelled: '🔴 Cancelado'
+    };
+    return map[status] || status;
+}
+
+function getPaymentStatusLabel(status) {
+    const map = {
+        pending: '🟡 Pendiente',
+        paid: '🟢 Pagado',
+        partial: '🟠 Abono Parcial',
+        refunded: '⚪ Reembolsado'
+    };
+    return map[status] || status;
+}
+
+function renderOrdersTable() {
+    const tbody = document.getElementById('admin-orders-tbody');
+    const cardsContainer = document.getElementById('admin-orders-cards');
+    const resultsCounter = document.getElementById('orders-results-counter');
+    const resetBtn = document.getElementById('btn-reset-orders-filters');
+
+    if (!tbody) return;
+
+    const searchTerm = (document.getElementById('orders-search-input')?.value || '').trim().toLowerCase();
+    const statusFilter = document.getElementById('orders-filter-status')?.value || 'all';
+    const paymentFilter = document.getElementById('orders-filter-payment')?.value || 'all';
+    const deliveryFilter = document.getElementById('orders-filter-delivery')?.value || 'all';
+    const sortBy = document.getElementById('orders-sort-by')?.value || 'created_desc';
+
+    const hasActiveFilters = searchTerm !== '' || statusFilter !== 'all' || paymentFilter !== 'all' || deliveryFilter !== 'all' || activeOrderQuickFilter !== 'all';
+    if (resetBtn) resetBtn.style.display = hasActiveFilters ? 'inline-flex' : 'none';
+
+    let filtered = allOrders.filter(o => {
+        // Quick pill filter
+        if (activeOrderQuickFilter !== 'all' && o.status !== activeOrderQuickFilter) return false;
+
+        // Status dropdown filter
+        if (statusFilter !== 'all' && o.status !== statusFilter) return false;
+
+        // Payment status filter
+        if (paymentFilter !== 'all' && o.payment_status !== paymentFilter) return false;
+
+        // Delivery method filter
+        if (deliveryFilter !== 'all' && o.delivery_method !== deliveryFilter) return false;
+
+        // Search term
+        if (searchTerm) {
+            const numMatch = (o.order_number || '').toLowerCase().includes(searchTerm);
+            const nameMatch = (o.customer_name || '').toLowerCase().includes(searchTerm);
+            const phoneMatch = (o.customer_phone || '').toLowerCase().includes(searchTerm);
+            const emailMatch = (o.customer_email || '').toLowerCase().includes(searchTerm);
+            if (!numMatch && !nameMatch && !phoneMatch && !emailMatch) return false;
+        }
+
+        return true;
+    });
+
+    // Ordenamiento
+    filtered.sort((a, b) => {
+        if (sortBy === 'created_desc') return new Date(b.created_at || 0) - new Date(a.created_at || 0);
+        if (sortBy === 'created_asc') return new Date(a.created_at || 0) - new Date(b.created_at || 0);
+        if (sortBy === 'delivery_asc') return new Date(a.delivery_date || '9999-12-31') - new Date(b.delivery_date || '9999-12-31');
+        if (sortBy === 'total_desc') return (Number(b.total) || 0) - (Number(a.total) || 0);
+        if (sortBy === 'total_asc') return (Number(a.total) || 0) - (Number(b.total) || 0);
+        return 0;
+    });
+
+    const totalOrders = filtered.length;
+    if (resultsCounter) {
+        resultsCounter.textContent = 'Mostrando ' + totalOrders + ' pedido(s) encontrado(s)';
+    }
+
+    const pageSizeVal = document.getElementById('orders-page-size')?.value || '20';
+    ordersPageSize = pageSizeVal === 'all' ? Math.max(1, totalOrders) : Number(pageSizeVal);
+
+    const totalPages = Math.max(1, Math.ceil(totalOrders / ordersPageSize));
+    if (currentOrdersPage > totalPages) currentOrdersPage = totalPages;
+
+    const startIndex = (currentOrdersPage - 1) * ordersPageSize;
+    const paginatedOrders = filtered.slice(startIndex, startIndex + ordersPageSize);
+
+    updateOrdersPaginationUI(totalOrders, totalPages, startIndex, paginatedOrders.length);
+
+    if (paginatedOrders.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:48px 16px; color:var(--text-muted);">' +
+            '<div style="font-size:2rem; margin-bottom:8px;">📦🔍</div>' +
+            '<strong style="font-size:0.95rem; color:var(--charcoal-deep);">No se encontraron pedidos con estos filtros</strong>' +
+            '<p style="font-size:0.82rem; margin-top:4px;">Prueba ajustando el criterio de búsqueda o limpiando los filtros.</p>' +
+            '<button type="button" class="btn-admin-secondary btn-sm" onclick="resetAllOrdersFilters()" style="margin-top:12px;">Limpiar Filtros</button>' +
+        '</td></tr>';
+
+        if (cardsContainer) {
+            cardsContainer.innerHTML = '<div style="text-align:center; padding:32px; color:var(--text-muted);">' +
+                '<p>No se encontraron pedidos con los filtros seleccionados.</p>' +
+                '<button type="button" class="btn-admin-secondary btn-sm" onclick="resetAllOrdersFilters()" style="margin-top:10px;">Limpiar Filtros</button>' +
+            '</div>';
+        }
+        return;
+    }
+
+    tbody.innerHTML = paginatedOrders.map(o => {
+        const createdDateStr = o.created_at ? new Date(o.created_at).toLocaleDateString('es-CO', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit' }) : 'Hoy';
+        const deliveryDateStr = o.delivery_date ? o.delivery_date : 'Inmediata / No esp.';
+        const cleanPhone = (o.customer_phone || '').replace(/[^0-9]/g, '');
+
+        return '<tr data-order-id="' + escapeHTML(o.id || o.order_number) + '">' +
+            '<td>' +
+                '<strong style="color:var(--burgundy-primary); font-family:var(--font-cute); font-size:0.9rem;">' + escapeHTML(o.order_number) + '</strong>' +
+            '</td>' +
+            '<td>' +
+                '<strong style="font-size:0.86rem; color:var(--charcoal-deep);">' + escapeHTML(o.customer_name) + '</strong>' +
+                '<br><small style="color:var(--text-muted);">📱 ' + escapeHTML(o.customer_phone) + '</small>' +
+            '</td>' +
+            '<td style="font-size:0.82rem; color:var(--burgundy-accent); font-weight:700;">' +
+                escapeHTML(deliveryDateStr) +
+            '</td>' +
+            '<td style="font-size:0.78rem; color:var(--charcoal-soft);">' +
+                escapeHTML(o.delivery_method) +
+            '</td>' +
+            '<td>' +
+                '<strong style="color:var(--burgundy-primary); font-size:0.9rem;">' + formatCOP(o.total) + '</strong>' +
+            '</td>' +
+            '<td style="text-align:center;">' +
+                '<span class="order-status-badge status-' + escapeHTML(o.status) + '">' + getStatusLabel(o.status) + '</span>' +
+            '</td>' +
+            '<td style="text-align:center;">' +
+                '<span class="order-payment-badge payment-' + escapeHTML(o.payment_status) + '">' + getPaymentStatusLabel(o.payment_status) + '</span>' +
+            '</td>' +
+            '<td style="font-size:0.75rem; color:var(--text-muted);">' + escapeHTML(createdDateStr) + '</td>' +
+            '<td style="text-align:right;">' +
+                '<div class="table-actions">' +
+                    '<button class="btn-icon" title="Ver Detalle de Pedido" onclick="openOrderDetailModal(\'' + escapeHTML(o.id || o.order_number) + '\')" aria-label="Ver detalle">👁️</button>' +
+                    (cleanPhone ? '<a href="https://wa.me/57' + cleanPhone + '?text=' + encodeURIComponent('Hola ' + o.customer_name + ', te saludamos de Belpa sobre tu pedido ' + o.order_number + ' 🌸') + '" target="_blank" rel="noopener" class="btn-icon" title="Contactar por WhatsApp" aria-label="WhatsApp">💬</a>' : '') +
+                '</div>' +
+            '</td>' +
+        '</tr>';
+    }).join('');
+
+    if (cardsContainer) {
+        cardsContainer.innerHTML = paginatedOrders.map(o => {
+            const cleanPhone = (o.customer_phone || '').replace(/[^0-9]/g, '');
+            const itemsSnippet = Array.isArray(o.items) && o.items.length > 0 
+                ? o.items.map(it => it.quantity + 'x ' + it.product_name).join(', ')
+                : 'Productos del pedido';
+
+            return '<div class="mobile-order-card" data-order-id="' + escapeHTML(o.id || o.order_number) + '">' +
+                '<div class="mobile-order-header">' +
+                    '<div>' +
+                        '<strong style="color:var(--burgundy-primary); font-size:0.95rem;">' + escapeHTML(o.order_number) + '</strong>' +
+                        '<div style="font-size:0.75rem; color:var(--text-muted);">' + escapeHTML(o.customer_name) + ' • 📱 ' + escapeHTML(o.customer_phone) + '</div>' +
+                    '</div>' +
+                    '<span class="order-status-badge status-' + escapeHTML(o.status) + '">' + getStatusLabel(o.status) + '</span>' +
+                '</div>' +
+                '<div class="mobile-order-items-snippet">' + escapeHTML(itemsSnippet) + '</div>' +
+                '<div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">' +
+                    '<div>' +
+                        '<strong style="color:var(--burgundy-primary); font-size:0.95rem;">' + formatCOP(o.total) + '</strong>' +
+                        '<span class="order-payment-badge payment-' + escapeHTML(o.payment_status) + '" style="margin-left:6px;">' + getPaymentStatusLabel(o.payment_status) + '</span>' +
+                    '</div>' +
+                    '<div style="display:flex; gap:6px;">' +
+                        '<button class="btn-admin-secondary btn-sm" onclick="openOrderDetailModal(\'' + escapeHTML(o.id || o.order_number) + '\')">👁️ Ver Detalle</button>' +
+                        (cleanPhone ? '<a href="https://wa.me/57' + cleanPhone + '" target="_blank" rel="noopener" class="btn-admin-secondary btn-sm">💬</a>' : '') +
+                    '</div>' +
+                '</div>' +
+            '</div>';
+        }).join('');
+    }
+}
+
+function updateOrdersPaginationUI(totalItems, totalPages, startIndex, pageCount) {
+    const bar = document.getElementById('orders-pagination-bar');
+    const info = document.getElementById('orders-pagination-info');
+    const pageBadge = document.getElementById('orders-pagination-current-page');
+    const prevBtn = document.getElementById('btn-orders-prev-page');
+    const nextBtn = document.getElementById('btn-orders-next-page');
+
+    if (!bar) return;
+
+    if (totalItems <= ordersPageSize && ordersPageSize !== totalItems) {
+        bar.style.display = 'none';
+        return;
+    }
+
+    bar.style.display = 'flex';
+    if (info) {
+        const start = totalItems > 0 ? startIndex + 1 : 0;
+        const end = startIndex + pageCount;
+        info.textContent = 'Mostrando ' + start + '-' + end + ' de ' + totalItems + ' pedidos';
+    }
+    if (pageBadge) pageBadge.textContent = currentOrdersPage + ' / ' + totalPages;
+    if (prevBtn) prevBtn.disabled = currentOrdersPage <= 1;
+    if (nextBtn) nextBtn.disabled = currentOrdersPage >= totalPages;
+}
+
+window.resetAllOrdersFilters = function() {
+    const searchInput = document.getElementById('orders-search-input');
+    const statusFilter = document.getElementById('orders-filter-status');
+    const paymentFilter = document.getElementById('orders-filter-payment');
+    const deliveryFilter = document.getElementById('orders-filter-delivery');
+    const sortBy = document.getElementById('orders-sort-by');
+
+    if (searchInput) searchInput.value = '';
+    if (statusFilter) statusFilter.value = 'all';
+    if (paymentFilter) paymentFilter.value = 'all';
+    if (deliveryFilter) deliveryFilter.value = 'all';
+    if (sortBy) sortBy.value = 'created_desc';
+
+    activeOrderQuickFilter = 'all';
+    document.querySelectorAll('.order-quick-pill').forEach(p => {
+        p.classList.toggle('active', p.getAttribute('data-order-status') === 'all');
+    });
+
+    currentOrdersPage = 1;
+    renderOrdersTable();
+};
+
+window.openOrderDetailModal = async function(orderIdentifier) {
+    const order = allOrders.find(o => String(o.id) === String(orderIdentifier) || o.order_number === orderIdentifier);
+    if (!order) return;
+
+    activeDetailOrderId = order.id || order.order_number;
+
+    const modal = document.getElementById('order-detail-modal');
+    const numEl = document.getElementById('detail-order-number');
+    const statusPillEl = document.getElementById('detail-order-status-pill');
+    const payPillEl = document.getElementById('detail-payment-status-pill');
+    const timeEl = document.getElementById('detail-order-timestamp');
+
+    const nameEl = document.getElementById('detail-customer-name');
+    const phoneEl = document.getElementById('detail-customer-phone');
+    const emailEl = document.getElementById('detail-customer-email');
+    const waBtn = document.getElementById('detail-whatsapp-btn');
+    const delivMethodEl = document.getElementById('detail-delivery-method');
+    const delivDateEl = document.getElementById('detail-delivery-date');
+    const delivAddrEl = document.getElementById('detail-delivery-address');
+
+    const notesContainer = document.getElementById('detail-notes-card');
+    const notesEl = document.getElementById('detail-client-notes');
+
+    const itemsTbody = document.getElementById('detail-order-items-tbody');
+    const subtotalEl = document.getElementById('detail-subtotal');
+    const costEl = document.getElementById('detail-delivery-cost');
+    const totalEl = document.getElementById('detail-total');
+
+    const selectStatus = document.getElementById('detail-select-status');
+    const selectPayment = document.getElementById('detail-select-payment');
+    const noteInput = document.getElementById('detail-status-note');
+
+    if (numEl) numEl.textContent = order.order_number;
+    if (statusPillEl) {
+        statusPillEl.className = 'order-status-badge status-' + (order.status || 'pending');
+        statusPillEl.textContent = getStatusLabel(order.status);
+    }
+    if (payPillEl) {
+        payPillEl.className = 'order-payment-badge payment-' + (order.payment_status || 'pending');
+        payPillEl.textContent = getPaymentStatusLabel(order.payment_status);
+    }
+    if (timeEl) {
+        timeEl.textContent = 'Registrado: ' + (order.created_at ? new Date(order.created_at).toLocaleString('es-CO') : 'Hoy');
+    }
+
+    if (nameEl) nameEl.textContent = order.customer_name || 'Sin nombre';
+    if (phoneEl) phoneEl.textContent = '📱 ' + (order.customer_phone || 'Sin teléfono');
+    if (emailEl) emailEl.textContent = order.customer_email ? '📧 ' + order.customer_email : 'Sin correo registrado';
+
+    const cleanPhone = (order.customer_phone || '').replace(/[^0-9]/g, '');
+    if (waBtn) {
+        if (cleanPhone) {
+            waBtn.style.display = 'inline-flex';
+            waBtn.href = 'https://wa.me/57' + cleanPhone + '?text=' + encodeURIComponent('Hola ' + order.customer_name + ', te saludamos de Belpa sobre tu pedido ' + order.order_number + ' 🌸');
+        } else {
+            waBtn.style.display = 'none';
+        }
+    }
+
+    if (delivMethodEl) delivMethodEl.textContent = order.delivery_method || 'Cúcuta (Domicilio)';
+    if (delivDateEl) delivDateEl.textContent = order.delivery_date || 'Inmediata / No especificada';
+    if (delivAddrEl) delivAddrEl.textContent = order.delivery_address || 'Recoger en persona';
+
+    if (order.client_notes && order.client_notes.trim()) {
+        if (notesContainer) notesContainer.style.display = 'block';
+        if (notesEl) notesEl.textContent = '"' + order.client_notes + '"';
+    } else {
+        if (notesContainer) notesContainer.style.display = 'none';
+    }
+
+    if (subtotalEl) subtotalEl.textContent = formatCOP(order.subtotal);
+    if (costEl) costEl.textContent = formatCOP(order.delivery_cost || 0);
+    if (totalEl) totalEl.textContent = formatCOP(order.total);
+
+    if (selectStatus) selectStatus.value = order.status || 'pending';
+    if (selectPayment) selectPayment.value = order.payment_status || 'pending';
+    if (noteInput) noteInput.value = '';
+
+    // Render Items Snapshot
+    if (itemsTbody) {
+        const items = Array.isArray(order.items) && order.items.length > 0 ? order.items : [];
+        if (items.length === 0) {
+            itemsTbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:16px; color:var(--text-muted);">Sin productos detallados.</td></tr>';
+        } else {
+            itemsTbody.innerHTML = items.map(it => {
+                const rawImg = it.product_image || 'assets/optimized/product_1.webp';
+                const imgSrc = rawImg.startsWith('http') ? rawImg : '../' + rawImg.replace(/^\.\.\//, '');
+                const brandTag = it.product_brand === 'beauty' ? '💄 Beauty' : '🌹 Flora';
+                const lineTotal = Number(it.line_total) || (Number(it.unit_price) * Number(it.quantity));
+
+                return '<tr>' +
+                    '<td><img src="' + escapeHTML(imgSrc) + '" alt="' + escapeHTML(it.product_name) + '" style="width:36px; height:36px; object-fit:cover; border-radius:6px;" onerror="this.src=\'../assets/optimized/product_1.webp\'"></td>' +
+                    '<td><strong>' + escapeHTML(it.product_name) + '</strong></td>' +
+                    '<td><small style="color:var(--text-muted);">' + escapeHTML(brandTag) + '</small></td>' +
+                    '<td style="text-align:right;">' + formatCOP(it.unit_price) + '</td>' +
+                    '<td style="text-align:center; font-weight:700;">' + Number(it.quantity) + '</td>' +
+                    '<td style="text-align:right; font-weight:800; color:var(--burgundy-primary);">' + formatCOP(lineTotal) + '</td>' +
+                '</tr>';
+            }).join('');
+        }
+    }
+
+    renderOrderStatusHistory(order);
+
+    if (modal) modal.classList.add('open');
+};
+
+function renderOrderStatusHistory(order) {
+    const historyContainer = document.getElementById('detail-status-history-container');
+    if (!historyContainer) return;
+
+    const history = Array.isArray(order.status_history) ? order.status_history : [];
+    if (history.length === 0) {
+        historyContainer.innerHTML = '<div class="empty-widget-state">Pedido registrado en estado inicial: <strong>' + getStatusLabel(order.status) + '</strong></div>';
+        return;
+    }
+
+    historyContainer.innerHTML = history.map(h => {
+        const timeStr = h.created_at ? new Date(h.created_at).toLocaleString('es-CO') : 'Reciente';
+        return '<div class="order-history-item">' +
+            '<div>' +
+                '<div class="order-history-left">' +
+                    '<strong>' + getStatusLabel(h.old_status) + ' → ' + getStatusLabel(h.new_status) + '</strong>' +
+                    '<span style="color:var(--text-muted);">por ' + escapeHTML(h.changed_by || 'Admin') + '</span>' +
+                '</div>' +
+                (h.note ? '<div class="order-history-note">Nota: "' + escapeHTML(h.note) + '"</div>' : '') +
+            '</div>' +
+            '<span style="color:var(--text-muted); font-size:0.7rem;">' + escapeHTML(timeStr) + '</span>' +
+        '</div>';
+    }).join('');
+}
+
+function initOrdersListeners() {
+    // Quick filter pills
+    document.querySelectorAll('.order-quick-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+            document.querySelectorAll('.order-quick-pill').forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            activeOrderQuickFilter = pill.getAttribute('data-order-status') || 'all';
+            currentOrdersPage = 1;
+            renderOrdersTable();
+        });
+    });
+
+    // Search and filters
+    const searchInput = document.getElementById('orders-search-input');
+    const clearBtn = document.getElementById('btn-clear-orders-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            currentOrdersPage = 1;
+            renderOrdersTable();
+        });
+    }
+    if (clearBtn && searchInput) {
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            currentOrdersPage = 1;
+            renderOrdersTable();
+        });
+    }
+
+    ['orders-filter-status', 'orders-filter-payment', 'orders-filter-delivery', 'orders-sort-by', 'orders-page-size'].forEach(id => {
+        document.getElementById(id)?.addEventListener('change', () => {
+            currentOrdersPage = 1;
+            renderOrdersTable();
+        });
+    });
+
+    document.getElementById('btn-orders-prev-page')?.addEventListener('click', () => {
+        if (currentOrdersPage > 1) {
+            currentOrdersPage--;
+            renderOrdersTable();
+        }
+    });
+
+    document.getElementById('btn-orders-next-page')?.addEventListener('click', () => {
+        currentOrdersPage++;
+        renderOrdersTable();
+    });
+
+    // Modal Close
+    document.getElementById('order-modal-close-btn')?.addEventListener('click', closeOrderDetailModal);
+    document.getElementById('detail-modal-close-btn')?.addEventListener('click', closeOrderDetailModal);
+
+    // Form Actualizar Estado
+    const statusForm = document.getElementById('order-status-form');
+    if (statusForm) {
+        statusForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (!activeDetailOrderId) return;
+
+            const order = allOrders.find(o => String(o.id) === String(activeDetailOrderId) || o.order_number === activeDetailOrderId);
+            if (!order) return;
+
+            const newStatus = document.getElementById('detail-select-status')?.value || order.status;
+            const newPayment = document.getElementById('detail-select-payment')?.value || order.payment_status;
+            const note = document.getElementById('detail-status-note')?.value.trim() || '';
+            const submitBtn = document.getElementById('btn-save-order-status');
+
+            const oldStatus = order.status;
+            const now = new Date().toISOString();
+
+            try {
+                if (submitBtn) submitBtn.disabled = true;
+
+                const historyEntry = {
+                    old_status: oldStatus,
+                    new_status: newStatus,
+                    changed_by: currentUser?.email || 'admin@belpa.co',
+                    note: note,
+                    created_at: now
+                };
+
+                if (!Array.isArray(order.status_history)) order.status_history = [];
+                order.status_history.unshift(historyEntry);
+                order.status = newStatus;
+                order.payment_status = newPayment;
+                order.updated_at = now;
+
+                if (supabase && window.BELPA_CONFIG && window.BELPA_CONFIG.isConfigured()) {
+                    const { error: updErr } = await supabase
+                        .from('orders')
+                        .update({ status: newStatus, payment_status: newPayment, updated_at: now })
+                        .eq('order_number', order.order_number);
+
+                    if (updErr) throw updErr;
+
+                    // Insert history
+                    if (order.id) {
+                        await supabase.from('order_status_history').insert([{
+                            order_id: order.id,
+                            old_status: oldStatus,
+                            new_status: newStatus,
+                            changed_by: currentUser?.email || 'admin@belpa.co',
+                            note: note
+                        }]);
+                    }
+                } else {
+                    // Actualizar localStorage
+                    const history = JSON.parse(localStorage.getItem('belpa_orders_history') || '[]');
+                    const idx = history.findIndex(o => o.order_number === order.order_number);
+                    if (idx !== -1) {
+                        history[idx] = { ...history[idx], status: newStatus, payment_status: newPayment, updated_at: now, status_history: order.status_history };
+                        localStorage.setItem('belpa_orders_history', JSON.stringify(history));
+                    }
+                }
+
+                showAdminToast('¡Estado del pedido ' + order.order_number + ' actualizado! 🌸');
+                openOrderDetailModal(activeDetailOrderId);
+                updateDashboardOrderMetrics();
+                renderOrdersTable();
+            } catch (err) {
+                console.error('Error al actualizar estado:', err);
+                alert('No se pudo actualizar el estado: ' + err.message);
+            } finally {
+                if (submitBtn) submitBtn.disabled = false;
+            }
+        });
+    }
+}
+
+function closeOrderDetailModal() {
+    const modal = document.getElementById('order-detail-modal');
+    if (modal) modal.classList.remove('open');
+    activeDetailOrderId = null;
 }

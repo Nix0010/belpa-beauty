@@ -1378,3 +1378,176 @@ body {
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
+
+
+/* ==========================================================================
+   ESTILOS DEL MÓDULO DE PEDIDOS Y GESTIÓN COMERCIAL (BLOQUE 7) 🌸📦
+   ========================================================================== */
+
+/* Badges de Estado del Pedido */
+.order-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    font-size: 0.72rem;
+    font-weight: 700;
+    font-family: var(--font-cute);
+    border: 1px solid transparent;
+}
+
+.order-status-badge.status-pending {
+    background: #FFF9DB;
+    color: #E67700;
+    border-color: #FFE066;
+}
+
+.order-status-badge.status-confirmed {
+    background: #E7F5FF;
+    color: #1C7ED6;
+    border-color: #A5D8FF;
+}
+
+.order-status-badge.status-preparing {
+    background: #F3F0FF;
+    color: #7950F2;
+    border-color: #D0BFFF;
+}
+
+.order-status-badge.status-ready {
+    background: #E6FCF5;
+    color: #0CA678;
+    border-color: #96F2D7;
+}
+
+.order-status-badge.status-out_for_delivery,
+.order-status-badge.status-out {
+    background: #EDF2FF;
+    color: #4C6EF5;
+    border-color: #BAC8FF;
+}
+
+.order-status-badge.status-delivered {
+    background: var(--green-soft);
+    color: var(--green-success);
+    border-color: #B2F2BB;
+}
+
+.order-status-badge.status-cancelled {
+    background: var(--red-soft);
+    color: var(--red-error);
+    border-color: #FFA8A8;
+}
+
+/* Badges de Estado de Pago */
+.order-payment-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    font-size: 0.68rem;
+    font-weight: 700;
+    font-family: var(--font-cute);
+}
+
+.order-payment-badge.payment-pending {
+    background: #FFF3BF;
+    color: #D9480F;
+}
+
+.order-payment-badge.payment-paid {
+    background: var(--green-soft);
+    color: var(--green-success);
+}
+
+.order-payment-badge.payment-partial {
+    background: #FFE8CC;
+    color: #D9480F;
+}
+
+.order-payment-badge.payment-refunded {
+    background: #F1F3F5;
+    color: var(--text-muted);
+}
+
+/* Pills de Filtro Rápido de Pedidos */
+.order-quick-pill {
+    background: #FFFFFF;
+    color: var(--charcoal-soft);
+    border: 1px solid var(--rose-border);
+    border-radius: var(--radius-full);
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    font-family: var(--font-cute);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.order-quick-pill:hover {
+    background: var(--rose-soft);
+    border-color: var(--rose-dusty);
+}
+
+.order-quick-pill.active {
+    background: var(--burgundy-primary);
+    color: #FFFFFF;
+    border-color: var(--burgundy-primary);
+    box-shadow: 0 2px 8px rgba(122, 28, 56, 0.2);
+}
+
+/* Tarjeta de Pedido en Vista Móvil */
+.mobile-order-card {
+    background: var(--card-bg);
+    border: 1px solid var(--rose-border);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow-soft);
+}
+
+.mobile-order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #F5EAEF;
+}
+
+.mobile-order-items-snippet {
+    font-size: 0.78rem;
+    color: var(--charcoal-soft);
+    background: var(--rose-soft);
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    margin: 8px 0;
+}
+
+/* Historial y Línea de Tiempo de Trazabilidad */
+.order-history-item {
+    padding: 6px 0;
+    border-bottom: 1px solid #EEEEEE;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.76rem;
+}
+
+.order-history-item:last-child {
+    border-bottom: none;
+}
+
+.order-history-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.order-history-note {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    margin-top: 2px;
+}
