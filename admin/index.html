@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belpa CMS • Panel Administrativo</title>
+    <title>Belpa CMS • Panel Administrativo Boutique</title>
     <!-- Favicon & Fonts -->
     <link rel="icon" type="image/webp" href="../assets/optimized/logo.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,12 +15,14 @@
 </head>
 <body>
 
-    <!-- 1. PANTALLA DE LOGIN -->
+    <!-- =========================================================================
+         1. PANTALLA DE AUTENTICACIÓN / LOGIN
+         ========================================================================= -->
     <section id="login-section" class="login-wrapper">
         <div class="login-card">
             <img src="../assets/optimized/logo.webp" alt="Belpa Logo" class="login-logo" width="70" height="70">
             <h1 class="login-title">Bienvenida a tu panel Belpa 🌸</h1>
-            <p class="login-subtitle">Administra tu catálogo de forma sencilla y segura.</p>
+            <p class="login-subtitle">Administración boutique de tu catálogo y tienda en línea.</p>
             
             <div id="login-alert" class="admin-alert" style="display:none;" role="alert" aria-live="polite"></div>
 
@@ -58,139 +60,366 @@
         </div>
     </section>
 
-    <!-- 2. DASHBOARD ADMINISTRATIVO -->
+    <!-- =========================================================================
+         2. PANEL ADMINISTRATIVO PRINCIPAL (DASHBOARD & CMS)
+         ========================================================================= -->
     <section id="dashboard-section" style="display:none;">
+        
+        <!-- Navbar Superior -->
         <nav class="admin-navbar">
             <div class="admin-nav-brand">
-                <img src="../assets/optimized/logo.webp" alt="Belpa Logo" class="admin-nav-logo" width="34" height="34">
+                <img src="../assets/optimized/logo.webp" alt="Belpa Logo" class="admin-nav-logo" width="36" height="36">
                 <div>
-                    <h2 class="admin-nav-title">BELPA ADMIN</h2>
-                    <span class="admin-nav-subtitle">Gestión de catálogo</span>
+                    <h2 class="admin-nav-title">BELPA CMS</h2>
+                    <span class="admin-nav-subtitle">Panel Administrativo Boutique</span>
                 </div>
             </div>
+
+            <!-- Tabs de Navegación del Panel -->
+            <div class="admin-nav-tabs">
+                <button type="button" class="nav-tab-btn active" id="tab-btn-dashboard" data-tab="dashboard">
+                    📊 Dashboard & Métricas
+                </button>
+                <button type="button" class="nav-tab-btn" id="tab-btn-catalog" data-tab="catalog">
+                    🛍️ Gestión de Catálogo
+                </button>
+            </div>
+
             <div class="admin-nav-actions">
-                <a href="../" target="_blank" rel="noopener" class="btn-admin-secondary btn-sm" title="Ver tienda pública">
-                    Ver Tienda Pública 🛍️
+                <a href="../" target="_blank" rel="noopener" class="btn-admin-secondary btn-sm" title="Abrir tienda pública">
+                    Ver Tienda 🛍️
                 </a>
-                <button id="btn-open-config-nav" class="btn-admin-secondary btn-sm" title="Configuración de Base de Datos Cloud">
+                <button id="btn-open-config-nav" class="btn-admin-secondary btn-sm" title="Configurar conexión cloud">
                     ⚙️ Config
                 </button>
                 <span class="admin-user-badge" id="admin-user-email">admin@belpa.co</span>
                 <button id="logout-btn" class="btn-admin-secondary btn-sm btn-danger" aria-label="Cerrar sesión">
-                    Cerrar Sesión 🔒
+                    Salir 🔒
                 </button>
             </div>
         </nav>
 
         <main class="admin-container">
-            <!-- Métricas -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <span>Total Productos</span>
-                        <h3 id="stat-total-products">0</h3>
+
+            <!-- =============================================================
+                 VISTA A: DASHBOARD VISUAL Y MÉTRICAS EN TIEMPO REAL
+                 ============================================================= -->
+            <div id="view-dashboard" class="admin-view active">
+                
+                <div class="dashboard-header-banner">
+                    <div>
+                        <h1 class="view-title">Resumen Ejecutivo del Catálogo 🌸</h1>
+                        <p class="view-subtitle">Métricas en tiempo real, valorización de inventario y estado general de Belpa.</p>
                     </div>
-                    <div class="stat-icon" aria-hidden="true">🛍️</div>
+                    <button type="button" class="btn-admin-primary" id="btn-quick-create">
+                        <span>+ Crear Producto 🌸</span>
+                    </button>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <span>BelFlora (Flores)</span>
-                        <h3 id="stat-flora-products">0</h3>
+
+                <!-- 8 Tarjetas de KPIs Principales -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span>Total Catálogo</span>
+                            <h3 id="stat-total-products">0</h3>
+                            <small class="stat-note">Productos registrados</small>
+                        </div>
+                        <div class="stat-icon" aria-hidden="true">🛍️</div>
                     </div>
-                    <div class="stat-icon" aria-hidden="true">🌹</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <span>BelpaBeauty (Makeup)</span>
-                        <h3 id="stat-beauty-products">0</h3>
+
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span>🌹 BelFlora</span>
+                            <h3 id="stat-flora-products">0</h3>
+                            <small class="stat-note">Flores & Regalos</small>
+                        </div>
+                        <div class="stat-icon" aria-hidden="true">🌹</div>
                     </div>
-                    <div class="stat-icon" aria-hidden="true">💄</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <span>Productos Activos</span>
-                        <h3 id="stat-active-products" style="color:var(--green-success);">0</h3>
+
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span>💄 BelpaBeauty</span>
+                            <h3 id="stat-beauty-products">0</h3>
+                            <small class="stat-note">Cosméticos & Makeup</small>
+                        </div>
+                        <div class="stat-icon" aria-hidden="true">💄</div>
                     </div>
-                    <div class="stat-icon" aria-hidden="true">🟢</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <span>Inactivos / Ocultos</span>
-                        <h3 id="stat-inactive-products" style="color:var(--text-muted);">0</h3>
+
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span>Productos Activos</span>
+                            <h3 id="stat-active-products" style="color:var(--green-success);">0</h3>
+                            <small class="stat-note">Visibles en tienda</small>
+                        </div>
+                        <div class="stat-icon" aria-hidden="true">🟢</div>
                     </div>
-                    <div class="stat-icon" aria-hidden="true">⚪</div>
+
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span>Inactivos / Ocultos</span>
+                            <h3 id="stat-inactive-products" style="color:var(--text-muted);">0</h3>
+                            <small class="stat-note">Pausados</small>
+                        </div>
+                        <div class="stat-icon" aria-hidden="true">⚪</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span>Destacados</span>
+                            <h3 id="stat-featured-products" style="color:var(--burgundy-accent);">0</h3>
+                            <small class="stat-note">Con insignia ✨</small>
+                        </div>
+                        <div class="stat-icon" aria-hidden="true">✨</div>
+                    </div>
+
+                    <div class="stat-card card-highlight">
+                        <div class="stat-info">
+                            <span>Valor del Inventario</span>
+                            <h3 id="stat-inventory-value" style="font-size:1.35rem; color:var(--burgundy-primary);">$0</h3>
+                            <small class="stat-note">Suma total de catálogo</small>
+                        </div>
+                        <div class="stat-icon" aria-hidden="true">💰</div>
+                    </div>
+
+                    <div class="stat-card card-highlight">
+                        <div class="stat-info">
+                            <span>Precio Promedio</span>
+                            <h3 id="stat-avg-price" style="font-size:1.35rem; color:var(--charcoal-deep);">$0</h3>
+                            <small class="stat-note">Ticket promedio</small>
+                        </div>
+                        <div class="stat-icon" aria-hidden="true">🏷️</div>
+                    </div>
                 </div>
+
+                <!-- Paneles de Análisis Rápido y Alertas -->
+                <div class="dashboard-widgets-grid">
+                    
+                    <!-- Widget: Alertas de Calidad -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h4>📋 Diagnóstico de Calidad del Catálogo</h4>
+                        </div>
+                        <div class="widget-body">
+                            <div class="quality-alert-item" id="alert-item-nodesc">
+                                <div class="quality-alert-icon">⚠️</div>
+                                <div class="quality-alert-text">
+                                    <strong id="alert-no-desc-count">0 productos</strong> sin descripción detallada.
+                                    <p>Agregar descripción mejora el SEO y la conversión.</p>
+                                </div>
+                            </div>
+                            <div class="quality-alert-item" id="alert-item-nophoto">
+                                <div class="quality-alert-icon">📷</div>
+                                <div class="quality-alert-text">
+                                    <strong id="alert-no-photo-count">0 productos</strong> usando imagen de respaldo por defecto.
+                                    <p>Sube fotos WebP optimizadas para mayor impacto visual.</p>
+                                </div>
+                            </div>
+                            <div class="quality-alert-item info">
+                                <div class="quality-alert-icon">⚡</div>
+                                <div class="quality-alert-text">
+                                    <strong>Compresión WebP Automática Activa</strong>
+                                    <p>Tus fotos se optimizan en el navegador (800px máx, 82% calidad) para ultra velocidad.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Widget: Productos Recientemente Modificados -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h4>🕒 Recientemente Actualizados</h4>
+                            <button type="button" class="link-btn" id="btn-view-all-recent">Ver todos ›</button>
+                        </div>
+                        <div class="widget-body" id="dashboard-recent-list">
+                            <div class="empty-widget-state">Cargando productos...</div>
+                        </div>
+                    </div>
+
+                    <!-- Widget: Productos Destacados en Portada -->
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h4>✨ Destacados en Portada</h4>
+                            <button type="button" class="link-btn" id="btn-view-all-featured">Filtrar destacados ›</button>
+                        </div>
+                        <div class="widget-body" id="dashboard-featured-list">
+                            <div class="empty-widget-state">Cargando destacados...</div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
 
-            <!-- Toolbar de Filtros y Controles -->
-            <div class="toolbar-card">
-                <div class="toolbar-filters">
-                    <div class="search-input-wrapper">
-                        <span class="search-icon" aria-hidden="true">🔍</span>
-                        <input type="text" id="admin-search-input" placeholder="Buscar por nombre, categoría, badge o precio..." aria-label="Buscar productos">
-                    </div>
-                    <select id="admin-filter-brand" class="form-select" aria-label="Filtrar por marca">
-                        <option value="all">Todas las Marcas</option>
-                        <option value="flora">🌹 BelFlora</option>
-                        <option value="beauty">💄 BelpaBeauty</option>
-                    </select>
-                    <select id="admin-filter-category" class="form-select" aria-label="Filtrar por categoría">
-                        <option value="all">Todas las Categorías</option>
-                    </select>
-                    <select id="admin-filter-status" class="form-select" aria-label="Filtrar por estado">
-                        <option value="all">Todos los Estados</option>
-                        <option value="active">🟢 Activos</option>
-                        <option value="inactive">⚪ Inactivos</option>
-                    </select>
-                </div>
-                <button id="btn-open-create-modal" class="btn-admin-primary">
-                    <span>+ Nuevo producto 🌸</span>
-                </button>
-            </div>
-
-            <!-- Listado de Productos -->
-            <div class="catalog-list-wrapper">
-                <div class="table-container desktop-table-view">
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>Foto</th>
-                                <th>Producto</th>
-                                <th>Marca</th>
-                                <th>Categoría</th>
-                                <th>Precio</th>
-                                <th>Estado</th>
-                                <th>Actualizado</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody id="admin-products-tbody">
-                            <tr>
-                                <td colspan="8" class="table-loading-cell">
-                                    <div class="spinner-inline"></div> Cargando catálogo de Belpa... 🌸
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="mobile-cards-view" id="admin-products-cards" style="display:none;"></div>
-
-                <div class="pagination-bar" id="admin-pagination-bar" style="display:none;">
-                    <div class="pagination-info" id="pagination-info">Mostrando productos</div>
-                    <div class="pagination-buttons">
-                        <button id="btn-prev-page" class="btn-admin-secondary btn-sm" disabled>‹ Anterior</button>
-                        <span id="pagination-current-page" class="page-badge">1 / 1</span>
-                        <button id="btn-next-page" class="btn-admin-secondary btn-sm" disabled>Siguiente ›</button>
+            <!-- =============================================================
+                 VISTA B: GESTIÓN DE CATÁLOGO & CRUD AVANZADO
+                 ============================================================= -->
+            <div id="view-catalog" class="admin-view" style="display:none;">
+                
+                <!-- Barra Flotante de Acciones Masivas (Bulk Actions Sticky Bar) -->
+                <div id="bulk-actions-bar" class="bulk-actions-bar" style="display:none;">
+                    <div class="bulk-actions-content">
+                        <div class="bulk-selected-info">
+                            <span class="bulk-counter-pill" id="bulk-selected-count">0</span>
+                            <span style="font-weight:700; color:var(--charcoal-deep);">productos seleccionados</span>
+                        </div>
+                        <div class="bulk-buttons-group">
+                            <button type="button" class="btn-bulk btn-bulk-success" id="btn-bulk-activate">
+                                🟢 Activar
+                            </button>
+                            <button type="button" class="btn-bulk btn-bulk-warning" id="btn-bulk-deactivate">
+                                ⚪ Desactivar
+                            </button>
+                            <button type="button" class="btn-bulk btn-bulk-featured" id="btn-bulk-feature">
+                                ✨ Destacar
+                            </button>
+                            <button type="button" class="btn-bulk btn-bulk-unfeature" id="btn-bulk-unfeature">
+                                💫 Quitar Destacado
+                            </button>
+                            <button type="button" class="btn-bulk btn-bulk-danger" id="btn-bulk-delete">
+                                🗑️ Eliminar
+                            </button>
+                            <button type="button" class="btn-bulk btn-bulk-cancel" id="btn-bulk-cancel">
+                                ✕ Cancelar
+                            </button>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Toolbar de Filtros Avanzados y Controles -->
+                <div class="toolbar-card">
+                    <div class="toolbar-filters-grid">
+                        
+                        <!-- Búsqueda en tiempo real -->
+                        <div class="search-input-wrapper">
+                            <span class="search-icon" aria-hidden="true">🔍</span>
+                            <input type="text" id="admin-search-input" placeholder="Buscar por nombre, categoría, badge o precio..." aria-label="Buscar productos">
+                            <button type="button" id="btn-clear-search" class="search-clear-btn" style="display:none;" title="Limpiar búsqueda">✕</button>
+                        </div>
+
+                        <!-- Filtro Marca -->
+                        <select id="admin-filter-brand" class="form-select" aria-label="Filtrar por marca">
+                            <option value="all">Todas las Marcas</option>
+                            <option value="flora">🌹 BelFlora</option>
+                            <option value="beauty">💄 BelpaBeauty</option>
+                        </select>
+
+                        <!-- Filtro Categoría -->
+                        <select id="admin-filter-category" class="form-select" aria-label="Filtrar por categoría">
+                            <option value="all">Todas las Categorías</option>
+                        </select>
+
+                        <!-- Filtro Estado -->
+                        <select id="admin-filter-status" class="form-select" aria-label="Filtrar por estado">
+                            <option value="all">Todos los Estados</option>
+                            <option value="active">🟢 Activos</option>
+                            <option value="inactive">⚪ Inactivos</option>
+                        </select>
+
+                        <!-- Filtro Destacados -->
+                        <select id="admin-filter-featured" class="form-select" aria-label="Filtrar por destacados">
+                            <option value="all">Todos (Destacados y Regulares)</option>
+                            <option value="featured">✨ Solo Destacados</option>
+                            <option value="not_featured">Sin Destacar</option>
+                        </select>
+
+                        <!-- Filtro Rango de Precio -->
+                        <select id="admin-filter-price" class="form-select" aria-label="Filtrar por rango de precio">
+                            <option value="all">Cualquier Precio</option>
+                            <option value="under50">Hasta $50.000</option>
+                            <option value="50to100">$50.000 - $100.000</option>
+                            <option value="100to200">$100.000 - $200.000</option>
+                            <option value="above200">Más de $200.000</option>
+                        </select>
+
+                        <!-- Ordenamiento -->
+                        <select id="admin-sort-by" class="form-select" aria-label="Ordenar catálogo">
+                            <option value="id_asc">🔢 Orden por ID (1 → 79)</option>
+                            <option value="name_asc">🔤 Nombre (A → Z)</option>
+                            <option value="name_desc">🔤 Nombre (Z → A)</option>
+                            <option value="price_asc">💵 Precio: Menor a Mayor</option>
+                            <option value="price_desc">💎 Precio: Mayor a Menor</option>
+                            <option value="updated_desc">🕒 Modificados Recientemente</option>
+                            <option value="featured_first">✨ Destacados Primero</option>
+                            <option value="sort_order_asc">📌 Prioridad de Orden</option>
+                        </select>
+
+                        <!-- Paginación / Items por página -->
+                        <select id="admin-page-size" class="form-select" aria-label="Elementos por página">
+                            <option value="10">10 por pág.</option>
+                            <option value="20" selected>20 por pág.</option>
+                            <option value="50">50 por pág.</option>
+                            <option value="all">Ver Todos</option>
+                        </select>
+
+                    </div>
+
+                    <!-- Botón de Creación y Contador -->
+                    <div class="toolbar-actions-row">
+                        <div class="filter-results-counter" id="filter-results-counter">
+                            Cargando catálogo...
+                        </div>
+                        <button id="btn-open-create-modal" class="btn-admin-primary">
+                            <span>+ Nuevo Producto 🌸</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Listado de Productos (Tabla Desktop + Cards Mobile) -->
+                <div class="catalog-list-wrapper">
+                    
+                    <div class="table-container desktop-table-view">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th style="width:40px; text-align:center;">
+                                        <input type="checkbox" id="master-select-checkbox" title="Seleccionar todos los visibles" aria-label="Seleccionar todos">
+                                    </th>
+                                    <th style="width:64px;">Foto</th>
+                                    <th>Producto</th>
+                                    <th>Marca</th>
+                                    <th>Categoría / Subcat</th>
+                                    <th>Precio</th>
+                                    <th style="text-align:center;">Destacado</th>
+                                    <th style="text-align:center;">Estado</th>
+                                    <th>Actualizado</th>
+                                    <th style="text-align:right;">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-products-tbody">
+                                <tr>
+                                    <td colspan="10" class="table-loading-cell">
+                                        <div class="spinner-inline"></div> Cargando catálogo de Belpa... 🌸
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Vista en Tarjetas para Móviles -->
+                    <div class="mobile-cards-view" id="admin-products-cards" style="display:none;"></div>
+
+                    <!-- Barra de Paginación -->
+                    <div class="pagination-bar" id="admin-pagination-bar" style="display:none;">
+                        <div class="pagination-info" id="pagination-info">Mostrando productos</div>
+                        <div class="pagination-buttons">
+                            <button id="btn-prev-page" class="btn-admin-secondary btn-sm" disabled>‹ Anterior</button>
+                            <span id="pagination-current-page" class="page-badge">1 / 1</span>
+                            <button id="btn-next-page" class="btn-admin-secondary btn-sm" disabled>Siguiente ›</button>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
+
         </main>
     </section>
 
-    <!-- 3. MODAL DE CREAR / EDITAR PRODUCTO -->
+    <!-- =========================================================================
+         3. MODAL DE CREAR / EDITAR PRODUCTO (CRUD AVANZADO)
+         ========================================================================= -->
     <div class="modal-overlay" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-product-title">
-        <div class="modal-box">
+        <div class="modal-box modal-box-large">
             <div class="modal-header">
                 <h3 id="modal-product-title">Crear Nuevo Producto 🌸</h3>
                 <button class="modal-close" id="modal-close-btn" aria-label="Cerrar modal">&times;</button>
@@ -199,24 +428,31 @@
             <form id="product-form" novalidate>
                 <input type="hidden" id="prod-id">
                 
-                <div class="form-group" style="margin-bottom:14px;">
+                <!-- Sección Fotografía y WebP -->
+                <div class="form-group" style="margin-bottom:16px;">
                     <label>Fotografía del Producto (Conversión automática a WebP max 800px):</label>
                     <div class="image-dropzone" id="image-dropzone" tabindex="0" role="button" aria-label="Seleccionar o arrastrar imagen">
-                        <span id="dropzone-text">📷 Haz clic o arrastra una foto aquí</span>
+                        <span id="dropzone-text">📷 Haz clic o arrastra una imagen aquí (JPEG, PNG, WebP)</span>
                         <input type="file" id="prod-file-input" accept="image/png, image/jpeg, image/webp" style="display:none;">
                     </div>
-                    <img id="prod-image-preview" class="image-preview-box" alt="Previsualización de producto">
+                    
+                    <!-- Previsualización de imágenes -->
+                    <div class="images-preview-container" id="images-preview-container">
+                        <img id="prod-image-preview" class="image-preview-box" alt="Previsualización de producto" style="display:none;">
+                    </div>
                     <input type="hidden" id="prod-current-image-url">
                     <span class="field-error" id="error-prod-image"></span>
                 </div>
 
+                <!-- Nombre -->
                 <div class="form-group" style="margin-bottom:14px;">
                     <label for="prod-name">Nombre del Producto: <span class="req">*</span></label>
-                    <input type="text" id="prod-name" class="form-input" required placeholder="Ej. Ramo Rapunzel Deluxe">
+                    <input type="text" id="prod-name" class="form-input" required placeholder="Ej. Ramo Rapunzel Deluxe con Luces LED">
                     <span class="field-error" id="error-prod-name"></span>
                 </div>
 
-                <div class="form-row-2" style="margin-bottom:14px;">
+                <!-- Marca y Precios -->
+                <div class="form-row-3" style="margin-bottom:14px;">
                     <div class="form-group">
                         <label for="prod-brand">Línea de Marca: <span class="req">*</span></label>
                         <select id="prod-brand" class="form-select" required>
@@ -225,14 +461,22 @@
                         </select>
                         <span class="field-error" id="error-prod-brand"></span>
                     </div>
+                    
                     <div class="form-group">
-                        <label for="prod-raw-price">Precio en COP (Ej. 85000): <span class="req">*</span></label>
+                        <label for="prod-raw-price">Precio de Venta COP: <span class="req">*</span></label>
                         <input type="number" id="prod-raw-price" class="form-input" required placeholder="85000" min="0" step="500">
                         <span class="field-error" id="error-prod-price"></span>
                     </div>
+
+                    <div class="form-group">
+                        <label for="prod-original-price">Precio Anterior (Opcional):</label>
+                        <input type="number" id="prod-original-price" class="form-input" placeholder="Ej. 100000" min="0" step="500">
+                        <span class="field-error" id="error-prod-original-price"></span>
+                    </div>
                 </div>
 
-                <div class="form-row-2" style="margin-bottom:14px;">
+                <!-- Categoría, Subcategoría y Badge -->
+                <div class="form-row-3" style="margin-bottom:14px;">
                     <div class="form-group">
                         <label for="prod-category">Nombre de Categoría: <span class="req">*</span></label>
                         <input type="text" id="prod-category" class="form-input" placeholder="TEMÁTICAS & DISNEY" required>
@@ -242,11 +486,16 @@
                         <label for="prod-filter-category">Subcategoría / Filtro:</label>
                         <input type="text" id="prod-filter-category" class="form-input" placeholder="tematicas">
                     </div>
+                    <div class="form-group">
+                        <label for="prod-badge">Etiqueta / Badge:</label>
+                        <input type="text" id="prod-badge" class="form-input" placeholder="Princesas 👑, Viral 🔥">
+                    </div>
                 </div>
 
+                <!-- Orden de aparición y Descripción -->
                 <div class="form-group" style="margin-bottom:14px;">
-                    <label for="prod-badge">Etiqueta / Badge (Opcional):</label>
-                    <input type="text" id="prod-badge" class="form-input" placeholder="Princesas 👑, Viral 🔥, Edición Especial">
+                    <label for="prod-sort-order">Prioridad de Orden (0 = normal, mayor número = primero):</label>
+                    <input type="number" id="prod-sort-order" class="form-input" value="0" min="0" step="1">
                 </div>
 
                 <div class="form-group" style="margin-bottom:14px;">
@@ -254,14 +503,15 @@
                     <textarea id="prod-desc" class="form-textarea" rows="3" placeholder="Detalles artesanales, flores incluidas, empaque de regalo..."></textarea>
                 </div>
 
+                <!-- Switches de Estado y Destacado -->
                 <div class="switches-row" style="margin-bottom:20px;">
                     <label class="switch-label">
                         <input type="checkbox" id="prod-active" checked>
-                        <span>🟢 <strong>Producto Activo</strong> (Visible en la tienda pública)</span>
+                        <span>🟢 <strong>Producto Activo</strong> (Visible en catálogo de la tienda)</span>
                     </label>
                     <label class="switch-label">
                         <input type="checkbox" id="prod-featured">
-                        <span>✨ <strong>Destacado</strong></span>
+                        <span>✨ <strong>Producto Destacado</strong> (Insignia especial en tienda)</span>
                     </label>
                 </div>
 
@@ -275,7 +525,9 @@
         </div>
     </div>
 
-    <!-- 4. MODAL DE CONFIRMACIÓN DE ELIMINACIÓN -->
+    <!-- =========================================================================
+         4. MODAL DE CONFIRMACIÓN DE ELIMINACIÓN INDIVIDUAL
+         ========================================================================= -->
     <div class="modal-overlay" id="delete-modal" role="dialog" aria-modal="true">
         <div class="modal-box" style="max-width:440px;">
             <div class="modal-header">
@@ -305,7 +557,34 @@
         </div>
     </div>
 
-    <!-- 5. MODAL DE RECUPERACIÓN DE CONTRASEÑA -->
+    <!-- =========================================================================
+         5. MODAL DE CONFIRMACIÓN DE ACCIONES MASIVAS
+         ========================================================================= -->
+    <div class="modal-overlay" id="bulk-modal" role="dialog" aria-modal="true">
+        <div class="modal-box" style="max-width:460px;">
+            <div class="modal-header">
+                <h3 id="bulk-modal-title" style="color:var(--burgundy-primary);">Confirmar Acción Masiva</h3>
+                <button class="modal-close" id="bulk-modal-close-btn">&times;</button>
+            </div>
+            <div style="padding:12px 0; text-align:center;">
+                <p id="bulk-modal-message" style="font-size:0.9rem; color:var(--charcoal-deep); line-height:1.5; margin-bottom:16px;">
+                    ¿Deseas aplicar esta acción a los productos seleccionados?
+                </p>
+                <div id="bulk-modal-list" style="max-height:140px; overflow-y:auto; text-align:left; background:var(--rose-soft); padding:10px 14px; border-radius:var(--radius-sm); font-size:0.8rem; margin-bottom:16px;"></div>
+                
+                <div style="display:flex; justify-content:flex-end; gap:10px;">
+                    <button type="button" id="btn-bulk-modal-cancel" class="btn-admin-secondary">Cancelar</button>
+                    <button type="button" id="btn-bulk-modal-confirm" class="btn-admin-primary">
+                        <span>Confirmar ✨</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================================
+         6. MODAL DE RECUPERACIÓN DE CONTRASEÑA
+         ========================================================================= -->
     <div class="modal-overlay" id="forgot-modal" role="dialog" aria-modal="true">
         <div class="modal-box" style="max-width:420px;">
             <div class="modal-header">
@@ -330,7 +609,9 @@
         </div>
     </div>
 
-    <!-- 6. MODAL DE CONFIGURACIÓN DE CONEXIÓN SUPABASE -->
+    <!-- =========================================================================
+         7. MODAL DE CONFIGURACIÓN DE CONEXIÓN SUPABASE
+         ========================================================================= -->
     <div class="modal-overlay" id="config-modal" role="dialog" aria-modal="true">
         <div class="modal-box" style="max-width:540px;">
             <div class="modal-header">
@@ -353,8 +634,7 @@
                 <div class="config-instructions-box">
                     <strong>📋 Pasos para conectar:</strong>
                     <ol>
-                        <li>Ejecuta el script <code>supabase/block2_auth.sql</code> en el SQL Editor de Supabase.</li>
-                        <li>Ejecuta el script <code>admin/seed-products.sql</code> para cargar los 79 productos.</li>
+                        <li>Ejecuta el script <code>supabase/block4_database.sql</code> en el SQL Editor de Supabase.</li>
                         <li>Crea tu usuario administrador en Supabase Authentication.</li>
                         <li>Copia tu <strong>Project URL</strong> y tu <strong>Anon Public Key</strong> (Project Settings > API).</li>
                     </ol>

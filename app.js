@@ -1336,6 +1336,9 @@ async function initCloudProducts() {
                 filterCategory: row.filter_category || 'rosas_ramos',
                 price: row.price || formatCOP(row.raw_price || 0),
                 rawPrice: Number(row.raw_price) || 0,
+                originalPrice: row.original_price ? Number(row.original_price) : null,
+                sortOrder: Number(row.sort_order) || 0,
+                isFeatured: Boolean(row.is_featured),
                 badge: row.badge || '',
                 description: row.description || '',
                 mediaId: row.media_id || '',
@@ -1663,6 +1666,7 @@ function renderProducts() {
                     
                     <div class="product-price-row">
                         <span class="product-price">${p.price}</span>
+                        ${p.originalPrice ? `<span class="product-old-price" style="text-decoration:line-through; font-size:0.8rem; color:var(--text-muted, #8E8287); margin-left:6px;">${formatCOP(p.originalPrice)}</span>` : ''}
                     </div>
                     
                     <div class="card-action-row">
